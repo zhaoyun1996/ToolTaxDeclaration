@@ -1,5 +1,7 @@
 using HtmlAgilityPack;
 using MISA.ASP.ClientApp.Models;
+using MISA.ASP.ClientApp.Models.ActionInput.SynTaxDec;
+using MISA.ASP.ClientApp.Models.Enums;
 using MISA.ASP.ClientApp.Models.EtaxCrawler;
 using MISA.ASP.ClientApp.Models.Exceptions;
 using MISA.ASP.ClientApp.Utils.Clients;
@@ -28,6 +30,7 @@ namespace MISA.ASP.ClientApp.BL
     public class PublicServiceCrawler
     {
         private static string PUBLIC_SERVICE_URL => ConfigurationManager.AppSettings["PublicService_BaseUrl"] ?? "https://dichvucong.gdt.gov.vn";
+        private static string ETAX_URL => ConfigurationManager.AppSettings["ETax_BaseUrl"] ?? "https://thuedientu.gdt.gov.vn";
 
         private int _profileID { get; set; }
         private int _customerID { get; set; }
@@ -35,12 +38,23 @@ namespace MISA.ASP.ClientApp.BL
         private string _username { get; set; }
         private string _password { get; set; }
         private string _csrfToken { get; set; }
+        private string _etaxSessionId { get; set; }
+        private string _processorID { get; set; }
+        private string _queryPageId { get; set; }
+        public string EtaxSessionId => _etaxSessionId;
+        public string ProcessorID => _processorID;
+        public HttpClient EtaxClient => _client;
         private CookieContainer _cookieContainer { get; set; }
-        private HttpClient _client { get; set; }
+        private HttpClient _dvcClient { get; set; }
         private HttpClientHandler _handler { get; set; }
+        private CookieContainer _etaxCookieContainer { get; set; }
+        private HttpClient _client { get; set; }
+        private HttpClientHandler _etaxHandler { get; set; }
         private CancellationToken _stoppingToken { get; set; }
+        private EnumTaxAccountType _accountType { get; set; }
 
-        public PublicServiceCrawler(int profileID, int customerID, string taxcode, string username, string password, CancellationToken stoppingToken)
+        public PublicServiceCrawler(int profileID, int customerID, string taxcode, string username, string password, 
+            EnumTaxAccountType accountType, CancellationToken stoppingToken)
         {
             _profileID = profileID;
             _customerID = customerID;
@@ -53,12 +67,25 @@ namespace MISA.ASP.ClientApp.BL
                 CookieContainer = _cookieContainer,
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
             };
-            _client = new HttpClient(_handler) { BaseAddress = new Uri(PUBLIC_SERVICE_URL) };
+            _dvcClient = new HttpClient(_handler) { BaseAddress = new Uri(PUBLIC_SERVICE_URL) };
 
-            _client.DefaultRequestHeaders.Add("Accept-Language", "vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7");
-            _client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
+            _dvcClient.DefaultRequestHeaders.Add("Accept-Language", "vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7");
+            _dvcClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
 
             _stoppingToken = stoppingToken;
+            _accountType = accountType;
+
+            // HttpClient riêng cho thuedientu.gdt.gov.vn
+            _etaxCookieContainer = new CookieContainer();
+            _etaxHandler = new HttpClientHandler()
+            {
+                CookieContainer = _etaxCookieContainer,
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
+                AllowAutoRedirect = false
+            };
+            _client = new HttpClient(_etaxHandler) { BaseAddress = new Uri(ETAX_URL) };
+            _client.DefaultRequestHeaders.Add("Accept-Language", "en-US,en;q=0.9");
+            _client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0");
         }
 
         #region Các bước đăng nhập Cổng Dịch vụ công Thuế (Public Service)
@@ -72,7 +99,7 @@ namespace MISA.ASP.ClientApp.BL
             try
             {
                 LogUtil.LogTrace("PublicServiceCrawler.Step1_GotoHomeLogin.Start");
-                responseMessage = await _client.GetAsync("/tthc/homelogin", _stoppingToken);
+                responseMessage = await _dvcClient.GetAsync("/tthc/homelogin", _stoppingToken);
                 responseMessage.EnsureSuccessStatusCode();
                 LogUtil.LogTrace("PublicServiceCrawler.Step1_GotoHomeLogin.End");
             }
@@ -93,7 +120,7 @@ namespace MISA.ASP.ClientApp.BL
             try
             {
                 LogUtil.LogTrace("PublicServiceCrawler.Step2_GotoLoginPage.Start");
-                responseMessage = await _client.GetAsync("/tthc/login", _stoppingToken);
+                responseMessage = await _dvcClient.GetAsync("/tthc/login", _stoppingToken);
                 responseMessage.EnsureSuccessStatusCode();
 
                 var html = await responseMessage.Content.ReadAsStringAsync();
@@ -153,7 +180,7 @@ namespace MISA.ASP.ClientApp.BL
         //        request.Headers.Add("Referer", refererUrl);
         //        request.Headers.Add("Accept", "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8");
 
-        //        responseMessage = await _client.SendAsync(request, _stoppingToken);
+        //        responseMessage = await _dvcClient.SendAsync(request, _stoppingToken);
         //        responseMessage.EnsureSuccessStatusCode();
 
         //        var imageBytes = await responseMessage.Content.ReadAsByteArrayAsync();
@@ -198,7 +225,7 @@ namespace MISA.ASP.ClientApp.BL
                 request.Headers.Add("Referer", refererUrl);
                 request.Headers.Add("Accept", "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8");
 
-                responseMessage = await _client.SendAsync(request, _stoppingToken);
+                responseMessage = await _dvcClient.SendAsync(request, _stoppingToken);
                 responseMessage.EnsureSuccessStatusCode();
 
                 var imageBytes = await responseMessage.Content.ReadAsByteArrayAsync();
@@ -346,7 +373,7 @@ namespace MISA.ASP.ClientApp.BL
                 {
                     new KeyValuePair<string, string>("tenDN", _username),
                     new KeyValuePair<string, string>("matKhau", base64Password),
-                    new KeyValuePair<string, string>("doiTuong", "DN"),
+                    new KeyValuePair<string, string>("doiTuong", _accountType == EnumTaxAccountType.Enterprise ? "DN" : "CN"),
                     new KeyValuePair<string, string>("captcha", captcha.Result)
                 });
 
@@ -359,7 +386,7 @@ namespace MISA.ASP.ClientApp.BL
                 request.Headers.Add("X-Requested-With", "XMLHttpRequest");
                 request.Headers.Add("Referer", $"{PUBLIC_SERVICE_URL}/tthc/login");
 
-                responseMessage = await _client.SendAsync(request, _stoppingToken);
+                responseMessage = await _dvcClient.SendAsync(request, _stoppingToken);
                 responseMessage.EnsureSuccessStatusCode();
 
                 var jsonContent = await responseMessage.Content.ReadAsStringAsync();
@@ -432,7 +459,7 @@ namespace MISA.ASP.ClientApp.BL
                 var request = new HttpRequestMessage(HttpMethod.Get, "/tthc/tchs");
                 request.Headers.Add("Referer", $"{PUBLIC_SERVICE_URL}/tthc/login");
 
-                responseMessage = await _client.SendAsync(request, _stoppingToken);
+                responseMessage = await _dvcClient.SendAsync(request, _stoppingToken);
                 responseMessage.EnsureSuccessStatusCode();
 
                 var html = await responseMessage.Content.ReadAsStringAsync();
@@ -484,7 +511,7 @@ namespace MISA.ASP.ClientApp.BL
                 request.Headers.Add("HX-Target", "table-container");
                 request.Headers.Add("X-Requested-With", "XMLHttpRequest");
 
-                responseMessage = await _client.SendAsync(request, _stoppingToken);
+                responseMessage = await _dvcClient.SendAsync(request, _stoppingToken);
                 responseMessage.EnsureSuccessStatusCode();
 
                 var html = await responseMessage.Content.ReadAsStringAsync();
@@ -585,7 +612,7 @@ namespace MISA.ASP.ClientApp.BL
                 request.Headers.Add("HX-Target", "table-container");
                 request.Headers.Add("X-Requested-With", "XMLHttpRequest");
 
-                responseMessage = await _client.SendAsync(request, _stoppingToken);
+                responseMessage = await _dvcClient.SendAsync(request, _stoppingToken);
                 responseMessage.EnsureSuccessStatusCode();
 
                 var html = await responseMessage.Content.ReadAsStringAsync();
@@ -736,7 +763,7 @@ namespace MISA.ASP.ClientApp.BL
                 var request = new HttpRequestMessage(HttpMethod.Get, $"/tthc/tchs/files/detail/{maHoSo}?loai=");
                 request.Headers.Add("Referer", $"{PUBLIC_SERVICE_URL}/tthc/tchs");
 
-                responseMessage = await _client.SendAsync(request, _stoppingToken);
+                responseMessage = await _dvcClient.SendAsync(request, _stoppingToken);
                 responseMessage.EnsureSuccessStatusCode();
 
                 var html = await responseMessage.Content.ReadAsStringAsync();
@@ -797,7 +824,7 @@ namespace MISA.ASP.ClientApp.BL
                     request.Headers.Add("X-XSRF-TOKEN", token);
                 }
 
-                responseMessage = await _client.SendAsync(request, _stoppingToken);
+                responseMessage = await _dvcClient.SendAsync(request, _stoppingToken);
                 responseMessage.EnsureSuccessStatusCode();
 
                 var jsonStr = await responseMessage.Content.ReadAsStringAsync();
@@ -1137,7 +1164,7 @@ namespace MISA.ASP.ClientApp.BL
                     request.Headers.Add("X-XSRF-TOKEN", token);
                 }
 
-                responseMessage = await _client.SendAsync(request, _stoppingToken);
+                responseMessage = await _dvcClient.SendAsync(request, _stoppingToken);
                 responseMessage.EnsureSuccessStatusCode();
 
                 var jsonStr = await responseMessage.Content.ReadAsStringAsync();
@@ -1252,6 +1279,630 @@ namespace MISA.ASP.ClientApp.BL
             }, 5);
 
             return result ?? new List<TaxDeclarationSubmitted>();
+        }
+
+        /// <summary>
+        /// Hàm tra cứu giấy nộp tiền
+        /// </summary>
+        public async Task<HtmlDocument> GetDocPaymentRequest(SyncPaymentRequestInputDetail detail, string fromDate, string toDate)
+        {
+            return await CommonPattern.Retry(async () =>
+            {
+                await SignIn();
+
+                await StepGNT1_GotoDichVuKhacPage();
+                await Task.Delay(500, _stoppingToken);
+
+                string step2Url = await StepGNT2_RedirectToService();
+                await Task.Delay(500, _stoppingToken);
+
+                string step3Url = await StepGNT3_GetEtaxSession(step2Url);
+                await Task.Delay(500, _stoppingToken);
+
+                string step4Url = await StepGNT4_CorpJumpProc(step3Url);
+                await Task.Delay(500, _stoppingToken);
+
+                string step5Url = await StepGNT5_EstablishSession(step4Url);
+                await Task.Delay(500, _stoppingToken);
+
+                var step6Form = await StepGNT6_RequestWithNewSession(step5Url);
+                await Task.Delay(500, _stoppingToken);
+
+                var step7Form = await StepGNT7_LoginSSO(step6Form);
+                await Task.Delay(500, _stoppingToken);
+
+                await StepGNT8_GotoMainPage(step7Form);
+                await Task.Delay(500, _stoppingToken);
+
+                await Step9_GotoTraCuuGiayNopTienPage();
+                return await Step10_ClickButtonTraCuuGiayNopTien(fromDate, toDate);
+            }, 3);
+        }
+
+        #endregion
+
+        #region Các hàm hỗ trợ chuẩn hóa luồng eTax SSO
+
+        /// <summary>
+        /// Bóc tách toàn bộ input trong form HTML (dùng cho các form auto-submit trong DSE SSO)
+        /// </summary>
+        private Dictionary<string, string> ExtractFormInputs(string html, string formId = "mainForm")
+        {
+            var formValues = new Dictionary<string, string>();
+            if (string.IsNullOrWhiteSpace(html)) return formValues;
+
+            var doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(html);
+
+            var formNode = doc.DocumentNode.SelectSingleNode($"//form[@id='{formId}']")
+                ?? doc.DocumentNode.SelectSingleNode("//form");
+
+            if (formNode != null)
+            {
+                var inputs = formNode.SelectNodes(".//input");
+                if (inputs != null)
+                {
+                    foreach (var input in inputs)
+                    {
+                        var name = input.GetAttributeValue("name", null);
+                        if (!string.IsNullOrEmpty(name))
+                        {
+                            var value = input.GetAttributeValue("value", "");
+                            formValues[name] = value;
+                        }
+                    }
+                }
+            }
+            return formValues;
+        }
+
+        /// <summary>
+        /// Chuẩn hóa đường dẫn tương đối trên thuedientu đảm bảo có context path /etaxnnt/
+        /// </summary>
+        private string NormalizeEtaxRelativeUrl(string url)
+        {
+            if (string.IsNullOrWhiteSpace(url)) return url;
+            url = url.Trim();
+            if (url.StartsWith("http://", StringComparison.OrdinalIgnoreCase) || 
+                url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            {
+                return url;
+            }
+
+            if (!url.StartsWith("/"))
+            {
+                url = "/" + url;
+            }
+
+            if (!url.StartsWith("/etaxnnt/", StringComparison.OrdinalIgnoreCase) && 
+                !url.Equals("/etaxnnt", StringComparison.OrdinalIgnoreCase))
+            {
+                url = "/etaxnnt" + url;
+            }
+
+            return url;
+        }
+
+        #endregion
+
+        #region Các bước Tra cứu giấy nộp tiền (thuedientu.gdt.gov.vn)
+
+        /// <summary>
+        /// Bước GNT1: Đi tới trang Dịch vụ khác (/tthc/dich-vu-khac)
+        /// </summary>
+        private async Task StepGNT1_GotoDichVuKhacPage()
+        {
+            HttpResponseMessage responseMessage = null;
+            try
+            {
+                LogUtil.LogTrace("PublicServiceCrawler.StepGNT1_GotoDichVuKhacPage.Start");
+
+                var request = new HttpRequestMessage(HttpMethod.Get, "/tthc/dich-vu-khac");
+                request.Headers.Add("Referer", $"{PUBLIC_SERVICE_URL}/tthc/home");
+                request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7");
+
+                responseMessage = await _dvcClient.SendAsync(request, _stoppingToken);
+                responseMessage.EnsureSuccessStatusCode();
+
+                LogUtil.LogTrace("PublicServiceCrawler.StepGNT1_GotoDichVuKhacPage.End");
+            }
+            catch (Exception ex)
+            {
+                LogUtil.LogError(ex, responseMessage);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Bước GNT2: POST redirect-to-service?module=330410 để lấy URL chuyển hướng sang thuedientu
+        /// </summary>
+        private async Task<string> StepGNT2_RedirectToService()
+        {
+            HttpResponseMessage responseMessage = null;
+            string redirectUrl = null;
+            try
+            {
+                LogUtil.LogTrace("PublicServiceCrawler.StepGNT2_RedirectToService.Start");
+
+                var request = new HttpRequestMessage(HttpMethod.Post, "/tthc/sso/redirect-to-service?module=330410");
+                request.Content = new StringContent("", Encoding.UTF8);
+                request.Headers.Add("Referer", $"{PUBLIC_SERVICE_URL}/tthc/dich-vu-khac");
+                request.Headers.Add("X-Requested-With", "XMLHttpRequest");
+                request.Headers.Add("X-XSRF-TOKEN", _csrfToken);
+                request.Headers.Add("Accept", "*/*");
+
+                responseMessage = await _dvcClient.SendAsync(request, _stoppingToken);
+                responseMessage.EnsureSuccessStatusCode();
+
+                redirectUrl = await responseMessage.Content.ReadAsStringAsync();
+                if (!string.IsNullOrWhiteSpace(redirectUrl))
+                {
+                    redirectUrl = redirectUrl.Trim().Trim('"');
+                    if (redirectUrl.StartsWith("{") && redirectUrl.EndsWith("}"))
+                    {
+                        try
+                        {
+                            var jobj = JObject.Parse(redirectUrl);
+                            redirectUrl = jobj["url"]?.ToString() ?? jobj["data"]?.ToString() ?? redirectUrl;
+                        }
+                        catch { }
+                    }
+                }
+
+                if (string.IsNullOrWhiteSpace(redirectUrl) || !redirectUrl.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new Exception($"Không lấy được URL chuyển hướng sang thuedientu từ DVC. Phản hồi: {redirectUrl}");
+                }
+
+                LogUtil.LogTrace($"PublicServiceCrawler.StepGNT2_RedirectToService.End, redirectUrl: {redirectUrl}");
+            }
+            catch (Exception ex)
+            {
+                LogUtil.LogError(ex, responseMessage);
+                throw;
+            }
+
+            return redirectUrl;
+        }
+
+        /// <summary>
+        /// Bước GNT3: GET URL redirect trên thuedientu.gdt.gov.vn để lấy JSESSIONID và dse_sessionId
+        /// URL dạng: https://thuedientu.gdt.gov.vn/etaxnnt/?vnconnect=SSOTHUE&code=...&module=330410
+        /// Response trả về HTML chứa form auto-submit với hidden fields (dse_sessionId, dse_operationName, ...)
+        /// JavaScript sẽ tự submit form POST tới /etaxnnt/Request
+        /// </summary>
+        private async Task<string> StepGNT3_GetEtaxSession(string redirectUrl)
+        {
+            HttpResponseMessage responseMessage = null;
+            var nextUrl = string.Empty;
+            try
+            {
+                LogUtil.LogTrace($"PublicServiceCrawler.StepGNT3_GetEtaxSession.Start, url: {redirectUrl}");
+
+                // Cần gọi trực tiếp URL đầy đủ (khác domain) nên dùng etaxClient
+                var request = new HttpRequestMessage(HttpMethod.Get, redirectUrl);
+                request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7");
+                request.Headers.Add("Referer", $"{PUBLIC_SERVICE_URL}/");
+
+                responseMessage = await _client.SendAsync(request, _stoppingToken);
+                if (responseMessage.Headers.Location != null)
+                {
+                    nextUrl = responseMessage.Headers.Location.ToString();
+                }
+                else
+                {
+                    // Fallback: nếu server trả về HTML script redirect
+                    var html = await responseMessage.Content.ReadAsStringAsync();
+                    var match = Regex.Match(html, @"window\.location\.href\s*=\s*'([^']+)'");
+                    if (match.Success)
+                    {
+                        nextUrl = match.Groups[1].Value;
+                    }
+                }
+
+                if (string.IsNullOrWhiteSpace(nextUrl))
+                {
+                    throw new Exception("Không lấy được URL chuyển hướng sang thuedientu");
+                }
+
+                nextUrl = NormalizeEtaxRelativeUrl(nextUrl);
+                LogUtil.LogTrace($"PublicServiceCrawler.StepGNT3_GetEtaxSession.End, nextUrl: {nextUrl}");
+            }
+            catch (Exception ex)
+            {
+                LogUtil.LogError(ex, responseMessage);
+                throw;
+            }
+
+            return nextUrl;
+        }
+
+        /// <summary>
+        /// Bước GNT4: POST form data từ StepGNT3 tới /etaxnnt/Request
+        /// Mô phỏng hành vi auto-submit form: document.getElementById("mainForm").submit()
+        /// Form chứa: dse_sessionId, dse_applicationId, dse_pageId, dse_operationName, 
+        /// dse_errorPage, dse_processorState, dse_nextEventName
+        /// </summary>
+        private async Task<string> StepGNT4_CorpJumpProc(string corpJumpUrl)
+        {
+            HttpResponseMessage responseMessage = null;
+            var nextUrl = string.Empty;
+            try
+            {
+                LogUtil.LogTrace($"PublicServiceCrawler.StepGNT4_CorpJumpProc.Start, url: {corpJumpUrl}");
+
+                var request = new HttpRequestMessage(HttpMethod.Get, corpJumpUrl);
+                request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+                request.Headers.Add("Referer", $"{PUBLIC_SERVICE_URL}/");
+
+                responseMessage = await _client.SendAsync(request, _stoppingToken);
+                if (responseMessage.Headers.Location != null)
+                {
+                    nextUrl = responseMessage.Headers.Location.ToString();
+                }
+                else
+                {
+                    // Fallback: nếu eTax trả về mã script redirect thay vì header 302
+                    var html = await responseMessage.Content.ReadAsStringAsync();
+                    var match = Regex.Match(html, @"window\.location\.href\s*=\s*'([^']+)'");
+                    if (match.Success)
+                    {
+                        nextUrl = match.Groups[1].Value;
+                    }
+                }
+
+                if (string.IsNullOrWhiteSpace(nextUrl))
+                {
+                    throw new Exception("Không nhận được URL chuyển hướng từ corpJumpProc trên thuedientu");
+                }
+
+                nextUrl = NormalizeEtaxRelativeUrl(nextUrl);
+                LogUtil.LogTrace($"PublicServiceCrawler.StepGNT4_CorpJumpProc.End, nextUrl: {nextUrl}");
+            }
+            catch (Exception ex)
+            {
+                LogUtil.LogError(ex, responseMessage);
+                throw;
+            }
+
+            return nextUrl;
+        }
+
+        /// <summary>
+        /// Bước GNT5: GET EstablishSession để thiết lập session mới trên thuedientu
+        /// </summary>
+        public async Task<string> StepGNT5_EstablishSession(string requestUrl)
+        {
+            HttpResponseMessage responseMessage = null;
+            var nextUrl = string.Empty;
+            try
+            {
+                LogUtil.LogTrace("PublicServiceCrawler.StepGNT5_EstablishSession.Start");
+
+                var request = new HttpRequestMessage(HttpMethod.Get, requestUrl);
+                request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+                request.Headers.Add("Referer", $"{PUBLIC_SERVICE_URL}/");
+
+                responseMessage = await _client.SendAsync(request, _stoppingToken);
+
+                // Đọc body HTML ra chuỗi
+                string html = await responseMessage.Content.ReadAsStringAsync();
+
+                var doc = new HtmlAgilityPack.HtmlDocument();
+                doc.LoadHtml(html);
+
+                var scriptNode = doc.DocumentNode.SelectSingleNode("//script");
+                string scriptContent = scriptNode?.InnerText ?? "";
+
+                var match = Regex.Match(scriptContent, @"window\.location\.href\s*=\s*'([^']+)'");
+
+                if (match.Success)
+                {
+                    nextUrl = match.Groups[1].Value;
+
+                    var sessionMatch = Regex.Match(
+                        nextUrl,
+                        @"(?:\?|&)dse_sessionId=([^&""']+)",
+                        RegexOptions.IgnoreCase
+                    );
+
+                    _etaxSessionId = sessionMatch.Success
+                        ? Uri.UnescapeDataString(sessionMatch.Groups[1].Value)
+                        : null;
+                }
+                else
+                {
+                    throw new Exception("Không tìm thấy window.location.href trong response của EstablishSession");
+                }
+
+                // Đảm bảo URL luôn có prefix hợp lệ /etaxnnt/ để tránh lỗi 404
+                nextUrl = NormalizeEtaxRelativeUrl(nextUrl);
+                LogUtil.LogTrace($"PublicServiceCrawler.StepGNT5_EstablishSession.End, sessionId: {_etaxSessionId}, nextUrl: {nextUrl}");
+            }
+            catch (Exception ex)
+            {
+                LogUtil.LogError(ex, responseMessage);
+                throw;
+            }
+
+            return nextUrl;
+        }
+
+        /// <summary>
+        /// Bước GNT6: GET Request với dse_pageId=1, corpJumpProc, toOpName=ssoTTHC
+        /// </summary>
+        private async Task<Dictionary<string, string>> StepGNT6_RequestWithNewSession(string requestUrl)
+        {
+            HttpResponseMessage responseMessage = null;
+            Dictionary<string, string> formInputs = null;
+            try
+            {
+                LogUtil.LogTrace("PublicServiceCrawler.StepGNT6_RequestWithNewSession.Start");
+
+                var request = new HttpRequestMessage(HttpMethod.Get, requestUrl);
+                request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+                request.Headers.Add("Referer", $"{ETAX_URL}/etaxnnt/EstablishSession?&fromOpName=corpJumpProc&fromStateName=initial&fromEventName=start&toOpName=ssoTTHC");
+
+                responseMessage = await _client.SendAsync(request, _stoppingToken);
+                responseMessage.EnsureSuccessStatusCode();
+
+                var html = await responseMessage.Content.ReadAsStringAsync();
+                formInputs = ExtractFormInputs(html, "mainForm");
+
+                // Cập nhật lại _etaxSessionId nếu trong form có trường dse_sessionId mới
+                if (formInputs.TryGetValue("dse_sessionId", out var sid) && !string.IsNullOrWhiteSpace(sid))
+                {
+                    _etaxSessionId = sid;
+                }
+
+                LogUtil.LogTrace($"PublicServiceCrawler.StepGNT6_RequestWithNewSession.End, extracted {formInputs.Count} form inputs");
+            }
+            catch (Exception ex)
+            {
+                LogUtil.LogError(ex, responseMessage);
+                throw;
+            }
+
+            return formInputs ?? new Dictionary<string, string>();
+        }
+
+        /// <summary>
+        /// Bước GNT7: POST form đăng nhập SSO (corpUserLoginProc, startSSO_TTHC)
+        /// Sử dụng chính xác các trường trong form HTML trả về từ Bước GNT6
+        /// </summary>
+        private async Task<Dictionary<string, string>> StepGNT7_LoginSSO(Dictionary<string, string> formInputs)
+        {
+            HttpResponseMessage responseMessage = null;
+            Dictionary<string, string> nextFormInputs = null;
+            try
+            {
+                LogUtil.LogTrace("PublicServiceCrawler.StepGNT7_LoginSSO.Start");
+
+                IEnumerable<KeyValuePair<string, string>> postData;
+                if (formInputs != null && formInputs.Count > 0)
+                {
+                    postData = formInputs;
+                }
+                else
+                {
+                    postData = new[]
+                    {
+                        new KeyValuePair<string, string>("dse_sessionId", _etaxSessionId),
+                        new KeyValuePair<string, string>("dse_applicationId", "-1"),
+                        new KeyValuePair<string, string>("dse_pageId", "2"),
+                        new KeyValuePair<string, string>("dse_operationName", "corpUserLoginProc"),
+                        new KeyValuePair<string, string>("dse_errorPage", "error_page.jsp"),
+                        new KeyValuePair<string, string>("dse_processorState", "initial"),
+                        new KeyValuePair<string, string>("dse_nextEventName", "startSSO_TTHC")
+                    };
+                }
+
+                var request = new HttpRequestMessage(HttpMethod.Post, "/etaxnnt/Request")
+                {
+                    Content = new FormUrlEncodedContent(postData)
+                };
+                request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+                request.Headers.Add("Referer", $"{ETAX_URL}/etaxnnt/Request?&dse_sessionId={_etaxSessionId}&dse_applicationId=-1&dse_pageId=1&dse_operationName=corpJumpProc&dse_errorPage=error_page.jsp&dse_processorState=initial&dse_nextEventName=start&toOpName=ssoTTHC");
+                request.Headers.Add("Origin", ETAX_URL);
+
+                responseMessage = await _client.SendAsync(request, _stoppingToken);
+                responseMessage.EnsureSuccessStatusCode();
+
+                var html = await responseMessage.Content.ReadAsStringAsync();
+                nextFormInputs = ExtractFormInputs(html, "mainForm");
+                if (nextFormInputs.TryGetValue("dse_sessionId", out var sid) && !string.IsNullOrWhiteSpace(sid))
+                {
+                    _etaxSessionId = sid;
+                }
+
+                LogUtil.LogTrace($"PublicServiceCrawler.StepGNT7_LoginSSO.End, nextForm: {nextFormInputs.Count} inputs");
+            }
+            catch (Exception ex)
+            {
+                LogUtil.LogError(ex, responseMessage);
+                throw;
+            }
+
+            return nextFormInputs ?? new Dictionary<string, string>();
+        }
+
+        /// <summary>
+        /// Bước GNT8: POST tới trang chính của thuedientu (corporateHomeProc, startTTHC)
+        /// </summary>
+        private async Task StepGNT8_GotoMainPage(Dictionary<string, string> formInputs)
+        {
+            HttpResponseMessage responseMessage = null;
+            try
+            {
+                LogUtil.LogTrace("PublicServiceCrawler.StepGNT8_GotoMainPage.Start");
+
+                IEnumerable<KeyValuePair<string, string>> postData;
+                if (formInputs != null && formInputs.Count > 0 && formInputs.ContainsKey("dse_operationName"))
+                {
+                    postData = formInputs;
+                }
+                else
+                {
+                    postData = new[]
+                    {
+                        new KeyValuePair<string, string>("dse_sessionId", _etaxSessionId),
+                        new KeyValuePair<string, string>("dse_applicationId", "-1"),
+                        new KeyValuePair<string, string>("dse_pageId", "3"),
+                        new KeyValuePair<string, string>("dse_operationName", "corporateHomeProc"),
+                        new KeyValuePair<string, string>("dse_errorPage", "error_page.jsp"),
+                        new KeyValuePair<string, string>("dse_processorState", "initial"),
+                        new KeyValuePair<string, string>("dse_nextEventName", "startTTHC")
+                    };
+                }
+
+                var request = new HttpRequestMessage(HttpMethod.Post, "/etaxnnt/Request")
+                {
+                    Content = new FormUrlEncodedContent(postData)
+                };
+                request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+                request.Headers.Add("Referer", $"{ETAX_URL}/etaxnnt/Request");
+                request.Headers.Add("Origin", ETAX_URL);
+
+                responseMessage = await _client.SendAsync(request, _stoppingToken);
+
+                LogUtil.LogTrace("PublicServiceCrawler.StepGNT8_GotoMainPage.End");
+            }
+            catch (Exception ex)
+            {
+                LogUtil.LogError(ex, responseMessage);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Bước 9: Đi tới trang tra cứu giấy nộp tiền (corpQueryTaxProc, dse_pageId=4)
+        /// POST /etaxnnt/Request trên thuedientu.gdt.gov.vn
+        /// </summary>
+        private async Task Step9_GotoTraCuuGiayNopTienPage()
+        {
+            HttpResponseMessage responseMessage = null;
+            try
+            {
+                LogUtil.LogTrace("PublicServiceCrawler.Step9_GotoTraCuuGiayNopTienPage.Start");
+
+                var formContent = new FormUrlEncodedContent(new[]
+                {
+                    new KeyValuePair<string, string>("dse_sessionId", _etaxSessionId),
+                    new KeyValuePair<string, string>("dse_applicationId", "-1"),
+                    new KeyValuePair<string, string>("dse_pageId", "4"),
+                    new KeyValuePair<string, string>("dse_operationName", "corpQueryTaxProc"),
+                    new KeyValuePair<string, string>("dse_errorPage", "error_page.jsp"),
+                    new KeyValuePair<string, string>("dse_processorState", "initial"),
+                    new KeyValuePair<string, string>("dse_nextEventName", "start")
+                });
+
+                var request = new HttpRequestMessage(HttpMethod.Post, "/etaxnnt/Request")
+                {
+                    Content = formContent
+                };
+                request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+                request.Headers.Add("Referer", $"{ETAX_URL}/etaxnnt/Request");
+                request.Headers.Add("Origin", ETAX_URL);
+
+                responseMessage = await _client.SendAsync(request, _stoppingToken);
+
+                var html = await responseMessage.Content.ReadAsStringAsync();
+
+                var doc = new HtmlAgilityPack.HtmlDocument();
+                doc.LoadHtml(html);
+
+                _processorID = doc.DocumentNode
+                    .SelectSingleNode("//input[@name='dse_processorId']")
+                    ?.GetAttributeValue("value", null);
+
+                // Lấy dse_pageId từ form tra cứu nếu có để truyền chính xác vào Step 10
+                var pageIdNode = doc.DocumentNode.SelectSingleNode("//input[@name='dse_pageId']");
+                _queryPageId = pageIdNode?.GetAttributeValue("value", null);
+
+                // Cập nhật lại dse_sessionId nếu trang trả về session mới
+                var sidNode = doc.DocumentNode.SelectSingleNode("//input[@name='dse_sessionId']");
+                var sidVal = sidNode?.GetAttributeValue("value", null);
+                if (!string.IsNullOrWhiteSpace(sidVal))
+                {
+                    _etaxSessionId = sidVal;
+                }
+
+                if (String.IsNullOrEmpty(_processorID))
+                {
+                    throw new NotFoundProcessIdException();
+                }
+
+                LogUtil.LogTrace($"PublicServiceCrawler.Step9_GotoTraCuuGiayNopTienPage.End, processorId: {_processorID}, queryPageId: {_queryPageId}");
+            }
+            catch (Exception ex)
+            {
+                LogUtil.LogError(ex, responseMessage);
+                throw;
+            }
+        }
+
+        private async Task<HtmlDocument> Step10_ClickButtonTraCuuGiayNopTien(string fromDate, string toDate)
+        {
+            HtmlDocument doc = new HtmlDocument();
+            HttpResponseMessage responseMessage = null;
+            try
+            {
+                LogUtil.LogTrace("Step10_ClickButtonTraCuuGiayNopTien.Start");
+                var pageIdToUse = !string.IsNullOrWhiteSpace(_queryPageId) ? _queryPageId : "10";
+                var content = new FormUrlEncodedContent(new[]
+                {
+                    new KeyValuePair<string, string>("dse_sessionId", _etaxSessionId),
+                    new KeyValuePair<string, string>("dse_applicationId", "-1"),
+                    new KeyValuePair<string, string>("dse_operationName", "corpQueryTaxProc"),
+                    new KeyValuePair<string, string>("dse_pageId", pageIdToUse),
+                    new KeyValuePair<string, string>("dse_processorState", "viewQueryPage"),
+                    new KeyValuePair<string, string>("dse_processorId", _processorID),
+                    new KeyValuePair<string, string>("dse_errorPage", "/etax/query_tax_information.jsp"),
+                    new KeyValuePair<string, string>("dse_nextEventName", "query"),
+                    new KeyValuePair<string, string>("pn", "1"),
+                    new KeyValuePair<string, string>("sct", ""),
+                    new KeyValuePair<string, string>("ctuId", ""),
+                    new KeyValuePair<string, string>("soGnt", ""),
+                    new KeyValuePair<string, string>("idBke", ""),
+                    new KeyValuePair<string, string>("type_tax", "01"),
+                    new KeyValuePair<string, string>("ma_giao_dich", ""),
+                    new KeyValuePair<string, string>("so_ctu_nh", ""),
+                    new KeyValuePair<string, string>("so_gnt", ""),
+                    new KeyValuePair<string, string>("ngay_lap_tu_ngay", fromDate),
+                    new KeyValuePair<string, string>("ngay_lap_den_ngay", toDate),
+                    new KeyValuePair<string, string>("ngay_gui_tu_ngay", ""),
+                    new KeyValuePair<string, string>("ngay_gui_den_ngay", ""),
+                    new KeyValuePair<string, string>("ngay_nop_tu_ngay", ""),
+                    new KeyValuePair<string, string>("ngay_nop_den_ngay", ""),
+                    new KeyValuePair<string, string>("ma_nhang", ""),
+                    new KeyValuePair<string, string>("so_tk", ""),
+                    new KeyValuePair<string, string>("nguyen_te", ""),
+                    new KeyValuePair<string, string>("hthuc_nop", ""),
+                    new KeyValuePair<string, string>("tong_tien_nt_tu", ""),
+                    new KeyValuePair<string, string>("tong_tien_nt_den", ""),
+                    new KeyValuePair<string, string>("trang_thai", ""),
+                });
+
+                var request = new HttpRequestMessage(HttpMethod.Post, "/etaxnnt/Request")
+                {
+                    Content = content
+                };
+                request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+                request.Headers.Add("Referer", $"{ETAX_URL}/etaxnnt/Request");
+                request.Headers.Add("Origin", ETAX_URL);
+
+                responseMessage = await _client.SendAsync(request, _stoppingToken);
+                responseMessage.EnsureSuccessStatusCode();
+                var html = await responseMessage.Content.ReadAsStringAsync();
+                doc.LoadHtml(html);
+                LogUtil.LogTrace("Step10_ClickButtonTraCuuGiayNopTien.End");
+            }
+            catch (Exception ex)
+            {
+                LogUtil.LogError(ex, responseMessage);
+                throw ex;
+            }
+            return doc;
         }
 
         #endregion

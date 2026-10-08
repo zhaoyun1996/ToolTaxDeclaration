@@ -31,9 +31,16 @@ namespace MISA.ASP.ClientApp.Models.Enums
     {
         SyncTaxDecRegistered = 1,
         SyncTaxDecSubmitted = 2,
+        SyncDvcDecSubmitted = 16,
         CheckETaxAccount = 3,
         OpenITaxViewer = 4,
         SyncPaymentRequest = 5,
     }
 
+    public enum EnumTaxAccountType
+    {
+        Enterprise = 1,
+        TaxAgent = 2,
+        Household = 3
+    }
 }

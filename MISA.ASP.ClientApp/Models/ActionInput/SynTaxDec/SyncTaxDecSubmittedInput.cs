@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MISA.ASP.ClientApp.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -17,5 +18,6 @@ namespace MISA.ASP.ClientApp.Models.ActionInput.SynTaxDec
         public string TaxCode { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public EnumTaxAccountType AccountType { get; set; } = EnumTaxAccountType.Enterprise;
     }
 }

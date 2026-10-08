@@ -29,7 +29,7 @@ namespace MISA.ASP.ClientApp
             {
                 var applicationPath = @"F:\Project\ToolTaxDeclaration\MISA.ASP.ClientApp\bin\Debug\MISA.ASP.ClientApp.exe";
                 var KeyTest = Registry.CurrentUser.OpenSubKey("Software", true).OpenSubKey("Classes", true);
-                RegistryKey key = KeyTest.CreateSubKey("MisaASPLauncher");
+                RegistryKey key = KeyTest.CreateSubKey("MisaASPLauncherDev");
                 key.SetValue("URL Protocol", "MisaASPLauncherDev");
                 key.CreateSubKey(@"shell\open\command").SetValue("", "\"" + applicationPath + "\" \"%1\"");
             }

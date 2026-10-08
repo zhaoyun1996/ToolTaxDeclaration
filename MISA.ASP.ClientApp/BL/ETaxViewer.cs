@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using MISA.ASP.ClientApp.Models.ActionInput.SynTaxDec;
+using MISA.ASP.ClientApp.Models.Enums;
 using MISA.ASP.ClientApp.Utils.Clients;
 using MISA.ASP.ClientApp.Utils.FileHandler;
 using MISA.ASP.ClientApp.Utils.Logging;
@@ -63,8 +64,21 @@ namespace MISA.ASP.ClientApp.BL
             try
             {
                 var input = JsonConvert.DeserializeObject<ViewTaxFileInput>(data);
-                string folderPath = $"{FileUtil.BASE_PATH}/OutputFiles/{input.CustomerID}/{input.TransactionID}";
-                string filePath = $"{folderPath}/{input.FileName}";
+                string fileTypeFolder;
+                switch (input.FileType)
+                {
+                    case FileTypeEnum.TaxDeclaration:
+                        fileTypeFolder = "Declarations";
+                        break;
+                    case FileTypeEnum.TaxNotification:
+                        fileTypeFolder = "Notifications";
+                        break;
+                    default:
+                        throw new InvalidOperationException($"Loại file không hợp lệ: {input.FileType}");
+                }
+
+                string folderPath = Path.Combine(FileUtil.BASE_PATH, "OutputFiles", input.ProfileID.ToString(), input.CustomerID.ToString(), input.TransactionID, fileTypeFolder);
+                string filePath = Path.Combine(folderPath, input.FileName);
 
                 if(!File.Exists(filePath))
                 {

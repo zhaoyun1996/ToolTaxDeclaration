@@ -1,4 +1,4 @@
-﻿using MISA.ASP.ClientApp.BL;
+using MISA.ASP.ClientApp.BL;
 using MISA.ASP.ClientApp.Models.ActionInput.SynTaxDec;
 using MISA.ASP.ClientApp.Models.ActionOutput.SyncTaxDec;
 using MISA.ASP.ClientApp.Models.Enums;
@@ -43,7 +43,7 @@ namespace MISA.ASP.ClientApp.UI.TaxDeclaration
             }
             else
             {
-                this.Show();
+                //this.Show();
                 UpdateProgress(5);
                 Task.Factory.StartNew(() =>
                 {
@@ -75,7 +75,7 @@ namespace MISA.ASP.ClientApp.UI.TaxDeclaration
                             if (!isLocalMode)
                             {
                                 var crawler = new ETaxCrawler(syncInput.ProfileID, detail.CustomerID, detail.TaxCode, detail.Username, detail.Password, CancellationToken.None);
-                                var lstPaymentRequest = await crawler.GetPaymentRequest(syncInput.FromDate, syncInput.ToDate);
+                                var lstPaymentRequest = await crawler.GetPaymentRequest(detail, syncInput.FromDate, syncInput.ToDate);
                                 iOutputDetail.PaymentRequests = lstPaymentRequest;
                             }
                             else
@@ -115,7 +115,7 @@ namespace MISA.ASP.ClientApp.UI.TaxDeclaration
                         }
                         finally
                         {
-                            AppendProgress(70 / syncInput.Details.Count);
+                            AppendProgress(Math.Max(1, 70 / syncInput.Details.Count));
                             output.Details.Add(iOutputDetail);
                         }
                     }

@@ -50,7 +50,7 @@ namespace MISA.ASP.ClientApp.UI
                             var aspClient = new ASPClient();
 
                             var versionInfor = await aspClient.GetLastestVersion();
-                            if(versionInfor.Version != ConfigurationManager.AppSettings["Version"] && versionInfor.ForceUpdate)
+                            if(false)
                             {
                                 var fNewVersion = new frmNewVersion(versionInfor.LinkDownload);
                                 fNewVersion.ShowDialog();
@@ -74,6 +74,7 @@ namespace MISA.ASP.ClientApp.UI
                                         frmTaxDecRegistered.ShowForm(actionIDKey, actionInfor.Data);
                                         break;
                                     case Models.Enums.ActionType.SyncTaxDecSubmitted:
+                                    case Models.Enums.ActionType.SyncDvcDecSubmitted:
                                         frmTaxDecSubmitted frmTaxDecSubmitted = new frmTaxDecSubmitted();
                                         frmTaxDecSubmitted.ShowForm(actionIDKey, actionInfor.Data);
                                         break;

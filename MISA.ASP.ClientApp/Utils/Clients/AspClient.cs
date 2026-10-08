@@ -134,7 +134,7 @@ namespace MISA.ASP.ClientApp.Utils.Clients
                 LogUtil.LogInfo("InsertPaymentRequest:" + JsonConvert.SerializeObject(output));
                 var byteContent = new ByteArrayContent(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(output)));
                 byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                var message = await _client.PostAsync($"api/{profileID}/ETaxPaymentRequest/SyncPaymentRequest", byteContent);
+                var message = await _client.PostAsync($"api/{profileID}/EPaymentRequest/SyncPaymentRequest", byteContent);
                 LogUtil.LogInfo(JsonConvert.SerializeObject(message));
                 LogUtil.LogInfo(await message.Content.ReadAsStringAsync());
                 message.EnsureSuccessStatusCode();
@@ -187,7 +187,7 @@ namespace MISA.ASP.ClientApp.Utils.Clients
                 {
                     var fileStreamContent = new StreamContent(File.OpenRead($"{localFilePath}\\{localFileName}"));
                     multipartFormContent.Add(fileStreamContent, name: "file", fileName: localFileName);
-                    var message = await _client.PostAsync($"api/{profileID}/EtaxPaymentRequest/UploadPaymentRequestFile?type={fileType}&customerID={customerID}", multipartFormContent);
+                    var message = await _client.PostAsync($"api/{profileID}/EPaymentRequest/UploadPaymentRequestFile?type={fileType}&customerID={customerID}", multipartFormContent);
                     message.EnsureSuccessStatusCode();
                 }
             }

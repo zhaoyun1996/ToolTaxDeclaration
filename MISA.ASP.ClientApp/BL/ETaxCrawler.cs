@@ -1,5 +1,7 @@
 using HtmlAgilityPack;
 using MISA.ASP.ClientApp.Models;
+using MISA.ASP.ClientApp.Models.ActionInput.SynTaxDec;
+using MISA.ASP.ClientApp.Models.Enums;
 using MISA.ASP.ClientApp.Models.EtaxCrawler;
 using MISA.ASP.ClientApp.Models.Exceptions;
 using MISA.ASP.ClientApp.Utils.Clients;
@@ -10,6 +12,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -20,6 +23,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace MISA.ASP.ClientApp.BL
 {
@@ -32,14 +36,15 @@ namespace MISA.ASP.ClientApp.BL
         private string _taxcode { get; set; }
         private string _username { get; set; }
         private string _password { get; set; }
-        private string _sessionID { get; set; }
+        public string _sessionID { get; set; }
         private string _processorID { get; set; }
         private CookieContainer _cookieContainer { get; set; }
         private HttpClient _client { get; set; }
         private HttpClientHandler _handler { get; set; }
-        CancellationToken _stoppingToken { get; set; }
+        private CancellationToken _stoppingToken { get; set; }
+        private EnumTaxAccountType _accountType { get; set; }
 
-        public ETaxCrawler(int profileID, int customerID, string taxcode, string username, string password, CancellationToken stoppingToken)
+        public ETaxCrawler(int profileID, int customerID, string taxcode, string username, string password, CancellationToken stoppingToken = default)
         {
             _profileID = profileID;
             _customerID = customerID;
@@ -63,7 +68,7 @@ namespace MISA.ASP.ClientApp.BL
         }
 
         #region Các bước vượt qua thủ tục đăng nhập và các page chung
-        private async Task Step1_GotoJumpPage()
+        public async Task Step1_GotoJumpPage()
         {
             HttpResponseMessage responseMessage = null;
 
@@ -1121,8 +1126,13 @@ namespace MISA.ASP.ClientApp.BL
 
                 // Extract html lấy 1 số thông số cơ bản
                 var currentPage = 1;
-                var maxPage = int.Parse(doc.DocumentNode.SelectSingleNode("//*[@id='currAcc']/b[1]").InnerText);
-                LogUtil.LogTrace("Step11_ExtractPaymentRequest.maxPage");
+                var maxPage = 1;
+                var nodeMaxPage = doc.DocumentNode.SelectSingleNode("//*[@id='currAcc']/b[1]");
+                if (nodeMaxPage != null && int.TryParse(nodeMaxPage.InnerText.Trim(), out int parsedMax))
+                {
+                    maxPage = parsedMax;
+                }
+                LogUtil.LogTrace($"Step11_ExtractPaymentRequest.maxPage: {maxPage}");
 
                 // Tạo folder để chứa file theo profileID và customerID
                 string folderPath = $"{FileUtil.BASE_PATH}/OutputFiles/{_profileID}/{_customerID}/PaymentRequest";
@@ -1163,7 +1173,7 @@ namespace MISA.ASP.ClientApp.BL
                         $"&dse_processorId={_processorID}" +
                         $"&dse_errorPage=error_page.jsp" +
                         $"&dse_nextEventName=query" +
-                        $"&&pn={page}");
+                        $"&pn={page}");
 
                 result.EnsureSuccessStatusCode();
 
@@ -1192,6 +1202,7 @@ namespace MISA.ASP.ClientApp.BL
             try
             {
                 LogUtil.LogTrace("ExtractRequestPayment.Start");
+                var columnMapping = GetColumnMapping(doc, "//*[@id='data_content_onday']");
                 // Đọc các dòng tr trong tbody
                 var lstTrEl = doc.DocumentNode.SelectNodes("//*[@id='allResultTableBody']/tr");
                 LogUtil.LogTrace("ExtractRequestPayment.SelectNodes.lstTrEl");
@@ -1204,72 +1215,65 @@ namespace MISA.ASP.ClientApp.BL
                         {
                             // Đọc các cột td để lấy dữ liệu
                             var trEl = lstTrEl[i];
-                            if (trEl.ChildNodes.Count > 0)
+                            var childNodes = trEl.Elements("td").ToList();
+                            if (childNodes.Count < 5)
                             {
-                                LogUtil.LogTrace($"ExtractRequestPayment.ExtractNodes.lstTrEl:{i}:{JsonConvert.SerializeObject(trEl.ChildNodes.Count)}");
-                                var childNodes = trEl.Elements("td").ToList();
-                                var iPaymentRequest = new PaymentRequest()
-                                {
-                                    TaxCode = _taxcode,
-                                    Order = childNodes[0].InnerText.Trim(),
-                                    TransactionID = childNodes[1].InnerText.Trim(),
-                                    PaymentRequestID = childNodes[2].InnerText.Trim(),
-                                    Amount = childNodes[3].InnerText.Trim(),
-                                    AmountType = childNodes[4].InnerText.Trim(),
-                                    StateTitle = childNodes[5].InnerText.Trim(),
-                                    RefNo = childNodes[6].InnerText.Trim(),
-                                    CreatedDate = childNodes[7].InnerText.Trim(),
-                                    SentDate = childNodes[8].InnerText.Trim(),
-                                    TaxSubmittedDate = childNodes[9].InnerText.Trim(),
-                                    BankName = childNodes[10].InnerText.Trim(),
-                                    BankAccount = childNodes[11].InnerText.Trim(),
-                                };
-                                LogUtil.LogTrace($"ExtractRequestPayment.ExtractNodes.lstTrEl.{i}.iTaxDec");
-
-                                LogUtil.LogTrace($"ExtractRequestPayment.ExtractNodes.lstTrEl.{i}.aTag");
-                                // Nếu có thẻ a ẩn ở cột thứ 2 thì Tải file transaction về
-                                var aTag = childNodes[12].Element("a");
-                                if (aTag != null)
-                                {
-                                    // các bản ghi có hiddenPaymentRequestID ẩn ở trong thẻ a, giá trị hiddenPaymentRequestID này dùng để tải file về
-                                    var hiddenPaymentRequestID = aTag.GetAttributeValue("href", "");
-                                    if (!string.IsNullOrWhiteSpace(hiddenPaymentRequestID))
-                                    {
-                                        string pattern = @"downloadGNT\((.*?)\)";
-                                        foreach (Match match in Regex.Matches(hiddenPaymentRequestID, pattern))
-                                        {
-                                            if (match.Success && match.Groups.Count > 0)
-                                            {
-                                                hiddenPaymentRequestID = match.Groups[1].Value;
-                                                iPaymentRequest.HiddenPaymentRequestID = hiddenPaymentRequestID;
-                                            }
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    iPaymentRequest.IsHideDownloadLink = true;
-                                }
-
-                                LogUtil.LogTrace($"ExtractRequestPayment.ExtractNodes.lstTrEl.{i}.aTag.End");
-
-                                if (!string.IsNullOrWhiteSpace(iPaymentRequest.HiddenPaymentRequestID))
-                                {
-                                    LogUtil.LogTrace($"ExtractRequestPayment.ExtractNodes.lstTrEl.{i}.folderPath");
-                                    // Tạo folder để chứa file theo TransactionID
-                                    string folderPath = $"{FileUtil.BASE_PATH}/OutputFiles/{_profileID}/{_customerID}/PaymentRequest/{iPaymentRequest.PaymentRequestID}";
-                                    Directory.CreateDirectory(folderPath);
-
-                                    if (!iPaymentRequest.IsHideDownloadLink)
-                                    {
-                                        await Step13_DownloadPaymentRequestFile(fromDate, toDate, iPaymentRequest);
-                                    }
-                                    LogUtil.LogTrace($"ExtractRequestPayment.Step13_DownloadPaymentRequestFile.lstTrEl.{i}.End");
-                                }
-
-                                // add PaymentRequest vào collection kết quả
-                                lstPaymentRequest.Add(iPaymentRequest);
+                                continue;
                             }
+
+                            LogUtil.LogTrace($"ExtractRequestPayment.ExtractNodes.lstTrEl:{i}:{JsonConvert.SerializeObject(childNodes.Count)}");
+                            var iPaymentRequest = new PaymentRequest()
+                            {
+                                TransactionID = GetCellValue(childNodes, columnMapping, "Số tham chiếu / Mã giao dịch", childNodes.ElementAtOrDefault(1)?.InnerText.Trim()),
+                                PaymentRequestID = GetCellValue(childNodes, columnMapping, "Số giấy nộp tiền", childNodes.ElementAtOrDefault(4)?.InnerText.Trim()),
+                                Amount = GetCellValue(childNodes, columnMapping, "Số tiền", childNodes.ElementAtOrDefault(5)?.InnerText.Trim()),
+                                AmountType = GetCellValue(childNodes, columnMapping, "Loại tiền", childNodes.ElementAtOrDefault(6)?.InnerText.Trim()),
+                                StateTitle = GetCellValue(childNodes, columnMapping, "Trạng thái", childNodes.ElementAtOrDefault(7)?.InnerText.Trim()),
+                                RefNo = GetCellValue(childNodes, columnMapping, "Số chứng từ", childNodes.ElementAtOrDefault(8)?.InnerText.Trim()),
+                                CreatedDate = GetCellValue(childNodes, columnMapping, "Ngày lập GNT", childNodes.ElementAtOrDefault(9)?.InnerText.Trim()),
+                                SentDate = GetCellValue(childNodes, columnMapping, "Ngày gửi GNT", childNodes.ElementAtOrDefault(10)?.InnerText.Trim()),
+                                TaxSubmittedDate = GetCellValue(childNodes, columnMapping, "Ngày nộp thuế", childNodes.ElementAtOrDefault(11)?.InnerText.Trim()),
+                                BankName = GetCellValue(childNodes, columnMapping, "Ngân hàng", childNodes.ElementAtOrDefault(16)?.InnerText.Trim()),
+                                BankAccount = GetCellValue(childNodes, columnMapping, "Tài khoản ngân hàng", childNodes.ElementAtOrDefault(17)?.InnerText.Trim()),
+                            };
+                            LogUtil.LogTrace($"ExtractRequestPayment.ExtractNodes.lstTrEl.{i}.iTaxDec");
+
+                            LogUtil.LogTrace($"ExtractRequestPayment.ExtractNodes.lstTrEl.{i}.aTag");
+                            // Lấy ô chứa nút tải chứng từ (thường ở cột cuối)
+                            var nameCell = GetCellNode(childNodes, columnMapping, "#", childNodes.LastOrDefault());
+                            var aTag = nameCell?.Element("a");
+                            if (aTag != null)
+                            {
+                                // các bản ghi có hiddenPaymentRequestID ẩn ở trong thẻ a (href hoặc onclick)
+                                var downloadAttr = (aTag.GetAttributeValue("href", "") + " " + aTag.GetAttributeValue("onclick", "")).Trim();
+                                if (!string.IsNullOrWhiteSpace(downloadAttr))
+                                {
+                                    string pattern = @"downloadGNT\(['""]?(.*?)['""]?\)";
+                                    var match = Regex.Match(downloadAttr, pattern);
+                                    if (match.Success && match.Groups.Count > 1)
+                                    {
+                                        iPaymentRequest.HiddenPaymentRequestID = match.Groups[1].Value.Trim('\'', '"', ' ');
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                iPaymentRequest.IsHideDownloadLink = true;
+                            }
+
+                            LogUtil.LogTrace($"ExtractRequestPayment.ExtractNodes.lstTrEl.{i}.aTag.End");
+
+                            if (!string.IsNullOrWhiteSpace(iPaymentRequest.HiddenPaymentRequestID))
+                            {
+                                if (!iPaymentRequest.IsHideDownloadLink)
+                                {
+                                    await Step13_DownloadPaymentRequestFile(fromDate, toDate, iPaymentRequest);
+                                }
+                                LogUtil.LogTrace($"ExtractRequestPayment.Step13_DownloadPaymentRequestFile.lstTrEl.{i}.End");
+                            }
+
+                            // add PaymentRequest vào collection kết quả
+                            lstPaymentRequest.Add(iPaymentRequest);
                         }
                         catch (Exception ex)
                         {
@@ -1298,11 +1302,11 @@ namespace MISA.ASP.ClientApp.BL
                 //}
 
                 var content = new FormUrlEncodedContent(new[]
-                  {
+                {
                     new KeyValuePair<string, string>("dse_sessionId", _sessionID),
                     new KeyValuePair<string, string>("dse_applicationId", "-1"),
                     new KeyValuePair<string, string>("dse_operationName", "corpQueryTaxProc"),
-                    new KeyValuePair<string, string>("dse_pageId", "13"),
+                    new KeyValuePair<string, string>("dse_pageId", "9"),
                     new KeyValuePair<string, string>("dse_processorState", "viewQueryPage"),
                     new KeyValuePair<string, string>("dse_processorId", _processorID),
                     new KeyValuePair<string, string>("dse_errorPage", "/etax/query_tax_information.jsp"),
@@ -1311,6 +1315,8 @@ namespace MISA.ASP.ClientApp.BL
                     new KeyValuePair<string, string>("sct", ""),
                     new KeyValuePair<string, string>("ctuId", iPaymentRequest.HiddenPaymentRequestID),
                     new KeyValuePair<string, string>("soGnt", ""),
+                    new KeyValuePair<string, string>("idBke", ""),
+                    new KeyValuePair<string, string>("type_tax", "01"),
                     new KeyValuePair<string, string>("ma_giao_dich", ""),
                     new KeyValuePair<string, string>("so_ctu_nh", ""),
                     new KeyValuePair<string, string>("so_gnt", ""),
@@ -1323,6 +1329,7 @@ namespace MISA.ASP.ClientApp.BL
                     new KeyValuePair<string, string>("ma_nhang", ""),
                     new KeyValuePair<string, string>("so_tk", ""),
                     new KeyValuePair<string, string>("nguyen_te", ""),
+                    new KeyValuePair<string, string>("hthuc_nop", ""),
                     new KeyValuePair<string, string>("tong_tien_nt_tu", ""),
                     new KeyValuePair<string, string>("tong_tien_nt_den", ""),
                     new KeyValuePair<string, string>("trang_thai", ""),
@@ -1330,15 +1337,46 @@ namespace MISA.ASP.ClientApp.BL
                     new KeyValuePair<string, string>("type", "pdf"),
                 });
 
-                var responseMessage = await _client.PostAsync("/etaxnnt/Request", content);
+                var request = new HttpRequestMessage(HttpMethod.Post, "/etaxnnt/Request")
+                {
+                    Content = content
+                };
+                request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7");
+                request.Headers.Add("Referer", $"{ETAX_URL}/etaxnnt/Request");
+                request.Headers.Add("Origin", ETAX_URL);
+
+                var responseMessage = await _client.SendAsync(request, _stoppingToken);
                 responseMessage.EnsureSuccessStatusCode();
                 LogUtil.LogTrace($"Step13_DownloadPaymentRequestFile.PostAsync");
-                var originFileName = responseMessage.Content.Headers.ContentDisposition.FileName;
-                iPaymentRequest.FileName = originFileName.Replace("chungtu", iPaymentRequest.HiddenPaymentRequestID);
+
+                var bytes = await responseMessage.Content.ReadAsByteArrayAsync();
+                var mediaType = responseMessage.Content.Headers.ContentType?.MediaType ?? "";
+                if (bytes == null || bytes.Length == 0)
+                {
+                    LogUtil.LogError($"Step13_DownloadPaymentRequestFile: File tải về rỗng cho ctuId {iPaymentRequest.HiddenPaymentRequestID}");
+                    return;
+                }
+
+                // Kiểm tra nếu server trả về HTML báo lỗi thay vì file chứng từ
+                if (mediaType.Contains("html") || (bytes.Length >= 5 && Encoding.UTF8.GetString(bytes, 0, Math.Min(bytes.Length, 100)).ToLower().Contains("<html")))
+                {
+                    LogUtil.LogError($"Step13_DownloadPaymentRequestFile: Server trả về HTML thay vì PDF cho ctuId {iPaymentRequest.HiddenPaymentRequestID}");
+                    return;
+                }
+
+                var originFileName = responseMessage.Content.Headers.ContentDisposition?.FileName;
+                if (!string.IsNullOrEmpty(originFileName))
+                {
+                    iPaymentRequest.FileName = originFileName.Replace("chungtu", iPaymentRequest.HiddenPaymentRequestID).Trim('"');
+                }
+                else
+                {
+                    iPaymentRequest.FileName = $"GNT_{iPaymentRequest.HiddenPaymentRequestID}.pdf";
+                }
 
                 using (var fs = new FileStream($"{folderPath}\\{iPaymentRequest.FileName}", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None))
                 {
-                    await responseMessage.Content.CopyToAsync(fs);
+                    await fs.WriteAsync(bytes, 0, bytes.Length);
                 }
                 LogUtil.LogTrace($"Step13_DownloadPaymentRequestFile.SaveFile");
                 if (Path.GetExtension(iPaymentRequest.FileName) == ".xml")
@@ -1397,12 +1435,12 @@ namespace MISA.ASP.ClientApp.BL
         /// <summary>
         /// Hàm tra cứu tờ khai đã nộp
         /// </summary>
-        public async Task<List<TaxDeclarationSubmitted>> GetTaxDecSubmitted(string fromDate, string toDate)
+        public async Task<List<TaxDeclarationSubmitted>> GetTaxDecSubmitted(EnumTaxAccountType accountType, string fromDate, string toDate)
         {
             var crawlerSource = ConfigurationManager.AppSettings["CrawlerSource"];
             if (crawlerSource == "PublicService")
             {
-                var publicServiceCrawler = new PublicServiceCrawler(_profileID, _customerID, _taxcode, _username, _password, _stoppingToken);
+                var publicServiceCrawler = new PublicServiceCrawler(_profileID, _customerID, _taxcode, _username, _password, accountType, _stoppingToken);
                 return await publicServiceCrawler.GetTaxDecSubmitted(fromDate, toDate);
             }
 
@@ -1420,18 +1458,90 @@ namespace MISA.ASP.ClientApp.BL
         /// <summary>
         /// Hàm tra cứu giấy nộp tiền
         /// </summary>
-        public async Task<List<PaymentRequest>> GetPaymentRequest(string fromDate, string toDate)
+        public async Task<List<PaymentRequest>> GetPaymentRequest(SyncPaymentRequestInputDetail detail, string fromDate, string toDate)
         {
-            var doc = await CommonPattern.Retry(async () =>
+            HtmlDocument doc = null;
+            var crawlerSource = ConfigurationManager.AppSettings["CrawlerSource"];
+            if (crawlerSource == "PublicService")
             {
-                await SignIn();
-                await Step9_GotoTraCuuGiayNopTienPage();
-                await Task.Delay(1000, _stoppingToken);
-                return await Step10_ClickButtonTraCuuGiayNopTien(fromDate, toDate);
-            });
+                var accountType = _taxcode.Length == 14 ? EnumTaxAccountType.Household : EnumTaxAccountType.Enterprise;
+                var publicServiceCrawler = new PublicServiceCrawler(_profileID, _customerID, _taxcode, _username, _password, accountType, _stoppingToken);
+                doc = await publicServiceCrawler.GetDocPaymentRequest(detail, fromDate, toDate);
+                _sessionID = publicServiceCrawler.EtaxSessionId;
+                _processorID = publicServiceCrawler.ProcessorID;
+                _client = publicServiceCrawler.EtaxClient;
+            }
+            else
+            {
+                doc = await CommonPattern.Retry(async () =>
+                {
+                    await SignIn();
+                    await Step9_GotoTraCuuGiayNopTienPage();
+                    await Task.Delay(1000, _stoppingToken);
+                    return await Step10_ClickButtonTraCuuGiayNopTien(fromDate, toDate);
+                });
+            }
+
             await Task.Delay(1000, _stoppingToken);
             return await Step11_ExtractPaymentRequest(fromDate, toDate, doc);
         }
+        public Dictionary<string, int> GetColumnMapping(HtmlDocument doc, string tableSelector)
+        {
+            var columnMapping = new Dictionary<string, int>();
+            var headerRow = doc.DocumentNode.SelectSingleNode($"{tableSelector}/thead/tr")
+                ?? doc.DocumentNode.SelectSingleNode($"{tableSelector}/tr[1]");
+
+            if (headerRow != null)
+            {
+                var headers = headerRow.Elements("th").ToList();
+                if (headers.Count == 0)
+                    headers = headerRow.Elements("td").ToList(); // fallback nếu dùng td cho header
+
+                for (int i = 0; i < headers.Count; i++)
+                {
+                    var headerText = NormalizeColumnName(headers[i].InnerText);
+                    columnMapping[headerText] = i;
+                }
+            }
+
+            return columnMapping;
+        }
+
+        public string NormalizeColumnName(string columnName)
+        {
+            if (string.IsNullOrWhiteSpace(columnName))
+                return string.Empty;
+
+            return columnName.Trim()
+                .ToLower()
+                .Replace(" ", "")
+                .Replace("\t", "")
+                .Replace("\n", "")
+                .Replace("\r", "");
+        }
+
+        public string GetCellValue(List<HtmlNode> childNodes, Dictionary<string, int> columnMapping, string columnName, string fallBackValue)
+        {
+            columnName = NormalizeColumnName(columnName);
+            var foundKey = columnMapping.FirstOrDefault(col => string.Equals(col.Key, columnName, StringComparison.OrdinalIgnoreCase));
+            if (foundKey.Key != null)
+            {
+                return childNodes[foundKey.Value].InnerText.Trim();
+            }
+            return fallBackValue;
+        }
+
+        public HtmlNode GetCellNode(List<HtmlNode> childNodes, Dictionary<string, int> columnMapping, string columnName, HtmlAgilityPack.HtmlNode fallbackNode)
+        {
+            columnName = NormalizeColumnName(columnName);
+            var foundKey = columnMapping.FirstOrDefault(col => string.Equals(col.Key, columnName, StringComparison.OrdinalIgnoreCase));
+            if (foundKey.Key != null)
+            {
+                return childNodes[foundKey.Value];
+            }
+            return fallbackNode;
+        }
+
         #endregion
     }
 }

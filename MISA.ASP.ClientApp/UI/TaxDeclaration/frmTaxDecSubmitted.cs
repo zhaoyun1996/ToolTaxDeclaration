@@ -74,7 +74,7 @@ namespace MISA.ASP.ClientApp.UI.TaxDeclaration
                             if (!isLocalMode)
                             {
                                 var crawler = new ETaxCrawler(syncInput.ProfileID, detail.CustomerID, detail.TaxCode, detail.Username, detail.Password, CancellationToken.None);
-                                var taxDecSubmitted = await crawler.GetTaxDecSubmitted(syncInput.FromDate, syncInput.ToDate);
+                                var taxDecSubmitted = await crawler.GetTaxDecSubmitted(detail.AccountType, syncInput.FromDate, syncInput.ToDate);
                                 iOutputDetail.TaxDeclarationSubmitteds = taxDecSubmitted;
                             }
                             else
