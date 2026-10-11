@@ -1,0 +1,19 @@
+{
+  "label": "download_declaration_000.701.18.G12-260122-27014500171294",
+  "method": "POST",
+  "url": "https://dichvucong.gdt.gov.vn/tthc/tchs/downloadhoso",
+  "headers": {
+    "Referer": "https://dichvucong.gdt.gov.vn/tthc/tchs/files/detail/000.701.18.G12-260122-27014500171294?loai=",
+    "Content-Type": "application/json; charset=utf-8",
+    "Accept": "*/*",
+    "Origin": "https://dichvucong.gdt.gov.vn",
+    "X-Requested-With": "XMLHttpRequest",
+    "X-XSRF-TOKEN": "***REDACTED***",
+    "Sec-Fetch-Dest": "empty",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Site": "same-origin"
+  },
+  "params": {},
+  "data": "{\"maHoSo\": \"000.701.18.G12-260122-27014500171294\"}",
+  "json": {}
+}

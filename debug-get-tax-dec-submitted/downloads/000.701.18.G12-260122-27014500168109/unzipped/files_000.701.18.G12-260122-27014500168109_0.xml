@@ -1,0 +1,73 @@
+<HSoThueDTu xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <HSoKhaiThue id="NODETOSIGN">
+        <TTinChung>
+            <TTinDVu>
+                <maDVu>TTGQ TTHC</maDVu>
+                <tenDVu>TTGQ TTHC</tenDVu>
+                <pbanDVu>1.0.0</pbanDVu>
+                <ttinNhaCCapDVu>TTGQ TTHC</ttinNhaCCapDVu>
+            </TTinDVu>
+            <TTinTKhaiThue>
+                <TKhaiThue>
+                    <maTKhai>864</maTKhai>
+                    <tenTKhai>Tờ khai thuế thu nhập cá nhân (TT80/2021)</tenTKhai>
+                    <moTaBMau>05/KK-TNCN</moTaBMau>
+                    <pbanTKhaiXML>2.8.3</pbanTKhaiXML>
+                    <loaiTKhai>C</loaiTKhai>
+                    <soLan>0</soLan>
+                    <KyKKhaiThue>
+                        <kieuKy>Q</kieuKy>
+                        <kyKKhai>4/2025</kyKKhai>
+                        <kyKKhaiTuNgay>01/10/2025</kyKKhaiTuNgay>
+                        <kyKKhaiDenNgay>31/12/2025</kyKKhaiDenNgay>
+                        <kyKKhaiTuThang/>
+                        <kyKKhaiDenThang/>
+                    </KyKKhaiThue>
+                    <maCQTNoiNop>70145</maCQTNoiNop>
+                    <tenCQTNoiNop>Thuế cơ sở 2 Thành phố Hồ Chí Minh</tenCQTNoiNop>
+                    <ngayLapTKhai>22/01/2026</ngayLapTKhai>
+                    <nguoiKy/>
+                    <ngayKy>2026-01-22</ngayKy>
+                    <nganhNgheKD/>
+                </TKhaiThue>
+                <NNT>
+                    <mst>0314840592</mst>
+                    <tenNNT>CÔNG TY TNHH THANG MÁY DOEL VIỆT NAM</tenNNT>
+                    <dchiNNT>200 Song Hành</dchiNNT>
+                    <phuongXa>Phường Bình Trưng</phuongXa>
+                    <tenXaNNT>Phường Bình Trưng</tenXaNNT>
+                    <maXaNNT>70145138</maXaNNT>
+                    <maHuyenNNT/>
+                    <tenHuyenNNT>Phường Bình Trưng</tenHuyenNNT>
+                    <maTinhNNT>701</maTinhNNT>
+                    <tenTinhNNT>TP Hồ Chí Minh</tenTinhNNT>
+                    <dthoaiNNT/>
+                    <faxNNT/>
+                    <emailNNT>quingo89@gmail.com, info@doelvietnam.com</emailNNT>
+                </NNT>
+            </TTinTKhaiThue>
+        </TTinChung>
+        <CTieuTKhaiChinh>
+            <mst_cu>0314840592</mst_cu>
+            <ct15>false</ct15>
+            <ct16>1</ct16>
+            <ct17>1</ct17>
+            <ct18>1</ct18>
+            <ct19>1</ct19>
+            <ct20>0</ct20>
+            <ct21>35500000</ct21>
+            <ct22>35500000</ct22>
+            <ct23>0</ct23>
+            <ct24>0</ct24>
+            <ct25>0</ct25>
+            <ct26>35500000</ct26>
+            <ct27>35500000</ct27>
+            <ct28>0</ct28>
+            <ct29>220875</ct29>
+            <ct30>220875</ct30>
+            <ct31>0</ct31>
+            <ct32>0</ct32>
+        </CTieuTKhaiChinh>
+    </HSoKhaiThue>
+    <CKyDTu><Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="NBan-e3dd6f4264ff4f8e8284dfa35345bd79"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><Reference URI="#NODETOSIGN"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>kMrd7BH5D2RqO3sbOqogvVBgUuIKQMzy8+tyk5CxoS8=</DigestValue></Reference><Reference URI="#SigningTime-253e0726ad5a441586f2d25ca91eb7a4"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>vZZh3RXkywDt+YizODi4ZPwcRJ6YmRbYFtdVSL4T/ko=</DigestValue></Reference></SignedInfo><SignatureValue>DuCRqZE3IwYxiYjlrk3Z2PJKM/KfFDRnPwhip9oZ9pQnOpQOftVyKTwDnoyBjiMxHUdwUjDUzNEaHrnSEG0+LiQ9gJpkaxd/Ro4bOBxTIQhY0oronyhGObWSs3whsZWPGWr6yWmL/e1XSnLVEWvv3dwjvB3ZwLGLPhre12N0O9O8NFeu5D2GrCiS5cn+hgzbrtSU4IG639Dg9X+VZzb1CtyDE6PgwNfahFFMzdpW5M6tGUMzRlZuA+2C2vRtb1y+ievOnLd/nqLyjBdcTIJXQwyZYPPbkY4iN1QjbsxrrvROoAQ/s/6uEUxrJX7VTD0JYYBy44fM2Jwhpx90pBflcg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>UID=MST:0314840592,CN=CÔNG TY TNHH THANG MÁY DOEL VIỆT NAM,L=TP Thủ Đức,ST=HỒ CHÍ MINH,C=VN</X509SubjectName><X509Certificate>MIIF5DCCA8ygAwIBAgIQVAEBAVc98aM9ECBADV+LVjANBgkqhkiG9w0BAQsFADBZMRUwEwYDVQQDDAxWTlBULUNBIFNIQTIxMzAxBgNVBAoMKlZJRVROQU0gUE9TVFMgQU5EIFRFTEVDT01NVU5JQ0FUSU9OUyBHUk9VUDELMAkGA1UEBhMCVk4wHhcNMjUwNzI5MDg0MzQxWhcNMjgwNjA1MTEwOTQ3WjCBlDELMAkGA1UEBhMCVk4xFzAVBgNVBAgMDkjhu5IgQ0jDjSBNSU5IMRkwFwYDVQQHDBBUUCBUaHXMiSDEkMawzIFjMTEwLwYDVQQDDChDw5RORyBUWSBUTkhIIFRIQU5HIE3DgVkgRE9FTCBWSeG7hlQgTkFNMR4wHAYKCZImiZPyLGQBAQwOTVNUOjAzMTQ4NDA1OTIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDY3GXCj0X3fwgpxEIe3wvBQP9QjdHOU5JmhnbDHnHMJnAq+UWxTRYRdPiD5PoK/8EpIm+a240q64SrTZ5g1eghp+MpEHldR/oZpEXy9sF18lr58NgbIiaVBFo5q7hz7MEx6zkFO+u3sC9BGJCUf1tQb5CvGrvLVdE7eRt3VM7eBJ/NC/8zk+wMrZuTHs41OUorQmKxuh5kuYVTtzgPU8HeOA68ivUBh1DQs4v44L1VqD6yr8gzYW1NLkzOMBbJLbfd4K4PpLwBgublv7yaVM4bfey29dUAYWs9aNiC21FLpBNm5KPmlq9XG/LJDQwXgE//7ufi8iUsgrfbmCss0X+LAgMBAAGjggFqMIIBZjAMBgNVHRMBAf8EAjAAMB8GA1UdIwQYMBaAFGuVxMQpI8onE8sE8P106s29CP/BMIGHBggrBgEFBQcBAQR7MHkwPgYIKwYBBQUHMAKGMmh0dHA6Ly9wdWIudm5wdC1jYS52bi9jZXJ0cy92bnB0Y2Etc2hhMjU2LTIwMjQuY2VyMDcGCCsGAQUFBzABhitodHRwOi8vb2NzcC1zaGEyNTYudm5wdC1jYS52bi9yZXNwb25kZXIyMDI0MB8GA1UdEQQYMBaBFGluZm9AZG9lbHZpZXRuYW0uY29tMBUGA1UdJQQOMAwGCisGAQQBgjcKAwwwRAYDVR0fBD0wOzA5oDegNYYzaHR0cDovL2NybC1zaGEyNTYudm5wdC1jYS52bi92bnB0Y2Etc2hhMjU2LTIwMjQuY3JsMB0GA1UdDgQWBBQGW0z+rKRiRpPLpr9m/3zIhq2KPjAOBgNVHQ8BAf8EBAMCBPAwDQYJKoZIhvcNAQELBQADggIBAGqfycfQK48plaaGiokDu7o3jTrvpOe3whi5lWJY1HPHGppgCbDyaA+1j0LsUWxVKMoLVT5KDb+4ZpkMtJEG1oT9KvA8w/TqeRDm4/YQb04agSaZdn3Z7T22Hon/k7x+jbQ0Pueu7M9tX264+G27/A269JX03RsntTLyKOouoTRzAMl6zehy9y2LmLKfSNDyd4xp0iyGoq3tqcQtb/uSzL2zJ+AFEY+ZrYpEHhMKqpCP+KAq2PF6ptDUTMNLVpH5tbDExDE/EW2dvm+D1aa8RckOrnCeRecLbussp/+GuN+MGhXbOavPw47uMIJhZXO03RynXo7QGe+S6/5C84z0nkp3fyGa3Br6UY+Rsx252QMunA2NNaC/vrjpBDskoM55ViNCRrum/7bwzpgv5lX8c1ouZcevXoTQsATEaEJwhWmUB/xss36XE6O23jKHkVlX1LvtrWqW57mB6opbOe+fTOrPD++MKz/WhM7UJPb5UT+7N3ecp6XK2N+mgNG4C+6WVjalWxua8rJ9NfI418NKlrU/Qk1Osl2m6BkBcePFNY9y9sqhL0l/rV6HbOHBFZnKI8WC3D2HT+dy24sKoriaaUCj8pPUQlXDiJzTuSKgvN9uQ5t3xc2OlejoKxjwYyNrSHjWSt6fI4GHgxKml/zeWguYZp7iE+SKco6lZasSQM3W</X509Certificate></X509Data></KeyInfo><Object Id="SigningTime-253e0726ad5a441586f2d25ca91eb7a4"><SignatureProperties><SignatureProperty Target="signatureProperties"><SigningTime>2026-01-22T15:22:09</SigningTime></SignatureProperty></SignatureProperties></Object></Signature></CKyDTu>
+</HSoThueDTu>

@@ -1,0 +1,19 @@
+{
+  "status_code": 200,
+  "url": "https://dichvucong.gdt.gov.vn/tthc/tchs/downloadthongbao",
+  "headers": {
+    "x-content-type-options": "nosniff",
+    "x-xss-protection": "0",
+    "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+    "pragma": "no-cache",
+    "expires": "0",
+    "strict-transport-security": "max-age=16070400; includeSubDomains; preload",
+    "x-frame-options": "DENY",
+    "content-type": "application/json;charset=UTF-8",
+    "date": "Sat, 10 Oct 2026 08:58:10 GMT",
+    "Location": "",
+    "Set-Cookie": "TS5d8132da027=089ec42a94ab20003e436bae6d46a9ae52e905a30d2cb0631e41596f479d896ffac48f54306657950863dde4ef11300008b8d69f1ebf311c5db99e5c906f783ef3136c756e69b6e87ed9b64907f0e0a0432f3e1506c0ecfd66ba32ba52d8f26d; Path=/",
+    "Transfer-Encoding": "chunked"
+  },
+  "body_preview": "{\"fileName\":\"Thong bao_10820260008573932.xml\",\"fileType\":\"xml\",\"content\":\"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PFRCYW9UaHVlRFR1IHhtbG5zPSJodHRwOi8va2VraGFpdGh1ZS5nZHQuZ292LnZuL1RCYW9UaHVlIiB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIj48VEJhb1RodWUgSWQ9Il9OT0RFX1RPX1NJR04iPjxUVGluQ2h1bmc+PENRVD48bWFDUVQ+NzAxNDU8L21hQ1FUPjx0ZW5DUVQ+VGh14bq/IGPGoSBz4bufIDIgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oPC90ZW5DUVQ+PERWdT48bWFEVnU+MDg4PC9tYURWdT48dGVuRFZ1PkThu4tjaCB24bulIGPDtG5nIEPhu6VjIHRodeG6vzwvdGVuRFZ1PjxwYmFuRFZ1PjEuMC4wPC9wYmFuRFZ1PjwvRFZ1PjwvQ1FUPjxOTmhhblRCYW9UaHVlPjxtYU5OaGFuPjAzMTQ4NDA1OTI8L21hTk5oYW4+PHRlbk5OaGFuPkPDlE5HIFRZIFROSEggVEhBTkcgTcOBWSBET0VMIFZJ4buGVCBOQU08L3Rlbk5OaGFuPjxkaWFDaGlOTmhhbiB4c2k6bmlsPSJ0cnVlIi8+PC9OTmhhblRCYW9UaHVlPjxUVGluVEJhb1RodWU+PG1hVEJhbz44NDQ8L21hVEJhbz48dGVuVEJhbz5WL3Y6IFjDoWMgbmjhuq1uIG7hu5lwIGjhu5Mgc8ahIHRodeG6vyDEkWnhu4duIHThu60gVFQxOTwvdGVuVEJhbz48cGJhblRCYW8+Mi40Ljk8L3BiYW5UQmFvPjxzb1RCYW8+NTE2MDkvNzkyNi8yMDI2L1RCLVTEkFQ8L3NvVEJhbz48bmdheVRCYW8+MjAyNi0wMS0yMzwvbmdheVRCYW8+PC9UVGluVEJhb1RodWU+PC9UVGluQ2h1bmc+PE5EdW5nVEJhbz48dHJhbmdUaGFpPlk8L3RyYW5nVGhhaT48bmdheU5vcFRodWNUZT4yMDI2LTAxLTIyVDE1OjI5OjA1LjgzMiswNzowMDwvbmdheU5vcFRodWNUZT48SG9Tb1RodWU+PENUaWV0SG9Tb1RodWUgaWQ9IjEiPjx0b2toYWktcGh1bHVjPlThu5wgS0hBSSBUSFXhur4gR0nDgSBUUuG7iiBHSUEgVMSCTkcgTeG6q3Ugc+G7kSAwMS9HVEdUIChUVDgwLzIwMjEpPC90b2toYWktcGh1bHVjPjxsb2FpVG9LaGFpPkLhu5Ugc3VuZzwvbG9haVRvS2hhaT48a3lUaW5oVGh1ZT5RMi8yMDI1PC9reVRpbmhUaHVlPjxsYW5Ob3A+MTwvbGFuTm9wPjwvQ1RpZXRIb1NvVGh1ZT48L0hvU29UaHVlPjxJREtob2FuTm9wLz48bWFHaWFvRGljaERUdT4xMDgyMDI2MDAwNzA0NTY3NDwvbWFHaWFvRGljaERUdT48bmdheUNoYXBOaGFuPjIwMjYtMDEtMjJUMTU6Mjk6MDUuODMyKzA3OjAwPC9uZ2F5Q2hhcE5oYW4+PG5nYXlIb2FuVGhhbmg+MjAyNi0wMS0yM1QwNjo0NzowMC4wMDArMDc6MDA8L25nYXlIb2FuVGhhbmg+PHRob2lHaWFuSGVuVHJhIHhzaTpuaWw9InRydWUiLz48THlEby8+PGR1b25nRGFuPmh0dHBzOi8vZGljaHZ1Y29uZy5nZHQuZ292LnZuPC9kdW9uZ0Rhbj48aG90bGluZT4oMDgpIDM4OTE3NDMyPC9ob3RsaW5lPjxlbWFpbCB4c2k6bmlsPSJ0cnVlIi8+PC"
+}

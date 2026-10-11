@@ -43,6 +43,7 @@ namespace MISA.ASP.ClientApp.BL
         private string _queryPageId { get; set; }
         public string EtaxSessionId => _etaxSessionId;
         public string ProcessorID => _processorID;
+        public string QueryPageId => _queryPageId;
         public HttpClient EtaxClient => _client;
         private CookieContainer _cookieContainer { get; set; }
         private HttpClient _dvcClient { get; set; }
@@ -150,7 +151,7 @@ namespace MISA.ASP.ClientApp.BL
                     throw new Exception("Không tìm thấy CSRF Token (_csrf) trong trang /tthc/login");
                 }
 
-                LogUtil.LogTrace($"PublicServiceCrawler.Step2_GotoLoginPage.End, _csrfToken: {_csrfToken}");
+                LogUtil.LogTrace("PublicServiceCrawler.Step2_GotoLoginPage.End");
             }
             catch (Exception ex)
             {
@@ -229,21 +230,21 @@ namespace MISA.ASP.ClientApp.BL
                 responseMessage.EnsureSuccessStatusCode();
 
                 var imageBytes = await responseMessage.Content.ReadAsByteArrayAsync();
-
-                responseMessage.EnsureSuccessStatusCode();
-                var captchaResolver = new MisaCaptchaClient();
-                var stream = await responseMessage.Content.ReadAsStreamAsync();
-                captcha = await captchaResolver.Decaptcha(new CaptchaRequest
+                using (var captchaResolver = new MisaCaptchaClient())
+                using (var stream = new MemoryStream(imageBytes))
                 {
-                    Stream = stream,
-                    Source = "dichvucong",
-                },
-                refererUrl);
+                    captcha = await captchaResolver.Decaptcha(new CaptchaRequest
+                    {
+                        Stream = stream,
+                        Source = "dichvucong",
+                    },
+                    refererUrl);
+                }
                 if (String.IsNullOrWhiteSpace(captcha))
                 {
                     throw new UnResolvedCaptchaException();
                 }
-                captchaResult.ByteArray = FileUtil.ConvertStreamToByteArray(stream);
+                captchaResult.ByteArray = imageBytes;
                 captchaResult.Result = captcha;
 
                 if (string.IsNullOrWhiteSpace(captcha))
@@ -251,7 +252,7 @@ namespace MISA.ASP.ClientApp.BL
                     throw new UnResolvedCaptchaException();
                 }
 
-                LogUtil.LogTrace($"PublicServiceCrawler.Step3_ResolveCaptcha.Captcha: {captcha}");
+                LogUtil.LogTrace("PublicServiceCrawler.Step3_ResolveCaptcha.Success");
             }
             catch (Exception ex)
             {
@@ -266,89 +267,89 @@ namespace MISA.ASP.ClientApp.BL
         /// Giải mã captcha tạm thời bằng D:\Project\GetCaptcha\main.py
         /// Hỗ trợ gọi qua Local FastAPI service (nếu đang chạy ở http://127.0.0.1:8000) hoặc qua Python CLI
         /// </summary>
-        private async Task<string> ResolveCaptchaWithPython(byte[] imageBytes)
-        {
-            // 1. Thử gọi qua Local HTTP API (nếu uvicorn/fastapi đang chạy ở http://127.0.0.1:8000)
-            //var localApiUrl = ConfigurationManager.AppSettings["LocalCaptcha_Api_Url"] ?? "http://127.0.0.1:8000/solve_image";
-            var localApiUrl = "https://my-captcha-api-z9vy.onrender.com/solve_image";
-            try
-            {
-                using (var httpCli = new HttpClient { Timeout = TimeSpan.FromSeconds(2) })
-                {
-                    var payload = JsonConvert.SerializeObject(new { image_base64 = Convert.ToBase64String(imageBytes) });
-                    var content = new StringContent(payload, Encoding.UTF8, "application/json");
-                    var res = await httpCli.PostAsync(localApiUrl, content);
-                    if (res.IsSuccessStatusCode)
-                    {
-                        var json = await res.Content.ReadAsStringAsync();
-                        var obj = JObject.Parse(json);
-                        if (obj["success"]?.Value<bool>() == true)
-                        {
-                            var text = obj["text"]?.ToString()?.Trim();
-                            if (!string.IsNullOrEmpty(text))
-                            {
-                                LogUtil.LogTrace($"ResolveCaptcha via HTTP API: {text}");
-                                return text;
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                LogUtil.LogTrace($"Local HTTP Captcha API not reachable, fallback to Python CLI: {ex.Message}");
-            }
+        //private async Task<string> ResolveCaptchaWithPython(byte[] imageBytes)
+        //{
+        //    // 1. Thử gọi qua Local HTTP API (nếu uvicorn/fastapi đang chạy ở http://127.0.0.1:8000)
+        //    //var localApiUrl = ConfigurationManager.AppSettings["LocalCaptcha_Api_Url"] ?? "http://127.0.0.1:8000/solve_image";
+        //    var localApiUrl = "https://my-captcha-api-z9vy.onrender.com/solve_image";
+        //    try
+        //    {
+        //        using (var httpCli = new HttpClient { Timeout = TimeSpan.FromSeconds(2) })
+        //        {
+        //            var payload = JsonConvert.SerializeObject(new { image_base64 = Convert.ToBase64String(imageBytes) });
+        //            var content = new StringContent(payload, Encoding.UTF8, "application/json");
+        //            var res = await httpCli.PostAsync(localApiUrl, content);
+        //            if (res.IsSuccessStatusCode)
+        //            {
+        //                var json = await res.Content.ReadAsStringAsync();
+        //                var obj = JObject.Parse(json);
+        //                if (obj["success"]?.Value<bool>() == true)
+        //                {
+        //                    var text = obj["text"]?.ToString()?.Trim();
+        //                    if (!string.IsNullOrEmpty(text))
+        //                    {
+        //                        LogUtil.LogTrace($"ResolveCaptcha via HTTP API: {text}");
+        //                        return text;
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogUtil.LogTrace($"Local HTTP Captcha API not reachable, fallback to Python CLI: {ex.Message}");
+        //    }
 
-            // 2. Fallback: Gọi trực tiếp Python CLI: python D:\Project\GetCaptcha\main.py <tempFile>
-            var scriptPath = ConfigurationManager.AppSettings["LocalCaptcha_Script_Path"] ?? @"D:\Project\GetCaptcha\main.py";
-            var tempFile = Path.Combine(Path.GetTempPath(), $"captcha_{Guid.NewGuid():N}.png");
+        //    // 2. Fallback: Gọi trực tiếp Python CLI: python D:\Project\GetCaptcha\main.py <tempFile>
+        //    var scriptPath = ConfigurationManager.AppSettings["LocalCaptcha_Script_Path"] ?? @"D:\Project\GetCaptcha\main.py";
+        //    var tempFile = Path.Combine(Path.GetTempPath(), $"captcha_{Guid.NewGuid():N}.png");
 
-            try
-            {
-                File.WriteAllBytes(tempFile, imageBytes);
+        //    try
+        //    {
+        //        File.WriteAllBytes(tempFile, imageBytes);
 
-                var psi = new System.Diagnostics.ProcessStartInfo
-                {
-                    FileName = "python",
-                    Arguments = $"\"{scriptPath}\" \"{tempFile}\"",
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    UseShellExecute = false,
-                    CreateNoWindow = true,
-                    StandardOutputEncoding = Encoding.UTF8
-                };
+        //        var psi = new System.Diagnostics.ProcessStartInfo
+        //        {
+        //            FileName = "python",
+        //            Arguments = $"\"{scriptPath}\" \"{tempFile}\"",
+        //            RedirectStandardOutput = true,
+        //            RedirectStandardError = true,
+        //            UseShellExecute = false,
+        //            CreateNoWindow = true,
+        //            StandardOutputEncoding = Encoding.UTF8
+        //        };
 
-                using (var process = new System.Diagnostics.Process { StartInfo = psi })
-                {
-                    process.Start();
-                    var stdoutTask = process.StandardOutput.ReadToEndAsync();
+        //        using (var process = new System.Diagnostics.Process { StartInfo = psi })
+        //        {
+        //            process.Start();
+        //            var stdoutTask = process.StandardOutput.ReadToEndAsync();
 
-                    if (await Task.WhenAny(stdoutTask, Task.Delay(10000)) == stdoutTask)
-                    {
-                        var stdout = await stdoutTask;
-                        var result = stdout?.Trim();
-                        LogUtil.LogTrace($"ResolveCaptcha via Python CLI: {result}");
-                        return result;
-                    }
-                    else
-                    {
-                        try { process.Kill(); } catch { }
-                        throw new TimeoutException("Python CLI timeout after 10s");
-                    }
-                }
-            }
-            finally
-            {
-                try
-                {
-                    if (File.Exists(tempFile))
-                    {
-                        File.Delete(tempFile);
-                    }
-                }
-                catch { }
-            }
-        }
+        //            if (await Task.WhenAny(stdoutTask, Task.Delay(10000)) == stdoutTask)
+        //            {
+        //                var stdout = await stdoutTask;
+        //                var result = stdout?.Trim();
+        //                LogUtil.LogTrace($"ResolveCaptcha via Python CLI: {result}");
+        //                return result;
+        //            }
+        //            else
+        //            {
+        //                try { process.Kill(); } catch { }
+        //                throw new TimeoutException("Python CLI timeout after 10s");
+        //            }
+        //        }
+        //    }
+        //    finally
+        //    {
+        //        try
+        //        {
+        //            if (File.Exists(tempFile))
+        //            {
+        //                File.Delete(tempFile);
+        //            }
+        //        }
+        //        catch { }
+        //    }
+        //}
 
         /// <summary>
         /// Bước 4: POST thông tin đăng nhập tới /tthc/loginLDAP
@@ -390,7 +391,6 @@ namespace MISA.ASP.ClientApp.BL
                 responseMessage.EnsureSuccessStatusCode();
 
                 var jsonContent = await responseMessage.Content.ReadAsStringAsync();
-                LogUtil.LogInfo($"PublicServiceCrawler.Step4_PostLoginLDAP.Response: {jsonContent}");
 
                 var responseObj = JObject.Parse(jsonContent);
                 var status = responseObj["status"]?.ToString();
@@ -429,17 +429,14 @@ namespace MISA.ASP.ClientApp.BL
         /// </summary>
         public async Task SignIn()
         {
-            await CommonPattern.Retry(async () =>
-            {
-                await Step1_GotoHomeLogin();
-                await Task.Delay(500, _stoppingToken);
-                await Step2_GotoLoginPage();
-                await Task.Delay(500, _stoppingToken);
-                var captcha = await Step3_ResolveCaptcha();
-                await Task.Delay(500, _stoppingToken);
-                await Step4_PostLoginLDAP(captcha);
-                await Task.Delay(1000, _stoppingToken);
-            }, 5);
+            await Step1_GotoHomeLogin();
+            await Task.Delay(500, _stoppingToken);
+            await Step2_GotoLoginPage();
+            await Task.Delay(500, _stoppingToken);
+            var captcha = await Step3_ResolveCaptcha();
+            await Task.Delay(500, _stoppingToken);
+            await Step4_PostLoginLDAP(captcha);
+            await Task.Delay(1000, _stoppingToken);
         }
 
         #endregion
@@ -706,7 +703,7 @@ namespace MISA.ASP.ClientApp.BL
 
                                 if (DateTime.TryParseExact(
                                     submitDateText,
-                                    "dd/MM/yyyy HH:mm",
+                                    new[] { "dd/MM/yyyy HH:mm", "dd/MM/yyyy HH:mm:ss", "dd/MM/yyyy" },
                                     CultureInfo.InvariantCulture,
                                     DateTimeStyles.None,
                                     out DateTime dateValue))
@@ -768,17 +765,25 @@ namespace MISA.ASP.ClientApp.BL
 
                 var html = await responseMessage.Content.ReadAsStringAsync();
 
-                var match = Regex.Match(html, @"name=""_csrf""\s+value=""(.*?)""");
+                var match = Regex.Match(html, @"<meta\s+name=[""']csrf-token[""']\s+content=[""'](.*?)[""']", RegexOptions.IgnoreCase);
                 if (match.Success && match.Groups.Count > 1)
                 {
                     _csrfToken = match.Groups[1].Value;
                 }
                 else
                 {
-                    match = Regex.Match(html, @"id=""csrfToken""\s+value=""(.*?)""");
+                    match = Regex.Match(html, @"name=""_csrf""\s+value=""(.*?)""");
                     if (match.Success && match.Groups.Count > 1)
                     {
                         _csrfToken = match.Groups[1].Value;
+                    }
+                    else
+                    {
+                        match = Regex.Match(html, @"id=""csrfToken""\s+value=""(.*?)""");
+                        if (match.Success && match.Groups.Count > 1)
+                        {
+                            _csrfToken = match.Groups[1].Value;
+                        }
                     }
                 }
 
@@ -825,13 +830,20 @@ namespace MISA.ASP.ClientApp.BL
                 }
 
                 responseMessage = await _dvcClient.SendAsync(request, _stoppingToken);
+                if (responseMessage.StatusCode == (HttpStatusCode)429)
+                {
+                    await DelayForRateLimit(responseMessage, "Step13_DownloadTransactionFile");
+                    throw new HttpRequestException("DVC rate limit (429)");
+                }
                 responseMessage.EnsureSuccessStatusCode();
 
                 var jsonStr = await responseMessage.Content.ReadAsStringAsync();
                 var jsonObj = JObject.Parse(jsonStr);
 
                 var contentBase64 = jsonObj["content"]?.ToString();
-                var fileName = jsonObj["fileName"]?.ToString();
+                var fileName = GetSafeFileName(jsonObj["fileName"]?.ToString(), "declaration.bin");
+                jsonObj = null;
+                jsonStr = null;
 
                 if (string.IsNullOrEmpty(contentBase64))
                 {
@@ -862,7 +874,7 @@ namespace MISA.ASP.ClientApp.BL
                             {
                                 destFolder = documentsFolder;
                             }
-                            string destinationPath = Path.Combine(destFolder, entry.FullName);
+                            string destinationPath = GetSafeArchiveDestination(destFolder, entry.FullName);
                             string dirPath = Path.GetDirectoryName(destinationPath);
                             if (!string.IsNullOrEmpty(dirPath) && !Directory.Exists(dirPath))
                             {
@@ -921,34 +933,149 @@ namespace MISA.ASP.ClientApp.BL
                         {
                             var taxDecCode = taxDecCodeNode.InnerText;
                             iTaxDec.Code = taxDecCode;
-                            switch (taxDecCode)
+                            if (_accountType == EnumTaxAccountType.Enterprise)
                             {
-                                case "01":
-                                    iTaxDec.DebitAmount = xmlDoc.SelectSingleNode("//msbld:ct40", ns)?.InnerText;
-                                    iTaxDec.CreditAmount = xmlDoc.SelectSingleNode("//msbld:ct43", ns)?.InnerText;
-                                    break;
-                                case "03":
-                                    iTaxDec.DebitAmount = xmlDoc.SelectSingleNode("//msbld:ctG", ns)?.InnerText;
-                                    break;
-                                case "394":
-                                    iTaxDec.DebitAmount = xmlDoc.SelectSingleNode("//msbld:ct32", ns)?.InnerText;
-                                    break;
-                                case "395":
-                                    break;
-                                case "842":
-                                    iTaxDec.DebitAmount = xmlDoc.SelectSingleNode("//msbld:ct40", ns)?.InnerText;
-                                    iTaxDec.CreditAmount = xmlDoc.SelectSingleNode("//msbld:ct43", ns)?.InnerText;
-                                    break;
-                                case "864":
-                                    iTaxDec.DebitAmount = xmlDoc.SelectSingleNode("//msbld:ct29", ns)?.InnerText;
-                                    break;
-                                case "892":
-                                    iTaxDec.DebitAmount = xmlDoc.SelectSingleNode("//msbld:ctI", ns)?.InnerText;
-                                    break;
-                                case "953":
-                                    break;
-                                default:
-                                    break;
+                                switch (taxDecCode)
+                                {
+                                    case "01":
+                                        iTaxDec.DebitAmount = xmlDoc.SelectSingleNode("//msbld:ct40", ns)?.InnerText;
+                                        iTaxDec.CreditAmount = xmlDoc.SelectSingleNode("//msbld:ct43", ns)?.InnerText;
+                                        break;
+                                    case "03":
+                                        iTaxDec.DebitAmount = xmlDoc.SelectSingleNode("//msbld:ctG", ns)?.InnerText;
+                                        break;
+                                    case "394":
+                                        iTaxDec.DebitAmount = xmlDoc.SelectSingleNode("//msbld:ct32", ns)?.InnerText;
+                                        break;
+                                    case "395":
+                                        break;
+                                    case "842":
+                                        iTaxDec.DebitAmount = xmlDoc.SelectSingleNode("//msbld:ct40", ns)?.InnerText;
+                                        iTaxDec.CreditAmount = xmlDoc.SelectSingleNode("//msbld:ct43", ns)?.InnerText;
+                                        break;
+                                    case "864":
+                                        iTaxDec.DebitAmount = xmlDoc.SelectSingleNode("//msbld:ct29", ns)?.InnerText;
+                                        break;
+                                    case "892":
+                                        iTaxDec.DebitAmount = xmlDoc.SelectSingleNode("//msbld:ctI", ns)?.InnerText;
+                                        break;
+                                    case "953":
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            else {
+                                decimal debitAmount = 0;
+                                switch (taxDecCode)
+                                {
+                                    case "470":
+                                        var nodeCaNhanct25 = xmlDoc.SelectSingleNode("//msbld:CaNhanKeKhai/msbld:ct25", ns);
+                                        if (nodeCaNhanct25 != null)
+                                        {
+                                            if (decimal.TryParse(nodeCaNhanct25.InnerText, out decimal result))
+                                            {
+                                                debitAmount = debitAmount + result;
+                                            }
+                                        }
+                                        var nodeCaNhanct29 = xmlDoc.SelectSingleNode("//msbld:CaNhanKeKhai/msbld:ct29", ns);
+                                        if (nodeCaNhanct29 != null)
+                                        {
+                                            if (decimal.TryParse(nodeCaNhanct29.InnerText, out decimal result))
+                                            {
+                                                debitAmount = debitAmount + result;
+                                            }
+                                        }
+                                        iTaxDec.DebitAmount = debitAmount.ToString();
+                                        break;
+
+                                    case "473":
+                                        var nodeGTGTCt32 = xmlDoc.SelectSingleNode("//msbld:SoThueGTGT/msbld:ct32", ns);
+                                        if (nodeGTGTCt32 != null)
+                                        {
+                                            if (decimal.TryParse(nodeGTGTCt32.InnerText, out decimal result))
+                                            {
+                                                debitAmount = debitAmount + result;
+                                            }
+                                        }
+                                        var nodeTNCNCt32 = xmlDoc.SelectSingleNode("//msbld:SoThueTNCN/msbld:ct32", ns);
+                                        if (nodeTNCNCt32 != null)
+                                        {
+                                            if (decimal.TryParse(nodeTNCNCt32.InnerText, out decimal result))
+                                            {
+                                                debitAmount = debitAmount + result;
+                                            }
+                                        }
+                                        var nodeTTDBTongct5 = xmlDoc.SelectSingleNode("//msbld:KKhaiThueTTDB/msbld:tong_ct5", ns);
+                                        if (nodeTTDBTongct5 != null)
+                                        {
+                                            if (decimal.TryParse(nodeTTDBTongct5.InnerText, out decimal result))
+                                            {
+                                                debitAmount = debitAmount + result;
+                                            }
+                                        }
+                                        var nodeTTDBTongct7 = xmlDoc.SelectSingleNode("//msbld:KKhaiThueTTDB/msbld:tong_ct7", ns);
+                                        if (nodeTTDBTongct7 != null)
+                                        {
+                                            if (decimal.TryParse(nodeTTDBTongct7.InnerText, out decimal result))
+                                            {
+                                                debitAmount = debitAmount + result;
+                                            }
+                                        }
+                                        var nodeTaiNguyenTong = xmlDoc.SelectSingleNode("//msbld:ThueTaiNguyen/msbld:tongCong", ns);
+                                        if (nodeTaiNguyenTong != null)
+                                        {
+                                            if (decimal.TryParse(nodeTaiNguyenTong.InnerText, out decimal result))
+                                            {
+                                                debitAmount = debitAmount + result;
+                                            }
+                                        }
+                                        var nodeBVMTTong = xmlDoc.SelectSingleNode("//msbld:ThueBVMT/msbld:tongCong", ns);
+                                        if (nodeBVMTTong != null)
+                                        {
+                                            if (decimal.TryParse(nodeBVMTTong.InnerText, out decimal result))
+                                            {
+                                                debitAmount = debitAmount + result;
+                                            }
+                                        }
+                                        var nodePhiBVMTTong = xmlDoc.SelectSingleNode("//msbld:PhiBVMT/msbld:tongCong", ns);
+                                        if (nodePhiBVMTTong != null)
+                                        {
+                                            if (decimal.TryParse(nodePhiBVMTTong.InnerText, out decimal result))
+                                            {
+                                                debitAmount = debitAmount + result;
+                                            }
+                                        }
+                                        iTaxDec.DebitAmount = debitAmount.ToString();
+
+                                        break;
+                                    case "1266":
+                                        var nodeCaNhanct47 = xmlDoc.SelectSingleNode("//msbld:HoTroThongTinNopThue/msbld:tongTienCT47", ns);
+                                        if (nodeCaNhanct47 != null)
+                                        {
+                                            if (decimal.TryParse(nodeCaNhanct47.InnerText, out decimal result))
+                                            {
+                                                debitAmount = debitAmount + result;
+                                            }
+                                        }
+                                        iTaxDec.DebitAmount = debitAmount.ToString();
+
+                                        break;
+                                    case "1240":
+                                        var nodeCaNhanct44 = xmlDoc.SelectSingleNode("//msbld:HoTroThongTinNopThue/msbld:tongTienCT44", ns);
+                                        if (nodeCaNhanct44 != null)
+                                        {
+                                            if (decimal.TryParse(nodeCaNhanct44.InnerText, out decimal result))
+                                            {
+                                                debitAmount = debitAmount + result;
+                                            }
+                                        }
+                                        iTaxDec.DebitAmount = debitAmount.ToString();
+                                        break;
+
+                                    default:
+                                        break;
+                                }
                             }
                         }
 
@@ -978,6 +1105,7 @@ namespace MISA.ASP.ClientApp.BL
             }
             catch (Exception ex)
             {
+                await DelayForRateLimit(responseMessage, "Step13_DownloadTransactionFile");
                 LogUtil.LogError(ex, responseMessage);
                 return false;
             }
@@ -996,13 +1124,14 @@ namespace MISA.ASP.ClientApp.BL
                 var modalThongBaoNode = detailDoc.DocumentNode.SelectSingleNode("//*[@id='modalThongBao']");
                 if (modalThongBaoNode != null)
                 {
-                    var aNodes = modalThongBaoNode.SelectNodes(".//a[@data-id]") ?? modalThongBaoNode.SelectNodes(".//a[contains(@onclick, 'downloadThongBao')]");
+                    var aNodes = modalThongBaoNode.SelectNodes(".//a[@data-id or contains(@onclick, 'downloadThongBao')]");
                     if (aNodes != null)
                     {
+                        var notificationIds = new HashSet<string>();
                         foreach (var aNode in aNodes)
                         {
-                            string idTbao = aNode.GetAttributeValue("data-id", "");
-                            if (!string.IsNullOrEmpty(idTbao))
+                            string idTbao = GetNotificationId(aNode);
+                            if (!string.IsNullOrEmpty(idTbao) && notificationIds.Add(idTbao))
                             {
                                 var parentRow = aNode.SelectSingleNode("./ancestor::div[contains(@class, 'row')][1]");
                                 string title = "";
@@ -1035,29 +1164,12 @@ namespace MISA.ASP.ClientApp.BL
 
                                 if (DateTime.TryParseExact(
                                     sendDate,
-                                    "HH:mm dd/MM/yyyy",
+                                    new[] { "HH:mm dd/MM/yyyy", "HH:mm:ss dd/MM/yyyy", "dd/MM/yyyy HH:mm", "dd/MM/yyyy HH:mm:ss" },
                                     CultureInfo.InvariantCulture,
                                     DateTimeStyles.None,
                                     out DateTime dateValue))
                                 {
                                     iNoti.SendDate = dateValue.ToString("dd/MM/yyyy HH:mm:ss");
-                                }
-
-                                bool notiOk = false;
-                                await CommonPattern.Retry(async () =>
-                                {
-                                    notiOk = await Step17_DownloadNotificationFile(iTaxDec, iNoti, _csrfToken);
-                                    if (!notiOk)
-                                    {
-                                        throw new Exception("Download notification file failed");
-                                    }
-                                    await Task.Delay(300, _stoppingToken);
-                                }, 3, 2000);
-                                if (!notiOk)
-                                {
-                                    iTaxDec.HasDownloadError = true;
-                                    iTaxDec.DownloadErrorMsg = $"Tải thông báo {idTbao} thất bại sau nhiều lần thử";
-                                    LogUtil.LogError($"PublicServiceCrawler.Step14_GetThongBaoPageData.DownloadFail, idTbao: {idTbao}");
                                 }
 
                                 lstTaxDecNotification.Add(iNoti);
@@ -1066,11 +1178,51 @@ namespace MISA.ASP.ClientApp.BL
                     }
                 }
 
+                // Tải song song các thông báo với giới hạn tối đa 2 tác vụ đồng thời để tối ưu tốc độ và tránh Rate Limit
+                if (lstTaxDecNotification.Count > 0)
+                {
+                    using (var semaphore = new SemaphoreSlim(2))
+                    {
+                        var downloadTasks = lstTaxDecNotification.Select(async iNoti =>
+                        {
+                            await semaphore.WaitAsync(_stoppingToken);
+                            try
+                            {
+                                bool notiOk = false;
+                                await CommonPattern.Retry(async () =>
+                                {
+                                    notiOk = await Step17_DownloadNotificationFile(iTaxDec, iNoti, _csrfToken);
+                                    if (!notiOk)
+                                    {
+                                        throw new Exception("Download notification file failed");
+                                    }
+                                    await Task.Delay(200, _stoppingToken);
+                                }, 3, 2000);
+
+                                if (!notiOk)
+                                {
+                                    iTaxDec.HasDownloadError = true;
+                                    iTaxDec.DownloadErrorMsg = $"Tải thông báo {iNoti.NotificationID} thất bại sau nhiều lần thử";
+                                    LogUtil.LogError($"PublicServiceCrawler.Step14_GetThongBaoPageData.DownloadFail, idTbao: {iNoti.NotificationID}");
+                                }
+                            }
+                            finally
+                            {
+                                semaphore.Release();
+                            }
+                        });
+
+                        await Task.WhenAll(downloadTasks);
+                    }
+                }
+
                 iTaxDec.Notifications = lstTaxDecNotification;
                 LogUtil.LogTrace("PublicServiceCrawler.Step14_GetThongBaoPageData.End");
             }
             catch (Exception ex)
             {
+                iTaxDec.HasDownloadError = true;
+                iTaxDec.DownloadErrorMsg = $"Tải thông báo thất bại: {ex.Message}";
                 LogUtil.LogError(ex);
             }
         }
@@ -1165,23 +1317,24 @@ namespace MISA.ASP.ClientApp.BL
                 }
 
                 responseMessage = await _dvcClient.SendAsync(request, _stoppingToken);
+                if (responseMessage.StatusCode == (HttpStatusCode)429)
+                {
+                    await DelayForRateLimit(responseMessage, "Step17_DownloadNotificationFile");
+                    throw new HttpRequestException("DVC rate limit (429)");
+                }
                 responseMessage.EnsureSuccessStatusCode();
 
                 var jsonStr = await responseMessage.Content.ReadAsStringAsync();
                 var jsonObj = JObject.Parse(jsonStr);
 
                 var contentBase64 = jsonObj["content"]?.ToString();
-                var fileName = jsonObj["fileName"]?.ToString();
+                var fileName = GetSafeFileName(jsonObj["fileName"]?.ToString(), $"Thong bao_{iTaxDecNoti.NotificationID}.xml");
+                jsonObj = null;
+                jsonStr = null;
 
                 if (!string.IsNullOrEmpty(contentBase64))
                 {
                     byte[] fileBytes = Convert.FromBase64String(contentBase64);
-
-                    if (string.IsNullOrEmpty(fileName))
-                    {
-                        fileName = $"Thong bao_{iTaxDecNoti.NotificationID}.xml";
-                    }
-
                     if (string.IsNullOrEmpty(iTaxDecNoti.FileName))
                     {
                         iTaxDecNoti.FileName = fileName;
@@ -1203,6 +1356,7 @@ namespace MISA.ASP.ClientApp.BL
             }
             catch (Exception ex)
             {
+                await DelayForRateLimit(responseMessage, "Step17_DownloadNotificationFile");
                 LogUtil.LogError(ex, responseMessage);
                 return false;
             }
@@ -1284,7 +1438,7 @@ namespace MISA.ASP.ClientApp.BL
         /// <summary>
         /// Hàm tra cứu giấy nộp tiền
         /// </summary>
-        public async Task<HtmlDocument> GetDocPaymentRequest(SyncPaymentRequestInputDetail detail, string fromDate, string toDate)
+        public async Task<HtmlDocument> GetDocPaymentRequest(SyncPaymentRequestInputDetail detail, string fromDate, string toDate, string typeTax = "01")
         {
             return await CommonPattern.Retry(async () =>
             {
@@ -1315,18 +1469,60 @@ namespace MISA.ASP.ClientApp.BL
                 await Task.Delay(500, _stoppingToken);
 
                 await Step9_GotoTraCuuGiayNopTienPage();
-                return await Step10_ClickButtonTraCuuGiayNopTien(fromDate, toDate);
-            }, 3);
+                return await Step10_ClickButtonTraCuuGiayNopTien(fromDate, toDate, typeTax);
+            }, 0);
         }
+
+        public static async Task<string> ToCurlAsync(HttpRequestMessage request)
+        {
+            var builder = new StringBuilder();
+
+            builder.Append("curl");
+            builder.Append($" -X {request.Method.Method}");
+            builder.Append($" \"{request.RequestUri}\"");
+
+            foreach (var header in request.Headers)
+            {
+                foreach (var value in header.Value)
+                {
+                    builder.Append($" -H \"{header.Key}: {value}\"");
+                }
+            }
+
+            if (request.Content != null)
+            {
+                foreach (var header in request.Content.Headers)
+                {
+                    foreach (var value in header.Value)
+                    {
+                        builder.Append($" -H \"{header.Key}: {value}\"");
+                    }
+                }
+
+                var body = await request.Content.ReadAsStringAsync();
+
+                if (!string.IsNullOrWhiteSpace(body))
+                {
+                    var escapedBody = body
+                        .Replace("\\", "\\\\")
+                        .Replace("\"", "\\\"");
+
+                    builder.Append($" -d \"{escapedBody}\"");
+                }
+            }
+
+            return builder.ToString();
+        }
+
 
         #endregion
 
-        #region Các hàm hỗ trợ chuẩn hóa luồng eTax SSO
+    #region Các hàm hỗ trợ chuẩn hóa luồng eTax SSO
 
-        /// <summary>
-        /// Bóc tách toàn bộ input trong form HTML (dùng cho các form auto-submit trong DSE SSO)
-        /// </summary>
-        private Dictionary<string, string> ExtractFormInputs(string html, string formId = "mainForm")
+    /// <summary>
+    /// Bóc tách toàn bộ input trong form HTML (dùng cho các form auto-submit trong DSE SSO)
+    /// </summary>
+    private Dictionary<string, string> ExtractFormInputs(string html, string formId = "mainForm")
         {
             var formValues = new Dictionary<string, string>();
             if (string.IsNullOrWhiteSpace(html)) return formValues;
@@ -1383,6 +1579,96 @@ namespace MISA.ASP.ClientApp.BL
             return url;
         }
 
+        private static string GetSafeFileName(string fileName, string fallbackFileName)
+        {
+            var safeFileName = Path.GetFileName(fileName ?? string.Empty);
+            if (string.IsNullOrWhiteSpace(safeFileName))
+            {
+                safeFileName = fallbackFileName;
+            }
+
+            if (safeFileName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+            {
+                throw new InvalidDataException($"Tên file không hợp lệ: {fileName}");
+            }
+
+            return safeFileName;
+        }
+
+        private static string GetSafeArchiveDestination(string destinationFolder, string entryName)
+        {
+            var root = Path.GetFullPath(destinationFolder)
+                .TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar)
+                + Path.DirectorySeparatorChar;
+            var destination = Path.GetFullPath(Path.Combine(root, entryName));
+            if (!destination.StartsWith(root, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new InvalidDataException($"ZIP chứa đường dẫn không hợp lệ: {entryName}");
+            }
+
+            return destination;
+        }
+
+        private static string GetNotificationId(HtmlNode notificationNode)
+        {
+            var dataId = notificationNode.GetAttributeValue("data-id", "").Trim();
+            if (dataId.All(char.IsDigit))
+            {
+                return dataId;
+            }
+
+            var onClick = notificationNode.GetAttributeValue("onclick", "");
+            var match = Regex.Match(onClick, @"downloadThongBao\(\s*['""]?(\d+)", RegexOptions.IgnoreCase);
+            return match.Success ? match.Groups[1].Value : string.Empty;
+        }
+
+        private async Task DelayForRateLimit(HttpResponseMessage responseMessage, string stepName)
+        {
+            if (responseMessage?.StatusCode != (HttpStatusCode)429)
+            {
+                return;
+            }
+
+            var retryAfterHeader = responseMessage.Headers.RetryAfter;
+            var retryAfter = retryAfterHeader?.Delta
+                ?? (retryAfterHeader?.Date - DateTimeOffset.UtcNow)
+                ?? TimeSpan.FromSeconds(5);
+            var waitTime = retryAfter < TimeSpan.FromSeconds(3) ? TimeSpan.FromSeconds(3) : retryAfter;
+            if (waitTime > TimeSpan.FromSeconds(30))
+            {
+                waitTime = TimeSpan.FromSeconds(30);
+            }
+
+            LogUtil.LogTrace($"PublicServiceCrawler.{stepName}.RateLimited, waiting {waitTime.TotalSeconds:F0}s");
+            await Task.Delay(waitTime, _stoppingToken);
+        }
+
+        private async Task EnsureSuccessWithRateLimit(HttpResponseMessage responseMessage)
+        {
+            await DelayForRateLimit(responseMessage, "HttpRequest");
+            responseMessage.EnsureSuccessStatusCode();
+        }
+        /// <summary>
+        /// eTax SSO hợp lệ có thể trả HTTP 2xx (HTML chứa script redirect) hoặc 3xx
+        /// (Location header). Mọi trạng thái khác phải được xem là lỗi thay vì parse
+        /// body lỗi như một trang chuyển hướng.
+        /// </summary>
+        private static void EnsureSuccessOrRedirect(HttpResponseMessage responseMessage, string stepName)
+        {
+            if (responseMessage == null)
+            {
+                throw new HttpRequestException($"{stepName}: Không nhận được phản hồi từ eTax.");
+            }
+
+            var statusCode = (int)responseMessage.StatusCode;
+            if ((statusCode >= 200 && statusCode <= 299) || (statusCode >= 300 && statusCode <= 399))
+            {
+                return;
+            }
+
+            throw new HttpRequestException($"{stepName}: eTax trả HTTP {statusCode} ({responseMessage.ReasonPhrase}).");
+        }
+
         #endregion
 
         #region Các bước Tra cứu giấy nộp tiền (thuedientu.gdt.gov.vn)
@@ -1431,6 +1717,8 @@ namespace MISA.ASP.ClientApp.BL
                 request.Headers.Add("X-XSRF-TOKEN", _csrfToken);
                 request.Headers.Add("Accept", "*/*");
 
+                var curl = await ToCurlAsync(request);
+
                 responseMessage = await _dvcClient.SendAsync(request, _stoppingToken);
                 responseMessage.EnsureSuccessStatusCode();
 
@@ -1454,7 +1742,7 @@ namespace MISA.ASP.ClientApp.BL
                     throw new Exception($"Không lấy được URL chuyển hướng sang thuedientu từ DVC. Phản hồi: {redirectUrl}");
                 }
 
-                LogUtil.LogTrace($"PublicServiceCrawler.StepGNT2_RedirectToService.End, redirectUrl: {redirectUrl}");
+                LogUtil.LogTrace("PublicServiceCrawler.StepGNT2_RedirectToService.End");
             }
             catch (Exception ex)
             {
@@ -1477,14 +1765,17 @@ namespace MISA.ASP.ClientApp.BL
             var nextUrl = string.Empty;
             try
             {
-                LogUtil.LogTrace($"PublicServiceCrawler.StepGNT3_GetEtaxSession.Start, url: {redirectUrl}");
+                LogUtil.LogTrace("PublicServiceCrawler.StepGNT3_GetEtaxSession.Start");
 
                 // Cần gọi trực tiếp URL đầy đủ (khác domain) nên dùng etaxClient
                 var request = new HttpRequestMessage(HttpMethod.Get, redirectUrl);
                 request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7");
                 request.Headers.Add("Referer", $"{PUBLIC_SERVICE_URL}/");
 
+                var curl = await ToCurlAsync(request);
+
                 responseMessage = await _client.SendAsync(request, _stoppingToken);
+                EnsureSuccessOrRedirect(responseMessage, "StepGNT3_GetEtaxSession");
                 if (responseMessage.Headers.Location != null)
                 {
                     nextUrl = responseMessage.Headers.Location.ToString();
@@ -1506,7 +1797,7 @@ namespace MISA.ASP.ClientApp.BL
                 }
 
                 nextUrl = NormalizeEtaxRelativeUrl(nextUrl);
-                LogUtil.LogTrace($"PublicServiceCrawler.StepGNT3_GetEtaxSession.End, nextUrl: {nextUrl}");
+                LogUtil.LogTrace("PublicServiceCrawler.StepGNT3_GetEtaxSession.End");
             }
             catch (Exception ex)
             {
@@ -1529,13 +1820,16 @@ namespace MISA.ASP.ClientApp.BL
             var nextUrl = string.Empty;
             try
             {
-                LogUtil.LogTrace($"PublicServiceCrawler.StepGNT4_CorpJumpProc.Start, url: {corpJumpUrl}");
+                LogUtil.LogTrace("PublicServiceCrawler.StepGNT4_CorpJumpProc.Start");
 
                 var request = new HttpRequestMessage(HttpMethod.Get, corpJumpUrl);
                 request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
                 request.Headers.Add("Referer", $"{PUBLIC_SERVICE_URL}/");
 
+                var curl = await ToCurlAsync(request);
+
                 responseMessage = await _client.SendAsync(request, _stoppingToken);
+                EnsureSuccessOrRedirect(responseMessage, "StepGNT4_CorpJumpProc");
                 if (responseMessage.Headers.Location != null)
                 {
                     nextUrl = responseMessage.Headers.Location.ToString();
@@ -1557,7 +1851,7 @@ namespace MISA.ASP.ClientApp.BL
                 }
 
                 nextUrl = NormalizeEtaxRelativeUrl(nextUrl);
-                LogUtil.LogTrace($"PublicServiceCrawler.StepGNT4_CorpJumpProc.End, nextUrl: {nextUrl}");
+                LogUtil.LogTrace("PublicServiceCrawler.StepGNT4_CorpJumpProc.End");
             }
             catch (Exception ex)
             {
@@ -1583,18 +1877,15 @@ namespace MISA.ASP.ClientApp.BL
                 request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
                 request.Headers.Add("Referer", $"{PUBLIC_SERVICE_URL}/");
 
+                var curl = await ToCurlAsync(request);
+
                 responseMessage = await _client.SendAsync(request, _stoppingToken);
+                responseMessage.EnsureSuccessStatusCode();
 
                 // Đọc body HTML ra chuỗi
                 string html = await responseMessage.Content.ReadAsStringAsync();
 
-                var doc = new HtmlAgilityPack.HtmlDocument();
-                doc.LoadHtml(html);
-
-                var scriptNode = doc.DocumentNode.SelectSingleNode("//script");
-                string scriptContent = scriptNode?.InnerText ?? "";
-
-                var match = Regex.Match(scriptContent, @"window\.location\.href\s*=\s*'([^']+)'");
+                var match = Regex.Match(html, @"window\.location\.href\s*=\s*'([^']+)'");
 
                 if (match.Success)
                 {
@@ -1617,7 +1908,7 @@ namespace MISA.ASP.ClientApp.BL
 
                 // Đảm bảo URL luôn có prefix hợp lệ /etaxnnt/ để tránh lỗi 404
                 nextUrl = NormalizeEtaxRelativeUrl(nextUrl);
-                LogUtil.LogTrace($"PublicServiceCrawler.StepGNT5_EstablishSession.End, sessionId: {_etaxSessionId}, nextUrl: {nextUrl}");
+                LogUtil.LogTrace("PublicServiceCrawler.StepGNT5_EstablishSession.End");
             }
             catch (Exception ex)
             {
@@ -1642,6 +1933,8 @@ namespace MISA.ASP.ClientApp.BL
                 var request = new HttpRequestMessage(HttpMethod.Get, requestUrl);
                 request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
                 request.Headers.Add("Referer", $"{ETAX_URL}/etaxnnt/EstablishSession?&fromOpName=corpJumpProc&fromStateName=initial&fromEventName=start&toOpName=ssoTTHC");
+
+                var curl = await ToCurlAsync(request);
 
                 responseMessage = await _client.SendAsync(request, _stoppingToken);
                 responseMessage.EnsureSuccessStatusCode();
@@ -1705,6 +1998,8 @@ namespace MISA.ASP.ClientApp.BL
                 request.Headers.Add("Referer", $"{ETAX_URL}/etaxnnt/Request?&dse_sessionId={_etaxSessionId}&dse_applicationId=-1&dse_pageId=1&dse_operationName=corpJumpProc&dse_errorPage=error_page.jsp&dse_processorState=initial&dse_nextEventName=start&toOpName=ssoTTHC");
                 request.Headers.Add("Origin", ETAX_URL);
 
+                var curl = await ToCurlAsync(request);
+
                 responseMessage = await _client.SendAsync(request, _stoppingToken);
                 responseMessage.EnsureSuccessStatusCode();
 
@@ -1763,7 +2058,10 @@ namespace MISA.ASP.ClientApp.BL
                 request.Headers.Add("Referer", $"{ETAX_URL}/etaxnnt/Request");
                 request.Headers.Add("Origin", ETAX_URL);
 
+                var curl = await ToCurlAsync(request);
+
                 responseMessage = await _client.SendAsync(request, _stoppingToken);
+                responseMessage.EnsureSuccessStatusCode();
 
                 LogUtil.LogTrace("PublicServiceCrawler.StepGNT8_GotoMainPage.End");
             }
@@ -1804,7 +2102,10 @@ namespace MISA.ASP.ClientApp.BL
                 request.Headers.Add("Referer", $"{ETAX_URL}/etaxnnt/Request");
                 request.Headers.Add("Origin", ETAX_URL);
 
+                var curl = await ToCurlAsync(request);
+
                 responseMessage = await _client.SendAsync(request, _stoppingToken);
+                responseMessage.EnsureSuccessStatusCode();
 
                 var html = await responseMessage.Content.ReadAsStringAsync();
 
@@ -1832,7 +2133,7 @@ namespace MISA.ASP.ClientApp.BL
                     throw new NotFoundProcessIdException();
                 }
 
-                LogUtil.LogTrace($"PublicServiceCrawler.Step9_GotoTraCuuGiayNopTienPage.End, processorId: {_processorID}, queryPageId: {_queryPageId}");
+                LogUtil.LogTrace("PublicServiceCrawler.Step9_GotoTraCuuGiayNopTienPage.End");
             }
             catch (Exception ex)
             {
@@ -1841,13 +2142,13 @@ namespace MISA.ASP.ClientApp.BL
             }
         }
 
-        private async Task<HtmlDocument> Step10_ClickButtonTraCuuGiayNopTien(string fromDate, string toDate)
+        private async Task<HtmlDocument> Step10_ClickButtonTraCuuGiayNopTien(string fromDate, string toDate, string typeTax = "01")
         {
             HtmlDocument doc = new HtmlDocument();
             HttpResponseMessage responseMessage = null;
             try
             {
-                LogUtil.LogTrace("Step10_ClickButtonTraCuuGiayNopTien.Start");
+                LogUtil.LogTrace($"Step10_ClickButtonTraCuuGiayNopTien.Start.type_tax={typeTax}");
                 var pageIdToUse = !string.IsNullOrWhiteSpace(_queryPageId) ? _queryPageId : "10";
                 var content = new FormUrlEncodedContent(new[]
                 {
@@ -1864,7 +2165,7 @@ namespace MISA.ASP.ClientApp.BL
                     new KeyValuePair<string, string>("ctuId", ""),
                     new KeyValuePair<string, string>("soGnt", ""),
                     new KeyValuePair<string, string>("idBke", ""),
-                    new KeyValuePair<string, string>("type_tax", "01"),
+                    new KeyValuePair<string, string>("type_tax", typeTax),
                     new KeyValuePair<string, string>("ma_giao_dich", ""),
                     new KeyValuePair<string, string>("so_ctu_nh", ""),
                     new KeyValuePair<string, string>("so_gnt", ""),
@@ -1891,16 +2192,18 @@ namespace MISA.ASP.ClientApp.BL
                 request.Headers.Add("Referer", $"{ETAX_URL}/etaxnnt/Request");
                 request.Headers.Add("Origin", ETAX_URL);
 
+                var curl = await ToCurlAsync(request);
+
                 responseMessage = await _client.SendAsync(request, _stoppingToken);
                 responseMessage.EnsureSuccessStatusCode();
                 var html = await responseMessage.Content.ReadAsStringAsync();
                 doc.LoadHtml(html);
-                LogUtil.LogTrace("Step10_ClickButtonTraCuuGiayNopTien.End");
+                LogUtil.LogTrace($"Step10_ClickButtonTraCuuGiayNopTien.End.type_tax={typeTax}");
             }
             catch (Exception ex)
             {
                 LogUtil.LogError(ex, responseMessage);
-                throw ex;
+                throw;
             }
             return doc;
         }

@@ -1,0 +1,26 @@
+{
+  "label": "tax_search_page_2",
+  "method": "GET",
+  "url": "https://dichvucong.gdt.gov.vn/tthc/ho-so/search",
+  "headers": {
+    "Referer": "https://dichvucong.gdt.gov.vn/tthc/tchs",
+    "HX-Request": "true",
+    "HX-Target": "table-container",
+    "X-Requested-With": "XMLHttpRequest"
+  },
+  "params": {
+    "loaiThuTuc": "",
+    "maTTHC": "",
+    "maToKhai": "",
+    "maHoSo": "",
+    "tuNgay": "01/01/2026",
+    "denNgay": "10/10/2026",
+    "scope_tdt1": "SELF",
+    "mstUyQuyen_tdt1": "",
+    "captcha": "***REDACTED***",
+    "page": "2",
+    "size": "10"
+  },
+  "data": {},
+  "json": {}
+}

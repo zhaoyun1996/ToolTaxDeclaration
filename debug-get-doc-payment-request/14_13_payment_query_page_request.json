@@ -1,0 +1,20 @@
+{
+  "label": "13_payment_query_page",
+  "method": "POST",
+  "url": "https://thuedientu.gdt.gov.vn/etaxnnt/Request",
+  "headers": {
+    "Referer": "https://thuedientu.gdt.gov.vn/etaxnnt/Request",
+    "Origin": "https://thuedientu.gdt.gov.vn"
+  },
+  "params": {},
+  "data": {
+    "dse_sessionId": "***REDACTED***",
+    "dse_applicationId": "-1",
+    "dse_pageId": "4",
+    "dse_operationName": "corpQueryTaxProc",
+    "dse_errorPage": "error_page.jsp",
+    "dse_processorState": "initial",
+    "dse_nextEventName": "start"
+  },
+  "json": {}
+}

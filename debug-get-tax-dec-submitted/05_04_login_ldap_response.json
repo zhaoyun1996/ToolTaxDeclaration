@@ -1,0 +1,19 @@
+{
+  "status_code": 200,
+  "url": "https://dichvucong.gdt.gov.vn/tthc/loginLDAP",
+  "headers": {
+    "set-cookie": "_gdtpk_tesid.2668.1fff=2061; Max-Age=3600; Expires=Sat, 10 Oct 2026 09:58:01 GMT; Path=/tthc, TS01b15635=011c0ae7404d4a31dd8dbe39872cad0f8dc435e45b82084b7fca49201cdace021012f7fa61fa2d6838580b41808156441abc46f93f24ea8cfa684c344db26f941385d33385; Path=/; Domain=.dichvucong.gdt.gov.vn, TS01217c3c=011c0ae740b9f5aadcea2bb9b162258ad60ace9b1682084b7fca49201cdace021012f7fa615129a0456ee718cf0ece89aba0d5d609c8431ed7a478d66982ec0f2fec2916709292ee88a0222349e1681f70bdb3efe38a18bedfe8699e7f05a5ff4dcd71627e; path=/tthc, TS5d8132da027=089ec42a94ab20005720dabb6636263e99f628800e149bafd4cc06173e37f1d34a5d436819cfd40c08062868841130003e98d45769997a902a0c6bbba21e916173cfca4cb76d7d9a8a1e17b130271614062087f68072e1fef17cafd976923357; Path=/",
+    "x-content-type-options": "nosniff",
+    "x-xss-protection": "0",
+    "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+    "pragma": "no-cache",
+    "expires": "0",
+    "strict-transport-security": "max-age=16070400; includeSubDomains; preload",
+    "x-frame-options": "DENY",
+    "content-type": "application/json;charset=UTF-8",
+    "date": "Sat, 10 Oct 2026 08:58:01 GMT",
+    "Location": "",
+    "Transfer-Encoding": "chunked"
+  },
+  "body_preview": "{\"status\":\"200\"}"
+}

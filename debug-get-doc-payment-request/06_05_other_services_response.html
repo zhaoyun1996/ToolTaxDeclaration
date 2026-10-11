@@ -1,0 +1,2345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dịch Vụ Công Thuế Nhà Nước</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+    <link rel="stylesheet" href = "/tthc/css/font-awesome-4.7.0/font-awesome.min-a0e784c4ca94c271b0338dfb02055be6.css">
+    <link rel="stylesheet" href = "/tthc/css/swiper/swiper-bundle.min-8aa3f98e02499b9046bd9d4ed02c6fca.css">
+
+    <link rel="stylesheet" href = "/tthc/css/bootstrap-5.3.2/bootstrap.min-0fc647a071a2616fe24e9b126a52af24.css">
+    <link rel="stylesheet" href = "/tthc/css/bootstrap-icons/bootstrap-icons-a5e63b504f927ab1956b8a855c7f4675.css">
+    <link rel="stylesheet" href = "/tthc/css/gitlap/icons-4e11057cecb2f5a692d18e8d5777bd60.css">
+    <link rel="stylesheet" href = "/tthc/css/font-googleapis/css2-6b27cbff1e2c0fc45e4707bc91860dc0.css">
+    <link rel="stylesheet" href = "/tthc/css/font-googleapis/css2_1-689920c3962d8ccc1c403dbd30128727.css">
+    <link rel="stylesheet" href="/tthc/css/bootstrap-5.3.2/bootstrap-select.min-3bf13a7db93f9bfddbcdea1a450830fe.css"/>
+    <link rel="stylesheet" href="/tthc/css/main-8b94441a29ef28006ae011184fe4e0eb.css">
+    <link rel="stylesheet" href="/tthc/css/home-2205144ccdd25fb6dd97a93f89c1ab43.css">
+    <link rel="stylesheet" href="/tthc/css/login-55ee7fdc44e38ffd0d2f1e0e807f6251.css">
+    <link rel="stylesheet" href="/tthc/css/lobibox/lobibox-0e776c44ffa842934feb58ae9cb4ee6c.css"/>
+    <link rel="stylesheet" href="/tthc/css/steps-1924b4bf7424e135568a33f1a2f3f573.css"/>
+    <link rel="stylesheet" href="/tthc/css/gitlap/icon-82d4bba0484dcf470c773c2811702a56.css"/>
+    <link rel="stylesheet" href="/tthc/css/daterangepicker/daterangepicker-de478ff0c125e74e02132b6414c8f509.css"/>
+    <link rel="stylesheet" href="/tthc/css/bootstrap-daterangerpicker-1.10.0/bootstrap-datepicker.min-ae2c1b940dbb755e0165ba2794e92d6e.css"/>
+    <link rel="icon" href="/tthc/favicon.ico"/>
+    <link rel="stylesheet" href = "/tthc/css/bootstrap-tour/bootstrap-tour.min-4989f1cb3a64607f9df6fa21824702bc.css">
+    
+    <link rel="stylesheet" href="/tthc/css/chatbox/chatbox-cd0f68ec9e30f2e5d4f0c6d730bed55e.css">
+
+    <script type="text/javascript" src="/tthc/js/jquery-3.7.1/jquery.min-b83db83a1d89113ee03ab730efa48c7a.js"></script>
+    <script type="text/javascript" src="/tthc/js/bootstrap-5.3.3/bootstrap.bundle.min-bd31cd6c0de0972f2e5d260a09ba121f.js"></script>
+    <script type="text/javascript" src="/tthc/js/chart/chart.umd.min-e17b7c09c8ba4ed2e28fef12b7df1cc9.js"></script>
+    <script type="text/javascript" src="/tthc/js/swiper/swiper-bundle.min-e6169ccf7a9d58ed680db82c97f26746.js"></script>
+    <script type="text/javascript" src="/tthc/js/popper/popper.min-f391f7a8f97c5bca544d5e9374f4f44e.js"></script>
+    <script type="text/javascript" src="/tthc/js/main.js"></script>
+    <script type="text/javascript" src="/tthc/js/daterangepicker/moment.min-19436ad9831513f90ffd2421b3d97903.js"></script>
+    <script type="text/javascript" src="/tthc/js/daterangepicker/daterangepicker.min-a75890c9c9c44bdba1106d3b3bff0ff4.js"></script>
+    <script type="text/javascript" src="/tthc/js/lobibox/lobibox-ea32842534713c447e0c6bc74bc88701.js"></script>
+    <script type="text/javascript" src="/tthc/htmx.min.js"></script>
+    <script type="text/javascript" src="/tthc/htmx-csrf.js" defer></script>
+    <script type="text/javascript" src="/tthc/_hyperscript.min.js"></script>
+    <script type="text/javascript" src="/tthc/js/bootstrap-5.3.2/bootstrap-select.min-7a5eb391400098825175f784146ba93d.js"></script>
+    <script type="text/javascript" src="/tthc/js/parsley/parsleyjs-3db000bf787581adaeb5c4237656b7a5.js"></script>
+    <script type="text/javascript" src="/tthc/js/parsley/vn-710749e84c5b9cebcd158bc9adcd5ef9.js"></script>
+    <script type="text/javascript" src="/tthc/js/parsley/en-417fc5c7cd667d48470507732ebcd880.js"></script>
+    <script type="text/javascript" src="/tthc/js/sweetalert2/sweetalert-af50f1beb48ed186e2598b5434da52fc.js"></script>
+    <script type="text/javascript" src="/tthc/js/bootstrap-daterangerpicker-1.10.0/bootstrap-datepicker.min-32a753f2ad5efc10bc806fd99df007ba.js"></script>
+    <script type="text/javascript" src="/tthc/js/ssocommon/ssocommon-d05f65f591fc68fdf0e0ee4247982386.js"></script>
+    <script type="text/javascript" src="/tthc/js/bootstrap-daterangerpicker-1.10.0/bootstrap-datepicker.vi.min-8be76c0d0e10acd89d19249e5830d072.js"></script>
+    <script type="text/javascript" src="/tthc/js/xlsx/xlsx.full.min-afb474e60334d534345234f1e588cc76.js"></script>
+    <script type="text/javascript" src="/tthc/js/bootstrap-tour/bootstrap-tour.min-2e8c5165aaf36aac42d0d2461d3be22a.js"></script>
+
+    <meta name="csrf-token" content="-RJAs3rIN3Zj--ffp9AhkfxEPEsZOfNx8BwFU33SH0BoqSQNynB3hEKtBkdOzITtn_0V98tyEXIhDsdclC9nYRnlLiRdyx01"/>
+    <meta name="csrf-header" content="X-XSRF-TOKEN"/>
+
+    
+        <!-- Trường hợp truyền fragment (::link) -->
+        
+            <link rel="stylesheet" href="/tthc/css/chucnang/danhgia-0dbd5de7cdfdc3913e2e6fee76f73648.css"><link rel="stylesheet" href="/tthc/css/sso/sso_custom-61e653d39df4fd212749b7202f54b5e2.css"/>
+        
+
+        <!-- Trường hợp truyền list path -->
+        
+    
+
+    <script type="text/javascript">
+        window.Parsley.setLocale("vn");
+    </script>
+</head>
+	<body class="d-flex flex-column min-vh-100">
+		<div class="wrapper d-flex flex-column" style="min-height: 100vh !important;">
+			<!--Header-->
+			
+    <!-- Navbar -->
+    <header>
+        <div class="container header">
+            <div class="row align-items-center bg-header py-3  gap-2 justify-content-center">
+                <div class="col-4 col-xs-6 col-sm-4 col-md-4 col-lg-2 row">
+                    <img src="/tthc/images/QUOCHUY-d00f534b73a000ebb4a4fe961142309e.png" alt="Logo Thuế" class="img-logothue col-6">
+                    <img src="/tthc/images/HCPV-9aa19d128be69bc88e0f05485c9bf37b.png" alt="Logo HCPV" class="img-logothue col-6">
+                </div>
+
+                <div class="col-8 col-xs-12 col-sm-12 col-md-8 col-lg-6">
+
+                    <div class="" style="display: flex;flex-direction: column;align-items: flex-start;">
+                        <p class="tenCong mb-1">HỆ THỐNG THÔNG TIN GIẢI QUYẾT THỦ TỤC HÀNH CHÍNH</p>
+                        <p class="hcpv mb-1">Hành chính phục vụ</p>
+                        <p class="hcpv mb-0">Cục Thuế - Bộ Tài chính</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-lg-4 user-info d-flex align-items-center justify-content-end user-header">
+                    
+                        <!-- Họ tên -->
+                        <span class="user-name" style="color: var(--Gray-900, #212529);
+                              font-size: var(--bs-body-font-size);
+                              font-weight: 600;
+                              line-height: 20px;
+                              text-align: center;">
+                            <a style="text-decoration: none;
+                                        color: #222222;
+                                        font-weight: 600;
+                                        flex-direction: row;
+                                        gap: 16px;
+                                        align-items: center;" href="/tthc/tra-cuu-thongbao-cqt">
+                                <img style="  width: 40px; height: 40px; margin-bottom: 8px;"
+                                     src="/tthc/images/dich_vu_khac/tra_cuu_thong_bao_cn-81fddd4c4ba8d99d401ca17ca0d1fd68.png"
+                                     title="Tra cứu thông báo của CQT">
+                            </a>
+                            <!-- Nếu có dấu ( -->
+                            
+
+                            <!-- Nếu không có dấu ( -->
+                            <span class="ten_dn">CÔNG TY TNHH THANG MÁY DOEL VIỆT NAM</span>
+                        </span>
+
+                        <!-- Container flex cho CCCD + dropdown -->
+                        <div style="display: inline-flex; align-items: center; gap: 4px; margin-left: 10px">
+                            <!-- Dropdown caret + menu -->
+                            <div class="dropdown">
+                                <a href="#" class="pb-2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-caret-down-fill"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-lg-end">
+                                    <li>
+                                        <!-- CCCD -->
+                                        <span class="user-name dropdown-item" style="color: var(--Primary-Color, #006FBC);
+                                            font-size: var(--bs-body-font-size);
+                                            font-weight: 600;
+                                            line-height: normal;">Số định danh: 083189005926</span>
+                                    </li>
+                                    <li>
+                                        <!-- CCCD -->
+                                        <span class="user-name dropdown-item" style="color: var(--Primary-Color, #006FBC);
+                                            font-size: var(--bs-body-font-size);
+                                            font-weight: 600;
+                                            line-height: normal;">MST tổ chức: 0314840592</span>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="/tthc/dang-ky-dich-vu">Quản lý thông
+                                        tin</a></li>
+                                    <li><a class="dropdown-item" href="/tthc/tra-cuu-thongbao-cqt">Tra cứu thông báo
+                                        của CQT</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#" hx-on:click="dangXuat()">Đăng xuất</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    
+                    <div class="d-flex flex-row button-gruop1">
+                        
+                        <!--                        <th:block th:if="${isLogon == 'Y'}">-->
+                        <!--                            <button type="button" class="btn btn-primary-outline btn-sm me-2"-->
+                        <!--                                    hx-on:click="dangXuat()">-->
+                        <!--                                <img th:src="@{/images/logout.svg}" alt=""><span-->
+                        <!--                                    th:text="#{'login.btn.dangxuat'}"></span>-->
+                        <!--                            </button>-->
+                        <!--                        </th:block>-->
+
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+    <div class="modal fade" id="modalChonDoiTuong" aria-labelledby="modalLabel" data-bs-keyboard="false"
+         data-bs-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Đối tượng đăng nhập</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="inputDoiTuong">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div class="centerIcon stageIcon">
+                                <a type="button" hx-on:click = "processChonDT('CN', document.getElementById('inputDoiTuong').value)" >
+                                    <img class="Image29" style="width: 150px; height: 150px" title="Cá nhân"
+                                         src="/tthc/images/single-person-e4bc368021fa448acee7de618e365b37.png" />
+                                </a>
+                            </div>
+                            <div class="centerIcon"><label class="">Cá nhân</label></div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div class="centerIcon stageIcon">
+                                <a type="button" hx-on:click = "processChonDT('DN', document.getElementById('inputDoiTuong').value)" >
+                                    <img class="Image29 centerIcon stageIcon" style="width: 150px; height: 150px"
+                                         title="Doanh nghiệp" src="/tthc/images/company-8a9f61e65bef70a3768b2cdf8aba1988.png"/>
+                                </a>
+                            </div>
+                            <div class="centerIcon">
+                                <label class="centerIcon">Doanh nghiệp</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="justify-content: center;">
+                    <button type="button" class="btn btn-secondary btn-sm me-2" data-bs-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalChonDoiTuongVNEID" aria-labelledby="modalLabel" data-bs-keyboard="false"
+         data-bs-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Đối tượng đăng nhập</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div class="centerIcon stageIcon">
+                                <a type="button" hx-on:click = "redirectDtVneid('CN')">
+                                    <img class="Image29" style="width: 150px; height: 150px" title="Cá nhân"
+                                         src="/tthc/images/single-person-e4bc368021fa448acee7de618e365b37.png" />
+                                </a>
+                            </div>
+                            <div class="centerIcon"><label class="">Cá nhân</label></div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div class="centerIcon stageIcon">
+                                <a type="button" hx-on:click = "redirectDtVneid('DN')" >
+                                    <img class="Image29 centerIcon stageIcon" style="width: 150px; height: 150px"
+                                         title="Doanh nghiệp" src="/tthc/images/company-8a9f61e65bef70a3768b2cdf8aba1988.png"/>
+                                </a>
+                            </div>
+                            <div class="centerIcon">
+                                <label class="centerIcon">Doanh nghiệp</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="justify-content: center;">
+                    <button type="button" class="btn btn-secondary btn-sm me-2" data-bs-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--    Login CBT-->
+    <div class="modal fade" id="modalCanBoThueLogin" aria-labelledby="modalLabel" aria-hidden="true" >
+            <div class="modal-dialog  pt-3" role="document">
+                <div class="modal-content" style="background: #0063dee8; margin: 0 3rem; width: 75%">
+                    <div class="modal-body">
+                        <div class="d-flex justify-content-center">
+                            <img style=" height: 70px; width: 70px; aspect-ratio: 1/1; object-fit: cover;" src="/tthc/images/logo-0d3caa57b14093551630825d87369112.png" />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="col-12 control-label labelTitle mb-2 text-white">Tên miền</label>
+                            <div class="col-12">
+                                <select class="form-select rounded-pill" id="droplistInput" name="_domain">
+                                    <option value="han.tct.vn">han.tct.vn</option>
+                                    <option value="mb.tct.vn">mb.tct.vn</option>
+                                    <option value="mn.tct.vn">mn.tct.vn</option>
+                                    <option value="hcm.tct.vn">hcm.tct.vn</option>
+                                    <option selected value="vp.tct.vn">vp.tct.vn</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="col-12 control-label labelTitle mb-2 text-white">Tên đăng nhập</label>
+                            <div class="col-12">
+                                <input type="text" class="form-control rounded-pill" name="tenDNCbt"
+                                       placeholder="Nhập tên đăng nhập"
+                                        onchange="this.value = value.trim();" autocomplete="on"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="col-12 control-label labelTitle mb-2 text-white">Mật khẩu</label>
+                            <div class="col-12">
+<!--                                <input type="password" class="form-control rounded-pill" name="matKhauCbt"-->
+<!--                                       th:placeholder="#{login.matkhau.placeholder}"-->
+<!--                                        onchange="this.value = value.trim();" autocomplete="on"-->
+<!--                                />-->
+                                <div class="input-group border form-control rounded-pill p-0">
+                                    <input type="password" class="form-control password border-0  bg-transparent rounded-pill "
+                                           name="matKhauCbt" autocomplete="on"
+                                           placeholder="Nhập mật khẩu"/>
+                                    <button class="btn btn-outline-secondary  toggle-password" type="button">
+                                        <i class="bi bi-eye-fill fs-6"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-12 control-label labelTitle mb-2 text-white">Mã captcha</label>
+                            <div class="d-inline-flex flex-column">
+                                <input type="text" class="form-control  rounded-pill d-inline-flex" name="captchaCbt"
+                                placeholder="Nhập mã captcha">
+                                <div class="d-inline-flex w-100 justify-content-center align-items-center mt-2">
+                                    <img id="image-capt-cbt" alt="Mã captcha" src="">
+                                    <button type="button" class="btn btn-secondary bi bi-arrow-clockwise ms-2"
+                                            style="height: 37px" id="btnReloadCaptcha"
+                                            hx-on:click="reloadCaptchaCbt()">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style=" display:flex;justify-content: center;margin: 20px 0">
+                        <button
+                                type="button"
+                                class="btn btn-secondary"
+                                hx-on:click="submitCBT()"
+                        >Đăng nhập</button>
+                    </div>
+                </div>
+            </div>
+        <script>
+            /*<![CDATA[*/
+            const modal = document.getElementById('modalCanBoThueLogin');
+            if (modal) {
+                modal.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        submitCBT();
+                    }
+                });
+            }
+            /*]]>*/
+        </script>
+    </div>
+</div>
+
+    <script type="text/javascript">
+
+        (function () {
+            const APP_KEY = 'APP_SINGLE_TAB_ACTIVE';
+            const EXPIRE_TIME = 5000; // 5s
+
+            let TAB_ID = sessionStorage.getItem('TAB_ID');
+            if (!TAB_ID) {
+                TAB_ID = Date.now() + '_' + Math.random();
+                sessionStorage.setItem('TAB_ID', TAB_ID);
+            }
+
+            function showWarning() {
+                document.body.innerHTML = `
+            <div style="
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                height:100vh;
+                font-family:Arial;
+                color:#dc3545;
+                font-size:18px;
+                text-align:center;">
+                <strong>
+                    Tài khoản hiện đang được sử dụng trên một tab khác.<br/>
+                    Vui lòng đóng tab này và tiếp tục sử dụng trên tab đang hoạt động.
+                </strong>
+            </div>`;
+            }
+
+            function now() {
+                return Date.now();
+            }
+
+            function getActiveTab() {
+                try {
+                    return JSON.parse(localStorage.getItem(APP_KEY));
+                } catch {
+                    return null;
+                }
+            }
+
+            const activeTab = getActiveTab();
+
+            // Nếu tồn tại tab khác nhưng đã "chết"
+            if (activeTab && now() - activeTab.lastActive > EXPIRE_TIME) {
+                localStorage.removeItem(APP_KEY);
+            }
+
+            const current = getActiveTab();
+
+            if (current && current.tabId !== TAB_ID) {
+                showWarning();
+                return;
+            }
+
+            // Claim quyền
+            function heartbeat() {
+                localStorage.setItem(APP_KEY, JSON.stringify({
+                    tabId: TAB_ID,
+                    lastActive: now()
+                }));
+            }
+
+            heartbeat();
+            setInterval(heartbeat, 2000);
+
+            // Lắng nghe tab khác
+            window.addEventListener('storage', function (e) {
+                if (e.key === APP_KEY) {
+                    const data = getActiveTab();
+                    if (data && data.tabId !== TAB_ID) {
+                        showWarning();
+                    }
+                }
+            });
+
+            // Khi tab đóng → giải phóng
+            window.addEventListener('beforeunload', function () {
+                const data = getActiveTab();
+                if (data && data.tabId === TAB_ID) {
+                    localStorage.removeItem(APP_KEY);
+                }
+            });
+        })();
+
+		const APP_ENV = "PROD";
+        const STATUS_ERROR = 210;
+        var logout_url = "\/tthc\/";
+        var isLogon = "Y";
+        var locale_language = "vn";
+        // bổ sung
+        var _ssTypeObject = "DN";
+        const MAX_SIZE_HIDE_BUTTON_NOP_XML = null;
+        var _isDLT = false;
+        var _listTinUyQuyen = null;
+        var mst = "0314840592";
+        const typeObject = {
+            CN: "CN",
+            DN: "DN"
+        }
+        document.querySelectorAll('.dropdown-menu .dropdown-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+                // e.preventDefault();
+
+                const selectedLang = this.getAttribute('data-lang');
+                const selectedFlag = this.querySelector('img').getAttribute('src');
+                localStorage.setItem("selectedFlag", selectedFlag);
+                changeLanguage(selectedLang);
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            if (!isLogon) {
+                const flagIcon = document.getElementById("flagIcon");
+                const savedFlag = localStorage.getItem("selectedFlag");
+                if (savedFlag) {
+                    flagIcon.setAttribute("src", savedFlag);
+                }
+            }
+
+
+            const currentPath = window.location.pathname;
+
+            document.querySelectorAll('.nav-link, .dropdown-item').forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (linkHref == null || linkHref == '#' || linkHref == '') return;
+
+                if (linkHref.includes("/login")) return;
+
+                if (currentPath == linkHref) {
+                    link.classList.add('active');
+                    if (link.classList.contains('dropdown-item')) {
+                        const parentLink = link.closest('.dropdown').querySelector('.nav-link');
+                        if (parentLink) parentLink.classList.add('active');
+                    }
+                }
+                link.addEventListener('click', function () {
+                    document.querySelectorAll('.nav-link, .dropdown-item').forEach(link => link.classList.remove('active'));
+                    link.classList.add('active');
+
+                    if (link.classList.contains('dropdown-item')) {
+                        const parentLink = link.closest('.dropdown').querySelector('.nav-link');
+                        if (parentLink) parentLink.classList.add('active');
+                    }
+                });
+            });
+        })
+
+        $(document).ready(function () {
+            $('.ten_dn').each(function () {
+                const originalText = $(this).text();
+                const formattedText = chuanHoaChuoi(originalText);
+                $(this).text(formattedText);
+            });
+        });
+
+        function dangXuat() {
+            fetch(logout_url + 'logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-XSRF-TOKEN': "-RJAs3rIN3Zj--ffp9AhkfxEPEsZOfNx8BwFU33SH0BoqSQNynB3hEKtBkdOzITtn_0V98tyEXIhDsdclC9nYRnlLiRdyx01"
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        // Redirect tới trang login sau khi đăng xuất thành công
+                        window.location.href = logout_url + 'login';
+                    } else {
+                        console.log('Lỗi khi đăng xuất');
+                    }
+                })
+                .catch(error => {
+                    console.log('Lỗi kết nối: ', error);
+                });
+        }
+
+        // window.onbeforeunload = function (e) {
+        //     if (!window.isReload) {
+        //         dangXuat();
+        //     }
+        // }
+        //
+        // document.onkeydown = function (e) {
+        //     e = e || window.event;
+        //     var key = e.keyCode;
+        //
+        //     // F5
+        //     if (key == 116) {
+        //         window.isReload = true;
+        //     }
+        //
+        //     // Ctrl+R
+        //     if (key == 82 && (e.ctrlKey || e.metaKey)) {
+        //         window.isReload = true;
+        //     }
+        // };
+
+
+        function changeLanguage(language) {
+            $.ajax({
+                type: 'POST',
+                url: logout_url + 'changeLanguage',
+                data: {
+                    lang: language
+                },
+                success: function (data) {
+                    window.location.reload();
+                },
+                error: function (xhr, error) {
+
+                }
+            });
+        }
+
+        function dangNhap() {
+            window.location.href = logout_url + "login";
+        }
+
+        function dangKy(val) {
+            $.ajax({
+                type: 'GET',
+                url: logout_url + 'homelogin/dangky',
+                data: {
+                    doiTuong: val
+                },
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('X-XSRF-TOKEN', "-RJAs3rIN3Zj--ffp9AhkfxEPEsZOfNx8BwFU33SH0BoqSQNynB3hEKtBkdOzITtn_0V98tyEXIhDsdclC9nYRnlLiRdyx01");
+                },
+                success: function (data) {
+                    // const response = JSON.parse(data);
+                    if (data.status = '200') {
+                        window.location.href = data.redirectUrl;
+                    } else {
+                        Lobibox.notify('error', {
+                            size: 'mini',
+                            position: "top right",
+                            sound: false,
+                            title: 'Thông báo',
+                            delay: 7000,
+                            icon: false,
+                            msg: data.message
+                        });
+                        return;
+                    }
+                }, error: function (xhr, error) {
+                    Lobibox.notify('error', {
+                        size: 'mini',
+                        position: "top right",
+                        sound: false,
+                        title: 'Thông báo',
+                        delay: 7000,
+                        icon: false,
+                        msg: "\u0110\u00E3 c\u00F3 l\u1ED7i h\u1EC7 th\u1ED1ng x\u1EA3y ra!"
+                    });
+                    return;
+                }
+            });
+        }
+
+        function getdangKy() {
+            $("#inputDoiTuong").val('dangky');
+            $('#modalChonDoiTuong').modal('show');
+        }
+
+        function processChonDT(type, val) {
+            if (val == 'dangnhap') {
+                $("#modalLdap").modal('show');
+                $('#modalChonDoiTuong').modal('hide');
+                $("input[name='ldap']").val(type);
+                let tendnCn = $("#tendnLdap").text();
+                if (type === 'CN') {
+                    if (!tendnCn.includes("/CCCD")) {
+                        $("#tendnLdap").text(tendnCn + '/CCCD');
+                    }
+                } else {
+                    if (tendnCn.includes("/CCCD")) {
+                        $("#tendnLdap").text(tendnCn.replaceAll("/CCCD", ''));
+                    }
+                }
+            }
+            if (val == 'dangky') {
+                dangKy(type)
+            }
+        }
+
+        function chuanHoaChuoi(str) {
+            str = str.toLowerCase();
+            const words = str.split(" ");
+            let result = "";
+
+            for (let word of words) {
+                if (word.trim() !== "") {
+                    let firstCharIndex = 0;
+
+                    while (firstCharIndex < word.length && !/[a-zA-ZÀ-Ỵà-ỵ]/.test(word[firstCharIndex])) {
+                        firstCharIndex++;
+                    }
+
+                    if (firstCharIndex < word.length) {
+                        result += word.slice(0, firstCharIndex) +
+                            word.charAt(firstCharIndex).toUpperCase() +
+                            word.slice(firstCharIndex + 1) + " ";
+                    } else {
+                        result += word + " ";
+                    }
+                }
+            }
+
+            return result.trim();
+        }
+    </script>
+
+			<!--END Header-->
+			<!--MENU-->
+			<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav w-100 d-flex justify-content-start">
+                <li class="nav-item">
+                    <a class="nav-link" href="/tthc/home?isBackStep=Y"><img
+                            src="/tthc/images/home-115eefe7287361ead3bc43015c6373dc.svg" alt=""></a>
+                </li>
+                <li class="nav-item">
+
+                    <!-- Parent Menu -->
+                    <a class="nav-link" href="/tthc/thu-tuc-hanh-chinh"
+                       role="button" aria-expanded="false">
+                        <span>Thủ tục hành chính</span>
+                    </a>
+
+                    <!-- Dropdown Menu for Children -->
+                    
+                </li>
+                <li class="nav-item">
+
+                    <!-- Parent Menu -->
+                    <a class="nav-link" href="/tthc/dich-vu-khac"
+                       role="button" aria-expanded="false">
+                        <span>Dịch vụ khác</span>
+                    </a>
+
+                    <!-- Dropdown Menu for Children -->
+                    
+                </li>
+                <li class="nav-item dropdown">
+
+                    <!-- Parent Menu -->
+                    <a class="nav-link dropdown-toggle" href=""
+                       role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                        <span>Tra cứu hồ sơ</span>
+                    </a>
+
+                    <!-- Dropdown Menu for Children -->
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item"
+                               href="/tthc/tchs"
+                               style="transition: background-color 0.2s; border-radius: 4px;"
+                               onmouseover="this.style.backgroundColor='#e3f2fd'; this.style.color='#007bff';"
+                               onmouseout="this.style.backgroundColor=''; this.style.color='';"
+                            >Tra cứu hồ sơ đã nộp</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                               href="/tthc/tchs/draft"
+                               style="transition: background-color 0.2s; border-radius: 4px;"
+                               onmouseover="this.style.backgroundColor='#e3f2fd'; this.style.color='#007bff';"
+                               onmouseout="this.style.backgroundColor=''; this.style.color='';"
+                            >Tra cứu hồ sơ lưu tạm</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                               href="/tthc/tchs/pa"
+                               style="transition: background-color 0.2s; border-radius: 4px;"
+                               onmouseover="this.style.backgroundColor='#e3f2fd'; this.style.color='#007bff';"
+                               onmouseout="this.style.backgroundColor=''; this.style.color='';"
+                            >Tra cứu phản ánh</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                               href="/tthc/tchs/ho-so-nha-dat"
+                               style="transition: background-color 0.2s; border-radius: 4px;"
+                               onmouseover="this.style.backgroundColor='#e3f2fd'; this.style.color='#007bff';"
+                               onmouseout="this.style.backgroundColor=''; this.style.color='';"
+                            >Tra cứu TTHC đất đai</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                               href="/tthc/tchs/thong-bao-lptb"
+                               style="transition: background-color 0.2s; border-radius: 4px;"
+                               onmouseover="this.style.backgroundColor='#e3f2fd'; this.style.color='#007bff';"
+                               onmouseout="this.style.backgroundColor=''; this.style.color='';"
+                            >Tra cứu thông báo LPTB</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+
+                    <!-- Parent Menu -->
+                    <a class="nav-link" href="/tthc/danh-gia"
+                       role="button" aria-expanded="false">
+                        <span>Đánh giá chất lượng dịch vụ</span>
+                    </a>
+
+                    <!-- Dropdown Menu for Children -->
+                    
+                </li>
+                <li class="nav-item">
+
+                    <!-- Parent Menu -->
+                    <a class="nav-link" href="/tthc/tintuc"
+                       role="button" aria-expanded="false">
+                        <span>Tin Tức</span>
+                    </a>
+
+                    <!-- Dropdown Menu for Children -->
+                    
+                </li>
+                <li class="nav-item">
+
+                    <!-- Parent Menu -->
+                    <a class="nav-link" href=""
+                       role="button" aria-expanded="false">
+                        <span>Giới thiệu</span>
+                    </a>
+
+                    <!-- Dropdown Menu for Children -->
+                    
+                </li>
+                <li class="nav-item">
+
+                    <!-- Parent Menu -->
+                    <a class="nav-link" href="/tthc/trogiup/views"
+                       role="button" aria-expanded="false">
+                        <span>Trợ giúp</span>
+                    </a>
+
+                    <!-- Dropdown Menu for Children -->
+                    
+                </li>
+            </ul>
+            <!--				CBT-->
+            
+        </div>
+    </div>
+</nav>
+			<!--END MENU-->
+			<main class="flex-grow-1">
+				<div class="container my-1">
+    <div>
+    <div id="menu_sso">
+        <section class="statistics-section mt-4 container">
+            <h2 class="mb-4 d-flex align-items-center title_menu">
+                <img id="logo_ca_nhan" style="margin-top: -5px" src="/tthc/images/Vector-d6e9114bd465a35585ea6a26d9ca1241.png" class="me-2"/>
+                <div>TỔ CHỨC</div>
+            </h2>
+            
+            <input id="checkTypeObject" type="hidden" value="DN">
+            <input type="hidden" id="checkDvcKhac" value=""/>
+            <img id="logo_ca_nhan" style="display:none; margin-top: -5px" src="/tthc/images/user-8db9e772b0e4ef1a56cccf6bfc57c44b.png" class="me-2"/>
+            <div class="h-100 content_menu menuSelectSSO">
+                <div id="tab_menu" class="tab">
+                </div>
+                <div id="content_menu">
+                </div>
+            </div>
+            <div class="modal-body" style="height: 700px; display: none" id="iframeRenderSSO">
+                <iframe style="height: 100%; width: 100%;" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; local-network-access"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="w-100 d-flex justify-content-center mt-3">
+                    
+                    <button type="button" class="btn btn-primary" onclick="backSSO()">Quay Lại</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script type="text/javascript">
+        let data = [{"title":"N\u1ED9p t\u1EDD khai","type":"CN","orderBy":1,"data":[{"title":"N\u1ED9p t\u1EDD khai phi c\u1EA5u tr\u00FAc","icon":"nop_to_khai_phi_cau_truc_cn.png","moduleID":"10205","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"N\u1ED9p t\u1EDD khai t\u1EEB HTKK","icon":"nop_to_khai_tu_htkk_cn.png","moduleID":"10204","matk":null,"tthc":null,"sso":"Y","uri":null}]},{"title":"L\u1EC7 ph\u00ED tr\u01B0\u1EDBc b\u1EA1","type":"CN","orderBy":2,"data":[{"title":"Tra c\u1EE9u t\u1EDD khai l\u1EC7 ph\u00ED tr\u01B0\u1EDBc b\u1EA1","icon":"tra_cuu_to_khai_le_phi_truoc_ba_cn.png","moduleID":"10402","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u t\u1EDD khai l\u1EC7 ph\u00ED tr\u01B0\u1EDBc b\u1EA1","icon":"tra_cuu_chung_tu_le_phi_truoc_ba_cn.png","moduleID":"10403","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u b\u1EA3ng gi\u00E1 LPTB","icon":"tra_cuu_bang_gia_lptb_cn.png","moduleID":"10404","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"N\u1ED9p thu\u1EBF","icon":"nop_thue_cn.png","moduleID":"10406","matk":null,"tthc":null,"sso":"Y","uri":null}]},{"title":"Quy\u1EBFt to\u00E1n thu\u1EBF","type":"CN","orderBy":3,"data":[{"title":"Tra c\u1EE9u ph\u1EA3n \u00E1nh QTT g\u1EEDi \u0111\u1EBFn CQT","icon":"tra_cuu_phan_anh_qtt_gui_cqt_cn.png","moduleID":"10508","matk":null,"tthc":null,"sso":"Y","uri":null}]},{"title":"N\u1ED9p thu\u1EBF","type":"CN","orderBy":4,"data":[{"title":"N\u1ED9p thu\u1EBF","icon":"nop_thue_cn.png","moduleID":null,"matk":null,"tthc":null,"sso":"P","uri":"nopthue-truyvan"},{"title":"N\u1ED9p thu\u1EBF thay","icon":"nop_thue_cn.png","moduleID":null,"matk":null,"tthc":null,"sso":"P","uri":"nopthay-truyvan"},{"title":"L\u1EADp GNT","icon":"lap_gnt_cn.png","moduleID":"10902","matk":null,"tthc":null,"sso":"P","uri":"nopthue-tam-nop"},{"title":"L\u1EADp GNT n\u1ED9p thay","icon":"lap_gnt_nop_thay_cn.png","moduleID":"10903","matk":null,"tthc":null,"sso":"P","uri":"nopthue-thay-tam-nop"},{"title":"Li\u00EAn k\u1EBFt\/ H\u1EE7y li\u00EAn k\u1EBFt t\u00E0i kho\u1EA3n","icon":"lap_gnt_cn.png","moduleID":"10904","matk":null,"tthc":null,"sso":"N","uri":"lienket-nganhang\/chonnganhang"}]},{"title":"Tra c\u1EE9u","type":"CN","orderBy":5,"data":[{"title":"Tra c\u1EE9u h\u1ED3 s\u01A1 \u0110KT","icon":"tra_cuu_ho_so_dkt_cn.png","moduleID":"10206","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u t\u1EDD khai","icon":"tra_cuu_to_khai_cn.png","moduleID":"10207","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u QTT","icon":"tra_cuu_qtt_cn.png","moduleID":"10208","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u \u0111\u1EC1 ngh\u1ECB b\u00F9 tr\u1EEB kho\u1EA3n n\u1ED9p th\u1EEBa","icon":"tra_cuu_de_nghi_nop_thua_khoan_bu_tru_cn.png","moduleID":"10209","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u h\u1ED3 s\u01A1 05TH","icon":"tra_cuu_ho_so_05th_cn.png","moduleID":"10504","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u t\u1EDD khai 02TH","icon":"tra_cuu_to_khai_02th_cn.png","moduleID":"10604","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u th\u00F4ng b\u00E1o","icon":"tra_cuu_thong_bao_cn.png","moduleID":"10607","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u NPT","icon":"tra_cuu_npt_cn.png","moduleID":"10609","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u DKT","icon":"tra_cuu_dkt_cn.png","moduleID":"10704","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u \u0111\u1ECBa ch\u1EC9 ng\u00E2n h\u00E0ng","icon":"tra_cuu_dia_chi_ngan_hang_cn.png","moduleID":"10705","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u ngh\u0129a v\u1EE5 thu\u1EBF","icon":"tra_cuu_nghia_vu_thue_cn.png","moduleID":"10905","matk":null,"tthc":null,"sso":"N","uri":"tracuu-nvt\/init"},{"title":"Tra c\u1EE9u ch\u1EE9ng t\u1EEB","icon":"tra_cuu_chung_tu_cn.png","moduleID":"102972","matk":null,"tthc":null,"sso":"N","uri":"tracuu-chungtu\/init"},{"title":"Tra c\u1EE9u h\u1ED3 s\u01A1 l\u01B0u t\u1EA1m","icon":"tra_cuu_ho_so_luu_tam_cn.png","moduleID":"102974","matk":null,"tthc":null,"sso":"Y","uri":null}]},{"title":"N\u1ED9p thu\u1EBF","type":"DN","orderBy":1,"data":[{"title":"L\u1EADp GNT","icon":"lap_gnt_dn.png","moduleID":"330407","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"L\u1EADp GNT n\u1ED9p thay","icon":"lap_gnt_nop_thay_dn.png","moduleID":"330409","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Ph\u00EA duy\u1EC7t GNT","icon":"phe_duyet_gnt_dn.png","moduleID":"330406","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u GNT","icon":"tra_cuu_gnt_dn.png","moduleID":"330410","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u th\u00F4ng b\u00E1o","icon":"tra_cuu_thong_bao_dn.png","moduleID":"330411","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u h\u1ED3 s\u01A1 \u0111\u1EC1 ngh\u1ECB tra so\u00E1t","icon":"tra_cuu_ho_so_de_nghi_tra_soat_dn.png","moduleID":"330413","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u \u0111\u1EC1 ngh\u1ECB b\u00F9 tr\u1EEB kho\u1EA3n n\u1ED9p th\u1EEBa","icon":"tra_cuu_de_nghi_bu_tru_khoan_nop_thua_dn.png","moduleID":"330422","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"N\u1ED9p danh s\u00E1ch chi ti\u1EBFt thu\u1EBF TNCN XML","icon":"nop_danh_sach_chi_tiet_thue_tncn_xml_dn.png","moduleID":"330425","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u danh s\u00E1ch chi ti\u1EBFt thu\u1EBF TNCN","icon":"tra_cuu_danh_sach_chi_tiet_thue_tncn_dn.png","moduleID":"330426","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u gi\u1EA5y \u0111\u1EC1 ngh\u1ECB x\u00E1c nh\u1EADn","icon":"tra_cuu_chung_tu_cn.png","moduleID":"330418","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"N\u1ED9p b\u1EA3ng k\u00EA chi ti\u1EBFt thu\u1EBF TM\u0110T XML","icon":"nop_danh_sach_chi_tiet_thue_tncn_xml_dn.png","moduleID":"330427","matk":null,"tthc":null,"sso":"Y","uri":null}]},{"title":"H\u1ED3 s\u01A1 khai thu\u1EBF kh\u00E1c","type":"DN","orderBy":3,"data":[{"title":"Tra c\u1EE9u ngh\u0129a v\u1EE5 k\u00EA khai","icon":"tra_cuu_nghia_vu_ke_khai_dn.png","moduleID":"330209","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u ngh\u0129a v\u1EE5 k\u00EA khai theo th\u00E1ng","icon":"tra_cuu_nghia_vu_ke_khai_theo_thang_dn.png","moduleID":"330211","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u t\u1EDD khai","icon":"tra_cuu_to_khai_dn.png","moduleID":"360103","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u th\u00F4ng b\u00E1o","icon":"tra_cuu_thong_bao_dn.png","moduleID":"360102","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"G\u1EEDi th\u00F4ng b\u00E1o gi\u00E1 b\u00E1n oto xe m\u00E1y","icon":"gui_thong_bao_gia_ban_oto_xe_may_dn.png","moduleID":"330213","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u th\u00F4ng b\u00E1o gi\u00E1 b\u00E1n oto xe m\u00E1y c\u1EE7a h\u00E3ng","icon":"tra_cuu_thong_bao_gia_ban_oto_xe_may_cua_hang_dn.png","moduleID":"330214","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"G\u1EEDi danh s\u00E1ch t\u00E0i kho\u1EA3n ng\u00E2n h\u00E0ng","icon":"ke_khai_ho_so_05th_cn.png","moduleID":"330212","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"K\u00EA khai tr\u1EF1c tuy\u1EBFn danh s\u00E1ch t\u00E0i kho\u1EA3n ng\u00E2n h\u00E0ng","icon":"nop_to_khai_05th_tu_htkk_cn.png","moduleID":"330215","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u danh s\u00E1ch t\u00E0i kho\u1EA3n ng\u00E2n h\u00E0ng","icon":"ke_khai_va_nop_ho_so_dkt_cn.png","moduleID":"360115","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u th\u00F4ng b\u00E1o v\u1EC1 TKNH","icon":"thay_doi_thong_tin_cn.png","moduleID":"360114","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u t\u1EDD khai b\u1ED5 sung sai l\u1ED7i s\u1ED1 h\u1ECDc","icon":"tra_cuu_ho_so_dnht_dn_huy_ho_so_dnht_dn.png","moduleID":"390005122","matk":null,"tthc":null,"sso":"Y","uri":null}]},{"title":"Ho\u00E0n thu\u1EBF","type":"DN","orderBy":4,"data":[{"title":"Tra c\u1EE9u h\u1ED3 s\u01A1 \u0110NHT\/\u0110N h\u1EE7y h\u1ED3 s\u01A1 \u0110NHT","icon":"tra_cuu_ho_so_dnht_dn_huy_ho_so_dnht_dn.png","moduleID":"330302","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u th\u00F4ng b\u00E1o ho\u00E0n thu\u1EBF","icon":"tra_cuu_thong_bao_hoan_thue_dn.png","moduleID":"330303","matk":null,"tthc":null,"sso":"Y","uri":null}]},{"title":"Tra c\u1EE9u","type":"DN","orderBy":5,"data":[{"title":"Th\u00F4ng tin ngh\u0129a v\u1EE5","icon":"thong_tin_nghia_vu_dn.png","moduleID":"360106","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Sao k\u00EA giao d\u1ECBch","icon":"sao_ke_giao_dich_dn.png","moduleID":"360107","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Th\u00F4ng b\u00E1o c\u1EE7a CQT","icon":"thong_bao_cua_cqt_dn.png","moduleID":"360109","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u NPT","icon":"tra_cuu_npt_dn.png","moduleID":"360111","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u \u0110KT","icon":"tra_cuu_dkt_dn.png","moduleID":"360112","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u GTBS","icon":"tra_cuu_gtbs_dn.png","moduleID":"360113","matk":null,"tthc":null,"sso":"Y","uri":null}]},{"title":"Chu\u1EA9n ho\u00E1 d\u1EEF li\u1EC7u MST c\u00E1 nh\u00E2n","type":"DN","orderBy":6,"data":[{"title":"Tra c\u1EE9u danh s\u00E1ch NNT c\u1EA7n r\u00E0 so\u00E1t qua CQCT","icon":"tra_cuu_danh_sach_nnt_can_ra_soat_qua_cqct_dn.png","moduleID":"330901","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"Tra c\u1EE9u danh s\u00E1ch NPT c\u1EA7n r\u00E0 so\u00E1t qua CQCT","icon":"tra_cuu_danh_sach_npt_can_ra_soat_qua_cqct_dn.png","moduleID":"330902","matk":null,"tthc":null,"sso":"Y","uri":null},{"title":"B\u00E1o c\u00E1o th\u1ED1ng k\u00EA s\u1ED1 l\u01B0\u1EE3ng","icon":"bao_cao_thong_ke_so_luong_dn.png","moduleID":"330903","matk":null,"tthc":null,"sso":"Y","uri":null}]}];
+        var base_url = "\/tthc\/";
+        const dataMenu = [
+            // {
+            //     title: "Khai thuế",
+            //     data: [
+            //         {
+            //             title: "Khai thuế cho thuê tài sản",
+            //             icon: "khai_thue_cho_thue_tai_san_cn.png",
+            //             moduleID: "10201"
+            //         },
+            //         {
+            //             title: "Khai thuế CNKD",
+            //             icon: "khai_thue_cnkd_cn.png",
+            //             moduleID: "10202"
+            //         },
+            //         {
+            //             title: "Khai thuế tiền lương, tiền công",
+            //             icon: "khai_thue_tien_luong_tien_cong_cn.png",
+            //             moduleID: "10203"
+            //         },
+            //         {
+            //             title: "Khai thuế TNCN khác",
+            //             icon: "khai_thue_tncn_khac_cn.png",
+            //             moduleID: "102868"
+            //         },
+            //         {
+            //             title: "Tờ khai SDDPNN",
+            //             icon: "to_khai_sddpnn_cn.png",
+            //             moduleID: "102869"
+            //         },
+            //         {
+            //             title: "Tờ khai tem điện tử",
+            //             icon: "to_khai_tem_dien_tu_cn.png",
+            //             moduleID: "102968"
+            //         }
+            //     ],
+            //     type: "CN"
+            // },
+            {
+                title: "Nộp tờ khai",
+                data: [
+                    // {
+                    //     title: "Nộp tờ khai từ HTKK",
+                    //     icon: "nop_to_khai_tu_htkk_cn.png",
+                    //     moduleID: "10204"
+                    // },
+                    {
+                        title: "Nộp tờ khai phi cấu trúc",
+                        icon: "nop_to_khai_phi_cau_truc_cn.png",
+                        moduleID: "10205"
+                    }
+                ],
+                type: "CN"
+            },
+            {
+                title: "Lệ phí trước bạ",
+                data: [
+                    {
+                        title: "Kê khai LPTB",
+                        icon: "ke_khai_lptb_cn.png",
+                        moduleID: "10401"
+                    },
+                    {
+                        title: "Tra cứu tờ khai lệ phí trước bạ",
+                        icon: "tra_cuu_to_khai_le_phi_truoc_ba_cn.png",
+                        moduleID: "10402"
+                    },
+                    {
+                        title: "Tra cứu chứng từ lệ phí trước bạ",
+                        icon: "tra_cuu_chung_tu_le_phi_truoc_ba_cn.png",
+                        moduleID: "10403"
+                    },
+                    {
+                        title: "Tra cứu bảng giá LPTB",
+                        icon: "tra_cuu_bang_gia_lptb_cn.png",
+                        moduleID: "10404"
+                    },
+                    {
+                        title: "Nộp thuế",
+                        icon: "nop_thue_cn.png",
+                        moduleID: "10406"
+                    }
+                ],
+                type: "CN"
+            },
+            {
+                title: "Quyết toán thuế",
+                data: [
+                    // {
+                    //     title: "Hỗ trợ quyết toán thuế TNCN",
+                    //     icon: "ho_tro_quyet_toan_thue_tncn_cn.png",
+                    //     moduleID: "10500"
+                    // },
+                    // {
+                    //     title: "Kê khai trực tuyến",
+                    //     icon: "ke_khai_truc_tuyen_cn.png",
+                    //     moduleID: "10501"
+                    // },
+                    // {
+                    //     title: "Gửi tờ khai quyết toán thuế",
+                    //     icon: "gui_to_khai_quyet_toan_thue_cn.png",
+                    //     moduleID: "10503"
+                    // },
+                    // {
+                    //     title: "Gửi giải trình bổ sung",
+                    //     icon: "gui_giai_trinh_bo_sung_cn.png",
+                    //     moduleID: "10506"
+                    // },
+                    {
+                        title: "Tra cứu phản ánh QTT gửi đến CQT",
+                        icon: "tra_cuu_phan_anh_qtt_gui_cqt_cn.png",
+                        moduleID: "10508"
+                    }
+                ],
+                type: "CN"
+            },
+            // {
+            //     title: "Đăng ký thuế",
+            //     data: [
+            //         {
+            //             title: "Kê khai hồ sơ 05TH",
+            //             icon: "ke_khai_ho_so_05th_cn.png",
+            //             moduleID: "10601"
+            //         },
+            //         // {
+            //         //     title: "Nộp tờ khai 05TH từ HTKK",
+            //         //     icon: "nop_to_khai_05th_tu_htkk_cn.png",
+            //         //     moduleID: "10603"
+            //         // },
+            //         {
+            //             title: "Kê khai và nộp hồ sơ ĐKT",
+            //             icon: "ke_khai_va_nop_ho_so_dkt_cn.png",
+            //             moduleID: "10605"
+            //         },
+            //         {
+            //             title: "Thay đổi thông tin",
+            //             icon: "thay_doi_thong_tin_cn.png",
+            //             moduleID: "10610"
+            //         }
+            //     ],
+            //     type: "CN"
+            // },
+            {
+                title: "Nộp thuế",
+                data: [
+                    {
+                        title: "Lập giấy đề nghị bù trừ khoản nộp thừa",
+                        icon: "lap_giay_de_nghi_bu_tru_khoan_nop_thua_cn.png",
+                        moduleID: "10901"
+                    },
+                    {
+                        title: "Lập GNT",
+                        icon: "lap_gnt_cn.png",
+                        moduleID: "10902"
+                    },
+                    {
+                        title: "Lập GNT nộp thay",
+                        icon: "lap_gnt_nop_thay_cn.png",
+                        moduleID: "10903"
+                    }
+                ],
+                type: "CN"
+            },
+            {
+                title: "Tra cứu",
+                data: [
+                    {
+                        title: "Tra cứu hồ sơ ĐKT",
+                        icon: "tra_cuu_ho_so_dkt_cn.png",
+                        moduleID: "10206"
+                    },
+                    {
+                        title: "Tra cứu tờ khai",
+                        icon: "tra_cuu_to_khai_cn.png",
+                        moduleID: "10207"
+                    },
+                    {
+                        title: "Tra cứu QTT",
+                        icon: "tra_cuu_qtt_cn.png",
+                        moduleID: "10208"
+                    },
+                    {
+                        title: "Tra cứu đề nghị bù trừ khoản nộp thừa",
+                        icon: "tra_cuu_de_nghi_nop_thua_khoan_bu_tru_cn.png",
+                        moduleID: "10209"
+                    },
+                    {
+                        title: "Tra cứu hồ sơ 05TH",
+                        icon: "tra_cuu_ho_so_05th_cn.png",
+                        moduleID: "10504"
+                    },
+                    {
+                        title: "Tra cứu tờ khai 02TH",
+                        icon: "tra_cuu_to_khai_02th_cn.png",
+                        moduleID: "10604"
+                    },
+                    // {
+                    //     title: "Tra cứu tờ khai",
+                    //     icon: "tra_cuu_to_khai_cn.png",
+                    //     moduleID: "10207"
+                    // },
+                    {
+                        title: "Tra cứu thông báo",
+                        icon: "tra_cuu_thong_bao_cn.png",
+                        moduleID: "10607"
+                    },
+                    {
+                        title: "Tra cứu NPT",
+                        icon: "tra_cuu_npt_cn.png",
+                        moduleID: "10609"
+                    },
+                    {
+                        title: "Tra cứu DKT",
+                        icon: "tra_cuu_dkt_cn.png",
+                        moduleID: "10704"
+                    },
+                    {
+                        title: "Tra cứu địa chỉ ngân hàng",
+                        icon: "tra_cuu_dia_chi_ngan_hang_cn.png",
+                        moduleID: "10705"
+                    },
+                    {
+                        title: "Tra cứu nghĩa vụ thuế",
+                        icon: "tra_cuu_nghia_vu_thue_cn.png",
+                        moduleID: "10905"
+                    },
+                    {
+                        title: "Tra cứu chứng từ",
+                        icon: "tra_cuu_chung_tu_cn.png",
+                        moduleID: "102972"
+                    },
+                    {
+                        title: "Tra cứu hồ sơ lưu tạm",
+                        icon: "tra_cuu_ho_so_luu_tam_cn.png",
+                        moduleID: "102974"
+                    }
+                ],
+                type: "CN"
+            },
+            {
+                title: "Nộp thuế",
+                data: [
+                    {
+                        title: "Lập GNT",
+                        icon: "lap_gnt_dn.png",
+                        moduleID: "330407"
+                    },
+                    {
+                        title: "Lập GNT nộp thay",
+                        icon: "lap_gnt_nop_thay_dn.png",
+                        moduleID: "330409"
+                    },
+                    {
+                        title: "Phê duyệt GNT",
+                        icon: "phe_duyet_gnt_dn.png",
+                        moduleID: "330406"
+                    },
+                    {
+                        title: "Tra cứu GNT",
+                        icon: "tra_cuu_gnt_dn.png",
+                        moduleID: "330410"
+                    },
+                    {
+                        title: "Tra cứu thông báo",
+                        icon: "tra_cuu_thong_bao_dn.png",
+                        moduleID: "330411"
+                    },
+                    {
+                        title: "Lập hồ sơ đề nghị tra soát",
+                        icon: "lap_ho_so_de_nghi_tra_soat_dn.png",
+                        moduleID: "330412"
+                    },
+                    {
+                        title: "Tra cứu hồ sơ đề nghị tra soát",
+                        icon: "tra_cuu_ho_so_de_nghi_tra_soat_dn.png",
+                        moduleID: "330413"
+                    },
+                    {
+                        title: "Lập giấy đề nghị xác nhận",
+                        icon: "lap_giay_de_nghi_xac_nhan_dn.png",
+                        moduleID: "330417"
+                    },
+                    {
+                        title: "Đề nghị bù trừ khoản nộp thừa",
+                        icon: "de_nghi_bu_tru_khoan_nop_thua_dn.png",
+                        moduleID: "330421"
+                    },
+                    {
+                        title: "Tra cứu đề nghị bù trừ khoản nộp thừa",
+                        icon: "tra_cuu_de_nghi_bu_tru_khoan_nop_thua_dn.png",
+                        moduleID: "330422"
+                    },
+                    {
+                        title: "Nộp danh sách chi tiết thuế TNCN XML",
+                        icon: "nop_danh_sach_chi_tiet_thue_tncn_xml_dn.png",
+                        moduleID: "330425"
+                    },
+                    {
+                        title: "Tra cứu danh sách chi tiết thuế TNCN",
+                        icon: "tra_cuu_danh_sach_chi_tiet_thue_tncn_dn.png",
+                        moduleID: "330426"
+                    },
+                    {
+                        title: "Tra cứu giấy đề nghị xác nhận",
+                        icon: "tra_cuu_chung_tu_cn.png",
+                        moduleID: "330418"
+                    },
+                    /*TODO: phan chua uat*/
+                    // {
+                    //     title: "Nộp bảng kê chi tiết thuế TMĐT XML",
+                    //     icon: "nop_danh_sach_chi_tiet_thue_tncn_xml_dn.png",
+                    //     moduleID: "330427"
+                    // },
+                ],
+                type: "DN"
+            },
+            {
+                title: "Đăng ký thuế",
+                data: [
+                    // {
+                    //     title: "Đăng ký thuế/thay đổi thông tin cá nhân qua CQCT",
+                    //     icon: "dang_ky_thue_thay_doi_thong_tin_ca_nhan_qua_cqct_dn.png",
+                    //     moduleID: "390001"
+                    // },
+                    // {
+                    //     title: "Chấm dứt hiệu lực MST",
+                    //     icon: "cham_dut_hieu_luc_mst_dn.png",
+                    //     moduleID: "390006"
+                    // },
+                    // {
+                    //     title: "Tạm ngừng, khôi phục tạm ngừng trước thời hạn",
+                    //     icon: "tam_ngung_khoi_phuc_tam_ngung_truoc_thoi_han_dn.png",
+                    //     moduleID: "390023"
+                    // },
+                    // {
+                    //     title: "Đăng ký cấp MST nộp thay",
+                    //     icon: "dang_ky_cap_mst_nop_thay_dn.png",
+                    //     moduleID: "390022"
+                    // },
+                    // {
+                    //     title: "Khôi phục MST",
+                    //     icon: "khoi_phuc_mst_dn.png",
+                    //     moduleID: "390005105"
+                    // },
+                    {
+                        title: "Tra cứu hồ sơ",
+                        icon: "tra_cuu_ho_so_dn.png",
+                        moduleID: "390002"
+                    },
+                    // {
+                    //     title: "Cấp lại GCN đăng ký thuế",
+                    //     icon: "cap_lai_gcn_dang_ky_thue_dn.png",
+                    //     moduleID: "390020"
+                    // },
+                    {
+                        title: "Nộp tờ khai 20TH từ HTKK",
+                        icon: "nop_to_khai_20th_tu_htkk_dn.png",
+                        moduleID: "390010"
+                    },
+                    {
+                        title: "Nộp tờ khai 05TH từ HTKK",
+                        icon: "nop_to_khai_05th_tu_htkk_dn.png",
+                        moduleID: "390072"
+                    },
+                    // {
+                    //     title: "Thay đổi thông tin",
+                    //     icon: "thay_doi_thong_tin_dn.png",
+                    //     moduleID: "390011"
+                    // },
+                    // {
+                    //     title: "Đăng ký cấp MST UNT",
+                    //     icon: "dang_ky_cap_mst_unt_dn.png",
+                    //     moduleID: "390021"
+                    // },
+                    {
+                        title: "Tra cứu hồ sơ lưu tạm",
+                        icon: "tra_cuu_ho_so_luu_tam_dn.png",
+                        moduleID: "390071"
+                    }
+                ],
+                type: "DN"
+            },
+            {
+                title: "Hồ sơ khai thuế khác",
+                data: [
+                    {
+                        title: "Nộp XML",
+                        icon: "nop_xml_dn.png",
+                        moduleID: "330203",
+                        tthc: "9.999999"
+                    },
+                    {
+                        title: "Kê khai trực tuyến",
+                        icon: "ke_khai_truc_tuyen_cn.png",
+                        moduleID: "330202",
+                        tthc: "9.999999"
+                    },
+                    {
+                        title: "Tra cứu nghĩa vụ kê khai",
+                        icon: "tra_cuu_nghia_vu_ke_khai_dn.png",
+                        moduleID: "330209"
+                    },
+                    {
+                        title: "Tra cứu nghĩa vụ kê khai theo tháng",
+                        icon: "tra_cuu_nghia_vu_ke_khai_theo_thang_dn.png",
+                        moduleID: "330211"
+                    },
+                    {
+                        title: "Nộp tờ khai phi cấu trúc",
+                        icon: "nop_to_khai_phi_cau_truc_dn.png",
+                        moduleID: "3302010"
+                    },
+                    {
+                        title: "Trình ký",
+                        icon: "trinh_ky_dn.png",
+                        moduleID: "330204"
+                    },
+                    {
+                        title: "Tra cứu tờ khai",
+                        icon: "tra_cuu_to_khai_dn.png",
+                        moduleID: "360103"
+                    },
+                    {
+                        title: "Tra cứu thông báo",
+                        icon: "tra_cuu_thong_bao_dn.png",
+                        moduleID: "360102"
+                    },
+                    {
+                        title: "Gửi thông báo giá bán oto xe máy",
+                        icon: "gui_thong_bao_gia_ban_oto_xe_may_dn.png",
+                        moduleID: "330213"
+                    },
+                    {
+                        title: "Tra cứu thông báo giá bán oto xe máy của hãng",
+                        icon: "tra_cuu_thong_bao_gia_ban_oto_xe_may_cua_hang_dn.png",
+                        moduleID: "330214"
+                    },
+                    {
+                        title: "Nộp tờ khai 05/QTT-TNCN từ HTKK",
+                        icon: "nop_to_khai_05_qtt_tncn_tu_htkk_dn.png",
+                        moduleID: "330221"
+                    },
+                    {
+                        title: "Tra cứu tờ khai lưu tạm",
+                        icon: "tra_cuu_to_khai_luu_tam_dn.png",
+                        moduleID: "330222"
+                    },
+                    {
+                        title: "Gửi danh sách tài khoản ngân hàng",
+                        icon: "ke_khai_ho_so_05th_cn.png",
+                        moduleID: "330212"
+                    },
+                    {
+                        title: "Kê khai trực tuyến danh sách tài khoản ngân hàng",
+                        icon: "nop_to_khai_05th_tu_htkk_cn.png",
+                        moduleID: "330215"
+                    },
+                    {
+                        title: "Tra cứu danh sách tài khoản ngân hàng",
+                        icon: "ke_khai_va_nop_ho_so_dkt_cn.png",
+                        moduleID: "360115"
+                    },
+                    {
+                        title: "Tra cứu thông báo về TKNH",
+                        icon: "thay_doi_thong_tin_cn.png",
+                        moduleID: "360114"
+                    },
+                    {
+                        title: "Tra cứu tờ khai bổ sung sai lỗi số học",
+                        icon: "tra_cuu_ho_so_dnht_dn_huy_ho_so_dnht_dn.png",
+                        moduleID: "390005122"
+                    }
+                ],
+                type: "DN"
+            },
+            {
+                title: "Hoàn thuế",
+                data: [
+                    {
+                        title: "Kê khai hồ sơ ĐNHT/ĐN hủy hồ sơ ĐNHT",
+                        icon: "ke_khai_ho_so_dnht_dn_huy_ho_so_dnht_dn.png",
+                        moduleID: "330301",
+                        matk: "HT"
+                    },
+                    {
+                        title: "Tra cứu hồ sơ ĐNHT/ĐN hủy hồ sơ ĐNHT",
+                        icon: "tra_cuu_ho_so_dnht_dn_huy_ho_so_dnht_dn.png",
+                        moduleID: "330302"
+                    },
+                    {
+                        title: "Tra cứu thông báo hoàn thuế",
+                        icon: "tra_cuu_thong_bao_hoan_thue_dn.png",
+                        moduleID: "330303"
+                    },
+                    {
+                        title: "Nộp tờ khai hoàn thuế XML",
+                        icon: "nop_to_khai_hoan_thue_xml_dn.png",
+                        moduleID: "330304"
+                    }
+                ],
+                type: "DN"
+            },
+            {
+                title: "Tra cứu",
+                data: [
+                    {
+                        title: "Thông tin nghĩa vụ",
+                        icon: "thong_tin_nghia_vu_dn.png",
+                        moduleID: "360106"
+                    },
+                    {
+                        title: "Sao kê giao dịch",
+                        icon: "sao_ke_giao_dich_dn.png",
+                        moduleID: "360107"
+                    },
+                    {
+                        title: "Thông báo của CQT",
+                        icon: "thong_bao_cua_cqt_dn.png",
+                        moduleID: "360109"
+                    },
+                    {
+                        title: "Tra cứu NPT",
+                        icon: "tra_cuu_npt_dn.png",
+                        moduleID: "360111"
+                    },
+                    {
+                        title: "Tra cứu ĐKT",
+                        icon: "tra_cuu_dkt_dn.png",
+                        moduleID: "360112"
+                    },
+                    {
+                        title: "Tra cứu GTBS",
+                        icon: "tra_cuu_gtbs_dn.png",
+                        moduleID: "360113"
+                    }
+                ],
+                type: "DN"
+            },
+            {
+                title: "Chuẩn hoá dữ liệu MST cá nhân",
+                data: [
+                    {
+                        title: "Tra cứu danh sách NNT cần rà soát qua CQCT",
+                        icon: "tra_cuu_danh_sach_nnt_can_ra_soat_qua_cqct_dn.png",
+                        moduleID: "330901"
+                    },
+                    {
+                        title: "Tra cứu danh sách NPT cần rà soát qua CQCT",
+                        icon: "tra_cuu_danh_sach_npt_can_ra_soat_qua_cqct_dn.png",
+                        moduleID: "330902"
+                    },
+                    {
+                        title: "Báo cáo thống kê số lượng",
+                        icon: "bao_cao_thong_ke_so_luong_dn.png",
+                        moduleID: "330903"
+                    }
+                ],
+                type: "DN"
+            }
+        ];
+        const srcImage = $("#logo_ca_nhan").attr("src")
+        const folderPath = srcImage.substring(0, srcImage.lastIndexOf("/") + 1) + 'dich_vu_khac/';
+
+        function renderMenu(listMenu) {
+            let htmlRender = ``;
+            listMenu.forEach((item, index) => {
+                htmlRender += `
+                    <button class="tab-btn ${index === 0 ? 'active' : ''}" onmouseover="openTab(${index})">${item.title}</button>
+                `
+            })
+            return htmlRender;
+        }
+
+        function renderContentMenu(lístMenu) {
+            let htmlRender = ``;
+            lístMenu.forEach((item, index) => {
+                let htmlMenuItem = ``;
+
+                item.data.forEach(menuItem => {
+                    htmlMenuItem += `
+                            <div class="col-3 mt-3 menu-item-sso">
+                                <a class="sub_menu_title" href="#" onclick="redirectHandler('${menuItem.moduleID}', '${menuItem.tthc?menuItem.tthc:''}', '${menuItem.matk?menuItem.matk:''}', '', '${menuItem.sso}', '${menuItem.uri?menuItem.uri:''}')">
+                                    <img class="sub_menu_logo" src="${folderPath + menuItem.icon}" />
+                                    <div>${menuItem.title}</div>
+                                </a>
+                            </div>
+                `
+                })
+
+                htmlRender += `
+                    <div class="tab-content ${index === 0 ? 'active' : ''}">
+                        <div class="row">
+                            ${htmlMenuItem}
+                        </div>
+                    </div>
+                `
+            })
+            return htmlRender;
+        }
+
+        async function connectSSO(moduleId, tthc, matk, tmdt) {
+            await $.ajax({
+                type: 'POST',
+                url: base_url + `sso/redirect-to-service?module=${moduleId}${tthc ? '&tthc=' + tthc : ''}${matk ? '&matk=' + matk : ''}${tmdt ? '&tmdt=' + tmdt : ''}`,
+                headers: {'X-XSRF-TOKEN': "-RJAs3rIN3Zj--ffp9AhkfxEPEsZOfNx8BwFU33SH0BoqSQNynB3hEKtBkdOzITtn_0V98tyEXIhDsdclC9nYRnlLiRdyx01"},
+                success: function (response) {
+                    redirectSSO(response);
+                },
+                error: function (xhr, status, error) {
+                    showNotify('warning', category_system_error);
+                    reject(false);
+                }
+            });
+        }
+
+        async function redirectHandler(moduleId, tthc, matk, tmdt, sso, uri) {
+            if (sso === 'Y' || (APP_ENV === 'PROD' && sso === 'P')) {
+                await connectSSO(moduleId, tthc || '', matk || '', '');
+            } else {
+                window.location.href = base_url + uri;
+            }
+        }
+
+        function backHome() {
+            window.location.href = base_url + "home";
+        }
+
+        $(document).ready(function () {
+            const checkTypeObject = $("#checkTypeObject").val();
+            const checkDvcKhac = $("#checkDvcKhac").val();
+            if (checkDvcKhac === 'Y') {
+                if (checkTypeObject === 'DN') {
+                    connectSSO("331001", null, null, null);
+                } else {
+                    connectSSO("10252", null, null, 'Y');
+                }
+            } else {
+                $("#tab_menu").html(renderMenu(data.filter(item => item.type === checkTypeObject)));
+                $("#content_menu").html((renderContentMenu(data.filter(item => item.type === checkTypeObject))))
+            }
+
+            const params = new URLSearchParams(window.location.search);
+            const tab = params.get("tab");
+            const subTab = params.get("module");
+
+            if (tab) {
+                $('.tab-btn').each(function () {
+                    let text = $(this).text().toLowerCase().trim();
+
+                    let key = removeVietnameseTones(text)
+                        .toLowerCase()
+                        .replace(/\s+/g, "_");
+
+                    if (key === tab) {
+                        $(this).addClass("active");
+                        $(this).trigger("mouseover");
+                        return;
+                    }
+                });
+            }
+            if (subTab) {
+                $(".sub_menu_title").each(function () {
+                    let text = $(this).text().toLowerCase().trim();
+
+                    let key = removeVietnameseTones(text)
+                        .toLowerCase()
+                        .replace(/\s+/g, "_");
+
+                    if (key === subTab) {
+                        $(this).trigger("click");
+                        return;
+                    }
+                });
+            }
+
+            // them phan dieu huong cua thong bao LPTB
+            const _session_tbao_lptb_fw_dvk = sessionStorage.getItem("_SESSION_TBAO_LPTB_FW_DVK");
+
+            if(_session_tbao_lptb_fw_dvk == 'Y') {
+                if(checkTypeObject === 'DN') {
+                    redirectHandler('330407', '', '', '', 'Y', '');
+                } else {
+                    redirectHandler('10406', '', '', '', 'P', 'nopthue-truyvan');
+                }
+
+                sessionStorage.removeItem("_SESSION_TBAO_LPTB_FW_DVK");
+            }
+            // them phan dieu huong cua thong bao LPTB
+        });
+
+        function removeVietnameseTones(str) {
+            return str
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/đ/g, "d")
+                .replace(/Đ/g, "D");
+        }
+    </script>
+</div>
+</div>
+				<div></div>
+				
+				<!-- =========================
+				     ETAX CHAT
+				     ========================= -->
+				   
+				<div id="etax-chat-wrapper">
+				
+				    <!-- Chat window -->
+				    <div id="etax-chat-window">
+				    	<div id="etax-chat-resizer"></div>
+				        <div id="etax-chat"></div>
+				    </div>
+					
+					<!-- Message hint -->
+				    <div id="etax-chat-hint">
+				        Trợ lý Thuế
+				    </div>
+				
+				    <!-- Floating button -->
+				    <button id="etax-chat-toggle"
+				            type="button"
+				            aria-label="Mở trợ lý ảo">
+				        <img src="/tthc/images/robot_img-fe809a3944a1c99aecd659403b30f33c.gif"
+     							alt="Trợ lý ảo">
+				    </button>
+				
+				</div>
+				
+			</main>
+			<!--footer-->
+			<footer class="footer py-3 mt-auto">
+    <div class="container">
+        <div class="row align-items-start">
+            <!-- Cột trái: Ảnh trụ sở -->
+            <div class="col-lg-2 col-md-3 text-center p0 m-0 mb-3">
+                <img src="/tthc/images/image_84-3ee81da5a0ee8a3ddcfae60f93be5090.png" alt="Trụ sở" class=" anhThue img-fluid rounded">
+            </div>
+
+            <!-- Cột giữa: Thông tin liên hệ -->
+            <div class="col-lg-9 col-md-7">
+                <p class="mb-1 fw-bold" style="color: var(--Primary-Color, #006FBC);
+          font-size: 16px;
+          line-height: normal;
+          text-transform: uppercase;">CỤC THUẾ - HỆ THỐNG THÔNG TIN GIẢI QUYẾT THỦ TỤC HÀNH CHÍNH</p>
+                <div class="row">
+                    <!-- Cột trái -->
+                    <div class="col-md-8">
+                        <div class="mb-0">
+                            <p class="label1">Cơ quan chủ quản:</p>
+                            <p class="value1">Bộ Tài chính</p>
+                        </div>
+
+                        <div class="mb-0">
+                            <p class="label1">Địa chỉ:</p>
+                            <p class="value1">Số 1A - Nguyễn Công Trứ - Phường Hai Bà Trưng - Thành phố Hà Nội</p>
+                        </div>
+
+                        <div class="mb-0">
+                            <p class="label1">Ghi rõ nguồn "https://www.dichvucong.gdt.gov.vn" khi phát hành thông tin
+                                từ website này</p>
+                        </div>
+                    </div>
+
+                    <!-- Cột phải -->
+                    <div class="col-md-4">
+                        <div class="mb-0">
+                            <p class="label1">Hỗ trợ:
+                            <p class="value1">(024) 39712555</p>
+                        </div>
+                        <div class="mb-0">
+                            <p class="label1">Điện thoại:</p>
+                            <p class="value1">Tổng đài hỗ trợ 024.730.55999 nhánh 1</p>
+                        </div>
+                        <div class="mb-0">
+                            <p class="label1">Thư điện tử:</p>
+                            <p class="value1">nhomhttdt@gdt.gov.vn</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Cột phải: Chứng nhận -->
+            <div class="col-lg-2 col-md-12 text-center text-lg-start">
+                <!--                <img th:src="@{/images/Tin nhiem mang.png}" alt="Chứng nhận" class="img-fluid mb-2">-->
+                <!--                <img th:src="@{/images/EMC.png}" alt="EMC" class="img-fluid">-->
+                <!--                <a href="https://tinnhiemmang.vn/danh-ba-tin-nhiem/canhangdtgovvn-1691655002"-->
+                <!--                   title="Chung nhan Tin Nhiem Mang" target="_blank"><img-->
+                <!--                        src="https://tinnhiemmang.vn/handle_cert?id=canhan.gdt.gov.vn" width="150px" height="auto"-->
+                <!--                        alt="Chung nhan Tin Nhiem Mang"></a>-->
+                <!--                <div class="yhy-append-wrap" style="width: 150px;margin-top: 10px">-->
+                <!--                    <div id="yhy-append" class="yhy-append">-->
+                <!--                        <a href="#" th:title="'TRUNG TÂM GIÁM SÁT QUỐC GIA VỀ CHÍNH PHỦ SỐ'"-->
+                <!--                           class="yhy-append-btn yhy-btn-emc"-->
+                <!--                           style="display: flex; background-color: red; color: #FFFFFF;border-radius: 30px;text-decoration: none;align-items: center">-->
+                <!--							<span class="yhy-append-icon" style="background: #fff;margin: 5px;border-radius: 100%;height: 20px;width: 20px">-->
+                <!--								<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAANCAYAAACgu+4kAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKeSURBVHgBhVJbSJNhGH6/7z9s/07mllvSby7JPBLVWHiiA6UUgV55ZbsJIrvzoouIuogiKCjopiCQMrwoTSExoRoGUwlEy+mFHbBp6qaba266/XP/4ev/ZXYAoQcevo+X533f73vfB8F2ODNgMVCchzC4ATBdATrKjmmaAEP7EQ3d+tDc05W+pjVNiv7NJMhQP3BRwewtoGgbMCQJa7OvlPT8JCKQBmtBAW0rcmNuR0qOTJ1P9XpCfwpUd1mPFi33nyj5Wn2Y/w7RUbRy2xtsCwT8Gbvp0ClEm8Rw3P9CkmIzumM3XLSzpiTZUf9gs0Cwp6xwNpH7rowPF6/HdeC9Xwi+meC1zpXAcnHhpYcteRJjhAy8XrdsjM29bYutjz4BC2+ExIKAo537eJZI/aXWSHE6ToGvYxckIzjpjc8Ome0NFzwOkWlF76GF9sFl87TO4ahqU3tqyTH13MCyTN0DCVUSCcHnkR0QnjYCpSiJ+fTqkpBfufcADgB7ZBUMzWEoTX8DdQ68mshnP67gQb94PZVipkmGQGDcAnp1WiaMbbt1ZpDk0KS34DiIn8wg9O4EX34dLHHJkNZ5a3TUyw+xWJ6JGnTauIMzI/Y9rITBAIRyc7ZI35ee9gl9VeOEs8notbnhcYpdjE09u0uS0Y9d5eVidyQib20Be2pz+Yqg+yZPsR4TUZBRgcyqkDjXvDQ8hY18I+g5RokGxmtZy/wjU0WNKIHgSgw9/9sH2j3nCu8+66KtV/MJKjOKMugE0SfImeE0UWgLpvezmCpdkAXvycToHVUfRtv4kOGAc7RanHW1dM5pp0y5WIRzMkT5uaikx/o2Im/aMz8mVN2iyhSC7aHFGZUm7VUquWw8qTKhUrOxtCX8H3CWm2vL8jd+AX3nDRFsNigEAAAAAElFTkSuQmCC"-->
+                <!--                                     alt="EMC"></span>-->
+                <!--                            <span >Đã kết nối EMC</span>-->
+                <!--                        </a>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+            </div>
+        </div>
+    </div>
+    <!-- Begin EMC Tracking Code -->
+    <script type="text/javascript">
+        var _govaq = window._govaq || [];
+        _govaq.push([ 'trackPageView' ]);
+        _govaq.push([ 'enableLinkTracking' ]);
+        (function() {
+            _govaq.push([ 'setTrackerUrl', 'https://f-emc.ngsp.gov.vn/tracking' ]);
+            _govaq.push([ 'setSiteId', '8356' ]);
+            var d = document, g = d.createElement('script'),
+                s = d.getElementsByTagName('script')[0];
+            g.type = 'text/javascript';
+            g.async = true;
+            g.defer = true;
+            g.src = 'https://f-emc.ngsp.gov.vn/embed/gov-tracking.min.js';
+            s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <!-- End EMC Tracking Code -->
+</footer>
+		</div>
+		<!--end footer-->
+		<!-- Nhúng các common js dùng chung-->
+		
+<script type="text/javascript">
+  const error_xoadong = "Kh\u00F4ng th\u1EC3 x\u00F3a khi ch\u1EC9 c\u00F2n m\u1ED9t d\u00F2ng.";
+  const error_xoaAPI = "D\u1EEF li\u1EC7u n\u00E0y kh\u00F4ng \u0111\u01B0\u1EE3c x\u00F3a";
+  const warning_xoadong = "Kh\u00F4ng c\u00F3 d\u00F2ng n\u00E0o \u0111\u01B0\u1EE3c ch\u1ECDn. Vui l\u00F2ng ch\u1ECDn d\u00F2ng tr\u01B0\u1EDBc khi x\u00F3a.";
+  const success_xoadong = "\u0110\u00E3 x\u00F3a d\u00F2ng \u0111\u00E3 ch\u1ECDn.";
+  const warning_xoadongcuoi = "Kh\u00F4ng th\u1EC3 x\u00F3a d\u00F2ng n\u00E0y.";
+  const warning_choncks = "Vui l\u00F2ng ch\u1ECDn ch\u1EEF k\u00FD s\u1ED1";
+  const danhGiaPhieu03 = null;
+  const showDanhGia = null;
+
+  const msg_error = "\u0110\u00E3 x\u1EA3y ra l\u1ED7i";
+  const msg_confirm = "X\u00E1c nh\u1EADn";
+  const msg_download_success = "T\u1EA3i file th\u00E0nh c\u00F4ng";
+  const msg_download_fail = "Kh\u00F4ng th\u1EC3 t\u1EA3i file";
+  const label_button_cancel = "H\u1EE7y";
+  const label_button_ok = "\u0110\u1ED3ng \u00FD";
+  const serial_existed = "S\u1ED1 seri \u0111\u00E3 t\u1ED3n t\u1EA1i, kh\u00F4ng th\u1EC3 th\u00EAm d\u1EEF li\u1EC7u";
+  const mst_captcha_fail = "M\u00E3 captcha kh\u00F4ng \u0111\u00FAng";
+  const msg_system_error = "\u0110\u00E3 c\u00F3 l\u1ED7i h\u1EC7 th\u1ED1ng x\u1EA3y ra!";
+  const msg_error_file = "T\u1EA3i file c\u00F3 \u0111\u1ECBnh d\u1EA1ng {ten_dinh_dang} v\u00E0 c\u00F3 dung l\u01B0\u1EE3ng kh\u00F4ng \u0111\u01B0\u1EE3c v\u01B0\u1EE3t qu\u00E1 {maxFileSize}(MB)";
+  const msg_error_file_dung_luong = "Dung l\u01B0\u1EE3ng file kh\u00F4ng h\u1EE3p l\u1EC7";
+  const msg_error_file_dinh_dang = "\u0110\u1ECBnh d\u1EA1ng file kh\u00F4ng h\u1EE3p l\u1EC7";
+
+  window.base_url = "\/tthc\/";
+  var notifyTitle = "Th\u00F4ng b\u00E1o";
+
+  $(document).ready(function () {
+      checkMessage();
+
+      Parsley.addValidator('formatmst', {
+          validateString: function (value, requirement, instance) {
+              return ktraCauTrucMST(instance.$element);
+          },
+          messages: {
+              vn: "M\u00E3 s\u1ED1 thu\u1EBF kh\u00F4ng t\u1ED3n t\u1EA1i",
+              en: "M\u00E3 s\u1ED1 thu\u1EBF kh\u00F4ng t\u1ED3n t\u1EA1i"
+      }
+      });
+
+      Parsley.addValidator('formatsdt', {
+          validateString: function (value, requirement, instance) {
+              return checkPhone(instance.$element);
+          },
+          messages: {
+              vn: "S\u1ED1 \u0111i\u1EC7n tho\u1EA1i kh\u00F4ng h\u1EE3p l\u1EC7!",
+              en: "S\u1ED1 \u0111i\u1EC7n tho\u1EA1i kh\u00F4ng h\u1EE3p l\u1EC7!",
+          }
+      });
+
+      Parsley.addValidator('formatemail', {
+          validateString: function (value, requirement, instance) {
+              return checkEmail(instance.$element);
+          },
+          messages: {
+              vn: "Email kh\u00F4ng h\u1EE3p l\u1EC7!",
+              en: "Email kh\u00F4ng h\u1EE3p l\u1EC7!",
+          }
+      });
+
+      Parsley.addValidator('formatcccd', {
+          validateString: function (value, requirement, instance) {
+              return checkCCCD(instance.$element);
+          },
+          messages: {
+              vn: "S\u1ED1 \u0111\u1ECBnh danh c\u00E1 nh\u00E2n kh\u00F4ng h\u1EE3p l\u1EC7",
+              en: "S\u1ED1 \u0111\u1ECBnh danh c\u00E1 nh\u00E2n kh\u00F4ng h\u1EE3p l\u1EC7",
+          }
+      });
+
+      Parsley.addValidator('datele', {
+          requirementType: 'string',
+          validateString: function (value, targetSelector) {
+              var fromDate = moment(value, 'DD/MM/YYYY');
+              var toDate = moment($(targetSelector).val(), 'DD/MM/YYYY');
+              return fromDate.isSameOrBefore(toDate);
+          },
+          messages: {
+              vn: "T\u1EEB ng\u00E0y ph\u1EA3i nh\u1ECF h\u01A1n \u0110\u1EBFn ng\u00E0y",
+              en: "T\u1EEB ng\u00E0y ph\u1EA3i nh\u1ECF h\u01A1n \u0110\u1EBFn ng\u00E0y"
+          }
+      });
+
+      Parsley.addValidator('greaterEqual', {
+          requirementType: 'string',
+          validateString: function (value, requirement) {
+              requirement = requirement.replace(/\[/g, "\\[").replace(/\]/g, "\\]").replace(/\./g, "\\.");
+              const fromDate = $(requirement).val();
+
+              if (!value || !fromDate) return true;
+
+              // Parse hàm để nhận cả dạng dd/MM/yyyy và MM/yyyy
+              function parseDate(str) {
+                  const parts = str.split('/').map(Number);
+                  if (parts.length === 3) {
+                      // dd/MM/yyyy
+                      const [day, month, year] = parts;
+                      return new Date(year, month - 1, day);
+                  } else if (parts.length === 2) {
+                      // MM/yyyy => giả sử ngày = 1
+                      const [month, year] = parts;
+                      return new Date(year, month - 1, 1);
+                  } else {
+                      return null;
+                  }
+              }
+
+              const date1 = parseDate(value);
+              const date2 = parseDate(fromDate);
+
+              if (!date1 || !date2) return true; // nếu format không hợp lệ thì bỏ qua
+
+              return date1 >= date2;
+          },
+          messages: {
+              vn: "Ng\u00E0y k\u1EBFt th\u00FAc ph\u1EA3i l\u1EDBn h\u01A1n ho\u1EB7c b\u1EB1ng ng\u00E0y b\u1EAFt \u0111\u1EA7u.",
+              en: "Ng\u00E0y k\u1EBFt th\u00FAc ph\u1EA3i l\u1EDBn h\u01A1n ho\u1EB7c b\u1EB1ng ng\u00E0y b\u1EAFt \u0111\u1EA7u."
+          }
+    });
+
+      Parsley.addValidator('positiveIntegerCurrency', {
+          validateString: function(value) {
+              // Bỏ hết dấu chấm trong chuỗi (là dấu ngăn cách hàng nghìn trong format của tiền tệ)
+              const normalized = value.replace(/\./g, '');
+              // Kiểm tra có phải số nguyên dương
+              return /^[1-9][0-9]*$/.test(normalized);
+          },
+          messages: {
+              vn: "Vui l\u00F2ng nh\u1EADp s\u1ED1 nguy\u00EAn d\u01B0\u01A1ng.",
+              en: "Vui l\u00F2ng nh\u1EADp s\u1ED1 nguy\u00EAn d\u01B0\u01A1ng."
+          }
+      });
+
+      Parsley.addValidator('soTienLonHon', {
+          requirementType: 'number',  // yêu cầu là số
+          validateString: function (value, requirement) {
+              // ép value về số (bỏ dấu . , nếu có format tiền tệ)
+              let num = parseFloat(value.toString().replace(/\./g, '').replace(/,/g, '.')) || 0;
+              return num > requirement;
+          },
+          messages: {
+              vi: 'Giá trị phải lớn hơn %s',
+              en: 'The value must be greater than %s'
+          }
+      });
+
+      Parsley.addValidator('soTienLonHonHoacBang', {
+          requirementType: 'number',  // yêu cầu là số
+          validateString: function (value, requirement) {
+              // ép value về số (bỏ dấu . , nếu có format tiền tệ)
+              let num = parseFloat(value.toString().replace(/\./g, '').replace(/,/g, '.')) || 0;
+              return num >= requirement;
+          },
+          messages: {
+              vi: 'Giá trị phải lớn hơn %s',
+              en: 'The value must be greater than %s'
+          }
+      });
+
+      Parsley.addValidator('yearGreaterEqual', {
+          requirementType: 'string',
+          validateString: function (value, requirement) {
+              // Escape selector
+              requirement = requirement
+                  .replace(/\[/g, "\\[")
+                  .replace(/\]/g, "\\]")
+                  .replace(/\./g, "\\.");
+
+              const fromYear = $(requirement).val();
+
+              if (!value || !fromYear) return true;
+
+              function parseYear(str) {
+                  if (!/^\d{4}$/.test(str)) return null;
+                  const year = parseInt(str, 10);
+                  return isNaN(year) ? null : year;
+              }
+
+              const y1 = parseYear(value);
+              const y2 = parseYear(fromYear);
+
+              if (!y1 || !y2) return true; // Nếu format không hợp lệ => không chặn
+
+              return y1 >= y2;
+          },
+          messages: {
+              vn: "Năm kết thúc phải lớn hơn hoặc bằng năm bắt đầu",
+              en: "End year must be greater than or equal to start year"
+          }
+      });
+
+  });
+
+  function showNotify(type, message) {
+      Lobibox.notify(type, {
+          size: 'mini',
+          position: "top right",
+          sound: false,
+          title: notifyTitle,
+          delay: 7000,
+          icon: false,
+          msg: message
+      });
+  }
+
+  // LOAD lại select picker trong bảng
+  $('.selectpicker').selectpicker({
+      container: 'body'
+  });
+  $(".selectpicker").selectpicker("refresh");
+
+  // Lắng nghe sự kiện của HTMX sau khi nội dung được thay thế
+  document.addEventListener('DOMContentLoaded', function () {
+      document.body.addEventListener('htmx:afterSwap', function (event) {
+          const currentDate = new Date();
+          currentDate.setHours(0, 0, 0, 0);
+
+          $('.selectpicker').selectpicker({
+              container: 'body'
+          });
+          $(".selectpicker").selectpicker("refresh");
+
+
+          $('.one-calendar').daterangepicker({
+              singleDatePicker: true,
+              autoApply: true,
+              showDropdowns: true,
+              minDate: '01/01/1900',
+              maxDate: currentDate,
+              locale: {format: 'DD/MM/YYYY'},
+              parentEl: 'body',
+              autoUpdateInput: false
+          });
+
+
+          $('.one-calendar').on('apply.daterangepicker', function (ev, picker) {
+              $(this).val(picker.startDate.format('DD/MM/YYYY'));
+              $(this).parsley().destroy();
+              $(this).parsley().removeError('required');
+
+              // Hoặc clear tất cả errors của field này
+              $(this).parsley().reset();
+
+              // Remove visual error styling
+              $(this).removeClass('parsley-error');
+              var errorContainer = $(this).attr('data-parsley-errors-container');
+              if (errorContainer) {
+                  $(errorContainer).empty();
+              }
+          });
+
+          $('.to-date').daterangepicker({
+              singleDatePicker: true,
+              showDropdowns: true,
+              minDate: currentDate,
+              locale: {
+                  format: 'DD/MM/YYYY',
+                  applyLabel: 'Đồng ý',
+                  cancelLabel: 'Hủy',
+                  fromLabel: 'Từ ngày',
+                  toLabel: 'Đến ngày',
+                  daysOfWeek: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
+                  monthNames: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                  firstDay: 1
+              },
+              parentEl: 'body',
+              autoApply: true,
+              autoUpdateInput: false
+          });
+          $('.to-date').on('apply.daterangepicker', function (ev, picker) {
+              $(this).val(picker.startDate.format('DD/MM/YYYY'));
+              $(this).parsley().destroy();
+              $(this).parsley().removeError('required');
+
+              // Hoặc clear tất cả errors của field này
+              $(this).parsley().reset();
+
+              // Remove visual error styling
+              $(this).removeClass('parsley-error');
+              var errorContainer = $(this).attr('data-parsley-errors-container');
+              if (errorContainer) {
+                  $(errorContainer).empty();
+              }
+          });
+
+          $('.date-from-tomorrow').daterangepicker({
+              singleDatePicker: true,
+              showDropdowns: true,
+              minDate: moment().add(1, 'days'),
+              locale: {
+                  format: 'DD/MM/YYYY',
+                  applyLabel: 'Đồng ý',
+                  cancelLabel: 'Hủy',
+                  fromLabel: 'Từ ngày',
+                  toLabel: 'Đến ngày',
+                  daysOfWeek: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
+                  monthNames: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                  firstDay: 1
+              },
+              parentEl: 'body',
+              autoApply: true,
+              autoUpdateInput: false
+          });
+          $('.date-from-tomorrow').on('apply.daterangepicker', function (ev, picker) {
+              $(this).val(picker.startDate.format('DD/MM/YYYY'));
+              $(this).parsley().destroy();
+              $(this).parsley().removeError('required');
+
+              // Hoặc clear tất cả errors của field này
+              $(this).parsley().reset();
+
+              // Remove visual error styling
+              $(this).removeClass('parsley-error');
+              var errorContainer = $(this).attr('data-parsley-errors-container');
+              if (errorContainer) {
+                  $(errorContainer).empty();
+              }
+          });
+
+          $('.one-calendar-fd').daterangepicker({
+              singleDatePicker: true,
+              autoApply: true,
+              showDropdowns: true,
+              minDate: '01/01/1900',
+              locale: {format: 'DD/MM/YYYY'},
+              parentEl: 'body',
+              autoUpdateInput: false
+          });
+
+
+
+          $('.one-calendar-fd').on('apply.daterangepicker', function (ev, picker) {
+              $(this).val(picker.startDate.format('DD/MM/YYYY'));
+              $(this).parsley().destroy();
+              $(this).parsley().removeError('required');
+
+              // Hoặc clear tất cả errors của field này
+              $(this).parsley().reset();
+
+              // Remove visual error styling
+              $(this).removeClass('parsley-error');
+              var errorContainer = $(this).attr('data-parsley-errors-container');
+              if (errorContainer) {
+                  $(errorContainer).empty();
+              }
+          });
+
+
+          $('.one-calendar-tdct').daterangepicker({
+              singleDatePicker: true,
+              timePicker: true,
+              autoApply: true,
+              showDropdowns: true,
+              minDate: '01/01/1900',
+              locale: {format: 'DD/MM/YYYY HH:mm:ss'},
+              parentEl: 'body',
+              autoUpdateInput: false
+          });
+
+          $('.one-calendar-tdct').on('apply.daterangepicker', function (ev, picker) {
+              // Gán giá trị được chọn vào input
+              $(this).val(picker.startDate.format('DD/MM/YYYY HH:mm:ss'));
+
+              // Khởi tạo lại Parsley nếu cần
+              $(this).parsley().destroy();
+              $(this).parsley().removeError('required');
+
+              // Hoặc clear tất cả errors của field này
+              $(this).parsley().reset();
+
+              // Remove visual error styling
+              $(this).removeClass('parsley-error');
+              var errorContainer = $(this).attr('data-parsley-errors-container');
+              if (errorContainer) {
+                  $(errorContainer).empty();
+              }
+          });
+
+
+      });
+  });
+  function toggleMenu(element) {
+      let subMenu = element.nextElementSibling.nextElementSibling;
+      if (subMenu) {
+          subMenu.classList.toggle("hidden");
+          let icon = element.querySelector("i");
+          icon.classList.toggle("fa-chevron-right");
+          icon.classList.toggle("fa-chevron-down");
+      }
+  }
+  function checkMessage() {
+      let successs = null
+      let error = null
+      if (successs) {
+          showNotify('success', successs);
+      }
+      if (error) {
+          showNotify('error', error);
+      }
+  }
+
+  async function changeMStAndValid(input) {
+      var $input = $(input);
+      if (ktraCauTrucMST($input)) {
+          const isValid = await validMstExist($input.val());
+          if (!isValid) {
+              // Nếu muốn xử lý tiếp khi không hợp lệ
+              $input.parsley().validate();
+          }
+      } else {
+          $input.parsley().validate();
+      }
+  }
+
+  function validMstExist(maSoThue) {
+      if(!maSoThue){ return true}
+      return new Promise((resolve, reject) => {
+          $.ajax({
+              url: base_url + 'tk01/checkMST', // Đường dẫn API
+              type: 'POST',
+              data: {
+                  loaiGiayTo: "MST",
+                  maSoThue: maSoThue
+              },
+              success: function (response) {
+                  if(response?.status !== '00') {
+                      showNotify('error', "M\u00E3 s\u1ED1 thu\u1EBF kh\u00F4ng t\u1ED3n t\u1EA1i");
+                      resolve(false);
+                  }
+                  resolve(true);
+              },
+              error: function (xhr, status, error) {
+                  showNotify('error', "Th\u00F4ng tin c\u00E1 nh\u00E2n kh\u00F4ng t\u1ED3n t\u1EA1i. \u0110\u1EC1 ngh\u1ECB NNT ki\u1EC3m tra l\u1EA1i s\u1ED1 \u0111\u1ECBnh danh c\u00E1 nh\u00E2n, H\u1ECD t\u00EAn, Ng\u00E0y sinh.");
+                  reject(false);
+              }
+          })
+      })
+  }
+</script>
+<!--		<script type="text/javascript" th:src="@{/htmx-csrf.js}"></script>-->
+		<script type="text/javascript" src="/tthc/js/chatbox/etax-sdk-40eb3344e7ecb62bb89ee104c2c97f0e.js"></script>
+		
+		<script>
+		    const chatboxConfig = {
+		        baseUrl: "https:\/\/api-chatbotnnt.gdt.gov.vn",
+		        accessKey: "7b9dcc3594c7cac780e53a94c7e9a6fd"
+		    };
+
+		    const etaxChatUser = {
+		        taxCode:
+		            "0314840592",
+		
+		        idNumber:
+		            "083189005926",
+		
+		        phone:
+		            "0976248025",
+		
+		        email:
+		            "quingo89@gmail.com, info@doelvietnam.com"
+		    };
+		    let etaxChatOpened = false;
+		    let etaxChatInitialized = false;
+		    let etaxChatInitializing = false;
+		    
+		    let isResizing = false;
+		    let startX = 0;
+		    let startWidth = 0;
+		
+		    const etaxChatWrapper =
+		        document.getElementById('etax-chat-wrapper');
+		
+		    const etaxChatWindow =
+		        document.getElementById('etax-chat-window');
+		
+		    const etaxChatToggle =
+		        document.getElementById('etax-chat-toggle');
+		    const chatResizer = document.getElementById('etax-chat-resizer');
+
+		     async function openEtaxChat() {
+		
+		        if (etaxChatInitializing) {
+		            return;
+		        }
+		        if (etaxChatOpened) {
+		            return;
+		        }
+		        
+		        
+		        etaxChatInitializing = true;
+		        etaxChatWrapper.classList.add('open');
+		        etaxChatWrapper.classList.add('chat-open');
+		        etaxChatWindow.classList.add('open');
+		        revealChat();
+		        
+		        if (etaxChatInitialized) {
+		        	etaxChatInitializing = false;
+		        	etaxChatOpened = true;
+		            return;
+		        }
+		        
+		        try {       	
+		        	
+		        	const tokenHeader = $('meta[name="csrf-token"]').attr('content');
+		        	
+		        	const respChatBox = await fetch(
+		        			"\/tthc\/sso\/gettoken",
+	                    {
+	                        method: 'POST',
+	                        headers: {
+	                            'Content-Type': 'application/json',
+	                            'X-XSRF-TOKEN': tokenHeader
+	                        }
+	                    }
+	                );
+
+		            const data = await respChatBox.json();
+
+		            if (data.status !== '00') {
+		                showNotify('error', data.message || 'Không lấy được token chatbot');
+		            }
+
+		            if (!data.token) {
+		                showNotify('error', 'Token chatbot không tồn tại');
+		            }
+
+		            const tokenChatbox = data.token;
+		        	
+		            EtaxChat.init({
+		                container: '#etax-chat',
+		                onClose: closeEtaxChat,
+		                loginUrl: "\/tthc\/login",
+		                gateway: {
+		                    apiBaseUrl: chatboxConfig.baseUrl,
+		                    accessKey: chatboxConfig.accessKey,
+		                    apiCode:'ETAX_GW_GET_TOKEN,WEB_DVC_GW_VALIDATE_TOKEN',
+		                    chatApiCode:'BTL_CHAT_STREAM',
+		                    feedbackApiCode:'BLT_CHAT_FEEDBACK',
+		                    chatCommentApiCode:'BLT_CHAT_COMMENT',
+		                    chatGetCommentApiCode:'BLT_CHAT_GET_COMMENT_BY_TAX',
+		                    ttsApiCode:'VT_TEXT_TO_SPEECH',
+		                    appName:'chatbot',
+		                    appCode:'chatbot_tthc',
+		                    clientType: 'web'
+		                },
+		
+		                taxCode:etaxChatUser.taxCode,
+		                etaxAuthentCode:tokenChatbox,
+		                idNumber:etaxChatUser.idNumber,
+		                phone:etaxChatUser.phone,
+		                email:etaxChatUser.email,
+		                doiTuong:_ssTypeObject,
+		                sessionCheckUrl:"\/tthc\/sso\/checksession"
+		            });
+		            etaxChatInitialized = true;
+		            etaxChatOpened = true;
+		        } catch (error) {
+		            console.error(
+		                'EtaxChat init error:',
+		                error
+		            );
+		            etaxChatWindow.classList.remove('open');
+		            etaxChatWrapper.classList.remove('open');
+		            etaxChatWrapper.classList.remove('chat-open');
+		
+		            etaxChatInitialized = false;
+		            etaxChatOpened = false;
+		        } finally {
+		            etaxChatInitializing = false;
+		        }
+		    }
+		    
+	      function revealChat() {
+	          var chat = document.getElementById('etax-chat')
+	          chat.hidden = false
+	          chat.style.removeProperty('display')
+	        }
+
+		    function closeEtaxChat() {
+
+		        if (etaxChatInitializing) {
+		            return;
+		        }
+		        /* if (
+		            etaxChatInitialized &&
+		            typeof EtaxChat !== 'undefined' &&
+		            typeof EtaxChat.destroy === 'function'
+		        ) {
+		            try {
+		                EtaxChat.destroy();
+		            } catch (error) {
+		                console.error(
+		                    'EtaxChat destroy error:',
+		                    error
+		                );
+		            }
+		        } */
+
+		        etaxChatWindow.classList.remove('open');
+		        etaxChatWrapper.classList.remove('open');
+		        etaxChatWrapper.classList.remove('chat-open');
+		        /* etaxChatInitialized = false;*/
+		        etaxChatOpened = false; 
+		    }
+
+		    if (etaxChatToggle) {
+		
+		        etaxChatToggle.addEventListener(
+		            'click',
+		            function () {
+		                if (etaxChatOpened) {
+		                    closeEtaxChat();
+		                } else {
+		                    openEtaxChat();
+		                }
+		            }
+		        );
+		    }
+
+		    window.addEventListener(
+		        'pagehide',
+		        function () {
+		
+		            if (
+		                etaxChatInitialized &&
+		                typeof EtaxChat !== 'undefined' &&
+		                typeof EtaxChat.destroy === 'function'
+		            ) {
+		                try {
+		                    EtaxChat.destroy();
+		                } catch (error) {
+		                    console.error(
+		                        'EtaxChat destroy error:',
+		                        error
+		                    );
+		                }
+		            }
+		
+		            etaxChatInitialized = false;
+		            etaxChatOpened = false;
+		        }
+		    );
+		    chatResizer.addEventListener('mousedown', function (e) {
+		        e.preventDefault();
+
+		        isResizing = true;
+
+		        startX = e.clientX;
+		        startWidth = etaxChatWindow.getBoundingClientRect().width;
+
+		        document.body.style.userSelect = 'none';
+		        document.body.style.cursor = 'ew-resize';
+		    });
+
+		    document.addEventListener('mousemove', function (e) {
+		        if (!isResizing) {
+		            return;
+		        }
+
+		        /*
+		         * Kéo sang trái => width tăng
+		         * Kéo sang phải => width giảm
+		         */
+		        const deltaX = startX - e.clientX;
+
+		        let newWidth = startWidth + deltaX;
+
+		        // Min 600px
+		        newWidth = Math.max(400, newWidth);
+
+		        // Max 1200px
+		        newWidth = Math.min(1200, newWidth);
+
+		        etaxChatWindow.style.width = newWidth + 'px';
+		    });
+
+		    document.addEventListener('mouseup', function () {
+		        if (!isResizing) {
+		            return;
+		        }
+
+		        isResizing = false;
+
+		        document.body.style.userSelect = '';
+		        document.body.style.cursor = '';
+		    });
+		
+		</script>
+		
+	</body>
+</html>

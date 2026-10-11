@@ -1,4 +1,4 @@
-﻿using MISA.ASP.ClientApp.Models;
+using MISA.ASP.ClientApp.Models;
 using MISA.ASP.ClientApp.Models.Enums;
 using MISA.ASP.ClientApp.Utils.Logging;
 using Newtonsoft.Json;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MISA.ASP.ClientApp.Utils.Clients
 {
-    public class MisaCaptchaClient
+    public class MisaCaptchaClient : IDisposable
     {
     
         private HttpClient _client { get; set; }
@@ -71,6 +71,10 @@ namespace MISA.ASP.ClientApp.Utils.Clients
             }
 
             return captcha;
+        }
+        public void Dispose()
+        {
+            _client?.Dispose();
         }
     }
 }

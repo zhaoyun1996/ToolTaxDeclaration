@@ -1,0 +1,21 @@
+{
+  "status_code": 200,
+  "url": "https://dichvucong.gdt.gov.vn/tthc/ho-so/search?loaiThuTuc=&maTTHC=&maToKhai=&maHoSo=&tuNgay=01/01/2026&denNgay=10/10/2026&scope_tdt1=SELF&mstUyQuyen_tdt1=&captcha=***REDACTED***&page=2&size=10",
+  "headers": {
+    "vary": "HX-Request",
+    "x-content-type-options": "nosniff",
+    "x-xss-protection": "0",
+    "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+    "pragma": "no-cache",
+    "expires": "0",
+    "strict-transport-security": "max-age=16070400; includeSubDomains; preload",
+    "x-frame-options": "DENY",
+    "content-type": "text/html;charset=UTF-8",
+    "content-language": "vn",
+    "date": "Sat, 10 Oct 2026 08:54:33 GMT",
+    "Location": "",
+    "Set-Cookie": "TS5d8132da027=089ec42a94ab2000af8826157bf4c7d3d95892732f0ee53b900244f55c508d2e5a5b4ac445a231fa08027721f31130008a6547c06ad71a3773d3311bf4fa92ff4df47902b3d96e8c51c7dd4298442c01518f9e67fd966e6e93f17255ecabb6f7; Path=/",
+    "Transfer-Encoding": "chunked"
+  },
+  "body_preview": "<div>\r\n    <div id=\"table-container\">\r\n        <section class=\"main-section mt-5 mb-4\">\r\n            <div class=\"d-flex align-items-center justify-content-between mb-3\">\r\n    <div style=\"width: auto;\">\r\n        <div class=\"d-flex align-items-center gap-2\"><span class=\"fw-bold\">                          Trang                          <input\r\n                type=\"number\" min=\"1\" value=\"2\"\r\n                class=\"form-control\" id=\"gotoPageInput\" style=\"width: 60px; display: inline-block;\"\r\n                onchange=\"goToPage()\" max=\"2\"/>                          /<span id=\"totalPage\">2</span> - Tổng số bản ghi: <span>19</span>                      </span></div>\r\n    </div>\r\n    <nav aria-label=\"Page navigation example\">\r\n        <ul class=\"pagination mb-0\">\r\n            <li class=\"page-item\"><a class=\"page-link\" onclick=\"onChangePage(1,10)\">«</a>\r\n            </li>            <!-- Trang đầu -->\r\n            <li class=\"page-item\"><a class=\"page-link\" onclick=\"onChangePage(1,10)\">1</a>\r\n            </li>            <!-- Dấu ... bên trái -->\r\n            \r\n            <!-- Các trang gần currentPage -->\r\n                        <!-- Dấu ... bên phải -->\r\n                        <!-- Trang cuối -->\r\n            <li class=\"page-item active\"><a class=\"page-link\"\r\n                                                                                     onclick=\"onChangePage(2,10)\">2</a>\r\n            </li>\r\n            \r\n        </ul>\r\n    </nav>\r\n</div>\r\n            \r\n            \r\n                <div class=\"table-responsive\">\r\n                    <table class=\"table table-bordered table-hover\">\r\n                        <thead class=\"table-primary text-center\">\r\n                        <tr class=\"header\">\r\n                            <th class=\"text-center align-middle\" rowspan=\"2\" style=\"min-width: 50px;\">STT</th>\r\n                            <th class=\"text-center align-middle\" rowspan=\"2\" style=\"min-width: 100px;\">Thao tác</th>\r\n                            <th class=\"text-cente"
+}

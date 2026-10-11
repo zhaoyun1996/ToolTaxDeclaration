@@ -1,0 +1,582 @@
+<div>
+    <div id="table-container">
+        <section class="main-section mt-5 mb-4">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+    <div style="width: auto;">
+        <div class="d-flex align-items-center gap-2"><span class="fw-bold">                          Trang                          <input
+                type="number" min="1" value="2"
+                class="form-control" id="gotoPageInput" style="width: 60px; display: inline-block;"
+                onchange="goToPage()" max="2"/>                          /<span id="totalPage">2</span> - Tổng số bản ghi: <span>19</span>                      </span></div>
+    </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination mb-0">
+            <li class="page-item"><a class="page-link" onclick="onChangePage(1,10)">«</a>
+            </li>            <!-- Trang đầu -->
+            <li class="page-item"><a class="page-link" onclick="onChangePage(1,10)">1</a>
+            </li>            <!-- Dấu ... bên trái -->
+            
+            <!-- Các trang gần currentPage -->
+                        <!-- Dấu ... bên phải -->
+                        <!-- Trang cuối -->
+            <li class="page-item active"><a class="page-link"
+                                                                                     onclick="onChangePage(2,10)">2</a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+            
+            
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="table-primary text-center">
+                        <tr class="header">
+                            <th class="text-center align-middle" rowspan="2" style="min-width: 50px;">STT</th>
+                            <th class="text-center align-middle" rowspan="2" style="min-width: 100px;">Thao tác</th>
+                            <th class="text-center align-middle" rowspan="2" style="min-width: 150px;">Mã hồ sơ</th>
+                            <th class="text-center align-middle" rowspan="2" style="min-width: 600px;">Tên TTHC</th>
+                            <th class="text-center align-middle" rowspan="2" style="min-width: 250px;">Tờ khai</th>
+                            <th class="text-center align-middle" rowspan="2" style="min-width: 150px;">Kỳ tính thuế</th>
+                            <th class="text-center align-middle" rowspan="2" style="min-width: 150px;">Loại tờ khai</th>
+                            <th class="text-center align-middle" rowspan="2" style="min-width: 100px;">Lần nộp bổ sung</th>
+                            <th class="text-center align-middle" rowspan="2" style="min-width: 100px;">Lần nộp (Tờ khai)/File số (DLVC)</th>
+                            <th class="text-center align-middle" rowspan="2" style="min-width: 200px;">Cơ quan thuế tiếp nhận</th>
+                            <th class="text-center align-middle" rowspan="2" style="min-width: 150px;">Ngày nộp</th>
+                            <th class="text-center align-middle" rowspan="2" style="min-width: 150px;">Trạng thái</th>
+                            
+                            <th class="text-center align-middle" rowspan="2" style="min-width: 200px;">Hồ sơ đính kèm</th>
+                            <!--                            <th rowspan="2" class="text-center align-middle" style="min-width: 150px;"-->
+                            <!--                                th:text="#{qlhs.table.thong_bao}"></th>-->
+                        </tr>
+                        </thead>
+                        <tbody class="bg-white text-center">
+                        <tr>
+                            <td class="align-middle text-center labelTableBody">1</td>
+                            <td class="align-middle text-center labelTableBody"
+                                style="color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1)); font-size: 13pt;">
+                                <i class="bi bi-eye" data-bs-title="Xem chi tiết"
+                                   data-bs-toggle="tooltip-thaotac" onclick="viewDetail(this)"
+                                   style="cursor: pointer;" data-ma-ho-so="000.701.18.G12-260310-27014500038197"></i>
+
+                                
+                                    <i class="bi bi-folder-symlink-fill"
+                                       data-bs-title="Nộp hồ sơ bổ sung" data-bs-toggle="tooltip-thaotac"
+                                       onclick="kkhaiBSung(this)" style="cursor: pointer;" data-ma-tkhai="864" data-ma-ho-so="000.701.18.G12-260310-27014500038197" data-ma-tthc="1.008327" data-mst-nop="0314840592" data-mst-nop-thay="null" data-mst-dly-thue="null" data-ma-cqt="70145" data-trang-thai="006" data-is-tdt="N"></i>
+                                    <form id="redirectForm" method="post" style="display:none;">
+                                        <input name="_csrf" value="YfXAEpV0eN00S3rOOQZ5Ra-MFY4Oti6eVksfURAcMokmz3SYUpehdq0QQbsZfhn9CytNd5joOLdvgRazYCgnaXMuVr0erUf8" type="hidden"/>
+                                    </form>
+                                
+                            </td>
+                            <td class="align-middle labelTableBody">000.701.18.G12-260310-27014500038197</td>
+                            <td class="text-start labelTableBody">
+                                <a href="javascript:void(0);"
+                                   onclick="viewDetail(this)"
+                                   style="text-decoration: underline; color: blue;" data-ma-ho-so="000.701.18.G12-260310-27014500038197"
+                                >
+                                    <span>1.008327 - Khai bổ sung hồ sơ khai thuế</span>
+                                </a>
+                            </td>
+                            
+                            <!--doi voi to khai 02 GTGT thi hien thi them ma hso du an cho nguoi dung de chon-->
+                            <td class="text-start labelTableBody">05/KK-TNCN - Tờ khai thuế thu nhập cá nhân (TT80/2021)</td>
+                            <td class="align-middle labelTableBody">Q3/2025</td>
+                            <td class="align-middle labelTableBody">Bổ sung</td>
+                            <td class="align-middle labelTableBody">2</td>
+                            <td class="align-middle labelTableBody">2</td>
+                            <td class="align-middle labelTableBody">70145 - Thành phố Thủ Đức - Thuế cơ sở 2 Thành phố Hồ Chí Minh</td>
+                            <td class="align-middle labelTableBody">10/03/2026 11:01</td>
+                            <td class="align-middle labelTableBody">
+                                <span class="badge bg-success">Đã chấp nhận</span>
+                                <br>
+                                
+                            </td>
+                            
+<!--                            <td class="align-middle labelTableBody">-->
+<!--                                <a class="link-opacity-50-hover"-->
+<!--                                   data-bs-target="#modalDsachHs"-->
+<!--                                   data-bs-toggle="modal"-->
+<!--                                   href="#"-->
+<!--                                   hx-swap="innerHTML"-->
+<!--                                   hx-target="#modalDsachHs"-->
+<!--                                   hx-trigger="click"-->
+<!--                                   onclick="openModalDsHoSo(this)"-->
+<!--                                   style="width:auto; text-wrap: nowrap"-->
+<!--                                   th:attr="data-ma-hs=${hoSo.maHoSo}"-->
+<!--                                   th:if="${hoSo.countFile > 0}"-->
+<!--                                   th:text="#{tchs.result.file}">Xem tài liệu</a>-->
+<!--                            </td>-->
+                            <!--                            <td class="align-middle labelTableBody">-->
+                            <!--                                <span th:text="${hoSo.thongBao}"></span>-->
+                            <!--                            </td>-->
+                        </tr>
+                        <tr>
+                            <td class="align-middle text-center labelTableBody">2</td>
+                            <td class="align-middle text-center labelTableBody"
+                                style="color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1)); font-size: 13pt;">
+                                <i class="bi bi-eye" data-bs-title="Xem chi tiết"
+                                   data-bs-toggle="tooltip-thaotac" onclick="viewDetail(this)"
+                                   style="cursor: pointer;" data-ma-ho-so="000.701.18.G12-260205-27014500037215"></i>
+
+                                
+                                    <i class="bi bi-folder-symlink-fill"
+                                       data-bs-title="Nộp hồ sơ bổ sung" data-bs-toggle="tooltip-thaotac"
+                                       onclick="kkhaiBSung(this)" style="cursor: pointer;" data-ma-tkhai="842" data-ma-ho-so="000.701.18.G12-260205-27014500037215" data-ma-tthc="1.008327" data-mst-nop="0314840592" data-mst-nop-thay="null" data-mst-dly-thue="null" data-ma-cqt="70145" data-trang-thai="006" data-is-tdt="N"></i>
+                                    <form id="redirectForm" method="post" style="display:none;">
+                                        <input name="_csrf" value="YfXAEpV0eN00S3rOOQZ5Ra-MFY4Oti6eVksfURAcMokmz3SYUpehdq0QQbsZfhn9CytNd5joOLdvgRazYCgnaXMuVr0erUf8" type="hidden"/>
+                                    </form>
+                                
+                            </td>
+                            <td class="align-middle labelTableBody">000.701.18.G12-260205-27014500037215</td>
+                            <td class="text-start labelTableBody">
+                                <a href="javascript:void(0);"
+                                   onclick="viewDetail(this)"
+                                   style="text-decoration: underline; color: blue;" data-ma-ho-so="000.701.18.G12-260205-27014500037215"
+                                >
+                                    <span>1.008327 - Khai bổ sung hồ sơ khai thuế</span>
+                                </a>
+                            </td>
+                            
+                            <!--doi voi to khai 02 GTGT thi hien thi them ma hso du an cho nguoi dung de chon-->
+                            <td class="text-start labelTableBody">01/GTGT - TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG Mẫu số 01/GTGT (TT80/2021)</td>
+                            <td class="align-middle labelTableBody">Q4/2025</td>
+                            <td class="align-middle labelTableBody">Bổ sung</td>
+                            <td class="align-middle labelTableBody">1</td>
+                            <td class="align-middle labelTableBody">1</td>
+                            <td class="align-middle labelTableBody">70145 - Thành phố Thủ Đức - Thuế cơ sở 2 Thành phố Hồ Chí Minh</td>
+                            <td class="align-middle labelTableBody">05/02/2026 10:44</td>
+                            <td class="align-middle labelTableBody">
+                                <span class="badge bg-success">Đã chấp nhận</span>
+                                <br>
+                                
+                            </td>
+                            
+<!--                            <td class="align-middle labelTableBody">-->
+<!--                                <a class="link-opacity-50-hover"-->
+<!--                                   data-bs-target="#modalDsachHs"-->
+<!--                                   data-bs-toggle="modal"-->
+<!--                                   href="#"-->
+<!--                                   hx-swap="innerHTML"-->
+<!--                                   hx-target="#modalDsachHs"-->
+<!--                                   hx-trigger="click"-->
+<!--                                   onclick="openModalDsHoSo(this)"-->
+<!--                                   style="width:auto; text-wrap: nowrap"-->
+<!--                                   th:attr="data-ma-hs=${hoSo.maHoSo}"-->
+<!--                                   th:if="${hoSo.countFile > 0}"-->
+<!--                                   th:text="#{tchs.result.file}">Xem tài liệu</a>-->
+<!--                            </td>-->
+                            <!--                            <td class="align-middle labelTableBody">-->
+                            <!--                                <span th:text="${hoSo.thongBao}"></span>-->
+                            <!--                            </td>-->
+                        </tr>
+                        <tr>
+                            <td class="align-middle text-center labelTableBody">3</td>
+                            <td class="align-middle text-center labelTableBody"
+                                style="color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1)); font-size: 13pt;">
+                                <i class="bi bi-eye" data-bs-title="Xem chi tiết"
+                                   data-bs-toggle="tooltip-thaotac" onclick="viewDetail(this)"
+                                   style="cursor: pointer;" data-ma-ho-so="000.701.18.G12-260205-27014500036619"></i>
+
+                                
+                                    <i class="bi bi-folder-symlink-fill"
+                                       data-bs-title="Nộp hồ sơ bổ sung" data-bs-toggle="tooltip-thaotac"
+                                       onclick="kkhaiBSung(this)" style="cursor: pointer;" data-ma-tkhai="864" data-ma-ho-so="000.701.18.G12-260205-27014500036619" data-ma-tthc="1.008327" data-mst-nop="0314840592" data-mst-nop-thay="null" data-mst-dly-thue="null" data-ma-cqt="70145" data-trang-thai="006" data-is-tdt="N"></i>
+                                    <form id="redirectForm" method="post" style="display:none;">
+                                        <input name="_csrf" value="YfXAEpV0eN00S3rOOQZ5Ra-MFY4Oti6eVksfURAcMokmz3SYUpehdq0QQbsZfhn9CytNd5joOLdvgRazYCgnaXMuVr0erUf8" type="hidden"/>
+                                    </form>
+                                
+                            </td>
+                            <td class="align-middle labelTableBody">000.701.18.G12-260205-27014500036619</td>
+                            <td class="text-start labelTableBody">
+                                <a href="javascript:void(0);"
+                                   onclick="viewDetail(this)"
+                                   style="text-decoration: underline; color: blue;" data-ma-ho-so="000.701.18.G12-260205-27014500036619"
+                                >
+                                    <span>1.008327 - Khai bổ sung hồ sơ khai thuế</span>
+                                </a>
+                            </td>
+                            
+                            <!--doi voi to khai 02 GTGT thi hien thi them ma hso du an cho nguoi dung de chon-->
+                            <td class="text-start labelTableBody">05/KK-TNCN - Tờ khai thuế thu nhập cá nhân (TT80/2021)</td>
+                            <td class="align-middle labelTableBody">Q2/2025</td>
+                            <td class="align-middle labelTableBody">Bổ sung</td>
+                            <td class="align-middle labelTableBody">2</td>
+                            <td class="align-middle labelTableBody">3</td>
+                            <td class="align-middle labelTableBody">70145 - Thành phố Thủ Đức - Thuế cơ sở 2 Thành phố Hồ Chí Minh</td>
+                            <td class="align-middle labelTableBody">05/02/2026 10:42</td>
+                            <td class="align-middle labelTableBody">
+                                <span class="badge bg-success">Đã chấp nhận</span>
+                                <br>
+                                
+                            </td>
+                            
+<!--                            <td class="align-middle labelTableBody">-->
+<!--                                <a class="link-opacity-50-hover"-->
+<!--                                   data-bs-target="#modalDsachHs"-->
+<!--                                   data-bs-toggle="modal"-->
+<!--                                   href="#"-->
+<!--                                   hx-swap="innerHTML"-->
+<!--                                   hx-target="#modalDsachHs"-->
+<!--                                   hx-trigger="click"-->
+<!--                                   onclick="openModalDsHoSo(this)"-->
+<!--                                   style="width:auto; text-wrap: nowrap"-->
+<!--                                   th:attr="data-ma-hs=${hoSo.maHoSo}"-->
+<!--                                   th:if="${hoSo.countFile > 0}"-->
+<!--                                   th:text="#{tchs.result.file}">Xem tài liệu</a>-->
+<!--                            </td>-->
+                            <!--                            <td class="align-middle labelTableBody">-->
+                            <!--                                <span th:text="${hoSo.thongBao}"></span>-->
+                            <!--                            </td>-->
+                        </tr>
+                        <tr>
+                            <td class="align-middle text-center labelTableBody">4</td>
+                            <td class="align-middle text-center labelTableBody"
+                                style="color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1)); font-size: 13pt;">
+                                <i class="bi bi-eye" data-bs-title="Xem chi tiết"
+                                   data-bs-toggle="tooltip-thaotac" onclick="viewDetail(this)"
+                                   style="cursor: pointer;" data-ma-ho-so="000.701.18.G12-260122-27014500171007"></i>
+
+                                
+                                    <i class="bi bi-folder-symlink-fill"
+                                       data-bs-title="Nộp hồ sơ bổ sung" data-bs-toggle="tooltip-thaotac"
+                                       onclick="kkhaiBSung(this)" style="cursor: pointer;" data-ma-tkhai="842" data-ma-ho-so="000.701.18.G12-260122-27014500171007" data-ma-tthc="1.008327" data-mst-nop="0314840592" data-mst-nop-thay="null" data-mst-dly-thue="null" data-ma-cqt="70145" data-trang-thai="006" data-is-tdt="N"></i>
+                                    <form id="redirectForm" method="post" style="display:none;">
+                                        <input name="_csrf" value="YfXAEpV0eN00S3rOOQZ5Ra-MFY4Oti6eVksfURAcMokmz3SYUpehdq0QQbsZfhn9CytNd5joOLdvgRazYCgnaXMuVr0erUf8" type="hidden"/>
+                                    </form>
+                                
+                            </td>
+                            <td class="align-middle labelTableBody">000.701.18.G12-260122-27014500171007</td>
+                            <td class="text-start labelTableBody">
+                                <a href="javascript:void(0);"
+                                   onclick="viewDetail(this)"
+                                   style="text-decoration: underline; color: blue;" data-ma-ho-so="000.701.18.G12-260122-27014500171007"
+                                >
+                                    <span>1.008327 - Khai bổ sung hồ sơ khai thuế</span>
+                                </a>
+                            </td>
+                            
+                            <!--doi voi to khai 02 GTGT thi hien thi them ma hso du an cho nguoi dung de chon-->
+                            <td class="text-start labelTableBody">01/GTGT - TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG Mẫu số 01/GTGT (TT80/2021)</td>
+                            <td class="align-middle labelTableBody">Q3/2025</td>
+                            <td class="align-middle labelTableBody">Bổ sung</td>
+                            <td class="align-middle labelTableBody">1</td>
+                            <td class="align-middle labelTableBody">1</td>
+                            <td class="align-middle labelTableBody">70145 - Thành phố Thủ Đức - Thuế cơ sở 2 Thành phố Hồ Chí Minh</td>
+                            <td class="align-middle labelTableBody">22/01/2026 15:29</td>
+                            <td class="align-middle labelTableBody">
+                                <span class="badge bg-success">Đã chấp nhận</span>
+                                <br>
+                                
+                            </td>
+                            
+<!--                            <td class="align-middle labelTableBody">-->
+<!--                                <a class="link-opacity-50-hover"-->
+<!--                                   data-bs-target="#modalDsachHs"-->
+<!--                                   data-bs-toggle="modal"-->
+<!--                                   href="#"-->
+<!--                                   hx-swap="innerHTML"-->
+<!--                                   hx-target="#modalDsachHs"-->
+<!--                                   hx-trigger="click"-->
+<!--                                   onclick="openModalDsHoSo(this)"-->
+<!--                                   style="width:auto; text-wrap: nowrap"-->
+<!--                                   th:attr="data-ma-hs=${hoSo.maHoSo}"-->
+<!--                                   th:if="${hoSo.countFile > 0}"-->
+<!--                                   th:text="#{tchs.result.file}">Xem tài liệu</a>-->
+<!--                            </td>-->
+                            <!--                            <td class="align-middle labelTableBody">-->
+                            <!--                                <span th:text="${hoSo.thongBao}"></span>-->
+                            <!--                            </td>-->
+                        </tr>
+                        <tr>
+                            <td class="align-middle text-center labelTableBody">5</td>
+                            <td class="align-middle text-center labelTableBody"
+                                style="color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1)); font-size: 13pt;">
+                                <i class="bi bi-eye" data-bs-title="Xem chi tiết"
+                                   data-bs-toggle="tooltip-thaotac" onclick="viewDetail(this)"
+                                   style="cursor: pointer;" data-ma-ho-so="000.701.18.G12-260122-27014500171655"></i>
+
+                                
+                                    <i class="bi bi-folder-symlink-fill"
+                                       data-bs-title="Nộp hồ sơ bổ sung" data-bs-toggle="tooltip-thaotac"
+                                       onclick="kkhaiBSung(this)" style="cursor: pointer;" data-ma-tkhai="842" data-ma-ho-so="000.701.18.G12-260122-27014500171655" data-ma-tthc="1.008327" data-mst-nop="0314840592" data-mst-nop-thay="null" data-mst-dly-thue="null" data-ma-cqt="70145" data-trang-thai="006" data-is-tdt="N"></i>
+                                    <form id="redirectForm" method="post" style="display:none;">
+                                        <input name="_csrf" value="YfXAEpV0eN00S3rOOQZ5Ra-MFY4Oti6eVksfURAcMokmz3SYUpehdq0QQbsZfhn9CytNd5joOLdvgRazYCgnaXMuVr0erUf8" type="hidden"/>
+                                    </form>
+                                
+                            </td>
+                            <td class="align-middle labelTableBody">000.701.18.G12-260122-27014500171655</td>
+                            <td class="text-start labelTableBody">
+                                <a href="javascript:void(0);"
+                                   onclick="viewDetail(this)"
+                                   style="text-decoration: underline; color: blue;" data-ma-ho-so="000.701.18.G12-260122-27014500171655"
+                                >
+                                    <span>1.008327 - Khai bổ sung hồ sơ khai thuế</span>
+                                </a>
+                            </td>
+                            
+                            <!--doi voi to khai 02 GTGT thi hien thi them ma hso du an cho nguoi dung de chon-->
+                            <td class="text-start labelTableBody">01/GTGT - TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG Mẫu số 01/GTGT (TT80/2021)</td>
+                            <td class="align-middle labelTableBody">Q2/2025</td>
+                            <td class="align-middle labelTableBody">Bổ sung</td>
+                            <td class="align-middle labelTableBody">1</td>
+                            <td class="align-middle labelTableBody">1</td>
+                            <td class="align-middle labelTableBody">70145 - Thành phố Thủ Đức - Thuế cơ sở 2 Thành phố Hồ Chí Minh</td>
+                            <td class="align-middle labelTableBody">22/01/2026 15:29</td>
+                            <td class="align-middle labelTableBody">
+                                <span class="badge bg-success">Đã chấp nhận</span>
+                                <br>
+                                
+                            </td>
+                            
+<!--                            <td class="align-middle labelTableBody">-->
+<!--                                <a class="link-opacity-50-hover"-->
+<!--                                   data-bs-target="#modalDsachHs"-->
+<!--                                   data-bs-toggle="modal"-->
+<!--                                   href="#"-->
+<!--                                   hx-swap="innerHTML"-->
+<!--                                   hx-target="#modalDsachHs"-->
+<!--                                   hx-trigger="click"-->
+<!--                                   onclick="openModalDsHoSo(this)"-->
+<!--                                   style="width:auto; text-wrap: nowrap"-->
+<!--                                   th:attr="data-ma-hs=${hoSo.maHoSo}"-->
+<!--                                   th:if="${hoSo.countFile > 0}"-->
+<!--                                   th:text="#{tchs.result.file}">Xem tài liệu</a>-->
+<!--                            </td>-->
+                            <!--                            <td class="align-middle labelTableBody">-->
+                            <!--                                <span th:text="${hoSo.thongBao}"></span>-->
+                            <!--                            </td>-->
+                        </tr>
+                        <tr>
+                            <td class="align-middle text-center labelTableBody">6</td>
+                            <td class="align-middle text-center labelTableBody"
+                                style="color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1)); font-size: 13pt;">
+                                <i class="bi bi-eye" data-bs-title="Xem chi tiết"
+                                   data-bs-toggle="tooltip-thaotac" onclick="viewDetail(this)"
+                                   style="cursor: pointer;" data-ma-ho-so="000.701.18.G12-260122-27014500171294"></i>
+
+                                
+                            </td>
+                            <td class="align-middle labelTableBody">000.701.18.G12-260122-27014500171294</td>
+                            <td class="text-start labelTableBody">
+                                <a href="javascript:void(0);"
+                                   onclick="viewDetail(this)"
+                                   style="text-decoration: underline; color: blue;" data-ma-ho-so="000.701.18.G12-260122-27014500171294"
+                                >
+                                    <span>1.008327 - Khai bổ sung hồ sơ khai thuế</span>
+                                </a>
+                            </td>
+                            
+                            <!--doi voi to khai 02 GTGT thi hien thi them ma hso du an cho nguoi dung de chon-->
+                            <td class="text-start labelTableBody">05/KK-TNCN - Tờ khai thuế thu nhập cá nhân (TT80/2021)</td>
+                            <td class="align-middle labelTableBody">Q3/2025</td>
+                            <td class="align-middle labelTableBody">Bổ sung</td>
+                            <td class="align-middle labelTableBody">1</td>
+                            <td class="align-middle labelTableBody">1</td>
+                            <td class="align-middle labelTableBody">70145 - Thành phố Thủ Đức - Thuế cơ sở 2 Thành phố Hồ Chí Minh</td>
+                            <td class="align-middle labelTableBody">22/01/2026 15:27</td>
+                            <td class="align-middle labelTableBody">
+                                <span class="badge bg-success">Đã chấp nhận</span>
+                                <br>
+                                
+                            </td>
+                            
+<!--                            <td class="align-middle labelTableBody">-->
+<!--                                <a class="link-opacity-50-hover"-->
+<!--                                   data-bs-target="#modalDsachHs"-->
+<!--                                   data-bs-toggle="modal"-->
+<!--                                   href="#"-->
+<!--                                   hx-swap="innerHTML"-->
+<!--                                   hx-target="#modalDsachHs"-->
+<!--                                   hx-trigger="click"-->
+<!--                                   onclick="openModalDsHoSo(this)"-->
+<!--                                   style="width:auto; text-wrap: nowrap"-->
+<!--                                   th:attr="data-ma-hs=${hoSo.maHoSo}"-->
+<!--                                   th:if="${hoSo.countFile > 0}"-->
+<!--                                   th:text="#{tchs.result.file}">Xem tài liệu</a>-->
+<!--                            </td>-->
+                            <!--                            <td class="align-middle labelTableBody">-->
+                            <!--                                <span th:text="${hoSo.thongBao}"></span>-->
+                            <!--                            </td>-->
+                        </tr>
+                        <tr>
+                            <td class="align-middle text-center labelTableBody">7</td>
+                            <td class="align-middle text-center labelTableBody"
+                                style="color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1)); font-size: 13pt;">
+                                <i class="bi bi-eye" data-bs-title="Xem chi tiết"
+                                   data-bs-toggle="tooltip-thaotac" onclick="viewDetail(this)"
+                                   style="cursor: pointer;" data-ma-ho-so="000.701.18.G12-260122-27014500169633"></i>
+
+                                
+                            </td>
+                            <td class="align-middle labelTableBody">000.701.18.G12-260122-27014500169633</td>
+                            <td class="text-start labelTableBody">
+                                <a href="javascript:void(0);"
+                                   onclick="viewDetail(this)"
+                                   style="text-decoration: underline; color: blue;" data-ma-ho-so="000.701.18.G12-260122-27014500169633"
+                                >
+                                    <span>1.008327 - Khai bổ sung hồ sơ khai thuế</span>
+                                </a>
+                            </td>
+                            
+                            <!--doi voi to khai 02 GTGT thi hien thi them ma hso du an cho nguoi dung de chon-->
+                            <td class="text-start labelTableBody">05/KK-TNCN - Tờ khai thuế thu nhập cá nhân (TT80/2021)</td>
+                            <td class="align-middle labelTableBody">Q2/2025</td>
+                            <td class="align-middle labelTableBody">Bổ sung</td>
+                            <td class="align-middle labelTableBody">1</td>
+                            <td class="align-middle labelTableBody">2</td>
+                            <td class="align-middle labelTableBody">70145 - Thành phố Thủ Đức - Thuế cơ sở 2 Thành phố Hồ Chí Minh</td>
+                            <td class="align-middle labelTableBody">22/01/2026 15:24</td>
+                            <td class="align-middle labelTableBody">
+                                <span class="badge bg-success">Không chấp nhận</span>
+                                <br>
+                                
+                            </td>
+                            
+<!--                            <td class="align-middle labelTableBody">-->
+<!--                                <a class="link-opacity-50-hover"-->
+<!--                                   data-bs-target="#modalDsachHs"-->
+<!--                                   data-bs-toggle="modal"-->
+<!--                                   href="#"-->
+<!--                                   hx-swap="innerHTML"-->
+<!--                                   hx-target="#modalDsachHs"-->
+<!--                                   hx-trigger="click"-->
+<!--                                   onclick="openModalDsHoSo(this)"-->
+<!--                                   style="width:auto; text-wrap: nowrap"-->
+<!--                                   th:attr="data-ma-hs=${hoSo.maHoSo}"-->
+<!--                                   th:if="${hoSo.countFile > 0}"-->
+<!--                                   th:text="#{tchs.result.file}">Xem tài liệu</a>-->
+<!--                            </td>-->
+                            <!--                            <td class="align-middle labelTableBody">-->
+                            <!--                                <span th:text="${hoSo.thongBao}"></span>-->
+                            <!--                            </td>-->
+                        </tr>
+                        <tr>
+                            <td class="align-middle text-center labelTableBody">8</td>
+                            <td class="align-middle text-center labelTableBody"
+                                style="color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1)); font-size: 13pt;">
+                                <i class="bi bi-eye" data-bs-title="Xem chi tiết"
+                                   data-bs-toggle="tooltip-thaotac" onclick="viewDetail(this)"
+                                   style="cursor: pointer;" data-ma-ho-so="000.701.18.G12-260122-27014500168109"></i>
+
+                                
+                                    <i class="bi bi-folder-symlink-fill"
+                                       data-bs-title="Nộp hồ sơ bổ sung" data-bs-toggle="tooltip-thaotac"
+                                       onclick="kkhaiBSung(this)" style="cursor: pointer;" data-ma-tkhai="864" data-ma-ho-so="000.701.18.G12-260122-27014500168109" data-ma-tthc="2.002235" data-mst-nop="0314840592" data-mst-nop-thay="null" data-mst-dly-thue="null" data-ma-cqt="70145" data-trang-thai="006" data-is-tdt="N"></i>
+                                    <form id="redirectForm" method="post" style="display:none;">
+                                        <input name="_csrf" value="YfXAEpV0eN00S3rOOQZ5Ra-MFY4Oti6eVksfURAcMokmz3SYUpehdq0QQbsZfhn9CytNd5joOLdvgRazYCgnaXMuVr0erUf8" type="hidden"/>
+                                    </form>
+                                
+                            </td>
+                            <td class="align-middle labelTableBody">000.701.18.G12-260122-27014500168109</td>
+                            <td class="text-start labelTableBody">
+                                <a href="javascript:void(0);"
+                                   onclick="viewDetail(this)"
+                                   style="text-decoration: underline; color: blue;" data-ma-ho-so="000.701.18.G12-260122-27014500168109"
+                                >
+                                    <span>2.002235 - Khai thuế thu nhập cá nhân tháng/quý của tổ chức, cá nhân trả thu nhập khấu trừ thuế đối với tiền lương, tiền công</span>
+                                </a>
+                            </td>
+                            
+                            <!--doi voi to khai 02 GTGT thi hien thi them ma hso du an cho nguoi dung de chon-->
+                            <td class="text-start labelTableBody">05/KK-TNCN - Tờ khai thuế thu nhập cá nhân (TT80/2021)</td>
+                            <td class="align-middle labelTableBody">Q4/2025</td>
+                            <td class="align-middle labelTableBody">Chính thức</td>
+                            <td class="align-middle labelTableBody">0</td>
+                            <td class="align-middle labelTableBody">1</td>
+                            <td class="align-middle labelTableBody">70145 - Thành phố Thủ Đức - Thuế cơ sở 2 Thành phố Hồ Chí Minh</td>
+                            <td class="align-middle labelTableBody">22/01/2026 15:22</td>
+                            <td class="align-middle labelTableBody">
+                                <span class="badge bg-success">Đã chấp nhận</span>
+                                <br>
+                                
+                            </td>
+                            
+<!--                            <td class="align-middle labelTableBody">-->
+<!--                                <a class="link-opacity-50-hover"-->
+<!--                                   data-bs-target="#modalDsachHs"-->
+<!--                                   data-bs-toggle="modal"-->
+<!--                                   href="#"-->
+<!--                                   hx-swap="innerHTML"-->
+<!--                                   hx-target="#modalDsachHs"-->
+<!--                                   hx-trigger="click"-->
+<!--                                   onclick="openModalDsHoSo(this)"-->
+<!--                                   style="width:auto; text-wrap: nowrap"-->
+<!--                                   th:attr="data-ma-hs=${hoSo.maHoSo}"-->
+<!--                                   th:if="${hoSo.countFile > 0}"-->
+<!--                                   th:text="#{tchs.result.file}">Xem tài liệu</a>-->
+<!--                            </td>-->
+                            <!--                            <td class="align-middle labelTableBody">-->
+                            <!--                                <span th:text="${hoSo.thongBao}"></span>-->
+                            <!--                            </td>-->
+                        </tr>
+                        <tr>
+                            <td class="align-middle text-center labelTableBody">9</td>
+                            <td class="align-middle text-center labelTableBody"
+                                style="color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1)); font-size: 13pt;">
+                                <i class="bi bi-eye" data-bs-title="Xem chi tiết"
+                                   data-bs-toggle="tooltip-thaotac" onclick="viewDetail(this)"
+                                   style="cursor: pointer;" data-ma-ho-so="000.701.18.G12-260122-27014500166021"></i>
+
+                                
+                            </td>
+                            <td class="align-middle labelTableBody">000.701.18.G12-260122-27014500166021</td>
+                            <td class="text-start labelTableBody">
+                                <a href="javascript:void(0);"
+                                   onclick="viewDetail(this)"
+                                   style="text-decoration: underline; color: blue;" data-ma-ho-so="000.701.18.G12-260122-27014500166021"
+                                >
+                                    <span>1.007014 - Khai thuế GTGT đối với phương pháp khấu trừ đối với hoạt động sản xuất kinh doanh</span>
+                                </a>
+                            </td>
+                            
+                            <!--doi voi to khai 02 GTGT thi hien thi them ma hso du an cho nguoi dung de chon-->
+                            <td class="text-start labelTableBody">01/GTGT - TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG Mẫu số 01/GTGT (TT80/2021)</td>
+                            <td class="align-middle labelTableBody">Q4/2025</td>
+                            <td class="align-middle labelTableBody">Chính thức</td>
+                            <td class="align-middle labelTableBody">0</td>
+                            <td class="align-middle labelTableBody">1</td>
+                            <td class="align-middle labelTableBody">70145 - Thành phố Thủ Đức - Thuế cơ sở 2 Thành phố Hồ Chí Minh</td>
+                            <td class="align-middle labelTableBody">22/01/2026 15:18</td>
+                            <td class="align-middle labelTableBody">
+                                <span class="badge bg-success">Đã chấp nhận</span>
+                                <br>
+                                
+                            </td>
+                            
+<!--                            <td class="align-middle labelTableBody">-->
+<!--                                <a class="link-opacity-50-hover"-->
+<!--                                   data-bs-target="#modalDsachHs"-->
+<!--                                   data-bs-toggle="modal"-->
+<!--                                   href="#"-->
+<!--                                   hx-swap="innerHTML"-->
+<!--                                   hx-target="#modalDsachHs"-->
+<!--                                   hx-trigger="click"-->
+<!--                                   onclick="openModalDsHoSo(this)"-->
+<!--                                   style="width:auto; text-wrap: nowrap"-->
+<!--                                   th:attr="data-ma-hs=${hoSo.maHoSo}"-->
+<!--                                   th:if="${hoSo.countFile > 0}"-->
+<!--                                   th:text="#{tchs.result.file}">Xem tài liệu</a>-->
+<!--                            </td>-->
+                            <!--                            <td class="align-middle labelTableBody">-->
+                            <!--                                <span th:text="${hoSo.thongBao}"></span>-->
+                            <!--                            </td>-->
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            
+        </section>
+    </div>
+    <style>
+        .tooltip-thaotac {
+            --bs-tooltip-bg: var(--bs-tertiary-bg);
+            --bs-tooltip-color: var(--bs-black);
+        }
+    </style>
+    <script type="text/javascript">
+        document.querySelectorAll('[data-bs-toggle="tooltip-thaotac"]').forEach(function (tooltipEl) {
+            new bootstrap.Tooltip(tooltipEl, {
+                customClass: 'tooltip-thaotac'
+            });
+        })
+    </script>
+</div>

@@ -1,0 +1,19 @@
+{
+  "status_code": 200,
+  "url": "https://dichvucong.gdt.gov.vn/tthc/sso/redirect-to-service?module=330410",
+  "headers": {
+    "x-content-type-options": "nosniff",
+    "x-xss-protection": "0",
+    "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+    "pragma": "no-cache",
+    "expires": "0",
+    "strict-transport-security": "max-age=16070400; includeSubDomains; preload",
+    "x-frame-options": "DENY",
+    "content-type": "text/plain;charset=UTF-8",
+    "content-length": "1080",
+    "date": "Sat, 10 Oct 2026 02:44:54 GMT",
+    "Location": "",
+    "Set-Cookie": "TS5d8132da027=089ec42a94ab2000969c482bf7d3d8ac658192ddf55943c2a340f8534ec965648947dcd486502da8080d808941113000badcb7a9f2fcbe4c242790b21910f8295ec0b99a7e28b8edb9a680fde8184dd18b25fc7d4cb42173f300aa6092bba53f; Path=/"
+  },
+  "body_preview": "https://thuedientu.gdt.gov.vn/etaxnnt/?vnconnect=SSOTHUE&code=6XA02F33KE2uI0l38QF99C82ayFDoQ3YefQuIy3ZJvefhkiNireZ6I7Tvq08YGMY4YnIiHvMGxsPX1ICQ4Lz4Pm+EMC+ICqAHjvi9FC4MPa5I+5MOzfMoUrn9Ed7nd0c1vGT7OZOEkZE8oCQKEGVlo0kFi8C5m80/aYK+VjQs2j2LkGVrtG7MYEygFo2f2KFOwh8zXcBKZIQzGdRy3YHcuMQk2EvuwiUGLkkN0HQT6Ido6TPSE0/aO3NwNOmPg50qufPVPlBTOtNLgulbgdt1dMBmYOIvHbu33kof4ITlBWpLYjsnQWUpIYBDkvGZbkgO+v4wRQSthd7z2DDM8mYjEIOEOPLLs5b1RsgoXJ9ZyjOOVIs2ICIOEHoR3uf96oH4MvuELw9pcRkDOrnJ2SIjxaFNxaekdGs8tJUhPzmBW/w4asgPGxM35c9HlRZnJyL8HyIeNsuBuR0XkkPD3/FpfXCuIscEuDy+xlZ5vf1rhLVSYFrZ0vh6goIV1eLR2cCaUjHa7QMs9inBQ9rqEFdWtTMvp87x2V1jHVpLw8ppdEuPfkaNjg+kBW/tR9+OU+Q62WXrxRC2uOHJZ6mXOBa+lu0BqhB6cixaZhRVN8BkEmc2TYomTMU8UYDNhWYm57jQaR1VmR5mk0YSlZG6DsWqUFHSPfz659t5bi6lU2hLvgs6M0gZ+DLS2qDOe6mjx7XjQGDwxJqPKtkCWiQlMCqBzBZKKn9iUhCbyfNFCy6dqqoOqqp+97n6ECEMenf3OuY55SaigyHxTTo2XWPyH2zSVcm42tMfD01VOdbkkoVw+9eqiu4qybvzNeNZuz70u6BDBe/Y6p/sgjBioGFqSAEojdjEzoQph32xRTStqC2UrprbI9Ag/9j30UYN0E2QZAWIDUgXdnq3fK4rzg7Vqm2rLKOvSsa9yXYsfEFWoAePAaRRBWGirEU7V7E5jYAkdEQr3Cb/Acedw0gs4uiEhJPEA3L8Bjv2T3Q3+L77CZdhh4=&module=330410"
+}

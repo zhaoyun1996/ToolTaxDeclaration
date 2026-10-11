@@ -1,0 +1,19 @@
+{
+  "status_code": 500,
+  "url": "https://dichvucong.gdt.gov.vn/tthc/tchs/downloadhoso",
+  "headers": {
+    "x-content-type-options": "nosniff",
+    "x-xss-protection": "0",
+    "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+    "pragma": "no-cache",
+    "expires": "0",
+    "strict-transport-security": "max-age=16070400; includeSubDomains; preload",
+    "x-frame-options": "DENY",
+    "content-type": "application/json;charset=UTF-8",
+    "date": "Sat, 10 Oct 2026 08:48:15 GMT",
+    "Location": "",
+    "Set-Cookie": "TS5d8132da027=089ec42a94ab200055416eaefffa53392d870c7ddcc3e21e6a0f2764bc9baf75dd61d98ad4c9ed2d086e9727a911300010a796a2c2357636ab721457b8239b9210ab0030a5e9c5ae56d06c250a22ce88806032c95088594d93eb6d9af1ae71be; Path=/",
+    "Transfer-Encoding": "chunked"
+  },
+  "body_preview": "{\"error\":\"Hồ sơ truyền lên không hợp lệ\"}"
+}

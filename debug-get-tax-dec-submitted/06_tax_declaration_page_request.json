@@ -1,0 +1,11 @@
+{
+  "label": "tax_declaration_page",
+  "method": "GET",
+  "url": "https://dichvucong.gdt.gov.vn/tthc/tchs",
+  "headers": {
+    "Referer": "https://dichvucong.gdt.gov.vn/tthc/login"
+  },
+  "params": {},
+  "data": {},
+  "json": {}
+}

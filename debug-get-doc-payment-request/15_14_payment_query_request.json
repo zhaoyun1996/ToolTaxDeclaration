@@ -1,0 +1,43 @@
+{
+  "label": "14_payment_query",
+  "method": "POST",
+  "url": "https://thuedientu.gdt.gov.vn/etaxnnt/Request",
+  "headers": {
+    "Referer": "https://thuedientu.gdt.gov.vn/etaxnnt/Request",
+    "Origin": "https://thuedientu.gdt.gov.vn"
+  },
+  "params": {},
+  "data": {
+    "dse_sessionId": "***REDACTED***",
+    "dse_applicationId": "-1",
+    "dse_operationName": "corpQueryTaxProc",
+    "dse_pageId": "4",
+    "dse_processorState": "viewQueryPage",
+    "dse_processorId": "BQISBTDGCUJREGBGHKDOFNDEIGFMHKEQDHDBAAAN",
+    "dse_errorPage": "/etax/query_tax_information.jsp",
+    "dse_nextEventName": "query",
+    "pn": "1",
+    "sct": "",
+    "ctuId": "",
+    "soGnt": "",
+    "idBke": "",
+    "type_tax": "01",
+    "ma_giao_dich": "",
+    "so_ctu_nh": "",
+    "so_gnt": "",
+    "ngay_lap_tu_ngay": "01/01/2026",
+    "ngay_lap_den_ngay": "10/10/2026",
+    "ngay_gui_tu_ngay": "",
+    "ngay_gui_den_ngay": "",
+    "ngay_nop_tu_ngay": "",
+    "ngay_nop_den_ngay": "",
+    "ma_nhang": "",
+    "so_tk": "",
+    "nguyen_te": "",
+    "hthuc_nop": "",
+    "tong_tien_nt_tu": "",
+    "tong_tien_nt_den": "",
+    "trang_thai": ""
+  },
+  "json": {}
+}

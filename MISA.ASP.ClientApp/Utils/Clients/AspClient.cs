@@ -196,5 +196,19 @@ namespace MISA.ASP.ClientApp.Utils.Clients
                 throw ex;
             }
         }
+
+        public async Task<HttpResponseMessage> GetPaymentRequestFileFromServer(int profileID, int customerID, FileTypeEnum fileType, string fileName)
+        {
+            try
+            {
+                var message = await _client.GetAsync($"api/{profileID}/EPaymentRequest/GetPaymentRequestFile?type={fileType}&customerID={customerID}&fileName={fileName}");
+                message.EnsureSuccessStatusCode();
+                return message;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

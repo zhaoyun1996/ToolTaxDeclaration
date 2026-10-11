@@ -1,0 +1,11 @@
+{
+  "label": "08_etax_corp_jump",
+  "method": "GET",
+  "url": "https://thuedientu.gdt.gov.vn/etaxnnt/Request?dse_operationName=corpJumpProc&dse_errorPage=error_page.jsp&dse_processorState=initial&dse_nextEventName=start&dse_sessionId=6zLKbou1YI1Dt90dwusoBMK&dse_applicationId=-1&dse_pageId=0&toOpName=ssoTTHC",
+  "headers": {
+    "Referer": "https://dichvucong.gdt.gov.vn/"
+  },
+  "params": {},
+  "data": {},
+  "json": {}
+}

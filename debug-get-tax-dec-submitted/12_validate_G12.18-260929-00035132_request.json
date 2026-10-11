@@ -1,0 +1,14 @@
+{
+  "label": "validate_G12.18-260929-00035132",
+  "method": "GET",
+  "url": "https://dichvucong.gdt.gov.vn/tthc/tchs/validateIdTkhai",
+  "headers": {
+    "Referer": "https://dichvucong.gdt.gov.vn/tthc/tchs/files/detail/G12.18-260929-00035132?loai=",
+    "X-XSRF-TOKEN": "***REDACTED***"
+  },
+  "params": {
+    "idTKhai": "G12.18-260929-00035132"
+  },
+  "data": {},
+  "json": {}
+}

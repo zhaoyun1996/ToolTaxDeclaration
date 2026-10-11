@@ -1,0 +1,985 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HSoThueDTu xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">
+  <HSoKhaiThue id="ID-NODETOSIGN-XML">
+    <TTinChung>
+      <TTinDVu>
+        <maDVu>HTKK</maDVu>
+        <tenDVu>HỖ TRỢ KÊ KHAI THUẾ</tenDVu>
+        <pbanDVu>5.3.8</pbanDVu>
+        <ttinNhaCCapDVu>D8FC3C62EA81DE64F59B9036A4EF9C95</ttinNhaCCapDVu>
+      </TTinDVu>
+      <TTinTKhaiThue>
+        <TKhaiThue>
+          <maTKhai>842</maTKhai>
+          <tenTKhai>TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG (Mẫu số 01/GTGT)</tenTKhai>
+          <moTaBMau>(Ban hành kèm theo Thông tư số 80/2021/TT-BTC ngày 29 tháng 9 năm 2021 của Bộ trưởng Bộ Tài chính)</moTaBMau>
+          <pbanTKhaiXML>2.8.3</pbanTKhaiXML>
+          <loaiTKhai>B</loaiTKhai>
+          <soLan>1</soLan>
+          <KyKKhaiThue>
+            <kieuKy>Q</kieuKy>
+            <kyKKhai>3/2025</kyKKhai>
+            <kyKKhaiTuNgay>01/07/2025</kyKKhaiTuNgay>
+            <kyKKhaiDenNgay>30/09/2025</kyKKhaiDenNgay>
+            <kyKKhaiTuThang />
+            <kyKKhaiDenThang />
+          </KyKKhaiThue>
+          <maCQTNoiNop>70145</maCQTNoiNop>
+          <tenCQTNoiNop>Chi cục Thuế thành phố Thủ Đức</tenCQTNoiNop>
+          <ngayLapTKhai>2026-01-20</ngayLapTKhai>
+          <GiaHan>
+            <maLyDoGiaHan />
+            <lyDoGiaHan />
+          </GiaHan>
+          <nguoiKy>Ngô Thị Quí</nguoiKy>
+          <ngayKy>2026-01-20</ngayKy>
+          <nganhNgheKD />
+        </TKhaiThue>
+        <NNT>
+          <mst>0314840592</mst>
+          <tenNNT>CÔNG TY TNHH THANG MÁY DOEL VIỆT NAM</tenNNT>
+          <dchiNNT>Số 8A, Đường số 5, Khu phố 4, Phường An Khánh, Thành phố Hồ Chí Minh, Việt Nam</dchiNNT>
+          <phuongXa />
+          <maHuyenNNT />
+          <tenHuyenNNT>Thành phố Thủ Đức</tenHuyenNNT>
+          <maTinhNNT />
+          <tenTinhNNT>Hồ Chí Minh</tenTinhNNT>
+          <dthoaiNNT></dthoaiNNT>
+          <faxNNT />
+          <emailNNT></emailNNT>
+        </NNT>
+      </TTinTKhaiThue>
+    </TTinChung>
+    <CTieuTKhaiChinh>
+      <ma_NganhNghe>00</ma_NganhNghe>
+      <ten_NganhNghe>Hoạt động sản xuất kinh doanh thông thường</ten_NganhNghe>
+      <tieuMucHachToan>1701</tieuMucHachToan>
+      <Header>
+        <ct09 />
+        <ct10 />
+        <DiaChiHDSXKDKhacTinhNDTSC>
+          <ct11a_phuongXa_ma />
+          <ct11a_phuongXa_ten />
+          <ct11b_quanHuyen_ma />
+          <ct11b_quanHuyen_ten />
+          <ct11c_tinhTP_ma />
+          <ct11c_tinhTP_ten />
+        </DiaChiHDSXKDKhacTinhNDTSC>
+      </Header>
+      <ct21>0</ct21>
+      <ct22>0</ct22>
+      <GiaTriVaThueGTGTHHDVMuaVao>
+        <ct23>249341626</ct23>
+        <ct24>20878717</ct24>
+      </GiaTriVaThueGTGTHHDVMuaVao>
+      <HangHoaDichVuNhapKhau>
+        <ct23a>0</ct23a>
+        <ct24a>0</ct24a>
+      </HangHoaDichVuNhapKhau>
+      <ct25>20878717</ct25>
+      <ct26>0</ct26>
+      <HHDVBRaChiuThueGTGT>
+        <ct27>400881673</ct27>
+        <ct28>28461808</ct28>
+      </HHDVBRaChiuThueGTGT>
+      <ct29>69567844</ct29>
+      <HHDVBRaChiuTSuat5>
+        <ct30>0</ct30>
+        <ct31>0</ct31>
+      </HHDVBRaChiuTSuat5>
+      <HHDVBRaChiuTSuat10>
+        <ct32>331313829</ct32>
+        <ct33>28461808</ct33>
+      </HHDVBRaChiuTSuat10>
+      <ct32a>0</ct32a>
+      <TongDThuVaThueGTGTHHDVBRa>
+        <ct34>400881673</ct34>
+        <ct35>28461808</ct35>
+      </TongDThuVaThueGTGTHHDVBRa>
+      <ct36>7583091</ct36>
+      <ct37>0</ct37>
+      <ct38>0</ct38>
+      <ct39a>0</ct39a>
+      <ct40a>7583091</ct40a>
+      <ct40b>0</ct40b>
+      <ct40>7583091</ct40>
+      <ct41>0</ct41>
+      <ct42>0</ct42>
+      <ct43>0</ct43>
+    </CTieuTKhaiChinh>
+    <PLuc>
+      <PL_NQ142_GTGT>
+        <HH_DV_MuaVaoTrongKy>
+          <BangKeTenHHDV ID="ID_1">
+            <tenHHDVMuaVao>Ắc quy kín khí (VRLA AGM) Globe 12V -12Ah (20Hr) WP12-12SE, F2</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>1629630</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>130370</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_2">
+            <tenHHDVMuaVao>Ắc quy kín khí (VRLA AGM) GLOBE 12V -20Ah, WP20-12IE, F3-M5</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>1462963</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>117037</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_3">
+            <tenHHDVMuaVao>Bass nối ray dẫn hướng, model:T78/B</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>504000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>40320</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_4">
+            <tenHHDVMuaVao>Biến tần EC20-0R7G-S2</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>2129630</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>170370</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_5">
+            <tenHHDVMuaVao>Bộ nguồn dạng tĩnh LRS-200-24</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>880000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>70400</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_6">
+            <tenHHDVMuaVao>Bộ truyền động cửa cabin HDMJ-06 , cửa mở trung tâm CO 800</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>12760000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>1020800</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_7">
+            <tenHHDVMuaVao>Bộ truyền động cửa tầng HDCM-06, cửa mở trung tâm CO 600</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>7380000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>590400</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_8">
+            <tenHHDVMuaVao>Bộ truyền động cửa tầng HDCM-06, cửa mở trung tâm CO 800</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>2460000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>196800</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_9">
+            <tenHHDVMuaVao>Cảm biến dừng tầng DIAMONDBIS, 5 Ampe, 0TUP05, dùng để ngắt điện dùng cho thang máy</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>350000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>28000</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_10">
+            <tenHHDVMuaVao>Cảm biến dùng trong thang máy Prosis 1A</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>460000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>36800</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_11">
+            <tenHHDVMuaVao>Cáp điều khiển TVVBP 24*0.75+(2*2P)*0.75</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>2037037</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>162963</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_12">
+            <tenHHDVMuaVao>Chuyển động cửa cabin HDO-02V</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>4726000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>378080</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_13">
+            <tenHHDVMuaVao>CỬA TẦNG 700MM</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>1854000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>148320</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_14">
+            <tenHHDVMuaVao>Đầu cửa cabin 2CO 750</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>4830000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>386400</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_15">
+            <tenHHDVMuaVao>Đầu cửa lùa cabin thang máy loại OMJ506A JJ600*HH2100,kèm biến tần Monarch</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>11018518</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>881481</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_16">
+            <tenHHDVMuaVao>Đầu cửa tầng lùa thang máy loại OCM506 JJ600*HH2100</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>2592592</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>207407</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_17">
+            <tenHHDVMuaVao>Dây chống nhiễu 24*0.75</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>1860000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>148800</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_18">
+            <tenHHDVMuaVao>Guốc trượt cửa cabin</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>168889</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>13511</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_19">
+            <tenHHDVMuaVao>Hộp đựng dầu dùng cho ray thang máy</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>225000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>18000</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_20">
+            <tenHHDVMuaVao>Hộp giới hạn đóng</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>552407</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>44193</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_21">
+            <tenHHDVMuaVao>Hộp hứng nhớt vuông 330ml</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>316667</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>25333</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_22">
+            <tenHHDVMuaVao>Hộp nhớt</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>369444</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>29556</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_23">
+            <tenHHDVMuaVao>Khay đựng dầu dùng trong thang máy</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>75000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>6001</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_24">
+            <tenHHDVMuaVao>kiểm định kỹ thuật an toàn thang máy điện</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>15000000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>1200000</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_25">
+            <tenHHDVMuaVao>MÁY KÉO TẢI 630KG-1.0M/S</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>21800000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>1744000</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_26">
+            <tenHHDVMuaVao>Máy kéo thang máy FJK3-B02; 4.0kW; 630kg; 1.0m/s 3P380 320mm</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>25925926</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>2074074</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_27">
+            <tenHHDVMuaVao>Nút nhấn</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>1671297</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>133703</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_28">
+            <tenHHDVMuaVao>Phí dịch vụ tư vấn quản lý doanh nghiệp Tháng 07/2025</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>1000000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>80000</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_29">
+            <tenHHDVMuaVao>Phí dịch vụ tư vấn quản lý doanh nghiệp Tháng 08/2025</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>1500000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>120000</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_30">
+            <tenHHDVMuaVao>Phí dịch vụ tư vấn quản lý doanh nghiệp Tháng 09/2025</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>1000000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>80000</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_31">
+            <tenHHDVMuaVao>Quạt hút nhiệt trong cabin thang máy FB-9B</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>2216667</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>177333</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_32">
+            <tenHHDVMuaVao>Ray dẫn hướng, model:T78/B,dài 5M</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>25828000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>2066240</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_33">
+            <tenHHDVMuaVao>Ray dẫn hướng T78</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>4880000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>390400</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_34">
+            <tenHHDVMuaVao>Ray dẫn hướng thang máy loại TK5A</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>5330000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>426400</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_35">
+            <tenHHDVMuaVao>Ray dẫn hướng TK5A</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>1572000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>125760</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_36">
+            <tenHHDVMuaVao>Shoe dẫn hướng T78</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>138890</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>11111</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_37">
+            <tenHHDVMuaVao>Shoe T78 dạng trượt, rãnh 10mm</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>1111112</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>88889</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_38">
+            <tenHHDVMuaVao>Su đà máy</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>1960000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>156800</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_39">
+            <tenHHDVMuaVao>Su dẫn hướng thang máy GLKS-H01- T78 kích thước: 10mm</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>525000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>42000</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_40">
+            <tenHHDVMuaVao>Tắc kê M12</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>616889</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>49351</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_41">
+            <tenHHDVMuaVao>Thắng cơ loại 10mm</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>1851851</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>148148</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_42">
+            <tenHHDVMuaVao>Thắng cơ T78</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>1426241</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>114099</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_43">
+            <tenHHDVMuaVao>Thanh Photosell</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>775000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>62000</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_44">
+            <tenHHDVMuaVao>THIẾT BỊ CỨU HỘ THANG MÁY SOROTEC MT550K</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>3379630</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>270370</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_45">
+            <tenHHDVMuaVao>Thiết bị nguồn Intercom 2.6</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>660000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>52800</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_46">
+            <tenHHDVMuaVao>TỦ ĐIỆN NICE3000-7.5KW</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>14810000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>1184800</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_47">
+            <tenHHDVMuaVao>Ty cáp 8</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>620000</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>49600</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_48">
+            <tenHHDVMuaVao>Vé máy bay 2NKDD6 ( SGN - PQC)</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>2357407</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>188593</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_49">
+            <tenHHDVMuaVao>Vé máy bay RJRRYI ( PQC - SGN)</tenHHDVMuaVao>
+            <giaTriHHDVMuaVao>1794445</giaTriHHDVMuaVao>
+            <thueGTGTHHDV>143555</thueGTGTHHDV>
+          </BangKeTenHHDV>
+          <tongCongGiaTriHHDVMuaVao>200392132</tongCongGiaTriHHDVMuaVao>
+          <tongCongThueGTGTHHDV>16031368</tongCongThueGTGTHHDV>
+        </HH_DV_MuaVaoTrongKy>
+        <HH_DV_BanRaTrongKy>
+          <BangKeTenHHDV ID="ID_1">
+            <tenHHDV>Ắc quy kín khí (VRLA AGM) Globe 12V -12Ah (20Hr) WP12-12SE, F2</tenHHDV>
+            <giaTriHHDV>4476000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>89520</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_2">
+            <tenHHDV>Biến tần EC20-0R7G-S2</tenHHDV>
+            <giaTriHHDV>3000000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>60000</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_3">
+            <tenHHDV>Bộ nguồn dạng tĩnh LRS-200-24</tenHHDV>
+            <giaTriHHDV>2900000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>58000</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_4">
+            <tenHHDV>Bộ truyền động cửa cabin HDMJ-06 , cửa mở trung tâm CO 800</tenHHDV>
+            <giaTriHHDV>14400000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>288000</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_5">
+            <tenHHDV>Cảm biến dừng tầng DIAMONDBIS, 5 Ampe, 0TUP05, dùng để ngắt điện dùng cho thang máy</tenHHDV>
+            <giaTriHHDV>1230000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>24600</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_6">
+            <tenHHDV>Cảm biến dùng trong thang máy Prosis 1A</tenHHDV>
+            <giaTriHHDV>300000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>6000</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_7">
+            <tenHHDV>Đầu cửa cabin 2CO650mm</tenHHDV>
+            <giaTriHHDV>7186000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>143720</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_8">
+            <tenHHDV>Đầu cửa cabin 2CO 750</tenHHDV>
+            <giaTriHHDV>4000000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>80000</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_9">
+            <tenHHDV>Đầu cửa lùa cabin thang máy loại OMJ506A JJ600*HH2100,kèm biến tần Monarch</tenHHDV>
+            <giaTriHHDV>12750000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>255000</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_10">
+            <tenHHDV>Guốc trượt cửa cabin</tenHHDV>
+            <giaTriHHDV>1350192</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>27004</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_11">
+            <tenHHDV>Hộp giới hạn đóng</tenHHDV>
+            <giaTriHHDV>1200000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>24000</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_12">
+            <tenHHDV>Hộp hứng nhớt vuông 330ml</tenHHDV>
+            <giaTriHHDV>580000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>11600</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_13">
+            <tenHHDV>Hộp nhớt</tenHHDV>
+            <giaTriHHDV>570000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>11400</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_14">
+            <tenHHDV>Kiểm định an toàn thang máy điện</tenHHDV>
+            <giaTriHHDV>6000000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>120000</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_15">
+            <tenHHDV>Kiểm định kỹ thuật an toàn thang máy điện</tenHHDV>
+            <giaTriHHDV>16000000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>320000</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_16">
+            <tenHHDV>MÁY KÉO TẢI 630KG-1.0M/S</tenHHDV>
+            <giaTriHHDV>27984024</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>559680</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_17">
+            <tenHHDV>Máy kéo thang máy FJK3-B02; 4.0kW; 630kg; 1.0m/s 3P380 320mm</tenHHDV>
+            <giaTriHHDV>40299000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>805980</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_18">
+            <tenHHDV>Nhân công</tenHHDV>
+            <giaTriHHDV>3598065</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>71961</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_19">
+            <tenHHDV>Nút nhấn</tenHHDV>
+            <giaTriHHDV>2234400</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>44688</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_20">
+            <tenHHDV>Phí bảo trì thang máy định kỳ Tháng 7/2025</tenHHDV>
+            <giaTriHHDV>10400000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>208000</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_21">
+            <tenHHDV>Phí bảo trì thang máy định kỳ Tháng 8/2025</tenHHDV>
+            <giaTriHHDV>14000000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>280000</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_22">
+            <tenHHDV>Phí bảo trì thang máy định kỳ Tháng 9/2025</tenHHDV>
+            <giaTriHHDV>11400000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>228000</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_23">
+            <tenHHDV>Quạt hút nhiệt trong cabin thang máy FB-9B</tenHHDV>
+            <giaTriHHDV>5938716</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>118774</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_24">
+            <tenHHDV>Ray dẫn hướng, model:T78/B,dài 5M</tenHHDV>
+            <giaTriHHDV>4036000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>80720</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_25">
+            <tenHHDV>Su đà máy</tenHHDV>
+            <giaTriHHDV>380000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>7600</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_26">
+            <tenHHDV>Thắng cơ T78</tenHHDV>
+            <giaTriHHDV>1983000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>39660</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_27">
+            <tenHHDV>THIẾT BỊ CỨU HỘ THANG MÁY SOROTEC MT550K</tenHHDV>
+            <giaTriHHDV>4200000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>84000</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_28">
+            <tenHHDV>Thiết bị nguồn Intercom 2.6</tenHHDV>
+            <giaTriHHDV>1416000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>28320</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_29">
+            <tenHHDV>Tủ điều khiển thang máy công suất 7.5KW FUJI</tenHHDV>
+            <giaTriHHDV>21667352</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>433347</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <BangKeTenHHDV ID="ID_30">
+            <tenHHDV>Vệ sinh thang</tenHHDV>
+            <giaTriHHDV>8000000</giaTriHHDV>
+            <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+            <thueSuatSauGiam>8</thueSuatSauGiam>
+            <thueGTGTDuocGiam>160000</thueGTGTDuocGiam>
+          </BangKeTenHHDV>
+          <tongCongGiaTriHHDV>233478749</tongCongGiaTriHHDV>
+          <tongCongThueGTGTDuocGiam>4669574</tongCongThueGTGTDuocGiam>
+        </HH_DV_BanRaTrongKy>
+        <ChenhLech>
+          <ct9>-11361794</ct9>
+        </ChenhLech>
+      </PL_NQ142_GTGT>
+      <PL01_KHBS>
+        <Header>
+          <maTKhai>842</maTKhai>
+          <tenTKhai>TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG (Mẫu số 01/GTGT)</tenTKhai>
+          <maGiaoDich>01</maGiaoDich>
+          <KyKKhaiThue>
+            <kieuKy>Q</kieuKy>
+            <kyKKhai>3/2025</kyKKhai>
+            <kyKKhaiTuNgay>01/07/2025</kyKKhaiTuNgay>
+            <kyKKhaiDenNgay>30/09/2025</kyKKhaiDenNgay>
+            <kyKKhaiTuThang />
+            <kyKKhaiDenThang />
+          </KyKKhaiThue>
+          <soLan>1</soLan>
+          <mst>0314840592</mst>
+          <tenNNT>CÔNG TY TNHH THANG MÁY DOEL VIỆT NAM</tenNNT>
+          <mstDLyThue xsi:nil="true" />
+          <tenDLyThue />
+          <soHDongDLyThue />
+          <ngayKyHDDLyThue xsi:nil="true"></ngayKyHDDLyThue>
+        </Header>
+        <ma_DonViTien>VND</ma_DonViTien>
+        <ten_DonViTien>Đồng Việt Nam</ten_DonViTien>
+        <Muc_A>
+          <Muc_I>
+            <Muc_1>
+              <ChiTiet id="ID_1">
+                <ct2_ma>1701</ct2_ma>
+                <ct2_ten>Thuế giá trị gia tăng hàng sản xuất, kinh doanh trong nước (gồm cả dịch vụ trong lĩnh vực dầu khí)</ct2_ten>
+                <ct3>-372000</ct3>
+              </ChiTiet>
+              <tongCong_ct10>-372000</tongCong_ct10>
+            </Muc_1>
+            <Muc_2>
+              <DSachPLuc>
+                <BKePLuc id="ID_1">
+                  <ma_PLuc></ma_PLuc>
+                  <ten_PLuc />
+                  <CTietPLuc>
+                    <ChiTiet id="ID_1">
+                      <ct2_ma />
+                      <ct2_ten />
+                      <ct3_ma />
+                      <ct3_ten />
+                      <ma_Xa />
+                      <ten_Xa />
+                      <ct04_ma />
+                      <ct04_ten />
+                      <ct05_ma />
+                      <ct05_ten />
+                      <ct06_ma />
+                      <ct06_ten />
+                      <ct7>0</ct7>
+                    </ChiTiet>
+                  </CTietPLuc>
+                </BKePLuc>
+                <tongCong_ct11>0</tongCong_ct11>
+              </DSachPLuc>
+            </Muc_2>
+            <Muc_3>
+              <ct3a_1>2026-01-20</ct3a_1>
+              <ct3a_2>81</ct3a_2>
+              <ct3b>-9040</ct3b>
+            </Muc_3>
+          </Muc_I>
+          <Muc_II>
+            <ChiTiet id="ID_1">
+              <ct2_ma />
+              <ct2_ten />
+              <ct3>0</ct3>
+            </ChiTiet>
+            <tongCong_ct12>0</tongCong_ct12>
+          </Muc_II>
+          <Muc_III>
+            <ChiTiet id="ID_1">
+              <ct2_ma />
+              <ct2_ten />
+              <ct3>0</ct3>
+            </ChiTiet>
+            <tongCong_ct13>0</tongCong_ct13>
+          </Muc_III>
+        </Muc_A>
+        <Muc_B>
+          <Muc_I>
+            <ct_1>0</ct_1>
+            <ct_2_so></ct_2_so>
+            <ct_2_ngay xsi:nil="true"></ct_2_ngay>
+            <ct_2_CQT_ma></ct_2_CQT_ma>
+            <ct_2_CQT_ten></ct_2_CQT_ten>
+            <ct_3_so></ct_3_so>
+            <ct_3_ngay xsi:nil="true"></ct_3_ngay>
+          </Muc_I>
+          <Muc_II>
+            <ct_1>0</ct_1>
+            <ct_2>0</ct_2>
+          </Muc_II>
+        </Muc_B>
+      </PL01_KHBS>
+      <PL01_1_KHBS>
+        <Header>
+          <maTKhai>842</maTKhai>
+          <tenTKhai>TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG (Mẫu số 01/GTGT)</tenTKhai>
+          <maGiaoDich>01</maGiaoDich>
+          <KyKKhaiThue>
+            <kieuKy>Q</kieuKy>
+            <kyKKhai>3/2025</kyKKhai>
+            <kyKKhaiTuNgay>01/07/2025</kyKKhaiTuNgay>
+            <kyKKhaiDenNgay>30/09/2025</kyKKhaiDenNgay>
+            <kyKKhaiTuThang />
+            <kyKKhaiDenThang />
+          </KyKKhaiThue>
+          <soLan>1</soLan>
+          <mst>0314840592</mst>
+          <tenNNT>CÔNG TY TNHH THANG MÁY DOEL VIỆT NAM</tenNNT>
+          <mstDLyThue xsi:nil="true" />
+          <tenDLyThue />
+          <soHDongDLyThue />
+          <ngayKyHDDLyThue xsi:nil="true"></ngayKyHDDLyThue>
+        </Header>
+        <ma_DonViTien>VND</ma_DonViTien>
+        <ten_DonViTien>Đồng Việt Nam</ten_DonViTien>
+        <Muc_A>
+          <DSachHSo>
+            <BKeHSo id="ID_1">
+              <ma_HSo>0026</ma_HSo>
+              <ten_HSo>01/GTGT</ten_HSo>
+              <CTietHSo>
+                <ChiTiet id="ID_1">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[23]</ct3_ma>
+                  <ct3_ten>Giá trị của hàng hóa, dịch vụ mua vào</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten></ct3_2_ten>
+                  <ct04>249301626</ct04>
+                  <ct05>249341626</ct05>
+                  <ct06>40000</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_2">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[24]</ct3_ma>
+                  <ct3_ten>Thuế GTGT của HHDV mùa vào</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten></ct3_2_ten>
+                  <ct04>20874717</ct04>
+                  <ct05>20878717</ct05>
+                  <ct06>4000</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_3">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[25]</ct3_ma>
+                  <ct3_ten>Thuế giá trị gia tăng của hàng hóa, dịch vụ mua vào được khấu trừ kỳ này</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten></ct3_2_ten>
+                  <ct04>20874717</ct04>
+                  <ct05>20878717</ct05>
+                  <ct06>4000</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_4">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[27]</ct3_ma>
+                  <ct3_ten>Hàng hóa, dịch vụ bán ra chịu thuế giá trị gia tăng - Giá trị HHDV</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten></ct3_2_ten>
+                  <ct04>405481673</ct04>
+                  <ct05>400881673</ct05>
+                  <ct06>-4600000</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_5">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[28]</ct3_ma>
+                  <ct3_ten>Hàng hóa, dịch vụ bán ra chịu thuế giá trị gia tăng - Thuế GTGT</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten></ct3_2_ten>
+                  <ct04>28829808</ct04>
+                  <ct05>28461808</ct05>
+                  <ct06>-368000</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_6">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[32]</ct3_ma>
+                  <ct3_ten>Hàng hoá, dịch vụ bán ra chịu thuế suất 10% - Giá trị HHDV</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten></ct3_2_ten>
+                  <ct04>335913829</ct04>
+                  <ct05>331313829</ct05>
+                  <ct06>-4600000</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_7">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[33]</ct3_ma>
+                  <ct3_ten>Hàng hoá, dịch vụ bán ra chịu thuế suất 10% - Thuế GTGT</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten></ct3_2_ten>
+                  <ct04>28829808</ct04>
+                  <ct05>28461808</ct05>
+                  <ct06>-368000</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_8">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[34]</ct3_ma>
+                  <ct3_ten>Tổng doanh thu và thuế giá trị gia tăng của hàng hóa, dịch vụ bán ra - Giá trị HHDV</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten></ct3_2_ten>
+                  <ct04>405481673</ct04>
+                  <ct05>400881673</ct05>
+                  <ct06>-4600000</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_9">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[35]</ct3_ma>
+                  <ct3_ten>Tổng doanh thu và thuế giá trị gia tăng của hàng hóa, dịch vụ bán ra - Thuế GTGT</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten></ct3_2_ten>
+                  <ct04>28829808</ct04>
+                  <ct05>28461808</ct05>
+                  <ct06>-368000</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_10">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[36]</ct3_ma>
+                  <ct3_ten>Thuế giá trị gia tăng phát sinh trong kỳ</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten></ct3_2_ten>
+                  <ct04>7955091</ct04>
+                  <ct05>7583091</ct05>
+                  <ct06>-372000</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_11">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[40a]</ct3_ma>
+                  <ct3_ten>Thuế giá trị gia tăng phải nộp của hoạt động sản xuất kinh doanh trong kỳ</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten></ct3_2_ten>
+                  <ct04>7955091</ct04>
+                  <ct05>7583091</ct05>
+                  <ct06>-372000</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_12">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[40]</ct3_ma>
+                  <ct3_ten>Thuế giá trị gia tăng còn phải nộp trong kỳ ([40]=[40a]-[40b])</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten></ct3_2_ten>
+                  <ct04>7955091</ct04>
+                  <ct05>7583091</ct05>
+                  <ct06>-372000</ct06>
+                  <ct7>-372000</ct7>
+                  <ct8 />
+                </ChiTiet>
+              </CTietHSo>
+            </BKeHSo>
+            <BKeHSo id="ID_2">
+              <ma_HSo>002609</ma_HSo>
+              <ten_HSo>PL 142/2024/QH15-174/2024/QH15-204/2025/QH15</ten_HSo>
+              <CTietHSo>
+                <ChiTiet id="ID_1">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>(3)</ct3_ma>
+                  <ct3_ten>Tổng cộng giá trị hàng hóa, dịch vụ mua vào chưa có thuế GTGT được khấu trừ trong kỳ</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten />
+                  <ct04>203392131</ct04>
+                  <ct05>200392132</ct05>
+                  <ct06>-2999999</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_2">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>(4)</ct3_ma>
+                  <ct3_ten>Tổng cộng thuế GTGT của hàng hóa, dịch vụ mua vào được khấu trừ trong kỳ</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten />
+                  <ct04>16271369</ct04>
+                  <ct05>16031368</ct05>
+                  <ct06>-240001</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_3">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>(3)</ct3_ma>
+                  <ct3_ten>Tổng cộng giá trị hàng hóa, dịch vụ chưa có thuế GTGT</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten />
+                  <ct04>238078749</ct04>
+                  <ct05>233478749</ct05>
+                  <ct06>-4600000</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_4">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>(6)</ct3_ma>
+                  <ct3_ten>Tổng cộng thuế GTGT của hàng hóa, dịch vụ bán ra được giảm</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten />
+                  <ct04>4761574</ct04>
+                  <ct05>4669574</ct05>
+                  <ct06>-92000</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_5">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[09]</ct3_ma>
+                  <ct3_ten>Chênh lệch thuế GTGT của hàng hoá, dịch vụ bán ra và mua vào trong kỳ được áp dụng mức thuế suất thuế giá trị gia tăng 8%</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten />
+                  <ct04>-11509795</ct04>
+                  <ct05>-11361794</ct05>
+                  <ct06>148001</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+              </CTietHSo>
+            </BKeHSo>
+            <TongCong>
+              <tongCong_7>-372000</tongCong_7>
+              <tongCong_8>0</tongCong_8>
+              <tongCong_9>0</tongCong_9>
+            </TongCong>
+          </DSachHSo>
+        </Muc_A>
+        <Muc_B>
+          <CTietTaiLieu id="ID_1">
+            <ma_TLieu />
+            <ten_TLieu />
+          </CTietTaiLieu>
+        </Muc_B>
+      </PL01_1_KHBS>
+    </PLuc>
+  </HSoKhaiThue>
+<CKyDTu><Signature Id="CKyDTuID-NODETOSIGN-XML" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><Reference URI="#ID-NODETOSIGN-XML"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>pg5mW/j7q7x6l3zbPFVHeKUg9NedYMlP31MHce5ZMEA=</DigestValue></Reference><Reference URI="#ObjectCKyDTuID-NODETOSIGN-XML"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>iwXrfM8PbvOpV40bqH1XJjvdUk/cTsYTFBfVgUg0NDQ=</DigestValue></Reference></SignedInfo><SignatureValue>F7TX14palmSSQMTxpRyhG7yx7CAFpUj4G0mMoQgyB4wnwCqdVwDA504qGDqjIQeOHbbXyTP/cCp4YAn7m+rQ/UuOduazatzQlTO9xEbMlpKjpq5vRYmW8awq6/kiYVq99xOgUnQzuaRZu8wpoLxAkmTh0pUFlRGezmk0hD2QzXHJk51pSpN+uLy7WKNACkkif9h3vqYt1BCWk5A1UhDEdT7s7/D199GNARw7tegkZEIKtxM59ScZkxd8Np7NK95TgJNQ6fh7JMGu9fz3AMlzCmszu8AWV4d0KxgXbl3qqZS5gq6au/xBseB/5XB4onBXbBUkvntqx68k+ARYuV+KUg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>OID.0.9.2342.19200300.100.1.1=MST:0314840592, CN=CÔNG TY TNHH THANG MÁY DOEL VIỆT NAM, L=TP Thủ Đức, S=HỒ CHÍ MINH, C=VN</X509SubjectName><X509Certificate>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</X509Certificate></X509Data></KeyInfo><Object Id="ObjectCKyDTuID-NODETOSIGN-XML"><SignatureProperties xmlns=""><SignatureProperty Target="#CKyDTuID-NODETOSIGN-XML" Id="SignatureProperty-CKyDTuID-NODETOSIGN-XML"><SigningTime>2026-01-22T15:29:43</SigningTime></SignatureProperty></SignatureProperties></Object></Signature></CKyDTu></HSoThueDTu>

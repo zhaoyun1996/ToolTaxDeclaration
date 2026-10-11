@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:hx-on="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Dịch Vụ Công Thuế Nhà Nước</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+    <link rel="stylesheet" href = "/tthc/css/font-awesome-4.7.0/font-awesome.min-a0e784c4ca94c271b0338dfb02055be6.css">
+    <link rel="stylesheet" href = "/tthc/css/swiper/swiper-bundle.min-8aa3f98e02499b9046bd9d4ed02c6fca.css">
+
+    <link rel="stylesheet" href = "/tthc/css/bootstrap-5.3.2/bootstrap.min-0fc647a071a2616fe24e9b126a52af24.css">
+    <link rel="stylesheet" href = "/tthc/css/bootstrap-icons/bootstrap-icons-a5e63b504f927ab1956b8a855c7f4675.css">
+    <link rel="stylesheet" href = "/tthc/css/gitlap/icons-4e11057cecb2f5a692d18e8d5777bd60.css">
+    <link rel="stylesheet" href = "/tthc/css/font-googleapis/css2-6b27cbff1e2c0fc45e4707bc91860dc0.css">
+    <link rel="stylesheet" href = "/tthc/css/font-googleapis/css2_1-689920c3962d8ccc1c403dbd30128727.css">
+    <link rel="stylesheet" href="/tthc/css/bootstrap-5.3.2/bootstrap-select.min-3bf13a7db93f9bfddbcdea1a450830fe.css"/>
+    <link rel="stylesheet" href="/tthc/css/main-8b94441a29ef28006ae011184fe4e0eb.css">
+    <link rel="stylesheet" href="/tthc/css/home-2205144ccdd25fb6dd97a93f89c1ab43.css">
+    <link rel="stylesheet" href="/tthc/css/login-55ee7fdc44e38ffd0d2f1e0e807f6251.css">
+    <link rel="stylesheet" href="/tthc/css/lobibox/lobibox-0e776c44ffa842934feb58ae9cb4ee6c.css"/>
+    <link rel="stylesheet" href="/tthc/css/steps-1924b4bf7424e135568a33f1a2f3f573.css"/>
+    <link rel="stylesheet" href="/tthc/css/gitlap/icon-82d4bba0484dcf470c773c2811702a56.css"/>
+    <link rel="stylesheet" href="/tthc/css/daterangepicker/daterangepicker-de478ff0c125e74e02132b6414c8f509.css"/>
+    <link rel="stylesheet" href="/tthc/css/bootstrap-daterangerpicker-1.10.0/bootstrap-datepicker.min-ae2c1b940dbb755e0165ba2794e92d6e.css"/>
+    <link rel="icon" href="/tthc/favicon.ico"/>
+    <link rel="stylesheet" href = "/tthc/css/bootstrap-tour/bootstrap-tour.min-4989f1cb3a64607f9df6fa21824702bc.css">
+    
+    <link rel="stylesheet" href="/tthc/css/chatbox/chatbox-cd0f68ec9e30f2e5d4f0c6d730bed55e.css">
+
+    <script type="text/javascript" src="/tthc/js/jquery-3.7.1/jquery.min-b83db83a1d89113ee03ab730efa48c7a.js"></script>
+    <script type="text/javascript" src="/tthc/js/bootstrap-5.3.3/bootstrap.bundle.min-bd31cd6c0de0972f2e5d260a09ba121f.js"></script>
+    <script type="text/javascript" src="/tthc/js/chart/chart.umd.min-e17b7c09c8ba4ed2e28fef12b7df1cc9.js"></script>
+    <script type="text/javascript" src="/tthc/js/swiper/swiper-bundle.min-e6169ccf7a9d58ed680db82c97f26746.js"></script>
+    <script type="text/javascript" src="/tthc/js/popper/popper.min-f391f7a8f97c5bca544d5e9374f4f44e.js"></script>
+    <script type="text/javascript" src="/tthc/js/main.js"></script>
+    <script type="text/javascript" src="/tthc/js/daterangepicker/moment.min-19436ad9831513f90ffd2421b3d97903.js"></script>
+    <script type="text/javascript" src="/tthc/js/daterangepicker/daterangepicker.min-a75890c9c9c44bdba1106d3b3bff0ff4.js"></script>
+    <script type="text/javascript" src="/tthc/js/lobibox/lobibox-ea32842534713c447e0c6bc74bc88701.js"></script>
+    <script type="text/javascript" src="/tthc/htmx.min.js"></script>
+    <script type="text/javascript" src="/tthc/htmx-csrf.js" defer></script>
+    <script type="text/javascript" src="/tthc/_hyperscript.min.js"></script>
+    <script type="text/javascript" src="/tthc/js/bootstrap-5.3.2/bootstrap-select.min-7a5eb391400098825175f784146ba93d.js"></script>
+    <script type="text/javascript" src="/tthc/js/parsley/parsleyjs-3db000bf787581adaeb5c4237656b7a5.js"></script>
+    <script type="text/javascript" src="/tthc/js/parsley/vn-710749e84c5b9cebcd158bc9adcd5ef9.js"></script>
+    <script type="text/javascript" src="/tthc/js/parsley/en-417fc5c7cd667d48470507732ebcd880.js"></script>
+    <script type="text/javascript" src="/tthc/js/sweetalert2/sweetalert-af50f1beb48ed186e2598b5434da52fc.js"></script>
+    <script type="text/javascript" src="/tthc/js/bootstrap-daterangerpicker-1.10.0/bootstrap-datepicker.min-32a753f2ad5efc10bc806fd99df007ba.js"></script>
+    <script type="text/javascript" src="/tthc/js/ssocommon/ssocommon-d05f65f591fc68fdf0e0ee4247982386.js"></script>
+    <script type="text/javascript" src="/tthc/js/bootstrap-daterangerpicker-1.10.0/bootstrap-datepicker.vi.min-8be76c0d0e10acd89d19249e5830d072.js"></script>
+    <script type="text/javascript" src="/tthc/js/xlsx/xlsx.full.min-afb474e60334d534345234f1e588cc76.js"></script>
+    <script type="text/javascript" src="/tthc/js/bootstrap-tour/bootstrap-tour.min-2e8c5165aaf36aac42d0d2461d3be22a.js"></script>
+
+    <meta name="csrf-token" content="_vlIwr51lAzSXpsyqSS0SJD4w0JzbqkA4l05W-k9Nnt2Pa-6ysF5oYpFoD__bf4DzQmAfKXO7npEWZkt0j4PY4pZU0JBX8re"/>
+    <meta name="csrf-header" content="X-XSRF-TOKEN"/>
+
+    
+
+    <script type="text/javascript">
+        window.Parsley.setLocale("vn");
+    </script>
+</head>
+<body>
+
+<!--Header-->
+
+    <!-- Navbar -->
+    <header>
+        <div class="container header">
+            <div class="row align-items-center bg-header py-3  gap-2 justify-content-center">
+                <div class="col-4 col-xs-6 col-sm-4 col-md-4 col-lg-2 row">
+                    <img src="/tthc/images/QUOCHUY-d00f534b73a000ebb4a4fe961142309e.png" alt="Logo Thuế" class="img-logothue col-6">
+                    <img src="/tthc/images/HCPV-9aa19d128be69bc88e0f05485c9bf37b.png" alt="Logo HCPV" class="img-logothue col-6">
+                </div>
+
+                <div class="col-8 col-xs-12 col-sm-12 col-md-8 col-lg-6">
+
+                    <div class="" style="display: flex;flex-direction: column;align-items: flex-start;">
+                        <p class="tenCong mb-1">HỆ THỐNG THÔNG TIN GIẢI QUYẾT THỦ TỤC HÀNH CHÍNH</p>
+                        <p class="hcpv mb-1">Hành chính phục vụ</p>
+                        <p class="hcpv mb-0">Cục Thuế - Bộ Tài chính</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-lg-4 user-info d-flex align-items-center justify-content-end user-header">
+                    
+                    <div class="d-flex flex-row button-gruop1">
+                        
+                            <button type="button" class="btn btn-primary-outline btn-sm me-2"
+                                    style="width: 140px;"
+                                    hx-on:click="getdangKy()">
+                                <img src="/tthc/images/register-41550f596f02b62cc8031fa807c52de9.svg" alt=""><span>Đăng ký</span>
+                            </button>
+                            <button type="button" class="btn btn-primary btn-sm me-2"
+                                    style="width: 140px;" hx-on:click="dangNhap()">
+                                <img src="/tthc/images/signin-e6064714e3aa56fe7637acb20797d4dc.svg" alt=""><span>Đăng nhập</span>
+                            </button>
+                        
+                        <!--                        <th:block th:if="${isLogon == 'Y'}">-->
+                        <!--                            <button type="button" class="btn btn-primary-outline btn-sm me-2"-->
+                        <!--                                    hx-on:click="dangXuat()">-->
+                        <!--                                <img th:src="@{/images/logout.svg}" alt=""><span-->
+                        <!--                                    th:text="#{'login.btn.dangxuat'}"></span>-->
+                        <!--                            </button>-->
+                        <!--                        </th:block>-->
+
+                        <div class="dropdown">
+                            <button id="language" class="btn btn-secondary btn-sm dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <img id="flagIcon" src="/tthc/images/flag_vn-4bffae753de1c4ce897cbe4f1942b2f5.svg" alt=""> <i
+                                    class="bi bi-caret-down-fill"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" data-lang="en"><img
+                                        src="/tthc/images/flag_en-1e3d1cb908c7770f23d6bea21c2ecd0c.svg" alt=""> English</a></li>
+                                <li><a class="dropdown-item" href="#" data-lang="vn"><img
+                                        src="/tthc/images/flag_vn-4bffae753de1c4ce897cbe4f1942b2f5.svg" alt=""> Tiếng Việt</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+    <div class="modal fade" id="modalChonDoiTuong" aria-labelledby="modalLabel" data-bs-keyboard="false"
+         data-bs-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Đối tượng đăng nhập</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="inputDoiTuong">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div class="centerIcon stageIcon">
+                                <a type="button" hx-on:click = "processChonDT('CN', document.getElementById('inputDoiTuong').value)" >
+                                    <img class="Image29" style="width: 150px; height: 150px" title="Cá nhân"
+                                         src="/tthc/images/single-person-e4bc368021fa448acee7de618e365b37.png" />
+                                </a>
+                            </div>
+                            <div class="centerIcon"><label class="">Cá nhân</label></div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div class="centerIcon stageIcon">
+                                <a type="button" hx-on:click = "processChonDT('DN', document.getElementById('inputDoiTuong').value)" >
+                                    <img class="Image29 centerIcon stageIcon" style="width: 150px; height: 150px"
+                                         title="Doanh nghiệp" src="/tthc/images/company-8a9f61e65bef70a3768b2cdf8aba1988.png"/>
+                                </a>
+                            </div>
+                            <div class="centerIcon">
+                                <label class="centerIcon">Doanh nghiệp</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="justify-content: center;">
+                    <button type="button" class="btn btn-secondary btn-sm me-2" data-bs-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalChonDoiTuongVNEID" aria-labelledby="modalLabel" data-bs-keyboard="false"
+         data-bs-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Đối tượng đăng nhập</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div class="centerIcon stageIcon">
+                                <a type="button" hx-on:click = "redirectDtVneid('CN')">
+                                    <img class="Image29" style="width: 150px; height: 150px" title="Cá nhân"
+                                         src="/tthc/images/single-person-e4bc368021fa448acee7de618e365b37.png" />
+                                </a>
+                            </div>
+                            <div class="centerIcon"><label class="">Cá nhân</label></div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div class="centerIcon stageIcon">
+                                <a type="button" hx-on:click = "redirectDtVneid('DN')" >
+                                    <img class="Image29 centerIcon stageIcon" style="width: 150px; height: 150px"
+                                         title="Doanh nghiệp" src="/tthc/images/company-8a9f61e65bef70a3768b2cdf8aba1988.png"/>
+                                </a>
+                            </div>
+                            <div class="centerIcon">
+                                <label class="centerIcon">Doanh nghiệp</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="justify-content: center;">
+                    <button type="button" class="btn btn-secondary btn-sm me-2" data-bs-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--    Login CBT-->
+    <div class="modal fade" id="modalCanBoThueLogin" aria-labelledby="modalLabel" aria-hidden="true" >
+            <div class="modal-dialog  pt-3" role="document">
+                <div class="modal-content" style="background: #0063dee8; margin: 0 3rem; width: 75%">
+                    <div class="modal-body">
+                        <div class="d-flex justify-content-center">
+                            <img style=" height: 70px; width: 70px; aspect-ratio: 1/1; object-fit: cover;" src="/tthc/images/logo-0d3caa57b14093551630825d87369112.png" />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="col-12 control-label labelTitle mb-2 text-white">Tên miền</label>
+                            <div class="col-12">
+                                <select class="form-select rounded-pill" id="droplistInput" name="_domain">
+                                    <option value="han.tct.vn">han.tct.vn</option>
+                                    <option value="mb.tct.vn">mb.tct.vn</option>
+                                    <option value="mn.tct.vn">mn.tct.vn</option>
+                                    <option value="hcm.tct.vn">hcm.tct.vn</option>
+                                    <option selected value="vp.tct.vn">vp.tct.vn</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="col-12 control-label labelTitle mb-2 text-white">Tên đăng nhập</label>
+                            <div class="col-12">
+                                <input type="text" class="form-control rounded-pill" name="tenDNCbt"
+                                       placeholder="Nhập tên đăng nhập"
+                                        onchange="this.value = value.trim();" autocomplete="on"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="col-12 control-label labelTitle mb-2 text-white">Mật khẩu</label>
+                            <div class="col-12">
+<!--                                <input type="password" class="form-control rounded-pill" name="matKhauCbt"-->
+<!--                                       th:placeholder="#{login.matkhau.placeholder}"-->
+<!--                                        onchange="this.value = value.trim();" autocomplete="on"-->
+<!--                                />-->
+                                <div class="input-group border form-control rounded-pill p-0">
+                                    <input type="password" class="form-control password border-0  bg-transparent rounded-pill "
+                                           name="matKhauCbt" autocomplete="on"
+                                           placeholder="Nhập mật khẩu"/>
+                                    <button class="btn btn-outline-secondary  toggle-password" type="button">
+                                        <i class="bi bi-eye-fill fs-6"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-12 control-label labelTitle mb-2 text-white">Mã captcha</label>
+                            <div class="d-inline-flex flex-column">
+                                <input type="text" class="form-control  rounded-pill d-inline-flex" name="captchaCbt"
+                                placeholder="Nhập mã captcha">
+                                <div class="d-inline-flex w-100 justify-content-center align-items-center mt-2">
+                                    <img id="image-capt-cbt" alt="Mã captcha" src="">
+                                    <button type="button" class="btn btn-secondary bi bi-arrow-clockwise ms-2"
+                                            style="height: 37px" id="btnReloadCaptcha"
+                                            hx-on:click="reloadCaptchaCbt()">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style=" display:flex;justify-content: center;margin: 20px 0">
+                        <button
+                                type="button"
+                                class="btn btn-secondary"
+                                hx-on:click="submitCBT()"
+                        >Đăng nhập</button>
+                    </div>
+                </div>
+            </div>
+        <script>
+            /*<![CDATA[*/
+            const modal = document.getElementById('modalCanBoThueLogin');
+            if (modal) {
+                modal.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        submitCBT();
+                    }
+                });
+            }
+            /*]]>*/
+        </script>
+    </div>
+</div>
+
+    <script type="text/javascript">
+
+        (function () {
+            const APP_KEY = 'APP_SINGLE_TAB_ACTIVE';
+            const EXPIRE_TIME = 5000; // 5s
+
+            let TAB_ID = sessionStorage.getItem('TAB_ID');
+            if (!TAB_ID) {
+                TAB_ID = Date.now() + '_' + Math.random();
+                sessionStorage.setItem('TAB_ID', TAB_ID);
+            }
+
+            function showWarning() {
+                document.body.innerHTML = `
+            <div style="
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                height:100vh;
+                font-family:Arial;
+                color:#dc3545;
+                font-size:18px;
+                text-align:center;">
+                <strong>
+                    Tài khoản hiện đang được sử dụng trên một tab khác.<br/>
+                    Vui lòng đóng tab này và tiếp tục sử dụng trên tab đang hoạt động.
+                </strong>
+            </div>`;
+            }
+
+            function now() {
+                return Date.now();
+            }
+
+            function getActiveTab() {
+                try {
+                    return JSON.parse(localStorage.getItem(APP_KEY));
+                } catch {
+                    return null;
+                }
+            }
+
+            const activeTab = getActiveTab();
+
+            // Nếu tồn tại tab khác nhưng đã "chết"
+            if (activeTab && now() - activeTab.lastActive > EXPIRE_TIME) {
+                localStorage.removeItem(APP_KEY);
+            }
+
+            const current = getActiveTab();
+
+            if (current && current.tabId !== TAB_ID) {
+                showWarning();
+                return;
+            }
+
+            // Claim quyền
+            function heartbeat() {
+                localStorage.setItem(APP_KEY, JSON.stringify({
+                    tabId: TAB_ID,
+                    lastActive: now()
+                }));
+            }
+
+            heartbeat();
+            setInterval(heartbeat, 2000);
+
+            // Lắng nghe tab khác
+            window.addEventListener('storage', function (e) {
+                if (e.key === APP_KEY) {
+                    const data = getActiveTab();
+                    if (data && data.tabId !== TAB_ID) {
+                        showWarning();
+                    }
+                }
+            });
+
+            // Khi tab đóng → giải phóng
+            window.addEventListener('beforeunload', function () {
+                const data = getActiveTab();
+                if (data && data.tabId === TAB_ID) {
+                    localStorage.removeItem(APP_KEY);
+                }
+            });
+        })();
+
+		const APP_ENV = "PROD";
+        const STATUS_ERROR = 210;
+        var logout_url = "\/tthc\/";
+        var isLogon = "";
+        var locale_language = "vn";
+        // bổ sung
+        var _ssTypeObject = null;
+        const MAX_SIZE_HIDE_BUTTON_NOP_XML = null;
+        var _isDLT = null;
+        var _listTinUyQuyen = null;
+        var mst = "";
+        const typeObject = {
+            CN: "CN",
+            DN: "DN"
+        }
+        document.querySelectorAll('.dropdown-menu .dropdown-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+                // e.preventDefault();
+
+                const selectedLang = this.getAttribute('data-lang');
+                const selectedFlag = this.querySelector('img').getAttribute('src');
+                localStorage.setItem("selectedFlag", selectedFlag);
+                changeLanguage(selectedLang);
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            if (!isLogon) {
+                const flagIcon = document.getElementById("flagIcon");
+                const savedFlag = localStorage.getItem("selectedFlag");
+                if (savedFlag) {
+                    flagIcon.setAttribute("src", savedFlag);
+                }
+            }
+
+
+            const currentPath = window.location.pathname;
+
+            document.querySelectorAll('.nav-link, .dropdown-item').forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (linkHref == null || linkHref == '#' || linkHref == '') return;
+
+                if (linkHref.includes("/login")) return;
+
+                if (currentPath == linkHref) {
+                    link.classList.add('active');
+                    if (link.classList.contains('dropdown-item')) {
+                        const parentLink = link.closest('.dropdown').querySelector('.nav-link');
+                        if (parentLink) parentLink.classList.add('active');
+                    }
+                }
+                link.addEventListener('click', function () {
+                    document.querySelectorAll('.nav-link, .dropdown-item').forEach(link => link.classList.remove('active'));
+                    link.classList.add('active');
+
+                    if (link.classList.contains('dropdown-item')) {
+                        const parentLink = link.closest('.dropdown').querySelector('.nav-link');
+                        if (parentLink) parentLink.classList.add('active');
+                    }
+                });
+            });
+        })
+
+        $(document).ready(function () {
+            $('.ten_dn').each(function () {
+                const originalText = $(this).text();
+                const formattedText = chuanHoaChuoi(originalText);
+                $(this).text(formattedText);
+            });
+        });
+
+        function dangXuat() {
+            fetch(logout_url + 'logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-XSRF-TOKEN': "_vlIwr51lAzSXpsyqSS0SJD4w0JzbqkA4l05W-k9Nnt2Pa-6ysF5oYpFoD__bf4DzQmAfKXO7npEWZkt0j4PY4pZU0JBX8re"
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        // Redirect tới trang login sau khi đăng xuất thành công
+                        window.location.href = logout_url + 'login';
+                    } else {
+                        console.log('Lỗi khi đăng xuất');
+                    }
+                })
+                .catch(error => {
+                    console.log('Lỗi kết nối: ', error);
+                });
+        }
+
+        // window.onbeforeunload = function (e) {
+        //     if (!window.isReload) {
+        //         dangXuat();
+        //     }
+        // }
+        //
+        // document.onkeydown = function (e) {
+        //     e = e || window.event;
+        //     var key = e.keyCode;
+        //
+        //     // F5
+        //     if (key == 116) {
+        //         window.isReload = true;
+        //     }
+        //
+        //     // Ctrl+R
+        //     if (key == 82 && (e.ctrlKey || e.metaKey)) {
+        //         window.isReload = true;
+        //     }
+        // };
+
+
+        function changeLanguage(language) {
+            $.ajax({
+                type: 'POST',
+                url: logout_url + 'changeLanguage',
+                data: {
+                    lang: language
+                },
+                success: function (data) {
+                    window.location.reload();
+                },
+                error: function (xhr, error) {
+
+                }
+            });
+        }
+
+        function dangNhap() {
+            window.location.href = logout_url + "login";
+        }
+
+        function dangKy(val) {
+            $.ajax({
+                type: 'GET',
+                url: logout_url + 'homelogin/dangky',
+                data: {
+                    doiTuong: val
+                },
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('X-XSRF-TOKEN', "_vlIwr51lAzSXpsyqSS0SJD4w0JzbqkA4l05W-k9Nnt2Pa-6ysF5oYpFoD__bf4DzQmAfKXO7npEWZkt0j4PY4pZU0JBX8re");
+                },
+                success: function (data) {
+                    // const response = JSON.parse(data);
+                    if (data.status = '200') {
+                        window.location.href = data.redirectUrl;
+                    } else {
+                        Lobibox.notify('error', {
+                            size: 'mini',
+                            position: "top right",
+                            sound: false,
+                            title: 'Thông báo',
+                            delay: 7000,
+                            icon: false,
+                            msg: data.message
+                        });
+                        return;
+                    }
+                }, error: function (xhr, error) {
+                    Lobibox.notify('error', {
+                        size: 'mini',
+                        position: "top right",
+                        sound: false,
+                        title: 'Thông báo',
+                        delay: 7000,
+                        icon: false,
+                        msg: "\u0110\u00E3 c\u00F3 l\u1ED7i h\u1EC7 th\u1ED1ng x\u1EA3y ra!"
+                    });
+                    return;
+                }
+            });
+        }
+
+        function getdangKy() {
+            $("#inputDoiTuong").val('dangky');
+            $('#modalChonDoiTuong').modal('show');
+        }
+
+        function processChonDT(type, val) {
+            if (val == 'dangnhap') {
+                $("#modalLdap").modal('show');
+                $('#modalChonDoiTuong').modal('hide');
+                $("input[name='ldap']").val(type);
+                let tendnCn = $("#tendnLdap").text();
+                if (type === 'CN') {
+                    if (!tendnCn.includes("/CCCD")) {
+                        $("#tendnLdap").text(tendnCn + '/CCCD');
+                    }
+                } else {
+                    if (tendnCn.includes("/CCCD")) {
+                        $("#tendnLdap").text(tendnCn.replaceAll("/CCCD", ''));
+                    }
+                }
+            }
+            if (val == 'dangky') {
+                dangKy(type)
+            }
+        }
+
+        function chuanHoaChuoi(str) {
+            str = str.toLowerCase();
+            const words = str.split(" ");
+            let result = "";
+
+            for (let word of words) {
+                if (word.trim() !== "") {
+                    let firstCharIndex = 0;
+
+                    while (firstCharIndex < word.length && !/[a-zA-ZÀ-Ỵà-ỵ]/.test(word[firstCharIndex])) {
+                        firstCharIndex++;
+                    }
+
+                    if (firstCharIndex < word.length) {
+                        result += word.slice(0, firstCharIndex) +
+                            word.charAt(firstCharIndex).toUpperCase() +
+                            word.slice(firstCharIndex + 1) + " ";
+                    } else {
+                        result += word + " ";
+                    }
+                }
+            }
+
+            return result.trim();
+        }
+    </script>
+
+
+<!--MENU-->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav w-100 d-flex justify-content-between">
+                <li class="nav-item">
+                    <a class="nav-link" href="/tthc/homelogin"><img
+                            src="/tthc/images/home-115eefe7287361ead3bc43015c6373dc.svg" alt=""></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="/tthc/homelogin/tthc">Thủ tục hành chính</a></li>
+                <li class="nav-item"><a class="nav-link" href="/tthc/homelogin/dich-vu-khac"><span>Dịch vụ khác</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="/tthc/login"><span>Tra cứu hồ sơ</span></a></li>
+<!--                <li class="nav-item"><a class="nav-link" th:href="@{/login}"><span th:text="#{menu.phan_anh_kien_nghi}">PHẢN ÁNH - KIẾN NGHỊ</span></a></li>-->
+                <li class="nav-item"><a class="nav-link" href="/tthc/homelogin/danh-gia"><span>Đánh giá chất lượng dịch vụ</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="/tthc/homelogin/tintuc"><span>Tin Tức</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="/tthc/homelogin/gioithieu">Giới thiệu</a></li>
+                <li class="nav-item"><a class="nav-link" href="/tthc/homelogin/trogiup/views"><span>Trợ giúp</span></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!--Body-->
+<div style="min-height: 68vh;">
+    <div id="homeTabContent" class="Content active Home" style="min-height: 68vh;">
+        <form action="/tthc/login" method="post"><input type="hidden" name="_csrf" value="_vlIwr51lAzSXpsyqSS0SJD4w0JzbqkA4l05W-k9Nnt2Pa-6ysF5oYpFoD__bf4DzQmAfKXO7npEWZkt0j4PY4pZU0JBX8re"/>
+            <input type="hidden" name="_csrf" value="_vlIwr51lAzSXpsyqSS0SJD4w0JzbqkA4l05W-k9Nnt2Pa-6ysF5oYpFoD__bf4DzQmAfKXO7npEWZkt0j4PY4pZU0JBX8re"/>
+            <div class="Tilteh1" style="gap: 8px">
+                <div class="Nameh1">Đăng nhập</div>
+                <div class="Motah1">Chọn loại tài khoản bạn muốn sử dụng đăng nhập</div>
+            </div>
+            
+            <div class="Tilteh1 mt-3 m-auto  px-3" style="max-width: 800px">
+                <div class="Motah1" style="color: #bd0207; text-align: justify;">
+					Căn cứ Khoản 4, Điều 40 Nghị định số 69/2024/NĐ-CP ngày 25/6/2024 của Chính phủ, 
+					Cục Thuế đề nghị Người nộp thuế khẩn trương thực hiện đăng ký Tài khoản định danh điện tử dành cho cơ quan, 
+					tổ chức bảo đảm việc truy cập và sử dụng thuận tiện các dịch vụ Thuế điện tử.
+                </div>
+            </div>
+            
+            <div class="Block row p-4">
+                <div class="BlockItem col-auto" onclick="dangNhapLDAP()">
+                    <img class="Image28"
+                         style="width: 90px; height: 90px"
+                         src="/tthc/images/QUOCHUY-d00f534b73a000ebb4a4fe961142309e.png"/>
+                    <div class="Titlemenu" style="">
+                        <div class="Name" style="">
+                            <span>Đăng nhập bằng tài khoản</span><br>
+                            <span>Thuế điện tử</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="BlockItem col-auto" hx-on:click="loginVNEID_v1()">
+                    <img class="Image29"
+                         style="width: 90px; height: 90px"
+                         src="/tthc/images/vneid-75f9c799160eacfd42c30024372ceed7.png"/>
+                    <div class="Titlemenu" style="">
+                        <div class="Name">
+                            <span>Đăng nhập bằng tài khoản</span><br>
+                            <span>Định danh điện tử</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="BlockItem col-auto" onclick="dangNhapCBT()">
+                    <img class="Image29"
+                         style="width: 90px; height: 90px"
+                         src="/tthc/images/HCPV-9aa19d128be69bc88e0f05485c9bf37b.png"/>
+                    <div class="Titlemenu" style="">
+                        <div class="Name">
+                            <span>Đăng nhập bằng tài khoản</span><br>
+                            <span>Công chức thuế</span><br>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal chọn đăng nhập ldap -->
+            <div class="container">
+                <div class="modal fade" id="modalLdap" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                     data-bs-keyboard="false" data-bs-backdrop="static">
+                    <div class="modal-dialog">
+                        <div class="modal-content" role="document" id="modalContentLoginLDAP">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5">Nhập thông tin đăng nhập</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="hidden" name="ldap">
+                                <div class="form-group row">
+                                    <label class="col-md-5 col-sm-12 mb-1 control-label" id="tendnLdap">Tên đăng nhập</label>
+                                    <div class="col-md-7 col-sm-12">
+                                        <input type="text" class="form-control" name="tenDN"
+                                               placeholder="Nhập tên đăng nhập"
+                                               onchange="this.value = value.trim();" autocomplete="on" maxlength="50">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-5 col-sm-12 mb-1 control-label">Mật khẩu</label>
+                                    <div class="col-md-7 col-sm-12">
+                                        <div class="input-group border form-control p-0">
+                                            <input type="password" class="form-control password border-0"
+                                                   name="matKhau" autocomplete="on"
+                                                   placeholder="Nhập mật khẩu"
+                                                   required/>
+                                            <button class="btn btn-outline-secondary toggle-password" type="button"
+                                                    id="togglePassword">
+                                                <i class="bi bi-eye-fill fs-6"></i>
+                                            </button>
+                                        </div>
+                                        <!--                                        <input type="password" class="form-control" name="matKhau" th:placeholder="#{login.matkhau.placeholder}"-->
+                                        <!--                                               onchange="this.value = value.trim();" autocomplete="on">-->
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-5 col-sm-12 mb-1 control-label">Mã captcha</label>
+                                    <div class="col-md-7 col-sm-12">
+                                        <input type="text" class="form-control w-100" name="captcha"
+                                               placeholder="Nhập mã captcha">
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-5 col-sm-1 control-label"></label>
+                                    <div class="col-md-7 col-sm-12 align-items-center d-inline-flex justify-content-center">
+                                        <div class="d-inline-flex">
+                                            <img id="image-capt" alt="Mã captcha" src="">
+                                            <button type="button"
+                                                    class="btn btn-warning bi bi-arrow-clockwise pr-3 ms-1"
+                                                    style="height: 36px" id="btnReloadCaptcha"
+                                                    hx-on:click="reloadCaptcha()">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer" style="justify-content: center;">
+                                <button type="button" class="btn btn-secondary btn-sm me-2" data-bs-dismiss="modal">Đóng</button>
+                                <button type="button" class="btn btn-primary btn-sm me-2" hx-on:click="submitLDAP()"
+                                        id="btnDangNhapLdap">Đăng nhập</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+
+    <!-- Modal chọn mã số thuế -->
+    <div class="container">
+        <div class="modal fade modal-lg" id="modalMST" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+             data-bs-keyboard="false" data-bs-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content" role="document">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Chọn mã số thuế</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <!--                            <div class="col-sm-1 col-md-1 col-lg-1">-->
+                            <!--                                <input type="radio" value="true" class="me-2" checked name="invoiceNoMST">-->
+                            <!--                            </div>-->
+                            <div class="col-sm-4 col-md-4 col-lg-4">
+                                <span>Danh sách mã số thuế:</span>
+                            </div>
+                            <div class="col-sm-7 col-md-7 col-lg-7">
+                                <select class="selectpicker diachitbrequired" aria-label="Default select example"
+                                        data-live-search="true"
+                                        data-live-search-placeholder="Tìm kiếm..." name="chooseMst">
+                                    
+                                </select>
+                            </div>
+                        </div>
+                        <!--                        <div class="d-flex mt-2">-->
+                        <!--                            <div class="col-sm-1 col-md-1 col-lg-1">-->
+                        <!--                                <input type="radio" class="me-2" name="invoiceNoMST" value="false">-->
+                        <!--                            </div>-->
+                        <!--                            <div class="col-sm-11 col-md-11 col-lg-11">-->
+                        <!--                                <label th:text="#{login.mst.chk}"></label>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+                    </div>
+                    <div class="modal-footer" style="justify-content: center;">
+                        <button type="button" class="btn btn-secondary btn-sm me-2 bi-x-lg" data-dismiss="modal"
+                                style="width: 125px;">Đóng</button>
+                        <button type="button" class="btn btn-primary btn-sm me-2 bi bi-skip-end"
+                                hx-on:click="authentMST()"
+                                style="width: 125px;">Tiếp tục</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal chọn mã số thuế -->
+    <style type="text/css">
+        button.toggle-password:hover {
+            background: #6c757d3b;
+            color: inherit;
+        }
+
+        button.toggle-password:active {
+            background-color: transparent !important;
+            color: inherit !important;
+        }
+    </style>
+
+    <script type="text/javascript">
+        var base_url = "\/tthc\/";
+        var token = $("input[name='_csrf']").val();
+        var header = "X-XSRF-TOKEN";
+        var isChooseMst = null;
+
+        $(document).ajaxSend(function (e, xhr, options) {
+            xhr.setRequestHeader(header, token);
+        });
+
+        $(function () {
+            var _message = null;
+            if (_message) {
+                showNotify('error', _message);
+            }
+        });
+
+        $(document).ready(function () {
+            if (isChooseMst == 'Y') {
+                $('#modalMST').modal('show');
+            } else {
+                $('#modalMST').modal('hide');
+            }
+            togglePassword();
+
+            try {
+                sessionStorage.removeItem('taxNoticeModalHandled');
+            } catch (error) {
+
+            }
+        });
+
+        function togglePassword() {
+            $(".toggle-password").click(function (e) {
+                e.preventDefault();
+                let passwordElement = $(this).closest('div').children(".password");
+                let type = passwordElement.attr("type");
+                console.log(type);
+                if (type === "password") {
+                    $(this).children("i").removeClass('bi-eye-fill').addClass('bi-eye-slash-fill');
+                    passwordElement.attr("type", "text");
+                } else if (type === "text") {
+                    $(this).children("i").removeClass('bi-eye-slash-fill').addClass('bi-eye-fill');
+                    passwordElement.attr("type", "password");
+                }
+            });
+        }
+
+        function authentMST() {
+            var mst = $("select[name = 'chooseMst']").val();
+            var cccd = $("select[name = 'chooseMst']").find('option:selected').attr('data-cccd');
+            // var invoiceNoMST = $("input[name='invoiceNoMST']:checked").val();
+            $.ajax({
+                type: 'POST',
+                url: base_url + 'homelogin/checkMST',
+                data: {
+                    mst: mst,
+                    cccd: cccd,
+                    // invoiceNoMST: invoiceNoMST
+                },
+                success: function (data) {
+                    var rs = JSON.parse(data);
+                    if (rs.status == '201') {
+                        var url = base_url + rs.result1;
+                        window.location.href = url;
+                        return;
+                    }
+                    if (rs.status == '200') {
+                        window.location.href = base_url + rs.result1;
+                        return;
+                    } else {
+                        showNotify('error', rs.desc);
+                    }
+                },
+                error: function (xhr, error) {
+                    showNotify('error', "\u0110\u00E3 c\u00F3 l\u1ED7i h\u1EC7 th\u1ED1ng x\u1EA3y ra!")
+                }
+            });
+        }
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key !== "Enter") return;
+            // Chi submit theo modal dang mo, tranh Enter goi nham 2 luong LDAP/CBT.
+            const isCbtModalShown = $("#modalCanBoThueLogin").hasClass("show");
+            const isLdapModalShown = $("#modalLdap").hasClass("show");
+            if (isCbtModalShown) {
+                event.preventDefault();
+                return;
+            }
+            if (isLdapModalShown) {
+                event.preventDefault();
+                submitLDAP();
+            }
+        });
+
+        async function submitLDAP() {
+            var tenDN = $("input[name = 'tenDN']").val();
+            var matKhau = $("input[name = 'matKhau']").val();
+            var type = $("input[name = 'ldap']").val();
+            var captcha = $("input[name = 'captcha']").val();
+            if (!tenDN) {
+                showNotify('error', "Vui l\u00F2ng nh\u1EADp t\u00EAn \u0111\u0103ng nh\u1EADp!")
+                return;
+            }
+            if (!matKhau) {
+                showNotify('error', "Vui l\u00F2ng nh\u1EADp m\u1EADt kh\u1EA9u!")
+                return;
+            }
+            if (!captcha) {
+                showNotify('error', "Vui l\u00F2ng nh\u1EADp m\u00E3 captcha")
+                return;
+            }
+            // const checkCaptcha = await checkCaptchaNoAuthen(captcha);
+            // if (!checkCaptcha) {
+            //     showNotify('error', "M\u00E3 captcha kh\u00F4ng \u0111\u00FAng")
+            //     return;
+            // }
+            if (hasWhiteSpace(tenDN)) {
+                showNotify('error', "Th\u00F4ng tin t\u00EAn \u0111\u0103ng nh\u1EADp ho\u1EB7c m\u1EADt kh\u1EA9u ch\u01B0a \u0111\u00FAng")
+                return;
+            }
+
+            $("#btnDangNhapLdap").prop("disabled", true);
+            // showLoader("#modalContentLoginLDAP");
+            $.ajax({
+                type: 'POST',
+                url: base_url + 'loginLDAP',
+                data: {
+                    tenDN: tenDN,
+                    matKhau: btoa(unescape(encodeURIComponent(matKhau))),
+                    doiTuong: type,
+                    captcha: captcha
+                },
+                success: function (data) {
+                    if (data.status == '200') {
+                        console.log("Không Hiển popup ĐG")
+                        window.location.href = base_url + 'home';
+                    } else if (data.status == '201') {
+                        console.log("Hiển thị DG Trang chủ")
+                        window.location.href = base_url + data.value;
+                    } else {
+                        $("#btnDangNhapLdap").prop("disabled", false);
+                        showNotify('error', data.desc);
+                        reloadCaptcha();
+                        $("input[name = 'captcha']").val('');
+                    }
+                },
+                error: function (xhr, error) {
+                    $("#btnDangNhapLdap").prop("disabled", false);
+                    showNotify('error', "\u0110\u00E3 c\u00F3 l\u1ED7i h\u1EC7 th\u1ED1ng x\u1EA3y ra!");
+                    // hideLoader();
+                }
+            });
+            // $.ajax({
+            //     type: 'GET',
+            //     url: base_url + 'login/checkCaptcha',
+            //     data: {
+            //         captcha: captcha
+            //     },
+            //     success: function (data) {
+            //         if (data !== 'success') {
+            //             showNotify('error', "M\u00E3 captcha kh\u00F4ng \u0111\u00FAng")
+            //             $("#btnQuayLai").prop("disabled", false);
+            //             $("#btnTiepTuc").prop("disabled", false);
+            //             return false;
+            //         } else {
+            //             $.ajax({
+            //                 type: 'POST',
+            //                 url: base_url + 'loginLDAP',
+            //                 data: {
+            //                     tenDN: tenDN,
+            //                     matKhau: matKhau,
+            //                     doiTuong: type
+            //                 },
+            //                 success: function (data) {
+            //                     if (data.status == '200') {
+            //                         window.location.href = base_url + 'home';
+            //                     } else if (data.status == '201') {
+            //                         window.location.href = base_url + data.value;
+            //                     } else {
+            //                         showNotify('error', data.desc);
+            //                     }
+            //                 },
+            //                 error: function (xhr, error) {
+            //                     showNotify('error', "\u0110\u00E3 c\u00F3 l\u1ED7i h\u1EC7 th\u1ED1ng x\u1EA3y ra!")
+            //                 }
+            //             });
+            //         }
+            //     },
+            //     error: function (xhr, error) {
+            //         showNotify('error', "\u0110\u00E3 c\u00F3 l\u1ED7i h\u1EC7 th\u1ED1ng x\u1EA3y ra!")
+            //         $("#btnQuayLai").prop("disabled", false);
+            //         $("#btnTiepTuc").prop("disabled", false);
+            //         return false;
+            //     }
+            // });
+        }
+
+        function dangNhapLDAP() {
+            $("#inputDoiTuong").val('dangnhap');
+            $('#modalChonDoiTuong').modal('show');
+        }
+
+        function dangNhapCBT() {
+            $('#modalCanBoThueLogin').modal('show');
+            reloadCaptchaCbt();
+        }
+
+        async function submitCBT() {
+            const tenDN = $("input[name = 'tenDNCbt']").val();
+            const matKhau = $("input[name = 'matKhauCbt']").val();
+            const domain = $("select[name = '_domain']").val();
+            const captcha = $("input[name = 'captchaCbt']").val();
+            if (!tenDN) {
+                showNotify('error', "Vui l\u00F2ng nh\u1EADp t\u00EAn \u0111\u0103ng nh\u1EADp!");
+                return;
+            }
+            if (!matKhau) {
+                showNotify('error', "Vui l\u00F2ng nh\u1EADp m\u1EADt kh\u1EA9u!");
+                return;
+            }
+            if (!captcha) {
+                showNotify('error', "Vui l\u00F2ng nh\u1EADp m\u00E3 captcha")
+                return;
+            }
+            // const checkCaptcha = await checkCaptchaNoAuthen(captcha);
+            // if (!checkCaptcha) {
+            //     showNotify('error', "M\u00E3 captcha kh\u00F4ng \u0111\u00FAng")
+            //     return;
+            // }
+            if (hasWhiteSpace(tenDN)) {
+                showNotify('error', "Th\u00F4ng tin t\u00EAn \u0111\u0103ng nh\u1EADp ho\u1EB7c m\u1EADt kh\u1EA9u ch\u01B0a \u0111\u00FAng")
+                return;
+            }
+            // showLoader("#modalContentLoginCBT");
+            $.ajax({
+                type: 'POST',
+                url: base_url + 'loginCBT',
+                data: {
+                    tenDN: tenDN,
+                    matKhau: btoa(unescape(encodeURIComponent(matKhau))),
+                    tenMien: domain,
+                    captcha: captcha
+                },
+                success: function (res) {
+                    if (res) {
+                        if (res.status === '200') {
+                            window.location.href = base_url + 'home';
+                        } else if (res.status === '201') {
+                            window.location.href = base_url + res.value;
+                        } else {
+                            showNotify('error', res.desc);
+                            reloadCaptchaCbt();
+                            $("input[name = 'captchaCbt']").val('');
+                        }
+                    } else {
+                        showNotify('error', "\u0110\u00E3 c\u00F3 l\u1ED7i h\u1EC7 th\u1ED1ng x\u1EA3y ra!")
+                        // hideLoader();
+                    }
+                },
+                error: function (xhr, error) {
+                    showNotify('error', "\u0110\u00E3 c\u00F3 l\u1ED7i h\u1EC7 th\u1ED1ng x\u1EA3y ra!")
+                    // hideLoader();
+                }
+            });
+        }
+
+        function loginVNEID_v1() {
+            $('#modalChonDoiTuongVNEID').modal('show');
+        }
+
+        function redirectDtVneid(dt) {
+            $.ajax({
+                type: 'POST',
+                url: base_url + 'loginVneid',
+                data: JSON.stringify({dt: dt}),
+                contentType: 'application/json',
+                success: function (data) {
+                    if (data == 'error01') {
+                        showNotify('error', "Kh\u00F4ng th\u1EC3 truy v\u1EA5n sang VNEID!")
+                        return;
+                    }
+                    if (data == 'error02') {
+                        showNotify('error', "\u0110\u00E3 c\u00F3 l\u1ED7i h\u1EC7 th\u1ED1ng x\u1EA3y ra!")
+                        return;
+                    }
+                    window.location.href = data;
+                },
+                error: function (xhr, error) {
+                    showNotify('error', "\u0110\u00E3 c\u00F3 l\u1ED7i h\u1EC7 th\u1ED1ng x\u1EA3y ra!")
+                }
+            });
+        }
+
+        function checkCaptchaNoAuthen(captcha) {
+            return new Promise(resolve => {
+                $.ajax({
+                    type: 'GET',
+                    url: base_url + 'login/checkCaptcha',
+                    data: {
+                        captcha: captcha
+                    },
+                    success: function (data) {
+                        if (data !== 'success') {
+                            $("#btnQuayLai").prop("disabled", false);
+                            $("#btnTiepTuc").prop("disabled", false);
+                            resolve(false);
+                        } else {
+                            resolve(true);
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err);
+                        $("#btnQuayLai").prop("disabled", false);
+                        $("#btnTiepTuc").prop("disabled", false);
+                        resolve(false);
+                    }
+                });
+            });
+        }
+
+        // function loginVNEID() {
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: base_url + 'loginVneid',
+        //         data: {},
+        //         success: function (data) {
+        //             if (data == 'error01') {
+        //                 showNotify('error', "Kh\u00F4ng th\u1EC3 truy v\u1EA5n sang VNEID!")
+        //                 return;
+        //             }
+        //             if (data == 'error02') {
+        //                 showNotify('error', "\u0110\u00E3 c\u00F3 l\u1ED7i h\u1EC7 th\u1ED1ng x\u1EA3y ra!")
+        //                 return;
+        //             }
+        //             window.location.href = data;
+        //         },
+        //         error: function (xhr, error) {
+        //             showNotify('error', "\u0110\u00E3 c\u00F3 l\u1ED7i h\u1EC7 th\u1ED1ng x\u1EA3y ra!")
+        //         }
+        //     });
+        // }
+
+        // function loginVNEID(typeObject) {
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: base_url + 'callVneid',
+        //         data: {
+        //             typeObject: typeObject
+        //         },
+        //         success: function (data) {
+        //             if (data == 'error01') {
+        //                 showNotify('error', "Kh\u00F4ng th\u1EC3 truy v\u1EA5n sang VNEID!")
+        //                 return;
+        //             }
+        //             if (data == 'error02') {
+        //                 showNotify('error', "\u0110\u00E3 c\u00F3 l\u1ED7i h\u1EC7 th\u1ED1ng x\u1EA3y ra!")
+        //                 return;
+        //             }
+        //             window.location.href = data;
+        //         },
+        //         error: function (xhr, error) {
+        //             showNotify('error', "\u0110\u00E3 c\u00F3 l\u1ED7i h\u1EC7 th\u1ED1ng x\u1EA3y ra!")
+        //         }
+        //     });
+        // };
+
+        $('#modalLdap').on('shown.bs.modal', function () {
+            $("input[name = 'tenDN']").val('');
+            $("input[name = 'matKhau']").val('');
+            $("input[name = 'captcha']").val('');
+            reloadCaptcha();
+        });
+
+        function reloadCaptcha() {
+            const newUrl = base_url + 'login/getCaptcha' + '?' + new Date().getTime();
+            document.getElementById('image-capt').setAttribute('src', newUrl);
+        }
+
+        function reloadCaptchaCbt() {
+            const newUrl = base_url + 'login/getCaptcha' + '?' + new Date().getTime();
+            document.getElementById('image-capt-cbt').setAttribute('src', newUrl);
+        }
+
+
+    </script>
+</div>
+<script type="text/javascript">
+    var notifyTitle = "Th\u00F4ng b\u00E1o";
+    function showNotify(type, message) {
+        Lobibox.notify(type, {
+            size: 'mini',
+            position: "top right",
+            sound: false,
+            title: notifyTitle,
+            delay: 7000,
+            icon: false,
+            msg: message
+        });
+    }
+</script>
+<!--footer-->
+<footer class="footer py-3 mt-auto">
+    <div class="container">
+        <div class="row align-items-start">
+            <!-- Cột trái: Ảnh trụ sở -->
+            <div class="col-lg-2 col-md-3 text-center p0 m-0 mb-3">
+                <img src="/tthc/images/image_84-3ee81da5a0ee8a3ddcfae60f93be5090.png" alt="Trụ sở" class=" anhThue img-fluid rounded">
+            </div>
+
+            <!-- Cột giữa: Thông tin liên hệ -->
+            <div class="col-lg-9 col-md-7">
+                <p class="mb-1 fw-bold" style="color: var(--Primary-Color, #006FBC);
+          font-size: 16px;
+          line-height: normal;
+          text-transform: uppercase;">CỤC THUẾ - HỆ THỐNG THÔNG TIN GIẢI QUYẾT THỦ TỤC HÀNH CHÍNH</p>
+                <div class="row">
+                    <!-- Cột trái -->
+                    <div class="col-md-8">
+                        <div class="mb-0">
+                            <p class="label1">Cơ quan chủ quản:</p>
+                            <p class="value1">Bộ Tài chính</p>
+                        </div>
+
+                        <div class="mb-0">
+                            <p class="label1">Địa chỉ:</p>
+                            <p class="value1">Số 1A - Nguyễn Công Trứ - Phường Hai Bà Trưng - Thành phố Hà Nội</p>
+                        </div>
+
+                        <div class="mb-0">
+                            <p class="label1">Ghi rõ nguồn "https://www.dichvucong.gdt.gov.vn" khi phát hành thông tin
+                                từ website này</p>
+                        </div>
+                    </div>
+
+                    <!-- Cột phải -->
+                    <div class="col-md-4">
+                        <div class="mb-0">
+                            <p class="label1">Hỗ trợ:
+                            <p class="value1">(024) 39712555</p>
+                        </div>
+                        <div class="mb-0">
+                            <p class="label1">Điện thoại:</p>
+                            <p class="value1">Tổng đài hỗ trợ 024.730.55999 nhánh 1</p>
+                        </div>
+                        <div class="mb-0">
+                            <p class="label1">Thư điện tử:</p>
+                            <p class="value1">nhomhttdt@gdt.gov.vn</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Cột phải: Chứng nhận -->
+            <div class="col-lg-2 col-md-12 text-center text-lg-start">
+                <!--                <img th:src="@{/images/Tin nhiem mang.png}" alt="Chứng nhận" class="img-fluid mb-2">-->
+                <!--                <img th:src="@{/images/EMC.png}" alt="EMC" class="img-fluid">-->
+                <!--                <a href="https://tinnhiemmang.vn/danh-ba-tin-nhiem/canhangdtgovvn-1691655002"-->
+                <!--                   title="Chung nhan Tin Nhiem Mang" target="_blank"><img-->
+                <!--                        src="https://tinnhiemmang.vn/handle_cert?id=canhan.gdt.gov.vn" width="150px" height="auto"-->
+                <!--                        alt="Chung nhan Tin Nhiem Mang"></a>-->
+                <!--                <div class="yhy-append-wrap" style="width: 150px;margin-top: 10px">-->
+                <!--                    <div id="yhy-append" class="yhy-append">-->
+                <!--                        <a href="#" th:title="'TRUNG TÂM GIÁM SÁT QUỐC GIA VỀ CHÍNH PHỦ SỐ'"-->
+                <!--                           class="yhy-append-btn yhy-btn-emc"-->
+                <!--                           style="display: flex; background-color: red; color: #FFFFFF;border-radius: 30px;text-decoration: none;align-items: center">-->
+                <!--							<span class="yhy-append-icon" style="background: #fff;margin: 5px;border-radius: 100%;height: 20px;width: 20px">-->
+                <!--								<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAANCAYAAACgu+4kAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKeSURBVHgBhVJbSJNhGH6/7z9s/07mllvSby7JPBLVWHiiA6UUgV55ZbsJIrvzoouIuogiKCjopiCQMrwoTSExoRoGUwlEy+mFHbBp6qaba266/XP/4ev/ZXYAoQcevo+X533f73vfB8F2ODNgMVCchzC4ATBdATrKjmmaAEP7EQ3d+tDc05W+pjVNiv7NJMhQP3BRwewtoGgbMCQJa7OvlPT8JCKQBmtBAW0rcmNuR0qOTJ1P9XpCfwpUd1mPFi33nyj5Wn2Y/w7RUbRy2xtsCwT8Gbvp0ClEm8Rw3P9CkmIzumM3XLSzpiTZUf9gs0Cwp6xwNpH7rowPF6/HdeC9Xwi+meC1zpXAcnHhpYcteRJjhAy8XrdsjM29bYutjz4BC2+ExIKAo537eJZI/aXWSHE6ToGvYxckIzjpjc8Ome0NFzwOkWlF76GF9sFl87TO4ahqU3tqyTH13MCyTN0DCVUSCcHnkR0QnjYCpSiJ+fTqkpBfufcADgB7ZBUMzWEoTX8DdQ68mshnP67gQb94PZVipkmGQGDcAnp1WiaMbbt1ZpDk0KS34DiIn8wg9O4EX34dLHHJkNZ5a3TUyw+xWJ6JGnTauIMzI/Y9rITBAIRyc7ZI35ee9gl9VeOEs8notbnhcYpdjE09u0uS0Y9d5eVidyQib20Be2pz+Yqg+yZPsR4TUZBRgcyqkDjXvDQ8hY18I+g5RokGxmtZy/wjU0WNKIHgSgw9/9sH2j3nCu8+66KtV/MJKjOKMugE0SfImeE0UWgLpvezmCpdkAXvycToHVUfRtv4kOGAc7RanHW1dM5pp0y5WIRzMkT5uaikx/o2Im/aMz8mVN2iyhSC7aHFGZUm7VUquWw8qTKhUrOxtCX8H3CWm2vL8jd+AX3nDRFsNigEAAAAAElFTkSuQmCC"-->
+                <!--                                     alt="EMC"></span>-->
+                <!--                            <span >Đã kết nối EMC</span>-->
+                <!--                        </a>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+            </div>
+        </div>
+    </div>
+    <!-- Begin EMC Tracking Code -->
+    <script type="text/javascript">
+        var _govaq = window._govaq || [];
+        _govaq.push([ 'trackPageView' ]);
+        _govaq.push([ 'enableLinkTracking' ]);
+        (function() {
+            _govaq.push([ 'setTrackerUrl', 'https://f-emc.ngsp.gov.vn/tracking' ]);
+            _govaq.push([ 'setSiteId', '8356' ]);
+            var d = document, g = d.createElement('script'),
+                s = d.getElementsByTagName('script')[0];
+            g.type = 'text/javascript';
+            g.async = true;
+            g.defer = true;
+            g.src = 'https://f-emc.ngsp.gov.vn/embed/gov-tracking.min.js';
+            s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <!-- End EMC Tracking Code -->
+</footer>
+<!--end footer-->
+
+</body>
+</html>

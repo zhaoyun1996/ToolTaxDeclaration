@@ -35,6 +35,7 @@ namespace MISA.ASP.ClientApp.Models.Enums
         CheckETaxAccount = 3,
         OpenITaxViewer = 4,
         SyncPaymentRequest = 5,
+        ViewPaymentRequestFile = 6,
     }
 
     public enum EnumTaxAccountType

@@ -1,0 +1,18 @@
+{
+  "label": "04_login_ldap",
+  "method": "POST",
+  "url": "https://dichvucong.gdt.gov.vn/tthc/loginLDAP",
+  "headers": {
+    "X-XSRF-TOKEN": "***REDACTED***",
+    "X-Requested-With": "XMLHttpRequest",
+    "Referer": "https://dichvucong.gdt.gov.vn/tthc/login"
+  },
+  "params": {},
+  "data": {
+    "tenDN": "0314840592-ql",
+    "matKhau": "***REDACTED***",
+    "doiTuong": "DN",
+    "captcha": "***REDACTED***"
+  },
+  "json": {}
+}

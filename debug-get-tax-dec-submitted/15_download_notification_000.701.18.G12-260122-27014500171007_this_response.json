@@ -1,0 +1,10 @@
+{
+  "status_code": 429,
+  "url": "https://dichvucong.gdt.gov.vn/tthc/tchs/downloadthongbao",
+  "headers": {
+    "Server": "gdt",
+    "Connection": "Keep-Alive",
+    "Content-Length": "17"
+  },
+  "body_preview": "Too Many Requests"
+}

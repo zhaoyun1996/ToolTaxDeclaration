@@ -1,0 +1,19 @@
+{
+  "status_code": 200,
+  "url": "https://dichvucong.gdt.gov.vn/tthc/tchs/validateIdTkhai?idTKhai=G12.18-260929-00035132",
+  "headers": {
+    "x-content-type-options": "nosniff",
+    "x-xss-protection": "0",
+    "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+    "pragma": "no-cache",
+    "expires": "0",
+    "strict-transport-security": "max-age=16070400; includeSubDomains; preload",
+    "x-frame-options": "DENY",
+    "content-type": "text/plain;charset=UTF-8",
+    "content-length": "3",
+    "date": "Sat, 10 Oct 2026 08:35:40 GMT",
+    "Location": "",
+    "Set-Cookie": "TS5d8132da027=089ec42a94ab200010a32af9acd7c056177e09af1a01a6c3933b5fa6c1665fc34bc245b2d71cc9b408230a7df01130000f5d926cb289434891c3e6f874aae717cc7791e89c832d1fc25b5de53c4e181b103b9997eb1ea14e786f202395a68900; Path=/"
+  },
+  "body_preview": "400"
+}

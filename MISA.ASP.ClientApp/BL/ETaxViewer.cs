@@ -107,5 +107,47 @@ namespace MISA.ASP.ClientApp.BL
                 LogUtil.LogError(ex);
             }
         }
+
+        public async Task OpenPaymentRequestFile(string data)
+        {
+            try
+            {
+                LogUtil.LogTrace("OpenPaymentRequestFile.Start");
+                var input = JsonConvert.DeserializeObject<ViewPaymentRequestFileInput>(data);
+                string folderPath = $"{FileUtil.BASE_PATH}/OutputFiles/{input.ProfileID}/{input.CustomerID}/PaymentRequest";
+                string filePath = $"{folderPath}/{input.FileName}";
+                LogUtil.LogTrace($"OpenPaymentRequestFile.filePath: {filePath}");
+
+                if (!File.Exists(filePath))
+                {
+                    var aspClient = new ASPClient();
+                    aspClient.SetAuthentication(input.AccessToken);
+                    LogUtil.LogTrace($"OpenPaymentRequestFile.GetFileFromServer.Start");
+                    var message = await aspClient.GetPaymentRequestFileFromServer(input.ProfileID, input.CustomerID, input.FileType, input.FileName);
+                    if (message != null && message.Content != null)
+                    {
+                        Directory.CreateDirectory(folderPath);
+                        using (var fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None))
+                        {
+                            await message.Content.CopyToAsync(fs);
+                        }
+                    }
+                }
+                else
+                {
+                    LogUtil.LogError($"Không tìm được file: {filePath}");
+                }
+                LogUtil.LogTrace($"OpenPaymentRequestFile.GetFileFromServer.End");
+
+                var applicationPath = GetDefaultApplication();
+                LogUtil.LogTrace($"OpenPaymentRequestFile.applicationPath: {applicationPath}");
+                Process.Start(applicationPath, $"\"{filePath}\"");
+                LogUtil.LogTrace("OpenPaymentRequestFile.End");
+            }
+            catch (Exception ex)
+            {
+                LogUtil.LogError(ex);
+            }
+        }
     }
 }

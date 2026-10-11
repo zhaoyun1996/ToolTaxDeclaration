@@ -1,0 +1,11 @@
+{
+  "label": "10_etax_new_session",
+  "method": "GET",
+  "url": "https://thuedientu.gdt.gov.vn/etaxnnt/Request?&dse_sessionId=cHZgWAAtfgyQu51HVt2ATcK&dse_applicationId=-1&dse_pageId=1&dse_operationName=corpJumpProc&dse_errorPage=error_page.jsp&dse_processorState=initial&dse_nextEventName=start&toOpName=ssoTTHC",
+  "headers": {
+    "Referer": "https://thuedientu.gdt.gov.vn/etaxnnt/EstablishSession?&fromOpName=corpJumpProc&fromStateName=initial&fromEventName=start&toOpName=ssoTTHC"
+  },
+  "params": {},
+  "data": {},
+  "json": {}
+}

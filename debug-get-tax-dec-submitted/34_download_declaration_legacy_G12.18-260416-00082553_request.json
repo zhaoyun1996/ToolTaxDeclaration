@@ -1,0 +1,17 @@
+{
+  "label": "download_declaration_legacy_G12.18-260416-00082553",
+  "method": "POST",
+  "url": "https://dichvucong.gdt.gov.vn/tthc/downloadhoso",
+  "headers": {
+    "Referer": "https://dichvucong.gdt.gov.vn/tthc/tchs/files/detail/G12.18-260416-00082553?loai=",
+    "Origin": "https://dichvucong.gdt.gov.vn",
+    "Accept": "application/json, text/plain, */*",
+    "X-XSRF-TOKEN": "***REDACTED***"
+  },
+  "params": {},
+  "data": {
+    "_csrf": "***REDACTED***",
+    "mahoso": "G12.18-260416-00082553"
+  },
+  "json": {}
+}

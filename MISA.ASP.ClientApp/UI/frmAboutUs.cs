@@ -90,6 +90,11 @@ namespace MISA.ASP.ClientApp.UI
                                         var eTaxViewer = new ETaxViewer();
                                         _ = eTaxViewer.OpenFile(actionInfor.Data);
                                         break;
+                                    case Models.Enums.ActionType.ViewPaymentRequestFile:
+                                        var paymentRequestFileViewer = new ETaxViewer();
+                                        _ = paymentRequestFileViewer.OpenPaymentRequestFile(actionInfor.Data);
+                                        break;
+
                                     default:
                                         break;
                                 }

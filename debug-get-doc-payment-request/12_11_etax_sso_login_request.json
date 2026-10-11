@@ -1,0 +1,20 @@
+{
+  "label": "11_etax_sso_login",
+  "method": "POST",
+  "url": "https://thuedientu.gdt.gov.vn/etaxnnt/Request",
+  "headers": {
+    "Referer": "https://thuedientu.gdt.gov.vn/etaxnnt/Request?&dse_sessionId=cHZgWAAtfgyQu51HVt2ATcK&dse_applicationId=-1&dse_pageId=1&dse_operationName=corpJumpProc&dse_errorPage=error_page.jsp&dse_processorState=initial&dse_nextEventName=start&toOpName=ssoTTHC",
+    "Origin": "https://thuedientu.gdt.gov.vn"
+  },
+  "params": {},
+  "data": {
+    "dse_sessionId": "***REDACTED***",
+    "dse_applicationId": "-1",
+    "dse_pageId": "2",
+    "dse_operationName": "corpUserLoginProc",
+    "dse_errorPage": "error_page.jsp",
+    "dse_processorState": "initial",
+    "dse_nextEventName": "startSSO_TTHC"
+  },
+  "json": {}
+}

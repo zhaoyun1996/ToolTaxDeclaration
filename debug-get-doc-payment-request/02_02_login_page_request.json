@@ -1,0 +1,9 @@
+{
+  "label": "02_login_page",
+  "method": "GET",
+  "url": "https://dichvucong.gdt.gov.vn/tthc/login",
+  "headers": {},
+  "params": {},
+  "data": {},
+  "json": {}
+}

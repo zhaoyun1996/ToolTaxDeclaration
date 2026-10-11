@@ -1,0 +1,11 @@
+{
+  "label": "09_etax_establish_session",
+  "method": "GET",
+  "url": "https://thuedientu.gdt.gov.vn/etaxnnt/EstablishSession?&fromOpName=corpJumpProc&fromStateName=initial&fromEventName=start&toOpName=ssoTTHC",
+  "headers": {
+    "Referer": "https://dichvucong.gdt.gov.vn/"
+  },
+  "params": {},
+  "data": {},
+  "json": {}
+}

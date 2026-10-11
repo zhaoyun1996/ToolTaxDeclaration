@@ -1,0 +1,247 @@
+<HSoThueDTu xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <HSoKhaiThue id="NODETOSIGN">
+        <TTinChung>
+            <TTinDVu>
+                <maDVu>HTKK</maDVu>
+                <tenDVu>HỖ TRỢ KÊ KHAI THUẾ</tenDVu>
+                <pbanDVu>5.3.7</pbanDVu>
+                <ttinNhaCCapDVu>D8ECAF55C7D5132B6E676F1794D0FEB2</ttinNhaCCapDVu>
+            </TTinDVu>
+            <TTinTKhaiThue>
+                <TKhaiThue>
+                    <maTKhai>864</maTKhai>
+                    <tenTKhai>TK khấu trừ thuế thu nhập cá nhân Mẫu 05/KK-TNCN (TT80/2021)</tenTKhai>
+                    <moTaBMau>05/KK-TNCN</moTaBMau>
+                    <pbanTKhaiXML>2.8.3</pbanTKhaiXML>
+                    <loaiTKhai>B</loaiTKhai>
+                    <soLan>1</soLan>
+                    <KyKKhaiThue>
+                        <kieuKy>Q</kieuKy>
+                        <kyKKhai>2/2025</kyKKhai>
+                        <kyKKhaiTuNgay>01/04/2025</kyKKhaiTuNgay>
+                        <kyKKhaiDenNgay>30/06/2025</kyKKhaiDenNgay>
+                        <kyKKhaiTuThang/>
+                        <kyKKhaiDenThang/>
+                    </KyKKhaiThue>
+                    <maCQTNoiNop>70145</maCQTNoiNop>
+                    <tenCQTNoiNop>Chi cục Thuế thành phố Thủ Đức</tenCQTNoiNop>
+                    <ngayLapTKhai>22/01/2026</ngayLapTKhai>
+                    <nguoiKy>Ngô Thị Quí</nguoiKy>
+                    <ngayKy>2026-01-22</ngayKy>
+                    <nganhNgheKD/>
+                </TKhaiThue>
+                <NNT>
+                    <mst>0314840592</mst>
+                    <tenNNT>CÔNG TY TNHH THANG MÁY DOEL VIỆT NAM</tenNNT>
+                    <dchiNNT>Số 8A, Đường số 5, Khu phố 4, Phường An Khánh, Thành phố Hồ Chí Minh, Việt Nam</dchiNNT>
+                    <tenXaNNT/>
+                    <maXaNNT/>
+                    <maHuyenNNT/>
+                    <tenHuyenNNT>Thành phố Thủ Đức</tenHuyenNNT>
+                    <maTinhNNT/>
+                    <tenTinhNNT>Hồ Chí Minh</tenTinhNNT>
+                    <dthoaiNNT/>
+                    <faxNNT/>
+                    <emailNNT>quingo89@gmail.com, info@doelvietnam.com</emailNNT>
+                </NNT>
+            </TTinTKhaiThue>
+        </TTinChung>
+        <CTieuTKhaiChinh>
+            <mst_cu>0314840592</mst_cu>
+            <ct15>false</ct15>
+            <ct16>2</ct16>
+            <ct17>2</ct17>
+            <ct18>0</ct18>
+            <ct19>0</ct19>
+            <ct20>0</ct20>
+            <ct21>61700000</ct21>
+            <ct22>61700000</ct22>
+            <ct23>0</ct23>
+            <ct24>0</ct24>
+            <ct25>0</ct25>
+            <ct26>0</ct26>
+            <ct27>0</ct27>
+            <ct28>0</ct28>
+            <ct29>0</ct29>
+            <ct30>0</ct30>
+            <ct31>0</ct31>
+            <ct32>0</ct32>
+        </CTieuTKhaiChinh>
+        <PLuc>
+            <PL01_KHBS>
+                <Header>
+                    <maTKhai>864</maTKhai>
+                    <tenTKhai>TK khấu trừ thuế thu nhập cá nhân Mẫu 05/KK-TNCN (TT80/2021)</tenTKhai>
+                    <maGiaoDich>11320250330420425</maGiaoDich>
+                    <KyKKhaiThue>
+                        <kieuKy>Q</kieuKy>
+                        <kyKKhai>2/2025</kyKKhai>
+                        <kyKKhaiTuNgay>01/04/2025</kyKKhaiTuNgay>
+                        <kyKKhaiDenNgay>30/06/2025</kyKKhaiDenNgay>
+                        <kyKKhaiTuThang/>
+                        <kyKKhaiDenThang/>
+                    </KyKKhaiThue>
+                    <soLan>1</soLan>
+                    <mst>0314840592</mst>
+                    <tenNNT>CÔNG TY TNHH THANG MÁY DOEL VIỆT NAM</tenNNT>
+                    <mstDLyThue xsi:nil="true"/>
+                    <tenDLyThue xsi:nil="true"/>
+                    <soHDongDLyThue xsi:nil="true"/>
+                    <ngayKyHDDLyThue xsi:nil="true"/>
+                </Header>
+                <ma_DonViTien>VND</ma_DonViTien>
+                <ten_DonViTien>Việt Nam Đồng</ten_DonViTien>
+                <Muc_A>
+                    <Muc_I>
+                        <Muc_1>
+                            <ChiTiet id="1">
+<ct2_ma/>
+<ct2_ten/>
+<ct3>0</ct3>
+                            </ChiTiet>
+                            <tongCong_ct10>0</tongCong_ct10>
+                        </Muc_1>
+                        <Muc_2>
+                            <DSachPLuc>
+<BKePLuc id="1">
+    <ma_PLuc/>
+    <ten_PLuc/>
+    <CTietPLuc>
+        <ChiTiet id="1">
+            <ct2_ma/>
+            <ct2_ten/>
+            <ct3_ma/>
+            <ct3_ten/>
+            <ma_Xa/>
+            <ten_Xa/>
+            <ct04_ma/>
+            <ct04_ten/>
+            <ct05_ma/>
+            <ct05_ten/>
+            <ct06_ma/>
+            <ct06_ten/>
+            <ct7>0</ct7>
+        </ChiTiet>
+    </CTietPLuc>
+</BKePLuc>
+<tongCong_ct11>0</tongCong_ct11>
+                            </DSachPLuc>
+                        </Muc_2>
+                        <Muc_3>
+                            <ct3a_1 xsi:nil="true"/>
+                            <ct3a_2>0</ct3a_2>
+                            <ct3b>0</ct3b>
+                        </Muc_3>
+                    </Muc_I>
+                    <Muc_II>
+                        <ChiTiet id="1">
+                            <ct2_ma/>
+                            <ct2_ten/>
+                            <ct3>0</ct3>
+                        </ChiTiet>
+                        <tongCong_ct12>0</tongCong_ct12>
+                    </Muc_II>
+                    <Muc_III>
+                        <ChiTiet id="1">
+                            <ct2_ma/>
+                            <ct2_ten/>
+                            <ct3>0</ct3>
+                        </ChiTiet>
+                        <tongCong_ct13>0</tongCong_ct13>
+                    </Muc_III>
+                </Muc_A>
+                <Muc_B>
+                    <Muc_I>
+                        <ct_1>0</ct_1>
+                        <ct_2_so/>
+                        <ct_2_ngay xsi:nil="true"/>
+                        <ct_2_CQT_ma/>
+                        <ct_2_CQT_ten/>
+                        <ct_3_so/>
+                        <ct_3_ngay xsi:nil="true"/>
+                    </Muc_I>
+                    <Muc_II>
+                        <ct_1>0</ct_1>
+                        <ct_2>0</ct_2>
+                    </Muc_II>
+                </Muc_B>
+            </PL01_KHBS>
+            <PL01_1_KHBS>
+                <Header>
+                    <maTKhai>864</maTKhai>
+                    <tenTKhai>TK khấu trừ thuế thu nhập cá nhân Mẫu 05/KK-TNCN (TT80/2021)</tenTKhai>
+                    <maGiaoDich>11320250330420425</maGiaoDich>
+                    <KyKKhaiThue>
+                        <kieuKy>Q</kieuKy>
+                        <kyKKhai>2/2025</kyKKhai>
+                        <kyKKhaiTuNgay>01/04/2025</kyKKhaiTuNgay>
+                        <kyKKhaiDenNgay>30/06/2025</kyKKhaiDenNgay>
+                        <kyKKhaiTuThang/>
+                        <kyKKhaiDenThang/>
+                    </KyKKhaiThue>
+                    <soLan>1</soLan>
+                    <mst>0314840592</mst>
+                    <tenNNT>CÔNG TY TNHH THANG MÁY DOEL VIỆT NAM</tenNNT>
+                    <mstDLyThue xsi:nil="true"/>
+                    <tenDLyThue xsi:nil="true"/>
+                    <soHDongDLyThue xsi:nil="true"/>
+                    <ngayKyHDDLyThue xsi:nil="true"/>
+                </Header>
+                <ma_DonViTien>VND</ma_DonViTien>
+                <ten_DonViTien>Việt Nam Đồng</ten_DonViTien>
+                <Muc_A>
+                    <DSachHSo>
+                        <BKeHSo id="1">
+                            <ma_HSo>0001</ma_HSo>
+                            <ten_HSo>05/KK-TNCN</ten_HSo>
+                            <CTietHSo>
+<ChiTiet id="1">
+    <ct2_ma/>
+    <ct2_ten/>
+    <ct3_ma>[21]</ct3_ma>
+    <ct3_ten>Tổng thu nhập chịu thuế trả cho cá nhân [21]=[22]+[23]</ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04>51.700.000</ct04>
+    <ct05>61.700.000</ct05>
+    <ct06>10000000</ct06>
+    <ct7>0</ct7>
+    <ct8/>
+</ChiTiet>
+<ChiTiet id="1">
+    <ct2_ma/>
+    <ct2_ten/>
+    <ct3_ma>[22]</ct3_ma>
+    <ct3_ten>Thu nhập chịu thuế trả cho cá nhân cư trú</ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04>51.700.000</ct04>
+    <ct05>61.700.000</ct05>
+    <ct06>10000000</ct06>
+    <ct7>0</ct7>
+    <ct8/>
+</ChiTiet>
+                            </CTietHSo>
+                        </BKeHSo>
+                        <TongCong>
+                            <tongCong_7>0</tongCong_7>
+                            <tongCong_8>0</tongCong_8>
+                            <tongCong_9>0</tongCong_9>
+                        </TongCong>
+                    </DSachHSo>
+                </Muc_A>
+                <Muc_B>
+                    <CTietTaiLieu id="1">
+                        <ma_TLieu/>
+                        <ten_TLieu/>
+                    </CTietTaiLieu>
+                </Muc_B>
+            </PL01_1_KHBS>
+        </PLuc>
+    </HSoKhaiThue>
+    <CKyDTu><Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="NBan-82d898c86a9249d48953831d0f6b4ac1"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><Reference URI="#NODETOSIGN"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>kPFHlVbT6DM+XkN5ui4S1+/q4n8hd6IAY4MvklgnPVs=</DigestValue></Reference><Reference URI="#SigningTime-1c74e2f1259949d49a3b6d1afed148a6"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>53Cd+w7WGeC+v6yiXJEQ83oZ1oAKYCHcBELeu9UzjnU=</DigestValue></Reference></SignedInfo><SignatureValue>U42hA9R2ebRL/IAuMQLTCrHJTdlJYUNeNxwJnOjkfwvEEjmR2AoP0m9uT8cZG/WTD0KSN0nIrPY1uraO7mXTQpDMh0frRFFE4Ce8XTBTJaExjHLvlEgOdb4K/CV/YuAI34JaTUxB18abPdc8riIP2PweYtXfCZx0npOhNW5k94/xagO6iioWHniw6qBdPegZ72jnEtEHsCQSxc13/C2YUreEMRtSUJ9ho+b2x+dtfc9t4ucdb9gUcAby50ja11oGxyGPbydIW5A9RKr1NjTIfp6CbBN997dSHTTfzKHY0DQcKX49JTIurALPBQXFmQxVb6DG7DNr+j+uLqc1JyRLRQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>UID=MST:0314840592,CN=CÔNG TY TNHH THANG MÁY DOEL VIỆT NAM,L=TP Thủ Đức,ST=HỒ CHÍ MINH,C=VN</X509SubjectName><X509Certificate>MIIF5DCCA8ygAwIBAgIQVAEBAVc98aM9ECBADV+LVjANBgkqhkiG9w0BAQsFADBZMRUwEwYDVQQDDAxWTlBULUNBIFNIQTIxMzAxBgNVBAoMKlZJRVROQU0gUE9TVFMgQU5EIFRFTEVDT01NVU5JQ0FUSU9OUyBHUk9VUDELMAkGA1UEBhMCVk4wHhcNMjUwNzI5MDg0MzQxWhcNMjgwNjA1MTEwOTQ3WjCBlDELMAkGA1UEBhMCVk4xFzAVBgNVBAgMDkjhu5IgQ0jDjSBNSU5IMRkwFwYDVQQHDBBUUCBUaHXMiSDEkMawzIFjMTEwLwYDVQQDDChDw5RORyBUWSBUTkhIIFRIQU5HIE3DgVkgRE9FTCBWSeG7hlQgTkFNMR4wHAYKCZImiZPyLGQBAQwOTVNUOjAzMTQ4NDA1OTIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDY3GXCj0X3fwgpxEIe3wvBQP9QjdHOU5JmhnbDHnHMJnAq+UWxTRYRdPiD5PoK/8EpIm+a240q64SrTZ5g1eghp+MpEHldR/oZpEXy9sF18lr58NgbIiaVBFo5q7hz7MEx6zkFO+u3sC9BGJCUf1tQb5CvGrvLVdE7eRt3VM7eBJ/NC/8zk+wMrZuTHs41OUorQmKxuh5kuYVTtzgPU8HeOA68ivUBh1DQs4v44L1VqD6yr8gzYW1NLkzOMBbJLbfd4K4PpLwBgublv7yaVM4bfey29dUAYWs9aNiC21FLpBNm5KPmlq9XG/LJDQwXgE//7ufi8iUsgrfbmCss0X+LAgMBAAGjggFqMIIBZjAMBgNVHRMBAf8EAjAAMB8GA1UdIwQYMBaAFGuVxMQpI8onE8sE8P106s29CP/BMIGHBggrBgEFBQcBAQR7MHkwPgYIKwYBBQUHMAKGMmh0dHA6Ly9wdWIudm5wdC1jYS52bi9jZXJ0cy92bnB0Y2Etc2hhMjU2LTIwMjQuY2VyMDcGCCsGAQUFBzABhitodHRwOi8vb2NzcC1zaGEyNTYudm5wdC1jYS52bi9yZXNwb25kZXIyMDI0MB8GA1UdEQQYMBaBFGluZm9AZG9lbHZpZXRuYW0uY29tMBUGA1UdJQQOMAwGCisGAQQBgjcKAwwwRAYDVR0fBD0wOzA5oDegNYYzaHR0cDovL2NybC1zaGEyNTYudm5wdC1jYS52bi92bnB0Y2Etc2hhMjU2LTIwMjQuY3JsMB0GA1UdDgQWBBQGW0z+rKRiRpPLpr9m/3zIhq2KPjAOBgNVHQ8BAf8EBAMCBPAwDQYJKoZIhvcNAQELBQADggIBAGqfycfQK48plaaGiokDu7o3jTrvpOe3whi5lWJY1HPHGppgCbDyaA+1j0LsUWxVKMoLVT5KDb+4ZpkMtJEG1oT9KvA8w/TqeRDm4/YQb04agSaZdn3Z7T22Hon/k7x+jbQ0Pueu7M9tX264+G27/A269JX03RsntTLyKOouoTRzAMl6zehy9y2LmLKfSNDyd4xp0iyGoq3tqcQtb/uSzL2zJ+AFEY+ZrYpEHhMKqpCP+KAq2PF6ptDUTMNLVpH5tbDExDE/EW2dvm+D1aa8RckOrnCeRecLbussp/+GuN+MGhXbOavPw47uMIJhZXO03RynXo7QGe+S6/5C84z0nkp3fyGa3Br6UY+Rsx252QMunA2NNaC/vrjpBDskoM55ViNCRrum/7bwzpgv5lX8c1ouZcevXoTQsATEaEJwhWmUB/xss36XE6O23jKHkVlX1LvtrWqW57mB6opbOe+fTOrPD++MKz/WhM7UJPb5UT+7N3ecp6XK2N+mgNG4C+6WVjalWxua8rJ9NfI418NKlrU/Qk1Osl2m6BkBcePFNY9y9sqhL0l/rV6HbOHBFZnKI8WC3D2HT+dy24sKoriaaUCj8pPUQlXDiJzTuSKgvN9uQ5t3xc2OlejoKxjwYyNrSHjWSt6fI4GHgxKml/zeWguYZp7iE+SKco6lZasSQM3W</X509Certificate></X509Data></KeyInfo><Object Id="SigningTime-1c74e2f1259949d49a3b6d1afed148a6"><SignatureProperties><SignatureProperty Target="signatureProperties"><SigningTime>2026-01-22T15:24:55</SigningTime></SignatureProperty></SignatureProperties></Object></Signature></CKyDTu>
+</HSoThueDTu>

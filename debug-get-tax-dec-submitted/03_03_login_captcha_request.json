@@ -1,0 +1,12 @@
+{
+  "label": "03_login_captcha",
+  "method": "GET",
+  "url": "https://dichvucong.gdt.gov.vn/tthc/login/getCaptcha?1791622682381=",
+  "headers": {
+    "Referer": "https://dichvucong.gdt.gov.vn/tthc/login",
+    "Accept": "image/*,*/*;q=0.8"
+  },
+  "params": {},
+  "data": {},
+  "json": {}
+}

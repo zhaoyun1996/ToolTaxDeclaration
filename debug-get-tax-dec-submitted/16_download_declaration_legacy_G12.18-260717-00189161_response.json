@@ -1,0 +1,19 @@
+{
+  "status_code": 500,
+  "url": "https://dichvucong.gdt.gov.vn/tthc/downloadhoso",
+  "headers": {
+    "x-content-type-options": "nosniff",
+    "x-xss-protection": "0",
+    "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+    "pragma": "no-cache",
+    "expires": "0",
+    "strict-transport-security": "max-age=16070400; includeSubDomains; preload",
+    "x-frame-options": "DENY",
+    "content-type": "text/plain;charset=UTF-8",
+    "content-length": "15",
+    "date": "Sat, 10 Oct 2026 08:48:17 GMT",
+    "Set-Cookie": "GDTPublicCookie=!dAyxNHTOv6a+S+sXEExaRtpi8X/ae/VRuqGCWQ9FaImXyOYpcOcnZwTIORFwlSZrZWvCkqbfTgGb+s4=; path=/; Httponly, TS01b15635=011c0ae740b9fb3be9687bb2761bd2a5c8f435ada18cce8a77756a04173ef97f67d2160d039e019072cbedc09efa133ca9b2e5828b92df505965226f4db343382c5e2668d8ea83a4270dface3d035341e49c7edb9e; Path=/; Domain=.dichvucong.gdt.gov.vn, TS5d8132da027=089ec42a94ab2000701fe5c0aed0c3ba8d554dc330212d12f1ef65d460379749cd18527d5b42f51608a03f8e8d113000a3e6a29611878b933210b4a79bc3a4e83c03fafb857eaa8976fc587b057297a2d78d02788aa4da2d806d330df502ed6b; Path=/",
+    "Location": ""
+  },
+  "body_preview": "Download failed"
+}

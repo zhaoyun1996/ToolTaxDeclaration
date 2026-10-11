@@ -1,0 +1,11 @@
+{
+  "label": "05_other_services",
+  "method": "GET",
+  "url": "https://dichvucong.gdt.gov.vn/tthc/dich-vu-khac",
+  "headers": {
+    "Referer": "https://dichvucong.gdt.gov.vn/tthc/home"
+  },
+  "params": {},
+  "data": {},
+  "json": {}
+}

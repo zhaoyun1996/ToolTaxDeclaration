@@ -85,6 +85,7 @@
     <Compile Include="Models\ActionInput\SynTaxDec\SyncPaymentRequestInput.cs" />
     <Compile Include="Models\ActionInput\SynTaxDec\SyncTaxDecRegisteredInput.cs" />
     <Compile Include="Models\ActionInput\SynTaxDec\SyncTaxDecSubmittedInput.cs" />
+    <Compile Include="Models\ActionInput\SynTaxDec\ViewPaymentRequestFileInput.cs" />
     <Compile Include="Models\ActionInput\SynTaxDec\ViewTaxFileInput.cs" />
     <Compile Include="Models\ActionOutput\SyncTaxDec\CheckETaxAccountOutput.cs" />
     <Compile Include="Models\ActionOutput\SyncTaxDec\SyncPaymentRequestOutput.cs" />

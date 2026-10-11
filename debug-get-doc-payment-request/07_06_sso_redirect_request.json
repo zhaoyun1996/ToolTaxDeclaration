@@ -1,0 +1,13 @@
+{
+  "label": "06_sso_redirect",
+  "method": "POST",
+  "url": "https://dichvucong.gdt.gov.vn/tthc/sso/redirect-to-service?module=330410",
+  "headers": {
+    "Referer": "https://dichvucong.gdt.gov.vn/tthc/dich-vu-khac",
+    "X-Requested-With": "XMLHttpRequest",
+    "X-XSRF-TOKEN": "***REDACTED***"
+  },
+  "params": {},
+  "data": "",
+  "json": {}
+}

@@ -1,0 +1,20 @@
+{
+  "status_code": 200,
+  "url": "https://dichvucong.gdt.gov.vn/tthc/tchs/files/detail/G12.18-260717-00189161?loai=",
+  "headers": {
+    "x-content-type-options": "nosniff",
+    "x-xss-protection": "0",
+    "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+    "pragma": "no-cache",
+    "expires": "0",
+    "strict-transport-security": "max-age=16070400; includeSubDomains; preload",
+    "x-frame-options": "DENY",
+    "content-type": "text/html;charset=UTF-8",
+    "content-language": "vn",
+    "date": "Sat, 10 Oct 2026 08:48:17 GMT",
+    "Location": "",
+    "Set-Cookie": "TS5d8132da027=089ec42a94ab2000d88d4bfa2b2df63a513c37329fe828ec645a5cbd7b67af8da22c6348bc8ff72a08270226df11300014eecc18eb1f64cd3210b4a79bc3a4e83c03fafb857eaa8976fc587b057297a2d78d02788aa4da2d806d330df502ed6b; Path=/",
+    "Transfer-Encoding": "chunked"
+  },
+  "body_preview": "<!DOCTYPE html>\r\n<html lang=\"en\">\n<head>\r\n    <title>Dịch Vụ Công Thuế Nhà Nước</title>\r\n    <meta charset=\"UTF-8\"/>\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"/>\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\r\n\r\n\r\n    <link rel=\"stylesheet\" href = \"/tthc/css/font-awesome-4.7.0/font-awesome.min-a0e784c4ca94c271b0338dfb02055be6.css\">\r\n    <link rel=\"stylesheet\" href = \"/tthc/css/swiper/swiper-bundle.min-8aa3f98e02499b9046bd9d4ed02c6fca.css\">\r\n\r\n    <link rel=\"stylesheet\" href = \"/tthc/css/bootstrap-5.3.2/bootstrap.min-0fc647a071a2616fe24e9b126a52af24.css\">\r\n    <link rel=\"stylesheet\" href = \"/tthc/css/bootstrap-icons/bootstrap-icons-a5e63b504f927ab1956b8a855c7f4675.css\">\r\n    <link rel=\"stylesheet\" href = \"/tthc/css/gitlap/icons-4e11057cecb2f5a692d18e8d5777bd60.css\">\r\n    <link rel=\"stylesheet\" href = \"/tthc/css/font-googleapis/css2-6b27cbff1e2c0fc45e4707bc91860dc0.css\">\r\n    <link rel=\"stylesheet\" href = \"/tthc/css/font-googleapis/css2_1-689920c3962d8ccc1c403dbd30128727.css\">\r\n    <link rel=\"stylesheet\" href=\"/tthc/css/bootstrap-5.3.2/bootstrap-select.min-3bf13a7db93f9bfddbcdea1a450830fe.css\"/>\r\n    <link rel=\"stylesheet\" href=\"/tthc/css/main-8b94441a29ef28006ae011184fe4e0eb.css\">\r\n    <link rel=\"stylesheet\" href=\"/tthc/css/home-2205144ccdd25fb6dd97a93f89c1ab43.css\">\r\n    <link rel=\"stylesheet\" href=\"/tthc/css/login-55ee7fdc44e38ffd0d2f1e0e807f6251.css\">\r\n    <link rel=\"stylesheet\" href=\"/tthc/css/lobibox/lobibox-0e776c44ffa842934feb58ae9cb4ee6c.css\"/>\r\n    <link rel=\"stylesheet\" href=\"/tthc/css/steps-1924b4bf7424e135568a33f1a2f3f573.css\"/>\r\n    <link rel=\"stylesheet\" href=\"/tthc/css/gitlap/icon-82d4bba0484dcf470c773c2811702a56.css\"/>\r\n    <link rel=\"stylesheet\" href=\"/tthc/css/daterangepicker/daterangepicker-de478ff0c125e74e02132b6414c8f509.css\"/>\r\n    <link rel=\"stylesheet\" href=\"/tthc/css/bootstrap-daterangerpicker-1.10.0/bootstrap-datepicker.min-ae2c1b940dbb755e0165ba2794e92d6e.css\"/>\r\n    <link rel=\"icon\" href=\"/tthc/"
+}

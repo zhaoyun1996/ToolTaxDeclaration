@@ -38,6 +38,7 @@ namespace MISA.ASP.ClientApp.BL
         private string _password { get; set; }
         public string _sessionID { get; set; }
         private string _processorID { get; set; }
+        private string _queryPageId { get; set; }
         private CookieContainer _cookieContainer { get; set; }
         private HttpClient _client { get; set; }
         private HttpClientHandler _handler { get; set; }
@@ -97,7 +98,7 @@ namespace MISA.ASP.ClientApp.BL
             catch (Exception ex)
             {
                 LogUtil.LogError(ex, responseMessage);
-                throw ex;
+                throw;
             }
         }
 
@@ -124,7 +125,7 @@ namespace MISA.ASP.ClientApp.BL
             catch (Exception ex)
             {
                 LogUtil.LogError(ex, responseMessage);
-                throw ex;
+                throw;
             }
         }
 
@@ -150,7 +151,7 @@ namespace MISA.ASP.ClientApp.BL
             catch (Exception ex)
             {
                 LogUtil.LogError(ex, responseMessage);
-                throw ex;
+                throw;
             }
         }
 
@@ -176,7 +177,7 @@ namespace MISA.ASP.ClientApp.BL
             catch (Exception ex)
             {
                 LogUtil.LogError(ex, responseMessage);
-                throw ex;
+                throw;
             }
         }
 
@@ -190,17 +191,20 @@ namespace MISA.ASP.ClientApp.BL
                 LogUtil.LogTrace("Step5_ResolveCaptcha.Start");
                 responseMessage = await _client.GetAsync($"/etaxnnt/servlet/ImageServlet");
                 responseMessage.EnsureSuccessStatusCode();
-                var captchaResolver = new MisaCaptchaClient();
-                var stream = await responseMessage.Content.ReadAsStreamAsync();
-                captcha = await captchaResolver.Decaptcha(new CaptchaRequest
+                var imageBytes = await responseMessage.Content.ReadAsByteArrayAsync();
+                using (var captchaResolver = new MisaCaptchaClient())
+                using (var stream = new MemoryStream(imageBytes))
                 {
-                    Stream = stream,
-                });
+                    captcha = await captchaResolver.Decaptcha(new CaptchaRequest
+                    {
+                        Stream = stream,
+                    });
+                }
                 if (String.IsNullOrWhiteSpace(captcha))
                 {
                     throw new UnResolvedCaptchaException();
                 }
-                captchaV2Result.ByteArray = FileUtil.ConvertStreamToByteArray(stream);
+                captchaV2Result.ByteArray = imageBytes;
                 captchaV2Result.Result = captcha;
                 LogUtil.LogTrace($"Step5_ResolveCaptcha.Captcha: {captcha}");
                 LogUtil.LogTrace("Step5_ResolveCaptcha.End");
@@ -208,7 +212,7 @@ namespace MISA.ASP.ClientApp.BL
             catch (Exception ex)
             {
                 LogUtil.LogError(ex, responseMessage);
-                throw ex;
+                throw;
             }
 
             return captchaV2Result;
@@ -271,7 +275,7 @@ namespace MISA.ASP.ClientApp.BL
             catch (Exception ex)
             {
                 LogUtil.LogError(ex, responseMessage);
-                throw ex;
+                throw;
             }
         }
 
@@ -328,7 +332,7 @@ namespace MISA.ASP.ClientApp.BL
             catch (Exception ex)
             {
                 LogUtil.LogError(ex, responseMessage);
-                throw ex;
+                throw;
             }
         }
 
@@ -375,7 +379,7 @@ namespace MISA.ASP.ClientApp.BL
             {
                 LogUtil.LogError(ex, responseMessage);
                 LogUtil.LogError("Step9_GotoDangKyToKhaiPage.LoadDoc: " + JsonConvert.SerializeObject(doc));
-                throw ex;
+                throw;
             }
 
             return doc;
@@ -422,7 +426,7 @@ namespace MISA.ASP.ClientApp.BL
             catch (Exception ex)
             {
                 LogUtil.LogError(ex);
-                throw ex;
+                throw;
             }
 
             return lstTaxDecRegistered;
@@ -465,7 +469,7 @@ namespace MISA.ASP.ClientApp.BL
             catch (Exception ex)
             {
                 LogUtil.LogError(ex, responseMessage);
-                throw ex;
+                throw;
             }
         }
 
@@ -503,7 +507,7 @@ namespace MISA.ASP.ClientApp.BL
             catch (Exception ex)
             {
                 LogUtil.LogError(ex, responseMessage);
-                throw ex;
+                throw;
             }
             return doc;
         }
@@ -550,7 +554,7 @@ namespace MISA.ASP.ClientApp.BL
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
 
             return lstTaxDecSubmitted;
@@ -579,7 +583,7 @@ namespace MISA.ASP.ClientApp.BL
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -738,7 +742,7 @@ namespace MISA.ASP.ClientApp.BL
                 result.EnsureSuccessStatusCode();
                 LogUtil.LogTrace($"Step13_DownloadTransactionFile.GetAsync");
                 iTaxDec.FileName = result.Content.Headers.ContentDisposition.FileName;
-                using (var fs = new FileStream($"{folderPath}\\{iTaxDec.FileName}", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None))
+                using (var fs = new FileStream($"{folderPath}\\{iTaxDec.FileName}", FileMode.Create, FileAccess.Write, FileShare.None))
                 {
                     await result.Content.CopyToAsync(fs);
                 }
@@ -746,11 +750,9 @@ namespace MISA.ASP.ClientApp.BL
                 if (Path.GetExtension(iTaxDec.FileName) == ".xml")
                 {
                     LogUtil.LogTrace($"Step13_DownloadTransactionFile.ExtractXml.Start");
-                    // Đọc file để trích xuất 1 số thông tin như: Số tiền khấu trừ, số tiền còn nợ, ...
+                    // Đọc file từ disk để trích xuất thông tin (stream HTTP đã bị consume bởi CopyToAsync)
                     XmlDocument doc = new XmlDocument();
-                    var xmlString = await result.Content.ReadAsStringAsync();
-                    LogUtil.LogTrace($"Step13_DownloadTransactionFile.ExtractXml.LoadXml: {xmlString}");
-                    doc.LoadXml(xmlString);
+                    doc.Load($"{folderPath}\\{iTaxDec.FileName}");
                     
                     XmlNamespaceManager ns = new XmlNamespaceManager(doc.NameTable);
                     ns.AddNamespace("msbld", "http://kekhaithue.gdt.gov.vn/TKhaiThue");
@@ -826,7 +828,12 @@ namespace MISA.ASP.ClientApp.BL
                 LogUtil.LogTrace("Step14_GetThongBaoPageData.maxPage");
                 // Extract html lấy 1 số thông số cơ bản
                 var currentPage = 1;
-                var maxPage = int.Parse(doc.DocumentNode.SelectSingleNode("//*[@id='currAcc']/b[1]").InnerText);
+                var maxPageNode = doc.DocumentNode.SelectSingleNode("//*[@id='currAcc']/b[1]");
+                if (maxPageNode == null || !int.TryParse(maxPageNode.InnerText, out int maxPage))
+                {
+                    LogUtil.LogError("Step14_GetThongBaoPageData: Không đọc được tổng số trang, mặc định 1 trang.");
+                    maxPage = 1;
+                }
 
                 LogUtil.LogTrace("Step14_GetThongBaoPageData.Step16_ExtractThongBaoData.1.Start");
                 // Extract luôn các thông báo ở page 1
@@ -992,7 +999,7 @@ namespace MISA.ASP.ClientApp.BL
                 LogUtil.LogTrace("Step17_DownloadNotificationFile.PostAsync");
 
                 iTaxDecNoti.FileName = result.Content.Headers.ContentDisposition.FileName;
-                using (var fs = new FileStream($"{folderPath}\\{iTaxDecNoti.FileName}", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None))
+                using (var fs = new FileStream($"{folderPath}\\{iTaxDecNoti.FileName}", FileMode.Create, FileAccess.Write, FileShare.None))
                 {
                     await result.Content.CopyToAsync(fs);
                 }
@@ -1001,10 +1008,9 @@ namespace MISA.ASP.ClientApp.BL
                 if (Path.GetExtension(iTaxDecNoti.FileName) == ".xml")
                 {
                     LogUtil.LogTrace("Step17_DownloadNotificationFile.ExtractXml");
-                    // Đọc file để trích xuất 1 số thông tin như: Mã thông báo, Trạng thái chấp thuận, ...
+                    // Đọc file từ disk để trích xuất thông tin (stream HTTP đã bị consume bởi CopyToAsync)
                     XmlDocument doc = new XmlDocument();
-                    var xmlString = await result.Content.ReadAsStringAsync();
-                    doc.LoadXml(xmlString);
+                    doc.Load($"{folderPath}\\{iTaxDecNoti.FileName}");
                     LogUtil.LogTrace("Step17_DownloadNotificationFile.LoadDoc");
                     XmlNamespaceManager ns = new XmlNamespaceManager(doc.NameTable);
                     ns.AddNamespace("msbld", "http://kekhaithue.gdt.gov.vn/TBaoThue");
@@ -1061,23 +1067,24 @@ namespace MISA.ASP.ClientApp.BL
             catch (Exception ex)
             {
                 LogUtil.LogError(ex, responseMessage);
-                throw ex;
+                throw;
             }
         }
 
-        private async Task<HtmlDocument> Step10_ClickButtonTraCuuGiayNopTien(string fromDate, string toDate)
+        private async Task<HtmlDocument> Step10_ClickButtonTraCuuGiayNopTien(string fromDate, string toDate, string typeTax = "01")
         {
             HtmlDocument doc = new HtmlDocument();
             HttpResponseMessage responseMessage = null;
             try
             {
-                LogUtil.LogTrace("Step10_ClickButtonTraCuuGiayNopTien.Start");
+                LogUtil.LogTrace($"Step10_ClickButtonTraCuuGiayNopTien.Start.type_tax={typeTax}");
+                var pageIdToUse = !string.IsNullOrWhiteSpace(_queryPageId) ? _queryPageId : "10";
                 var content = new FormUrlEncodedContent(new[]
                    {
                     new KeyValuePair<string, string>("dse_sessionId", _sessionID),
                     new KeyValuePair<string, string>("dse_applicationId", "-1"),
                     new KeyValuePair<string, string>("dse_operationName", "corpQueryTaxProc"),
-                    new KeyValuePair<string, string>("dse_pageId", "10"),
+                    new KeyValuePair<string, string>("dse_pageId", pageIdToUse),
                     new KeyValuePair<string, string>("dse_processorState", "viewQueryPage"),
                     new KeyValuePair<string, string>("dse_processorId", _processorID),
                     new KeyValuePair<string, string>("dse_errorPage", "/etax/query_tax_information.jsp"),
@@ -1086,6 +1093,8 @@ namespace MISA.ASP.ClientApp.BL
                     new KeyValuePair<string, string>("sct", ""),
                     new KeyValuePair<string, string>("ctuId", ""),
                     new KeyValuePair<string, string>("soGnt", ""),
+                    new KeyValuePair<string, string>("idBke", ""),
+                    new KeyValuePair<string, string>("type_tax", typeTax),
                     new KeyValuePair<string, string>("ma_giao_dich", ""),
                     new KeyValuePair<string, string>("so_ctu_nh", ""),
                     new KeyValuePair<string, string>("so_gnt", ""),
@@ -1098,6 +1107,7 @@ namespace MISA.ASP.ClientApp.BL
                     new KeyValuePair<string, string>("ma_nhang", ""),
                     new KeyValuePair<string, string>("so_tk", ""),
                     new KeyValuePair<string, string>("nguyen_te", ""),
+                    new KeyValuePair<string, string>("hthuc_nop", ""),
                     new KeyValuePair<string, string>("tong_tien_nt_tu", ""),
                     new KeyValuePair<string, string>("tong_tien_nt_den", ""),
                     new KeyValuePair<string, string>("trang_thai", ""),
@@ -1106,12 +1116,12 @@ namespace MISA.ASP.ClientApp.BL
                 responseMessage = await _client.PostAsync("/etaxnnt/Request", content);
                 responseMessage.EnsureSuccessStatusCode();
                 doc.LoadHtml(await responseMessage.Content.ReadAsStringAsync());
-                LogUtil.LogTrace("Step10_ClickButtonTraCuuGiayNopTien.End");
+                LogUtil.LogTrace($"Step10_ClickButtonTraCuuGiayNopTien.End.type_tax={typeTax}");
             }
             catch (Exception ex)
             {
                 LogUtil.LogError(ex, responseMessage);
-                throw ex;
+                throw;
             }
             return doc;
         }
@@ -1123,6 +1133,21 @@ namespace MISA.ASP.ClientApp.BL
             try
             {
                 LogUtil.LogTrace("Step11_ExtractPaymentRequest.Start");
+
+                // Cập nhật lại session, processorId và pageId động từ form kết quả tra cứu (reportForm)
+                var formReport = doc.DocumentNode.SelectSingleNode("//form[@id='reportForm']")
+                              ?? doc.DocumentNode.SelectSingleNode("//form[@name='reportForm']");
+                if (formReport != null)
+                {
+                    var pageIdVal = formReport.SelectSingleNode(".//input[@name='dse_pageId']")?.GetAttributeValue("value", null);
+                    if (!string.IsNullOrWhiteSpace(pageIdVal)) _queryPageId = pageIdVal.Trim();
+
+                    var sessIdVal = formReport.SelectSingleNode(".//input[@name='dse_sessionId']")?.GetAttributeValue("value", null);
+                    if (!string.IsNullOrWhiteSpace(sessIdVal)) _sessionID = sessIdVal.Trim();
+
+                    var procIdVal = formReport.SelectSingleNode(".//input[@name='dse_processorId']")?.GetAttributeValue("value", null);
+                    if (!string.IsNullOrWhiteSpace(procIdVal)) _processorID = procIdVal.Trim();
+                }
 
                 // Extract html lấy 1 số thông số cơ bản
                 var currentPage = 1;
@@ -1154,7 +1179,7 @@ namespace MISA.ASP.ClientApp.BL
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
 
             return lstPaymentRequest;
@@ -1164,11 +1189,12 @@ namespace MISA.ASP.ClientApp.BL
         {
             try
             {
+                var pageIdToUse = !string.IsNullOrWhiteSpace(_queryPageId) ? _queryPageId : "5";
                 var result = await _client.GetAsync($"/etaxnnt/Request" +
                         $"?dse_sessionId={_sessionID}" +
                         $"&dse_applicationId=-1" +
                         $"&dse_operationName=corpQueryTaxProc" +
-                        $"&dse_pageId=12" +
+                        $"&dse_pageId={pageIdToUse}" +
                         $"&dse_processorState=viewQueryPage" +
                         $"&dse_processorId={_processorID}" +
                         $"&dse_errorPage=error_page.jsp" +
@@ -1179,11 +1205,20 @@ namespace MISA.ASP.ClientApp.BL
 
                 HtmlDocument doc = new HtmlDocument();
                 doc.LoadHtml(await result.Content.ReadAsStringAsync());
+
+                var nextFormReport = doc.DocumentNode.SelectSingleNode("//form[@id='reportForm']")
+                                  ?? doc.DocumentNode.SelectSingleNode("//form[@name='reportForm']");
+                if (nextFormReport != null)
+                {
+                    var nextVal = nextFormReport.SelectSingleNode(".//input[@name='dse_pageId']")?.GetAttributeValue("value", null);
+                    if (!string.IsNullOrWhiteSpace(nextVal)) _queryPageId = nextVal.Trim();
+                }
+
                 await ExtractRequestPayment(fromDate, toDate, doc, lstPaymentRequest);
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -1301,12 +1336,13 @@ namespace MISA.ASP.ClientApp.BL
 
                 //}
 
+                var pageIdToUse = !string.IsNullOrWhiteSpace(_queryPageId) ? _queryPageId : "5";
                 var content = new FormUrlEncodedContent(new[]
                 {
                     new KeyValuePair<string, string>("dse_sessionId", _sessionID),
                     new KeyValuePair<string, string>("dse_applicationId", "-1"),
                     new KeyValuePair<string, string>("dse_operationName", "corpQueryTaxProc"),
-                    new KeyValuePair<string, string>("dse_pageId", "9"),
+                    new KeyValuePair<string, string>("dse_pageId", pageIdToUse),
                     new KeyValuePair<string, string>("dse_processorState", "viewQueryPage"),
                     new KeyValuePair<string, string>("dse_processorId", _processorID),
                     new KeyValuePair<string, string>("dse_errorPage", "/etax/query_tax_information.jsp"),
@@ -1374,7 +1410,7 @@ namespace MISA.ASP.ClientApp.BL
                     iPaymentRequest.FileName = $"GNT_{iPaymentRequest.HiddenPaymentRequestID}.pdf";
                 }
 
-                using (var fs = new FileStream($"{folderPath}\\{iPaymentRequest.FileName}", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None))
+                using (var fs = new FileStream($"{folderPath}\\{iPaymentRequest.FileName}", FileMode.Create, FileAccess.Write, FileShare.None))
                 {
                     await fs.WriteAsync(bytes, 0, bytes.Length);
                 }
@@ -1391,8 +1427,11 @@ namespace MISA.ASP.ClientApp.BL
                     XmlNamespaceManager ns = new XmlNamespaceManager(doc.NameTable);
                     ns.AddNamespace("msbld", "http://kekhaithue.gdt.gov.vn/TKhaiThue");
                     LogUtil.LogTrace("Step13_DownloadPaymentRequestFile.ExtractXml.taxDecCode");
-                    var bankCode = doc.SelectSingleNode("//MA_NHANG_NOP").InnerText;
-                    iPaymentRequest.BankCode = bankCode;
+                    var bankCodeNode = doc.SelectSingleNode("//MA_NHANG_NOP");
+                    if (bankCodeNode != null)
+                    {
+                        iPaymentRequest.BankCode = bankCodeNode.InnerText.Trim();
+                    }
                     LogUtil.LogTrace($"Step13_DownloadPaymentRequestFile.ExtractXml.End");
                 }
 
@@ -1457,33 +1496,61 @@ namespace MISA.ASP.ClientApp.BL
 
         /// <summary>
         /// Hàm tra cứu giấy nộp tiền
+        /// - PublicService: query cả type_tax=01 (GNT điện tử) và 02 (GNT giấy), merge kết quả
+        /// - ETax direct login: giữ nguyên luồng cũ, query 1 lần
         /// </summary>
         public async Task<List<PaymentRequest>> GetPaymentRequest(SyncPaymentRequestInputDetail detail, string fromDate, string toDate)
         {
-            HtmlDocument doc = null;
             var crawlerSource = ConfigurationManager.AppSettings["CrawlerSource"];
+            var allResults = new List<PaymentRequest>();
+
             if (crawlerSource == "PublicService")
             {
                 var accountType = _taxcode.Length == 14 ? EnumTaxAccountType.Household : EnumTaxAccountType.Enterprise;
                 var publicServiceCrawler = new PublicServiceCrawler(_profileID, _customerID, _taxcode, _username, _password, accountType, _stoppingToken);
-                doc = await publicServiceCrawler.GetDocPaymentRequest(detail, fromDate, toDate);
+
+                // Lần đầu: SSO login + điều hướng đến trang tra cứu GNT, query type_tax=01
+                var docType01 = await publicServiceCrawler.GetDocPaymentRequest(detail, fromDate, toDate, "01");
                 _sessionID = publicServiceCrawler.EtaxSessionId;
                 _processorID = publicServiceCrawler.ProcessorID;
+                _queryPageId = publicServiceCrawler.QueryPageId;
+                // Dispose HttpClient cũ (tạo trong constructor) trước khi thay bằng client đã xác thực SSO
+                _client?.Dispose();
                 _client = publicServiceCrawler.EtaxClient;
+
+                await Task.Delay(1000, _stoppingToken);
+                allResults.AddRange(await Step11_ExtractPaymentRequest(fromDate, toDate, docType01));
+
+                // Lần thứ 2: dùng lại session đã có, chỉ re-query với type_tax=02
+                try
+                {
+                    LogUtil.LogTrace("GetPaymentRequest.QueryType02.Start");
+                    var docType02 = await Step10_ClickButtonTraCuuGiayNopTien(fromDate, toDate, "02");
+                    await Task.Delay(500, _stoppingToken);
+                    allResults.AddRange(await Step11_ExtractPaymentRequest(fromDate, toDate, docType02));
+                    LogUtil.LogTrace("GetPaymentRequest.QueryType02.End");
+                }
+                catch (Exception ex)
+                {
+                    LogUtil.LogError(ex, "GetPaymentRequest.QueryType02 failed, continuing with type_tax=01 results only");
+                }
             }
             else
             {
-                doc = await CommonPattern.Retry(async () =>
+                // Luồng ETax direct login: giữ nguyên như cũ
+                var doc = await CommonPattern.Retry(async () =>
                 {
                     await SignIn();
                     await Step9_GotoTraCuuGiayNopTienPage();
                     await Task.Delay(1000, _stoppingToken);
                     return await Step10_ClickButtonTraCuuGiayNopTien(fromDate, toDate);
                 });
+
+                await Task.Delay(1000, _stoppingToken);
+                allResults.AddRange(await Step11_ExtractPaymentRequest(fromDate, toDate, doc));
             }
 
-            await Task.Delay(1000, _stoppingToken);
-            return await Step11_ExtractPaymentRequest(fromDate, toDate, doc);
+            return allResults;
         }
         public Dictionary<string, int> GetColumnMapping(HtmlDocument doc, string tableSelector)
         {

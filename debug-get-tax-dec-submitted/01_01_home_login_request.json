@@ -1,0 +1,9 @@
+{
+  "label": "01_home_login",
+  "method": "GET",
+  "url": "https://dichvucong.gdt.gov.vn/tthc/homelogin",
+  "headers": {},
+  "params": {},
+  "data": {},
+  "json": {}
+}

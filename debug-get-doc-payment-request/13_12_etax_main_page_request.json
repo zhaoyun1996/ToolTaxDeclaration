@@ -1,0 +1,20 @@
+{
+  "label": "12_etax_main_page",
+  "method": "POST",
+  "url": "https://thuedientu.gdt.gov.vn/etaxnnt/Request",
+  "headers": {
+    "Referer": "https://thuedientu.gdt.gov.vn/etaxnnt/Request",
+    "Origin": "https://thuedientu.gdt.gov.vn"
+  },
+  "params": {},
+  "data": {
+    "dse_sessionId": "***REDACTED***",
+    "dse_applicationId": "-1",
+    "dse_pageId": "3",
+    "dse_operationName": "retailIndexProc",
+    "dse_errorPage": "error_page.jsp",
+    "dse_processorState": "initial",
+    "dse_nextEventName": "start"
+  },
+  "json": {}
+}

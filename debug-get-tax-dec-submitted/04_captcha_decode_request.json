@@ -1,0 +1,12 @@
+{
+  "label": "captcha_decode",
+  "method": "POST",
+  "url": "https://aspapp.misa.vn/Api/api/ClientToolAction/CaptchaDecode",
+  "headers": {},
+  "params": {
+    "domainName": "https://dichvucong.gdt.gov.vn/tthc/login",
+    "source": "dichvucong"
+  },
+  "data": {},
+  "json": {}
+}

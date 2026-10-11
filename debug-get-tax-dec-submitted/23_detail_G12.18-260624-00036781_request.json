@@ -1,0 +1,11 @@
+{
+  "label": "detail_G12.18-260624-00036781",
+  "method": "GET",
+  "url": "https://dichvucong.gdt.gov.vn/tthc/tchs/files/detail/G12.18-260624-00036781?loai=",
+  "headers": {
+    "Referer": "https://dichvucong.gdt.gov.vn/tthc/tchs"
+  },
+  "params": {},
+  "data": {},
+  "json": {}
+}

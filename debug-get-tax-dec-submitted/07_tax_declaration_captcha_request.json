@@ -1,0 +1,12 @@
+{
+  "label": "tax_declaration_captcha",
+  "method": "GET",
+  "url": "https://dichvucong.gdt.gov.vn/tthc/getCaptcha?1791622683045=",
+  "headers": {
+    "Referer": "https://dichvucong.gdt.gov.vn/tthc/tchs",
+    "Accept": "image/*,*/*;q=0.8"
+  },
+  "params": {},
+  "data": {},
+  "json": {}
+}

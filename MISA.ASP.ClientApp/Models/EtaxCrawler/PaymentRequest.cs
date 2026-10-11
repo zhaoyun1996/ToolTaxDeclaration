@@ -28,6 +28,9 @@ namespace MISA.ASP.ClientApp.Models.EtaxCrawler
         public string BankAccount { get; set; }
         [JsonConverter(typeof(BoolConverter))]
         public bool IsHideDownloadLink { get; set; }
+        [JsonConverter(typeof(BoolConverter))]
+        public bool HasDownloadError { get; set; }
+        public string DownloadErrorMsg { get; set; }
         public string FileName { get; set; }
 
     }

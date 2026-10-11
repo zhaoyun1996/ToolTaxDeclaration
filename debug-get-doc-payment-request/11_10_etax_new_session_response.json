@@ -1,0 +1,16 @@
+{
+  "status_code": 200,
+  "url": "https://thuedientu.gdt.gov.vn/etaxnnt/Request?&dse_sessionId=cHZgWAAtfgyQu51HVt2ATcK&dse_applicationId=-1&dse_pageId=1&dse_operationName=corpJumpProc&dse_errorPage=error_page.jsp&dse_processorState=initial&dse_nextEventName=start&toOpName=ssoTTHC",
+  "headers": {
+    "X-OPNET-Transaction-Trace": "a2_b6b3d9d2-7a1c-49a1-935a-8af273b367ca",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Content-Language": "en-US",
+    "Content-Length": "786",
+    "Set-Cookie": "SCOUTER=z4lsg32th5385s; Expires=Thu, 28-Oct-94 05:58:57 GMT, TS0170a754=011c0ae740b8bffe3b670a9bbdd9829775639fe9f623d3cae93dbaf40524ca5a4c227dd119040c4c4d050b0f3b6f7d34c3078b37ff; Path=/; Domain=.thuedientu.gdt.gov.vn",
+    "Date": "Sat, 10 Oct 2026 02:44:50 GMT",
+    "Expires": "Thu, 01 Dec 1994 16:00:00 GMT",
+    "Cache-Control": "no-cache=\"set-cookie, set-cookie2\"",
+    "Strict-Transport-Security": "max-age=16070400; includeSubDomains; preload"
+  },
+  "body_preview": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\r\n<form name=\"\" method=\"post\" action=\"/etaxnnt/Request\" id='mainForm'>\n<input type=\"hidden\" name=\"dse_sessionId\" value=\"cHZgWAAtfgyQu51HVt2ATcK\" />\n<input type=\"hidden\" name=\"dse_applicationId\" value=\"-1\" />\n<input type=\"hidden\" name=\"dse_pageId\" value=\"2\" />\n<input type=\"hidden\" name=\"dse_operationName\" value=\"corpUserLoginProc\" />\n<input type=\"hidden\" name=\"dse_errorPage\" value=\"error_page.jsp\" />\n<input type=\"hidden\" name=\"dse_processorState\" value=\"initial\" />\n<input type=\"hidden\" name=\"dse_nextEventName\" value=\"startSSO_TTHC\" />\n\n</form>\n\r\n\r\n\r\n<script type=\"text/JavaScript\"> \r\n\tdocument.getElementById(\"mainForm\").submit();\r\n</script>"
+}

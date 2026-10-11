@@ -1,0 +1,16 @@
+{
+  "status_code": 200,
+  "url": "https://aspapp.misa.vn/Api/api/ClientToolAction/CaptchaDecode?domainName=https://dichvucong.gdt.gov.vn/tthc/login&source=dichvucong",
+  "headers": {
+    "Cache-Control": "no-cache",
+    "Pragma": "no-cache",
+    "Content-Type": "application/json; charset=utf-8",
+    "Expires": "-1",
+    "Date": "Sat, 10 Oct 2026 08:58:00 GMT",
+    "Content-Length": "112",
+    "X-Request-ID": "3-1791622680891030-1",
+    "Strict-Transport-Security": "max-age=16070400; includeSubDomains",
+    "Set-Cookie": "TS018e863a=019ba1692d8fc175594a553f77d2f357273998add50940b641819027f4abffeb4aa68969bb78d60b125a4ca1f2bd2a00718cd84b29; Path=/; Domain=.aspapp.misa.vn"
+  },
+  "body_preview": "{\"Code\":200,\"Data\":\"2ksxc\",\"AdditionalData\":null,\"TotalCount\":0,\"Success\":true,\"Message\":null,\"MessageDev\":null}"
+}

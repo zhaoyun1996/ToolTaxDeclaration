@@ -74,6 +74,9 @@ namespace MISA.ASP.ClientApp.UI.TaxDeclaration
                         {
                             if (!isLocalMode)
                             {
+                                //detail.TaxCode = "0318585992";
+                                //detail.Username = "0318585992-ql";
+                                //detail.Password = "12345678@Abc";
                                 var crawler = new ETaxCrawler(syncInput.ProfileID, detail.CustomerID, detail.TaxCode, detail.Username, detail.Password, CancellationToken.None);
                                 var lstPaymentRequest = await crawler.GetPaymentRequest(detail, syncInput.FromDate, syncInput.ToDate);
                                 iOutputDetail.PaymentRequests = lstPaymentRequest;
@@ -124,9 +127,9 @@ namespace MISA.ASP.ClientApp.UI.TaxDeclaration
                 if (output.Details.Count > 0)
                 {
                     _aspClient.SetAuthentication(syncInput.AccessToken);
-                    await _aspClient.InsertPaymentRequest(syncInput.ProfileID, output);
+                    //await _aspClient.InsertPaymentRequest(syncInput.ProfileID, output);
                     UpdateProgress(80);
-                    await UploadFileToServer(syncInput.ProfileID, output.Details);
+                    //await UploadFileToServer(syncInput.ProfileID, output.Details);
                 }
 
                 UpdateProgress(100);
