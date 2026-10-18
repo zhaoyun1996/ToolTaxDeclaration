@@ -36,4 +36,10 @@ namespace MISA.ASP.ClientApp.Models.Enums
         SyncPaymentRequest = 5,
     }
 
+    public enum EnumTaxAccountType
+    {
+        Enterprise = 1,
+        TaxAgent = 2,
+        Household = 3
+    }
 }

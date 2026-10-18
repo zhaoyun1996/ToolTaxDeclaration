@@ -1,4 +1,4 @@
-﻿using MISA.ASP.ClientApp.BL;
+using MISA.ASP.ClientApp.BL;
 using MISA.ASP.ClientApp.Models.ActionInput.SynTaxDec;
 using MISA.ASP.ClientApp.Models.ActionOutput.SyncTaxDec;
 using MISA.ASP.ClientApp.Models.Enums;
@@ -43,7 +43,7 @@ namespace MISA.ASP.ClientApp.UI.TaxDeclaration
             }
             else
             {
-                this.Show();
+                //this.Show();
                 UpdateProgress(5);
                 Task.Factory.StartNew(() =>
                 {
@@ -74,9 +74,19 @@ namespace MISA.ASP.ClientApp.UI.TaxDeclaration
                         {
                             if (!isLocalMode)
                             {
-                                var crawler = new ETaxCrawler(syncInput.ProfileID, detail.CustomerID, detail.TaxCode, detail.Username, detail.Password, CancellationToken.None);
-                                var lstPaymentRequest = await crawler.GetPaymentRequest(syncInput.FromDate, syncInput.ToDate);
-                                iOutputDetail.PaymentRequests = lstPaymentRequest;
+                                bool isFromDvc = true;
+                                if (isFromDvc && !CommonConst.UseOldETaxFlow)
+                                {
+                                    var publicServiceCrawler = new PublicServiceCrawler(syncInput.ProfileID, detail.CustomerID, detail.TaxCode, detail.Username, detail.Password, EnumTaxAccountType.Enterprise, CancellationToken.None);
+                                    var lstPaymentRequest = await publicServiceCrawler.GetPaymentRequest(syncInput.FromDate, syncInput.ToDate);
+                                    iOutputDetail.PaymentRequests = lstPaymentRequest;
+                                }
+                                else
+                                {
+                                    var crawler = new ETaxCrawler(syncInput.ProfileID, detail.CustomerID, detail.TaxCode, detail.Username, detail.Password, CancellationToken.None);
+                                    var lstPaymentRequest = await crawler.GetPaymentRequest(syncInput.FromDate, syncInput.ToDate);
+                                    iOutputDetail.PaymentRequests = lstPaymentRequest;
+                                }
                             }
                             else
                             {
@@ -124,9 +134,9 @@ namespace MISA.ASP.ClientApp.UI.TaxDeclaration
                 if (output.Details.Count > 0)
                 {
                     _aspClient.SetAuthentication(syncInput.AccessToken);
-                    await _aspClient.InsertPaymentRequest(syncInput.ProfileID, output);
+                    //await _aspClient.InsertPaymentRequest(syncInput.ProfileID, output);
                     UpdateProgress(80);
-                    await UploadFileToServer(syncInput.ProfileID, output.Details);
+                    //await UploadFileToServer(syncInput.ProfileID, output.Details);
                 }
 
                 UpdateProgress(100);

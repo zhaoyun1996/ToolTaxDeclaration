@@ -1,5 +1,6 @@
 using HtmlAgilityPack;
 using MISA.ASP.ClientApp.Models;
+using MISA.ASP.ClientApp.Models.Enums;
 using MISA.ASP.ClientApp.Models.EtaxCrawler;
 using MISA.ASP.ClientApp.Models.Exceptions;
 using MISA.ASP.ClientApp.Utils.Clients;
@@ -1060,15 +1061,15 @@ namespace MISA.ASP.ClientApp.BL
             }
         }
 
-        private async Task<HtmlDocument> Step10_ClickButtonTraCuuGiayNopTien(string fromDate, string toDate)
+        private async Task<HtmlDocument> Step10_ClickButtonTraCuuGiayNopTien(string fromDate, string toDate, string typeTax = "01")
         {
             HtmlDocument doc = new HtmlDocument();
             HttpResponseMessage responseMessage = null;
             try
             {
-                LogUtil.LogTrace("Step10_ClickButtonTraCuuGiayNopTien.Start");
+                LogUtil.LogTrace($"Step10_ClickButtonTraCuuGiayNopTien.Start.type_tax={typeTax}");
                 var content = new FormUrlEncodedContent(new[]
-                   {
+                {
                     new KeyValuePair<string, string>("dse_sessionId", _sessionID),
                     new KeyValuePair<string, string>("dse_applicationId", "-1"),
                     new KeyValuePair<string, string>("dse_operationName", "corpQueryTaxProc"),
@@ -1081,6 +1082,8 @@ namespace MISA.ASP.ClientApp.BL
                     new KeyValuePair<string, string>("sct", ""),
                     new KeyValuePair<string, string>("ctuId", ""),
                     new KeyValuePair<string, string>("soGnt", ""),
+                    new KeyValuePair<string, string>("idBke", ""),
+                    new KeyValuePair<string, string>("type_tax", typeTax),
                     new KeyValuePair<string, string>("ma_giao_dich", ""),
                     new KeyValuePair<string, string>("so_ctu_nh", ""),
                     new KeyValuePair<string, string>("so_gnt", ""),
@@ -1101,7 +1104,7 @@ namespace MISA.ASP.ClientApp.BL
                 responseMessage = await _client.PostAsync("/etaxnnt/Request", content);
                 responseMessage.EnsureSuccessStatusCode();
                 doc.LoadHtml(await responseMessage.Content.ReadAsStringAsync());
-                LogUtil.LogTrace("Step10_ClickButtonTraCuuGiayNopTien.End");
+                LogUtil.LogTrace($"Step10_ClickButtonTraCuuGiayNopTien.End.type_tax={typeTax}");
             }
             catch (Exception ex)
             {
@@ -1192,6 +1195,7 @@ namespace MISA.ASP.ClientApp.BL
             try
             {
                 LogUtil.LogTrace("ExtractRequestPayment.Start");
+                var columnMapping = GetColumnMapping(doc, "//*[@id='data_content_onday']");
                 // Đọc các dòng tr trong tbody
                 var lstTrEl = doc.DocumentNode.SelectNodes("//*[@id='allResultTableBody']/tr");
                 LogUtil.LogTrace("ExtractRequestPayment.SelectNodes.lstTrEl");
@@ -1204,72 +1208,65 @@ namespace MISA.ASP.ClientApp.BL
                         {
                             // Đọc các cột td để lấy dữ liệu
                             var trEl = lstTrEl[i];
-                            if (trEl.ChildNodes.Count > 0)
+                            var childNodes = trEl.Elements("td").ToList();
+                            if (childNodes.Count < 5)
                             {
-                                LogUtil.LogTrace($"ExtractRequestPayment.ExtractNodes.lstTrEl:{i}:{JsonConvert.SerializeObject(trEl.ChildNodes.Count)}");
-                                var childNodes = trEl.Elements("td").ToList();
-                                var iPaymentRequest = new PaymentRequest()
-                                {
-                                    TaxCode = _taxcode,
-                                    Order = childNodes[0].InnerText.Trim(),
-                                    TransactionID = childNodes[1].InnerText.Trim(),
-                                    PaymentRequestID = childNodes[2].InnerText.Trim(),
-                                    Amount = childNodes[3].InnerText.Trim(),
-                                    AmountType = childNodes[4].InnerText.Trim(),
-                                    StateTitle = childNodes[5].InnerText.Trim(),
-                                    RefNo = childNodes[6].InnerText.Trim(),
-                                    CreatedDate = childNodes[7].InnerText.Trim(),
-                                    SentDate = childNodes[8].InnerText.Trim(),
-                                    TaxSubmittedDate = childNodes[9].InnerText.Trim(),
-                                    BankName = childNodes[10].InnerText.Trim(),
-                                    BankAccount = childNodes[11].InnerText.Trim(),
-                                };
-                                LogUtil.LogTrace($"ExtractRequestPayment.ExtractNodes.lstTrEl.{i}.iTaxDec");
-
-                                LogUtil.LogTrace($"ExtractRequestPayment.ExtractNodes.lstTrEl.{i}.aTag");
-                                // Nếu có thẻ a ẩn ở cột thứ 2 thì Tải file transaction về
-                                var aTag = childNodes[12].Element("a");
-                                if (aTag != null)
-                                {
-                                    // các bản ghi có hiddenPaymentRequestID ẩn ở trong thẻ a, giá trị hiddenPaymentRequestID này dùng để tải file về
-                                    var hiddenPaymentRequestID = aTag.GetAttributeValue("href", "");
-                                    if (!string.IsNullOrWhiteSpace(hiddenPaymentRequestID))
-                                    {
-                                        string pattern = @"downloadGNT\((.*?)\)";
-                                        foreach (Match match in Regex.Matches(hiddenPaymentRequestID, pattern))
-                                        {
-                                            if (match.Success && match.Groups.Count > 0)
-                                            {
-                                                hiddenPaymentRequestID = match.Groups[1].Value;
-                                                iPaymentRequest.HiddenPaymentRequestID = hiddenPaymentRequestID;
-                                            }
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    iPaymentRequest.IsHideDownloadLink = true;
-                                }
-
-                                LogUtil.LogTrace($"ExtractRequestPayment.ExtractNodes.lstTrEl.{i}.aTag.End");
-
-                                if (!string.IsNullOrWhiteSpace(iPaymentRequest.HiddenPaymentRequestID))
-                                {
-                                    LogUtil.LogTrace($"ExtractRequestPayment.ExtractNodes.lstTrEl.{i}.folderPath");
-                                    // Tạo folder để chứa file theo TransactionID
-                                    string folderPath = $"{FileUtil.BASE_PATH}/OutputFiles/{_profileID}/{_customerID}/PaymentRequest/{iPaymentRequest.PaymentRequestID}";
-                                    Directory.CreateDirectory(folderPath);
-
-                                    if (!iPaymentRequest.IsHideDownloadLink)
-                                    {
-                                        await Step13_DownloadPaymentRequestFile(fromDate, toDate, iPaymentRequest);
-                                    }
-                                    LogUtil.LogTrace($"ExtractRequestPayment.Step13_DownloadPaymentRequestFile.lstTrEl.{i}.End");
-                                }
-
-                                // add PaymentRequest vào collection kết quả
-                                lstPaymentRequest.Add(iPaymentRequest);
+                                continue;
                             }
+
+                            LogUtil.LogTrace($"ExtractRequestPayment.ExtractNodes.lstTrEl:{i}:{JsonConvert.SerializeObject(childNodes.Count)}");
+                            var iPaymentRequest = new PaymentRequest()
+                            {
+                                TransactionID = GetCellValue(childNodes, columnMapping, "Số tham chiếu / Mã giao dịch", childNodes.ElementAtOrDefault(1)?.InnerText.Trim()),
+                                PaymentRequestID = GetCellValue(childNodes, columnMapping, "Số giấy nộp tiền", childNodes.ElementAtOrDefault(4)?.InnerText.Trim()),
+                                Amount = GetCellValue(childNodes, columnMapping, "Số tiền", childNodes.ElementAtOrDefault(5)?.InnerText.Trim()),
+                                AmountType = GetCellValue(childNodes, columnMapping, "Loại tiền", childNodes.ElementAtOrDefault(6)?.InnerText.Trim()),
+                                StateTitle = GetCellValue(childNodes, columnMapping, "Trạng thái", childNodes.ElementAtOrDefault(7)?.InnerText.Trim()),
+                                RefNo = GetCellValue(childNodes, columnMapping, "Số chứng từ", childNodes.ElementAtOrDefault(8)?.InnerText.Trim()),
+                                CreatedDate = GetCellValue(childNodes, columnMapping, "Ngày lập GNT", childNodes.ElementAtOrDefault(9)?.InnerText.Trim()),
+                                SentDate = GetCellValue(childNodes, columnMapping, "Ngày gửi GNT", childNodes.ElementAtOrDefault(10)?.InnerText.Trim()),
+                                TaxSubmittedDate = GetCellValue(childNodes, columnMapping, "Ngày nộp thuế", childNodes.ElementAtOrDefault(11)?.InnerText.Trim()),
+                                BankName = GetCellValue(childNodes, columnMapping, "Ngân hàng", childNodes.ElementAtOrDefault(16)?.InnerText.Trim()),
+                                BankAccount = GetCellValue(childNodes, columnMapping, "Tài khoản ngân hàng", childNodes.ElementAtOrDefault(17)?.InnerText.Trim()),
+                            };
+                            LogUtil.LogTrace($"ExtractRequestPayment.ExtractNodes.lstTrEl.{i}.iTaxDec");
+
+                            LogUtil.LogTrace($"ExtractRequestPayment.ExtractNodes.lstTrEl.{i}.aTag");
+                            // Lấy ô chứa nút tải chứng từ (thường ở cột cuối)
+                            var nameCell = GetCellNode(childNodes, columnMapping, "#", childNodes.LastOrDefault());
+                            var aTag = nameCell?.Element("a");
+                            if (aTag != null)
+                            {
+                                // các bản ghi có hiddenPaymentRequestID ẩn ở trong thẻ a (href hoặc onclick)
+                                var downloadAttr = (aTag.GetAttributeValue("href", "") + " " + aTag.GetAttributeValue("onclick", "")).Trim();
+                                if (!string.IsNullOrWhiteSpace(downloadAttr))
+                                {
+                                    string pattern = @"downloadGNT\(['""]?(.*?)['""]?\)";
+                                    var match = Regex.Match(downloadAttr, pattern);
+                                    if (match.Success && match.Groups.Count > 1)
+                                    {
+                                        iPaymentRequest.HiddenPaymentRequestID = match.Groups[1].Value.Trim('\'', '"', ' ');
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                iPaymentRequest.IsHideDownloadLink = true;
+                            }
+
+                            LogUtil.LogTrace($"ExtractRequestPayment.ExtractNodes.lstTrEl.{i}.aTag.End");
+
+                            if (!string.IsNullOrWhiteSpace(iPaymentRequest.HiddenPaymentRequestID))
+                            {
+                                if (!iPaymentRequest.IsHideDownloadLink)
+                                {
+                                    await Step13_DownloadPaymentRequestFile(fromDate, toDate, iPaymentRequest);
+                                }
+                                LogUtil.LogTrace($"ExtractRequestPayment.Step13_DownloadPaymentRequestFile.lstTrEl.{i}.End");
+                            }
+
+                            // add PaymentRequest vào collection kết quả
+                            lstPaymentRequest.Add(iPaymentRequest);
                         }
                         catch (Exception ex)
                         {
@@ -1402,7 +1399,7 @@ namespace MISA.ASP.ClientApp.BL
             var crawlerSource = ConfigurationManager.AppSettings["CrawlerSource"];
             if (crawlerSource == "PublicService")
             {
-                var publicServiceCrawler = new PublicServiceCrawler(_profileID, _customerID, _taxcode, _username, _password, _stoppingToken);
+                var publicServiceCrawler = new PublicServiceCrawler(_profileID, _customerID, _taxcode, _username, _password, Models.Enums.EnumTaxAccountType.Enterprise, _stoppingToken);
                 return await publicServiceCrawler.GetTaxDecSubmitted(fromDate, toDate);
             }
 
@@ -1422,16 +1419,101 @@ namespace MISA.ASP.ClientApp.BL
         /// </summary>
         public async Task<List<PaymentRequest>> GetPaymentRequest(string fromDate, string toDate)
         {
-            var doc = await CommonPattern.Retry(async () =>
+            var targetTypeTaxes = CommonConst.UseOldETaxFlow ? new[] { "01", "02" } : new[] { "01" };
+
+            var allPaymentRequests = new List<PaymentRequest>();
+
+            await CommonPattern.Retry(async () =>
             {
+                allPaymentRequests.Clear();
+
                 await SignIn();
-                await Step9_GotoTraCuuGiayNopTienPage();
-                await Task.Delay(1000, _stoppingToken);
-                return await Step10_ClickButtonTraCuuGiayNopTien(fromDate, toDate);
-            });
-            await Task.Delay(1000, _stoppingToken);
-            return await Step11_ExtractPaymentRequest(fromDate, toDate, doc);
+
+                foreach (var typeTax in targetTypeTaxes)
+                {
+                    LogUtil.LogTrace($"ETaxCrawler.GetPaymentRequest.QueryTypeTax.Start.typeTax={typeTax}");
+
+                    await Step9_GotoTraCuuGiayNopTienPage();
+                    await Task.Delay(1000, _stoppingToken);
+
+                    var doc = await Step10_ClickButtonTraCuuGiayNopTien(fromDate, toDate, typeTax);
+                    await Task.Delay(1000, _stoppingToken);
+
+                    var requests = await Step11_ExtractPaymentRequest(fromDate, toDate, doc);
+                    if (requests != null && requests.Count > 0)
+                    {
+                        foreach (var item in requests)
+                        {
+                            if (!allPaymentRequests.Any(x => string.IsNullOrEmpty(x.TransactionID) || string.IsNullOrEmpty(item.TransactionID) || x.TransactionID == item.TransactionID))
+                            {
+                                allPaymentRequests.Add(item);
+                            }
+                        }
+                    }
+
+                    LogUtil.LogTrace($"ETaxCrawler.GetPaymentRequest.QueryTypeTax.End.typeTax={typeTax}, count={requests?.Count ?? 0}");
+                }
+            }, 5);
+
+            return allPaymentRequests;
         }
         #endregion
+
+        public Dictionary<string, int> GetColumnMapping(HtmlDocument doc, string tableSelector)
+        {
+            var columnMapping = new Dictionary<string, int>();
+            var headerRow = doc.DocumentNode.SelectSingleNode($"{tableSelector}/thead/tr")
+                ?? doc.DocumentNode.SelectSingleNode($"{tableSelector}/tr[1]");
+
+            if (headerRow != null)
+            {
+                var headers = headerRow.Elements("th").ToList();
+                if (headers.Count == 0)
+                    headers = headerRow.Elements("td").ToList(); // fallback nếu dùng td cho header
+
+                for (int i = 0; i < headers.Count; i++)
+                {
+                    var headerText = NormalizeColumnName(headers[i].InnerText);
+                    columnMapping[headerText] = i;
+                }
+            }
+
+            return columnMapping;
+        }
+
+        public string NormalizeColumnName(string columnName)
+        {
+            if (string.IsNullOrWhiteSpace(columnName))
+                return string.Empty;
+
+            return columnName.Trim()
+                .ToLower()
+                .Replace(" ", "")
+                .Replace("\t", "")
+                .Replace("\n", "")
+                .Replace("\r", "");
+        }
+
+        public string GetCellValue(List<HtmlNode> childNodes, Dictionary<string, int> columnMapping, string columnName, string fallBackValue)
+        {
+            columnName = NormalizeColumnName(columnName);
+            var foundKey = columnMapping.FirstOrDefault(col => string.Equals(col.Key, columnName, StringComparison.OrdinalIgnoreCase));
+            if (foundKey.Key != null)
+            {
+                return childNodes[foundKey.Value].InnerText.Trim();
+            }
+            return fallBackValue;
+        }
+
+        public HtmlNode GetCellNode(List<HtmlNode> childNodes, Dictionary<string, int> columnMapping, string columnName, HtmlAgilityPack.HtmlNode fallbackNode)
+        {
+            columnName = NormalizeColumnName(columnName);
+            var foundKey = columnMapping.FirstOrDefault(col => string.Equals(col.Key, columnName, StringComparison.OrdinalIgnoreCase));
+            if (foundKey.Key != null)
+            {
+                return childNodes[foundKey.Value];
+            }
+            return fallbackNode;
+        }
     }
 }
