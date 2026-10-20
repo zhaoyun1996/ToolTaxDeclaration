@@ -74,7 +74,7 @@ namespace MISA.ASP.ClientApp.UI.TaxDeclaration
                         {
                             if (!isLocalMode)
                             {
-                                bool isFromDvc = true;
+                                bool isFromDvc = syncInput.SyncFromType == EnumSyncFromType.Dvc;
                                 if (isFromDvc && !CommonConst.UseOldETaxFlow)
                                 {
                                     var publicServiceCrawler = new PublicServiceCrawler(syncInput.ProfileID, detail.CustomerID, detail.TaxCode, detail.Username, detail.Password, EnumTaxAccountType.Enterprise, CancellationToken.None);

@@ -2308,57 +2308,31 @@ namespace MISA.ASP.ClientApp.BL
             HttpResponseMessage responseMessage = null;
             try
             {
-                LogUtil.LogTrace("PublicServiceCrawler.Step9_GotoTraCuuGiayNopTienPage.Start");
+                LogUtil.LogTrace("Step9_GotoTraCuuGiayNopTienPage.Start");
+                responseMessage = await _client.GetAsync($"/etaxnnt/Request?" +
+                        $"&dse_sessionId={_etaxSessionId}" +
+                        $"&dse_applicationId=-1" +
+                        $"&dse_pageId=7" +
+                        $"&dse_operationName=corpQueryTaxProc" +
+                        $"&dse_processorState=initial" +
+                        $"&dse_nextEventName=start");
 
-                var formContent = new FormUrlEncodedContent(new[]
-                {
-                    new KeyValuePair<string, string>("dse_sessionId", _etaxSessionId),
-                    new KeyValuePair<string, string>("dse_applicationId", "-1"),
-                    new KeyValuePair<string, string>("dse_pageId", "4"),
-                    new KeyValuePair<string, string>("dse_operationName", "corpQueryTaxProc"),
-                    new KeyValuePair<string, string>("dse_errorPage", "error_page.jsp"),
-                    new KeyValuePair<string, string>("dse_processorState", "initial"),
-                    new KeyValuePair<string, string>("dse_nextEventName", "start")
-                });
-
-                var request = new HttpRequestMessage(HttpMethod.Post, "/etaxnnt/Request")
-                {
-                    Content = formContent
-                };
-                request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
-                request.Headers.Add("Referer", $"{ETAX_URL}/etaxnnt/Request");
-                request.Headers.Add("Origin", ETAX_URL);
-
-                responseMessage = await _client.SendAsync(request, _stoppingToken);
                 responseMessage.EnsureSuccessStatusCode();
-
                 var html = await responseMessage.Content.ReadAsStringAsync();
-
-                var doc = new HtmlAgilityPack.HtmlDocument();
-                doc.LoadHtml(html);
-
-                _processorID = doc.DocumentNode
-                    .SelectSingleNode("//input[@name='dse_processorId']")
-                    ?.GetAttributeValue("value", null);
-
-                // Lấy dse_pageId từ form tra cứu nếu có để truyền chính xác vào Step 10
-                var pageIdNode = doc.DocumentNode.SelectSingleNode("//input[@name='dse_pageId']");
-                _queryPageId = pageIdNode?.GetAttributeValue("value", null);
-
-                // Cập nhật lại dse_sessionId nếu trang trả về session mới
-                var sidNode = doc.DocumentNode.SelectSingleNode("//input[@name='dse_sessionId']");
-                var sidVal = sidNode?.GetAttributeValue("value", null);
-                if (!string.IsNullOrWhiteSpace(sidVal))
+                string pattern = @"name=""dse_processorId"" value=""(.*?)""";
+                foreach (Match match in Regex.Matches(html, pattern))
                 {
-                    _etaxSessionId = sidVal;
+                    if (match.Success && match.Groups.Count > 0)
+                    {
+                        _processorID = match.Groups[1].Value;
+                    }
                 }
 
                 if (String.IsNullOrEmpty(_processorID))
                 {
                     throw new NotFoundProcessIdException();
                 }
-
-                LogUtil.LogTrace("PublicServiceCrawler.Step9_GotoTraCuuGiayNopTienPage.End");
+                LogUtil.LogTrace("Step9_GotoTraCuuGiayNopTienPage.End");
             }
             catch (Exception ex)
             {
@@ -2409,15 +2383,7 @@ namespace MISA.ASP.ClientApp.BL
                     new KeyValuePair<string, string>("trang_thai", ""),
                 });
 
-                var request = new HttpRequestMessage(HttpMethod.Post, "/etaxnnt/Request")
-                {
-                    Content = content
-                };
-                request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
-                request.Headers.Add("Referer", $"{ETAX_URL}/etaxnnt/Request");
-                request.Headers.Add("Origin", ETAX_URL);
-
-                responseMessage = await _client.SendAsync(request, _stoppingToken);
+                responseMessage = await _client.PostAsync("/etaxnnt/Request", content);
                 responseMessage.EnsureSuccessStatusCode();
                 doc.LoadHtml(await responseMessage.Content.ReadAsStringAsync());
                 LogUtil.LogTrace($"Step10_ClickButtonTraCuuGiayNopTien.End.type_tax={typeTax}");

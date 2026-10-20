@@ -49,14 +49,14 @@ namespace MISA.ASP.ClientApp.UI
                             var actionIDKey = lstParam[1];
                             var aspClient = new ASPClient();
 
-                            var versionInfor = await aspClient.GetLastestVersion();
-                            if(versionInfor.Version != ConfigurationManager.AppSettings["Version"] && versionInfor.ForceUpdate)
-                            {
-                                var fNewVersion = new frmNewVersion(versionInfor.LinkDownload);
-                                fNewVersion.ShowDialog();
-                            }
-                            else
-                            {
+                            //var versionInfor = await aspClient.GetLastestVersion();
+                            //if(versionInfor.Version != ConfigurationManager.AppSettings["Version"] && versionInfor.ForceUpdate)
+                            //{
+                            //    var fNewVersion = new frmNewVersion(versionInfor.LinkDownload);
+                            //    fNewVersion.ShowDialog();
+                            //}
+                            //else
+                            //{
                                 var actionInfor = await aspClient.GetActionInfor(actionIDKey);
                                 actionInfor.ID = actionIDKey;
                                 LogUtil.LogInfo($"GetActionInfor: {JsonConvert.SerializeObject(actionInfor)}");
@@ -82,6 +82,7 @@ namespace MISA.ASP.ClientApp.UI
                                         frmCheckETaxAccount.ShowForm(actionIDKey, actionInfor.Data);
                                         break;
                                     case Models.Enums.ActionType.SyncPaymentRequest:
+                                    case Models.Enums.ActionType.SyncDvcPaymentRequest:
                                         frmPaymentRequest frmPaymentRequest = new frmPaymentRequest();
                                         frmPaymentRequest.ShowForm(actionIDKey, actionInfor.Data);
                                         break;
@@ -92,7 +93,7 @@ namespace MISA.ASP.ClientApp.UI
                                     default:
                                         break;
                                 }
-                            }
+                            //}
 
                             this.WindowState = FormWindowState.Minimized;
                         }

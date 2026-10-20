@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MISA.ASP.ClientApp.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,6 +10,7 @@ namespace MISA.ASP.ClientApp.Models.ActionInput.SynTaxDec
         public string FromDate { get; set; }
         public string ToDate { get; set; }
         public List<SyncPaymentRequestInputDetail> Details { get; set; }
+        public EnumSyncFromType SyncFromType { get; set; }
     }
 
     public class SyncPaymentRequestInputDetail
