@@ -1091,8 +1091,8 @@ namespace MISA.ASP.ClientApp.BL
                     new KeyValuePair<string, string>("ngay_lap_den_ngay", toDate),
                     new KeyValuePair<string, string>("ngay_gui_tu_ngay", ""),
                     new KeyValuePair<string, string>("ngay_gui_den_ngay", ""),
-                    new KeyValuePair<string, string>("ngay_nop_tu_ngay", ""),
-                    new KeyValuePair<string, string>("ngay_nop_den_ngay", ""),
+                    new KeyValuePair<string, string>("ngay_nop_tu_ngay", typeTax == "02" ? fromDate : ""),
+                    new KeyValuePair<string, string>("ngay_nop_den_ngay", typeTax == "02" ? toDate : ""),
                     new KeyValuePair<string, string>("ma_nhang", ""),
                     new KeyValuePair<string, string>("so_tk", ""),
                     new KeyValuePair<string, string>("nguyen_te", ""),
@@ -1234,22 +1234,23 @@ namespace MISA.ASP.ClientApp.BL
                             LogUtil.LogTrace($"ExtractRequestPayment.ExtractNodes.lstTrEl.{i}.aTag");
                             // Lấy ô chứa nút tải chứng từ (thường ở cột cuối)
                             var nameCell = GetCellNode(childNodes, columnMapping, "#", childNodes.LastOrDefault());
-                            var aTag = nameCell?.Element("a");
-                            if (aTag != null)
+                            var aTags = nameCell?.Descendants("a");
+                            if (aTags != null)
                             {
-                                // các bản ghi có hiddenPaymentRequestID ẩn ở trong thẻ a (href hoặc onclick)
-                                var downloadAttr = (aTag.GetAttributeValue("href", "") + " " + aTag.GetAttributeValue("onclick", "")).Trim();
-                                if (!string.IsNullOrWhiteSpace(downloadAttr))
+                                foreach (var aTag in aTags)
                                 {
+                                    var downloadAttr = (aTag.GetAttributeValue("href", "") + " " + aTag.GetAttributeValue("onclick", "")).Trim();
                                     string pattern = @"downloadGNT\(['""]?(.*?)['""]?\)";
                                     var match = Regex.Match(downloadAttr, pattern);
                                     if (match.Success && match.Groups.Count > 1)
                                     {
                                         iPaymentRequest.HiddenPaymentRequestID = match.Groups[1].Value.Trim('\'', '"', ' ');
+                                        break;
                                     }
                                 }
                             }
-                            else
+
+                            if (string.IsNullOrWhiteSpace(iPaymentRequest.HiddenPaymentRequestID))
                             {
                                 iPaymentRequest.IsHideDownloadLink = true;
                             }
@@ -1442,13 +1443,7 @@ namespace MISA.ASP.ClientApp.BL
                     var requests = await Step11_ExtractPaymentRequest(fromDate, toDate, doc);
                     if (requests != null && requests.Count > 0)
                     {
-                        foreach (var item in requests)
-                        {
-                            if (!allPaymentRequests.Any(x => string.IsNullOrEmpty(x.TransactionID) || string.IsNullOrEmpty(item.TransactionID) || x.TransactionID == item.TransactionID))
-                            {
-                                allPaymentRequests.Add(item);
-                            }
-                        }
+                        allPaymentRequests.AddRange(requests);
                     }
 
                     LogUtil.LogTrace($"ETaxCrawler.GetPaymentRequest.QueryTypeTax.End.typeTax={typeTax}, count={requests?.Count ?? 0}");

@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using MISA.ASP.ClientApp.UI;
 using MISA.ASP.ClientApp.Utils.Logging;
 using MISA.ASP.ClientApp.Utils.UriHandler;
@@ -27,7 +27,8 @@ namespace MISA.ASP.ClientApp
 
             if (ConfigurationManager.AppSettings["Env"] == "Dev")
             {
-                var applicationPath = @"F:\Project\ToolTaxDeclaration\MISA.ASP.ClientApp\bin\Debug\MISA.ASP.ClientApp.exe";
+                //var applicationPath = @"F:\Project\ToolTaxDeclaration\MISA.ASP.ClientApp\bin\Debug\MISA.ASP.ClientApp.exe";
+                var applicationPath = @"D:\Project\ToolTaxDeclaration\MISA.ASP.ClientApp\MISA.ASP.ClientApp\bin\Debug\MISA.ASP.ClientApp.exe";
                 var KeyTest = Registry.CurrentUser.OpenSubKey("Software", true).OpenSubKey("Classes", true);
                 RegistryKey key = KeyTest.CreateSubKey("MisaASPLauncher");
                 key.SetValue("URL Protocol", "MisaASPLauncherDev");
