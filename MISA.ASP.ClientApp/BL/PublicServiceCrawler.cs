@@ -1482,7 +1482,7 @@ namespace MISA.ASP.ClientApp.BL
                     var doc = await Step10_ClickButtonTraCuuGiayNopTien(fromDate, toDate, typeTax);
                     await Task.Delay(1000, _stoppingToken);
 
-                    var requests = await Step11_ExtractPaymentRequest(fromDate, toDate, doc);
+                    var requests = await Step11_ExtractPaymentRequest(fromDate, toDate, doc, typeTax);
                     if (requests != null && requests.Count > 0)
                     {
                         allPaymentRequests.AddRange(requests);
@@ -1495,7 +1495,7 @@ namespace MISA.ASP.ClientApp.BL
             return allPaymentRequests;
         }
 
-        private async Task<List<PaymentRequest>> Step11_ExtractPaymentRequest(string fromDate, string toDate, HtmlDocument doc)
+        private async Task<List<PaymentRequest>> Step11_ExtractPaymentRequest(string fromDate, string toDate, HtmlDocument doc, string typeTax)
         {
             var lstPaymentRequest = new List<PaymentRequest>();
 
@@ -1524,7 +1524,7 @@ namespace MISA.ASP.ClientApp.BL
                 LogUtil.LogTrace("Step11_ExtractPaymentRequest.folderPath");
 
                 // Extract luôn các giấy nộp tiền ở page 1
-                await ExtractRequestPayment(fromDate, toDate, doc, lstPaymentRequest);
+                await ExtractRequestPayment(fromDate, toDate, doc, lstPaymentRequest, typeTax);
                 LogUtil.LogTrace("Step11_ExtractPaymentRequest.ExtractRequestPayment.Page.1");
 
                 // Extract các tờ khai ở các page còn lại nếu có
@@ -1532,7 +1532,7 @@ namespace MISA.ASP.ClientApp.BL
                 {
                     currentPage += 1;
                     LogUtil.LogTrace($"Step11_ExtractPaymentRequest.ExtractRequestPayment.Page.{currentPage}");
-                    await Step12_ExtractPaymentRequest_NextPage(fromDate, toDate, currentPage, lstPaymentRequest);
+                    await Step12_ExtractPaymentRequest_NextPage(fromDate, toDate, currentPage, lstPaymentRequest, typeTax);
                 }
                 LogUtil.LogTrace("Step11_ExtractPaymentRequest.End");
             }
@@ -1545,7 +1545,7 @@ namespace MISA.ASP.ClientApp.BL
             return lstPaymentRequest;
         }
 
-        private async Task Step12_ExtractPaymentRequest_NextPage(string fromDate, string toDate, int page, List<PaymentRequest> lstPaymentRequest)
+        private async Task Step12_ExtractPaymentRequest_NextPage(string fromDate, string toDate, int page, List<PaymentRequest> lstPaymentRequest, string typeTax)
         {
             try
             {
@@ -1564,7 +1564,7 @@ namespace MISA.ASP.ClientApp.BL
 
                 HtmlDocument doc = new HtmlDocument();
                 doc.LoadHtml(await result.Content.ReadAsStringAsync());
-                await ExtractRequestPayment(fromDate, toDate, doc, lstPaymentRequest);
+                await ExtractRequestPayment(fromDate, toDate, doc, lstPaymentRequest, typeTax);
             }
             catch (Exception ex)
             {
@@ -1582,7 +1582,7 @@ namespace MISA.ASP.ClientApp.BL
         /// <param name="doc">Html Document</param>
         /// <param name="prevTransactionID">mã TransactionID của tờ khai phía trên (0 nếu là tờ khai đầu tiên trong danh sách)</param>
         /// <returns></returns>
-        private async Task ExtractRequestPayment(string fromDate, string toDate, HtmlDocument doc, List<PaymentRequest> lstPaymentRequest)
+        private async Task ExtractRequestPayment(string fromDate, string toDate, HtmlDocument doc, List<PaymentRequest> lstPaymentRequest, string typeTax)
         {
             try
             {
@@ -1653,7 +1653,7 @@ namespace MISA.ASP.ClientApp.BL
                             {
                                 if (!iPaymentRequest.IsHideDownloadLink)
                                 {
-                                    await Step13_DownloadPaymentRequestFile(fromDate, toDate, iPaymentRequest);
+                                    await Step13_DownloadPaymentRequestFile(fromDate, toDate, iPaymentRequest, typeTax);
                                 }
                                 LogUtil.LogTrace($"ExtractRequestPayment.Step13_DownloadPaymentRequestFile.lstTrEl.{i}.End");
                             }
@@ -1675,7 +1675,7 @@ namespace MISA.ASP.ClientApp.BL
             }
         }
 
-        private async Task Step13_DownloadPaymentRequestFile(string fromDate, string toDate, PaymentRequest iPaymentRequest)
+        private async Task Step13_DownloadPaymentRequestFile(string fromDate, string toDate, PaymentRequest iPaymentRequest, string typeTax)
         {
             try
             {
@@ -1704,12 +1704,12 @@ namespace MISA.ASP.ClientApp.BL
                     new KeyValuePair<string, string>("ma_giao_dich", ""),
                     new KeyValuePair<string, string>("so_ctu_nh", ""),
                     new KeyValuePair<string, string>("so_gnt", ""),
-                    new KeyValuePair<string, string>("ngay_lap_tu_ngay", fromDate),
-                    new KeyValuePair<string, string>("ngay_lap_den_ngay", toDate),
+                    new KeyValuePair<string, string>("ngay_lap_tu_ngay", typeTax == "01" ? fromDate : ""),
+                    new KeyValuePair<string, string>("ngay_lap_den_ngay", typeTax == "01" ? toDate : ""),
                     new KeyValuePair<string, string>("ngay_gui_tu_ngay", ""),
                     new KeyValuePair<string, string>("ngay_gui_den_ngay", ""),
-                    new KeyValuePair<string, string>("ngay_nop_tu_ngay", fromDate),
-                    new KeyValuePair<string, string>("ngay_nop_den_ngay", toDate),
+                    new KeyValuePair<string, string>("ngay_nop_tu_ngay", typeTax != "01" ? fromDate : ""),
+                    new KeyValuePair<string, string>("ngay_nop_den_ngay", typeTax != "01" ? toDate : ""),
                     new KeyValuePair<string, string>("ma_nhang", ""),
                     new KeyValuePair<string, string>("so_tk", ""),
                     new KeyValuePair<string, string>("nguyen_te", ""),
@@ -2363,12 +2363,12 @@ namespace MISA.ASP.ClientApp.BL
                     new KeyValuePair<string, string>("ma_giao_dich", ""),
                     new KeyValuePair<string, string>("so_ctu_nh", ""),
                     new KeyValuePair<string, string>("so_gnt", ""),
-                    new KeyValuePair<string, string>("ngay_lap_tu_ngay", fromDate),
-                    new KeyValuePair<string, string>("ngay_lap_den_ngay", toDate),
+                    new KeyValuePair<string, string>("ngay_lap_tu_ngay", typeTax == "01" ? fromDate : ""),
+                    new KeyValuePair<string, string>("ngay_lap_den_ngay", typeTax == "01" ? toDate : ""),
                     new KeyValuePair<string, string>("ngay_gui_tu_ngay", ""),
                     new KeyValuePair<string, string>("ngay_gui_den_ngay", ""),
-                    new KeyValuePair<string, string>("ngay_nop_tu_ngay", fromDate),
-                    new KeyValuePair<string, string>("ngay_nop_den_ngay", toDate),
+                    new KeyValuePair<string, string>("ngay_nop_tu_ngay", typeTax != "01" ? fromDate : ""),
+                    new KeyValuePair<string, string>("ngay_nop_den_ngay", typeTax != "01" ? toDate : ""),
                     new KeyValuePair<string, string>("ma_nhang", ""),
                     new KeyValuePair<string, string>("so_tk", ""),
                     new KeyValuePair<string, string>("nguyen_te", ""),
