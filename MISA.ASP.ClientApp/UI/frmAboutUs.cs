@@ -74,6 +74,7 @@ namespace MISA.ASP.ClientApp.UI
                                         frmTaxDecRegistered.ShowForm(actionIDKey, actionInfor.Data);
                                         break;
                                     case Models.Enums.ActionType.SyncTaxDecSubmitted:
+                                    case Models.Enums.ActionType.SyncDvcDecSubmitted:
                                         frmTaxDecSubmitted frmTaxDecSubmitted = new frmTaxDecSubmitted();
                                         frmTaxDecSubmitted.ShowForm(actionIDKey, actionInfor.Data);
                                         break;

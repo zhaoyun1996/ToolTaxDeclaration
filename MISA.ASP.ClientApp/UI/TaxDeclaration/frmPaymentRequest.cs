@@ -75,10 +75,10 @@ namespace MISA.ASP.ClientApp.UI.TaxDeclaration
                             if (!isLocalMode)
                             {
                                 bool isFromDvc = syncInput.SyncFromType == EnumSyncFromType.Dvc;
-                                //bool isFromDvc = true;
-                                //detail.TaxCode = "0316966632";
-                                //detail.Username = "0316966632-QL";
-                                //detail.Password = "Td@1234";
+                                isFromDvc = true;
+                                detail.TaxCode = "0316966632";
+                                detail.Username = "0316966632-QL";
+                                detail.Password = "Td@1234";
                                 if (isFromDvc && !CommonConst.UseOldETaxFlow)
                                 {
                                     var publicServiceCrawler = new PublicServiceCrawler(syncInput.ProfileID, detail.CustomerID, detail.TaxCode, detail.Username, detail.Password, EnumTaxAccountType.Enterprise, CancellationToken.None);
@@ -138,9 +138,9 @@ namespace MISA.ASP.ClientApp.UI.TaxDeclaration
                 if (output.Details.Count > 0)
                 {
                     _aspClient.SetAuthentication(syncInput.AccessToken);
-                    //await _aspClient.InsertPaymentRequest(syncInput.ProfileID, output);
+                    await _aspClient.InsertPaymentRequest(syncInput.ProfileID, output);
                     UpdateProgress(80);
-                    //await UploadFileToServer(syncInput.ProfileID, output.Details);
+                    await UploadFileToServer(syncInput.ProfileID, output.Details);
                 }
 
                 UpdateProgress(100);

@@ -1472,12 +1472,12 @@ namespace MISA.ASP.ClientApp.BL
                 await StepGNT8_GotoMainPage(step7Form);
                 await Task.Delay(500, _stoppingToken);
 
+                await Step9_GotoTraCuuGiayNopTienPage();
+                await Task.Delay(500, _stoppingToken);
+
                 foreach (var typeTax in targetTypeTaxes)
                 {
                     LogUtil.LogTrace($"PublicServiceCrawler.GetPaymentRequest.QueryTypeTax.Start.typeTax={typeTax}");
-
-                    await Step9_GotoTraCuuGiayNopTienPage();
-                    await Task.Delay(500, _stoppingToken);
 
                     var doc = await Step10_ClickButtonTraCuuGiayNopTien(fromDate, toDate, typeTax);
                     await Task.Delay(1000, _stoppingToken);
@@ -1708,8 +1708,8 @@ namespace MISA.ASP.ClientApp.BL
                     new KeyValuePair<string, string>("ngay_lap_den_ngay", toDate),
                     new KeyValuePair<string, string>("ngay_gui_tu_ngay", ""),
                     new KeyValuePair<string, string>("ngay_gui_den_ngay", ""),
-                    new KeyValuePair<string, string>("ngay_nop_tu_ngay", ""),
-                    new KeyValuePair<string, string>("ngay_nop_den_ngay", ""),
+                    new KeyValuePair<string, string>("ngay_nop_tu_ngay", fromDate),
+                    new KeyValuePair<string, string>("ngay_nop_den_ngay", toDate),
                     new KeyValuePair<string, string>("ma_nhang", ""),
                     new KeyValuePair<string, string>("so_tk", ""),
                     new KeyValuePair<string, string>("nguyen_te", ""),
@@ -2367,8 +2367,8 @@ namespace MISA.ASP.ClientApp.BL
                     new KeyValuePair<string, string>("ngay_lap_den_ngay", toDate),
                     new KeyValuePair<string, string>("ngay_gui_tu_ngay", ""),
                     new KeyValuePair<string, string>("ngay_gui_den_ngay", ""),
-                    new KeyValuePair<string, string>("ngay_nop_tu_ngay", typeTax == "02" ? fromDate : ""),
-                    new KeyValuePair<string, string>("ngay_nop_den_ngay", typeTax == "02" ? toDate : ""),
+                    new KeyValuePair<string, string>("ngay_nop_tu_ngay", fromDate),
+                    new KeyValuePair<string, string>("ngay_nop_den_ngay", toDate),
                     new KeyValuePair<string, string>("ma_nhang", ""),
                     new KeyValuePair<string, string>("so_tk", ""),
                     new KeyValuePair<string, string>("nguyen_te", ""),

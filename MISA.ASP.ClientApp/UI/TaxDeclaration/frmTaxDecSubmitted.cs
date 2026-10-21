@@ -64,7 +64,11 @@ namespace MISA.ASP.ClientApp.UI.TaxDeclaration
                 UpdateProgress(10);
                 if (syncInput != null && syncInput.Details != null && syncInput.Details.Count > 0)
                 {
-
+                    bool isFromDvc = syncInput.SyncFromType == EnumSyncFromType.Dvc;
+                    //isFromDvc = true;
+                    //detail.TaxCode = "0316966632";
+                    //detail.Username = "0316966632-QL";
+                    //detail.Password = "Td@1234";
                     var isLocalMode = bool.Parse(ConfigurationManager.AppSettings["IsLocalMode"]);
                     foreach (var detail in syncInput.Details)
                     {
@@ -73,9 +77,18 @@ namespace MISA.ASP.ClientApp.UI.TaxDeclaration
                         {
                             if (!isLocalMode)
                             {
-                                var crawler = new ETaxCrawler(syncInput.ProfileID, detail.CustomerID, detail.TaxCode, detail.Username, detail.Password, CancellationToken.None);
-                                var taxDecSubmitted = await crawler.GetTaxDecSubmitted(syncInput.FromDate, syncInput.ToDate);
-                                iOutputDetail.TaxDeclarationSubmitteds = taxDecSubmitted;
+                                if (isFromDvc)
+                                {
+                                    var publicServiceCrawler = new PublicServiceCrawler(syncInput.ProfileID, detail.CustomerID, detail.TaxCode, detail.Username, detail.Password, detail.AccountType, CancellationToken.None);
+                                    var taxDecSubmitted = await publicServiceCrawler.GetTaxDecSubmitted(syncInput.FromDate, syncInput.ToDate);
+                                    iOutputDetail.TaxDeclarationSubmitteds = taxDecSubmitted;
+                                }
+                                else
+                                {
+                                    var crawler = new ETaxCrawler(syncInput.ProfileID, detail.CustomerID, detail.TaxCode, detail.Username, detail.Password, CancellationToken.None);
+                                    var taxDecSubmitted = await crawler.GetTaxDecSubmitted(syncInput.FromDate, syncInput.ToDate);
+                                    iOutputDetail.TaxDeclarationSubmitteds = taxDecSubmitted;
+                                }
                             }
                             else
                             {

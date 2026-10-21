@@ -1091,8 +1091,8 @@ namespace MISA.ASP.ClientApp.BL
                     new KeyValuePair<string, string>("ngay_lap_den_ngay", toDate),
                     new KeyValuePair<string, string>("ngay_gui_tu_ngay", ""),
                     new KeyValuePair<string, string>("ngay_gui_den_ngay", ""),
-                    new KeyValuePair<string, string>("ngay_nop_tu_ngay", typeTax == "02" ? fromDate : ""),
-                    new KeyValuePair<string, string>("ngay_nop_den_ngay", typeTax == "02" ? toDate : ""),
+                    new KeyValuePair<string, string>("ngay_nop_tu_ngay", fromDate),
+                    new KeyValuePair<string, string>("ngay_nop_den_ngay", toDate),
                     new KeyValuePair<string, string>("ma_nhang", ""),
                     new KeyValuePair<string, string>("so_tk", ""),
                     new KeyValuePair<string, string>("nguyen_te", ""),
@@ -1397,13 +1397,6 @@ namespace MISA.ASP.ClientApp.BL
         /// </summary>
         public async Task<List<TaxDeclarationSubmitted>> GetTaxDecSubmitted(string fromDate, string toDate)
         {
-            var crawlerSource = ConfigurationManager.AppSettings["CrawlerSource"];
-            if (crawlerSource == "PublicService")
-            {
-                var publicServiceCrawler = new PublicServiceCrawler(_profileID, _customerID, _taxcode, _username, _password, Models.Enums.EnumTaxAccountType.Enterprise, _stoppingToken);
-                return await publicServiceCrawler.GetTaxDecSubmitted(fromDate, toDate);
-            }
-
             var doc = await CommonPattern.Retry(async () =>
             {
                 await SignIn();

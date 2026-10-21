@@ -34,6 +34,7 @@ namespace MISA.ASP.ClientApp.Models.Enums
         CheckETaxAccount = 3,
         OpenITaxViewer = 4,
         SyncPaymentRequest = 5,
+        SyncDvcDecSubmitted = 16,
         SyncDvcPaymentRequest = 17,
     }
 
